@@ -29,9 +29,7 @@ class UserRecord implements Iterable<User> {
 
 
 public class UserIterator implements Iterator<User> {
-    /**
-     * The index of the next Contact to return.
-     */
+    //The index of the next Contact to return.
     private int currentPosition = 0;
     private ArrayList<User> otherUserList;
 

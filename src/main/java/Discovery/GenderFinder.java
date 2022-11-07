@@ -27,7 +27,7 @@ public class GenderFinder {
             }
             return res;
         }
-        //bisexual cases
+        //the bisexual cases
         if (userChoice.equals("bisexual")){
             for (User otherUser:otherUser){
                 if (otherUser.getSexualOrientation().equals("male")||
