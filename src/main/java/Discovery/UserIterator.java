@@ -28,13 +28,13 @@ class UserRecord implements Iterable<User> {
 */
 
 
-public class UserIterator implements Iterator<User> {
+public class UserIterator implements Iterator<User.User> {
     //The index of the next Contact to return.
     private int currentPosition = 0;
-    private ArrayList<User> otherUserList;
+    private ArrayList<User.User> otherUserList;
 
 
-    public UserIterator(ArrayList<User> otherUserList) {
+    public UserIterator(ArrayList<User.User> otherUserList) {
         this.otherUserList = otherUserList;
     }
 
@@ -44,11 +44,11 @@ public class UserIterator implements Iterator<User> {
     }
 
     @Override
-    public User next() {
+    public User.User next() {
         if (!hasNext()) {
             return null;
         }
-        User returnUser = this.otherUserList.get(currentPosition);
+        User.User returnUser = this.otherUserList.get(currentPosition);
         currentPosition++;
         return returnUser;
     }
