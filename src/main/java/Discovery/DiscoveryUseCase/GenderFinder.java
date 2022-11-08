@@ -16,6 +16,7 @@ import java.util.ArrayList;
  * open: return all the users
  */
 
+//to use the class, create an instance of GenderFinder and then call the function method getList
 public class GenderFinder {
     /**
      * the variable of the class that stores the list after genderFinder
@@ -33,7 +34,7 @@ public class GenderFinder {
                 userChoice.equals("transgender")){
             for (User otherUsers:otherUsersList){
                 //user.sexualOrientation is variable recording user's sexualOrientation
-                if (otherUsers.getSexualOrientation().equals(userChoice)){res.add(otherUsers);}
+                if (User.getSexualOrientation().equals(userChoice)){res.add(otherUsers);}
             }
             this.genderSuitFinder = res;
             return;
@@ -41,14 +42,18 @@ public class GenderFinder {
         //the bisexual cases
         if (userChoice.equals("bisexual")){
             for (User otherUsers:otherUsersList){
-                if (otherUsers.getSexualOrientation().equals("male")||
-                        otherUsers.getSexualOrientation().equals("female")){res.add(otherUsers);}
+                if (User.getSexualOrientation().equals("male")||
+                        User.getSexualOrientation().equals("female")){res.add(otherUsers);}
             }
             this.genderSuitFinder = res;
             return;
         }
         //open case
         this.genderSuitFinder = otherUsersList;
+    }
+
+    public ArrayList<User> getList(){
+        return this.genderSuitFinder;
     }
 
 }
