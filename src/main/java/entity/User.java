@@ -91,7 +91,7 @@ public class User implements Comparable<User>{
     }
 
     public void setPreference(String key, Object obj) {
-        // implement after implementation of UserPreference
+        this.preference.setPreference(key, obj);
     }
 
     @Override
