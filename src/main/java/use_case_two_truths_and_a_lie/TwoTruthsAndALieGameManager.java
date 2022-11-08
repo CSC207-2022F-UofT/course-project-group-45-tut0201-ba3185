@@ -4,10 +4,8 @@ import java.util.*;
 import entity.*;
 
 public class TwoTruthsAndALieGameManager implements TwoTruthsAndALieGameInputBoundary {
-
     private TwoTruthsAndALieGameOutputBoundary presenter;
     private TwoTruthsAndALieGameState gameState;
-
     public TwoTruthsAndALieGameManager(TwoTruthsAndALieGameOutputBoundary presenter) {
         this.presenter = presenter;
         gameState = new TwoTruthsAndALieGameState();
