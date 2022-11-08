@@ -11,6 +11,4 @@ public interface TwoTruthsAndALieGameInputBoundary {
     public void loadStatements(TwoTruthsAndALieGameRequestModel requestModel);
 
     public void isCorrect(TwoTruthsAndALieGameRequestModel requestModel);
-
-    public TwoTruthsAndALiePlayer findPlayer(TwoTruthsAndALieGameRequestModel requestModel);
 }
