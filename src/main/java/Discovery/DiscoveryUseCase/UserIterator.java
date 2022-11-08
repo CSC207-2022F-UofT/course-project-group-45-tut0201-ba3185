@@ -1,8 +1,7 @@
 package Discovery.DiscoveryUseCase;
+import User.User;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
-import java.util.NoSuchElementException;
 
 /**
  * Want a new class called 'UserFactory',
@@ -25,13 +24,13 @@ class UserRecord implements Iterable<User> {
 */
 
 
-public class UserIterator implements Iterator<User.User> {
+public class UserIterator implements Iterator<User> {
     //The index of the next Contact to return.
     private int currentPosition = 0;
-    private ArrayList<User.User> otherUserList;
+    private final ArrayList<User> otherUserList;
 
 
-    public UserIterator(ArrayList<User.User> otherUserList) {
+    public UserIterator(ArrayList<User> otherUserList) {
         this.otherUserList = otherUserList;
     }
 
@@ -41,11 +40,11 @@ public class UserIterator implements Iterator<User.User> {
     }
 
     @Override
-    public User.User next() {
+    public User next() {
         if (!hasNext()) {
             return null;
         }
-        User.User returnUser = this.otherUserList.get(currentPosition);
+        User returnUser = this.otherUserList.get(currentPosition);
         currentPosition++;
         return returnUser;
     }
