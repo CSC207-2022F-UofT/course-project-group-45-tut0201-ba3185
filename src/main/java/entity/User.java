@@ -1,6 +1,7 @@
 package entity;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Arrays;
 
 /*
    This is an entity class to store User information,
@@ -24,6 +25,7 @@ public class User implements Comparable<User>{
     private ArrayList<Float> location;
     private ArrayList<User> blockList;
     private HashMap<String, Object> userInfo;
+    private ArrayList<String> interestRank;
 
     public User(String user, String name, String password) {
         this.username = user;
@@ -33,6 +35,7 @@ public class User implements Comparable<User>{
         this.location = null;
         this.blockList = new ArrayList<User>();
         this.userInfo = new HashMap<String, Object>();
+        this.interestRank = new ArrayList<String>(Arrays.asList("age", "areaOfInterest", "income", "maritalStatus", "pet", "relationshipType"));
     }
 
     public User(String user, String name, String password, ArrayList<Float> loc) {
@@ -43,6 +46,7 @@ public class User implements Comparable<User>{
         this.location = loc;
         this.blockList = new ArrayList<User>();
         this.userInfo = new HashMap<String, Object>();
+        this.interestRank = new ArrayList<String>(Arrays.asList("age", "areaOfInterest", "income", "maritalStatus", "pet", "relationshipType"));
     }
 
     // Getter functions
@@ -69,6 +73,10 @@ public class User implements Comparable<User>{
         return this.preference;
     }
 
+    public ArrayList<String> getInterestRank() {
+        return this.interestRank;
+    }
+
     // Setter functions
 
     public boolean setPassword(String pass) {
@@ -92,6 +100,10 @@ public class User implements Comparable<User>{
 
     public void setPreference(String key, Object obj) {
         this.preference.setPreference(key, obj);
+    }
+
+    public void setInterestRank(ArrayList<String> lst) {
+        this.interestRank = lst;
     }
 
     @Override
