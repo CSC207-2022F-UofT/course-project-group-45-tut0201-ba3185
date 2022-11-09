@@ -23,6 +23,10 @@ public class SearchFinder implements SearchFinderInputBoundary {
     public SearchFinder(SearchAnswerRequestModel requestModel, DiscoveryListOutputBoundary presenter){
         this.requestModel = requestModel;
         this.presenter = presenter;
+        covertMarriageStateOP();
+        convertAreaOfInterest();
+        convertRelationship();
+        convertPet();
     }
 
     public void covertMarriageStateOP() {
