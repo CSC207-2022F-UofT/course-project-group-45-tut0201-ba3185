@@ -18,8 +18,8 @@ public class User implements Comparable<User>{
      * blockList: an ArrayList of users of the blocked users,
      * userInfo: A Hashmap pairing String to Objects to contain the information of the user,
      */
-    private String username;
-    private String name;
+    private final String username;
+    private final String name;
     private String password;
     private UserPreference preference;
     private ArrayList<Float> location;
@@ -27,6 +27,7 @@ public class User implements Comparable<User>{
     private HashMap<String, Object> userInfo;
     private ArrayList<String> interestRank;
 
+    // case when user does not give location data
     public User(String user, String name, String password) {
         this.username = user;
         this.name = name;
@@ -38,6 +39,7 @@ public class User implements Comparable<User>{
         this.interestRank = new ArrayList<String>(Arrays.asList("age", "areaOfInterest", "income", "maritalStatus", "pet", "relationshipType"));
     }
 
+    // case when user decide to give you location data
     public User(String user, String name, String password, ArrayList<Float> loc) {
         this.username = user;
         this.name = name;
