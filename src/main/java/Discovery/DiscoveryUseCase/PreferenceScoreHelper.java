@@ -22,7 +22,7 @@ public class PreferenceScoreHelper {
             if (!tempScoreList.contains(tempPoint)){tempScoreList.add(tempPoint);}
         }
         tempScoreList.sort(Collections.reverseOrder());
-        this.totalScoreList = tempScoreList;//now totalScoreList is in descending order
+        this.totalScoreList = tempScoreList;//now this.totalScoreList is in descending order
 
         ArrayList<User> tempTotalUserList = new ArrayList<>();
         for (int score: this.totalScoreList){
@@ -36,6 +36,4 @@ public class PreferenceScoreHelper {
     public ArrayList<User> getList(){
         return this.totalUserList;
     }
-
-
 }
