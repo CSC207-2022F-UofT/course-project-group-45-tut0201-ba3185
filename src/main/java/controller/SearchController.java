@@ -28,4 +28,8 @@ public class SearchController {
         requestModel.setRelationshipOp(userAnswer.get(6));
         requestModel.setPetOp(userAnswer.get(7));
     }
+
+    public void generateRecommendation(){
+        searchFinder.recommendListGenerator();
+    }
 }
