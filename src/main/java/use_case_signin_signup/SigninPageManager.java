@@ -3,8 +3,10 @@ import entity.User;
 
 public class SigninPageManager implements SigninPageInputBoundary{
 
-    public SigninPageManager(SigninPageOutputBoundary presenter) {
+    private SigninPageOutputBoundary presenter;
 
+    public SigninPageManager(SigninPageOutputBoundary presenter) {
+        this.presenter = presenter;
     }
 
     @Override
