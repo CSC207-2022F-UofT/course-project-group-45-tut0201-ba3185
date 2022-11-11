@@ -10,8 +10,7 @@ import User.User;
  */
 public class PreferenceScoreHelper {
     HashMap<User, Integer> scoreStorage;
-    //to get the all the value
-    ArrayList<Integer> totalScoreList;
+    ArrayList<Integer> totalScoreList;//to get the all the possible value of score
     ArrayList<User> totalUserList;
 
     public PreferenceScoreHelper(HashMap<User, Integer> scoreStorage){

@@ -17,7 +17,6 @@ public class PreferenceFinder implements PreferenceFinderInputBoundary{
 
 
     private DiscoveryListOutputBoundary presenter;//this is for returning the list
-    private ArrayList<User> preferenceList;
 
     GenderFinder tempGenderFinder = new GenderFinder();
     ArrayList<User> afterGenderFinder = tempGenderFinder.getList();
@@ -32,9 +31,8 @@ public class PreferenceFinder implements PreferenceFinderInputBoundary{
             PreferenceFinderHelper temp = new PreferenceFinderHelper(otherUser);
             scoreStorage.put(otherUser, temp.getScore());
         }
-        //the list of username after arranged by score from high to low
+        // list of username after arranged by score from high to low
         PreferenceScoreHelper temp = new PreferenceScoreHelper(scoreStorage);
-
         return temp.getList();
     }
 

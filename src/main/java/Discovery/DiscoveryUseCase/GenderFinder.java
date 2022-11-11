@@ -18,10 +18,7 @@ import java.util.ArrayList;
 
 //to use the class, create an instance of GenderFinder and then call the function method getList
 public class GenderFinder {
-    /**
-     * the variable of the class that stores the list after genderFinder
-     */
-    ArrayList<User> genderSuitFinder;
+    ArrayList<User> genderSuitFinder;//list to store the user after GenderFinder
     String userChoice = User.getSexualOrientation(); //to get the main user's sexualOrientation
     UserFactory tempUserFactory = new UserFactory(); //to get a List of other users
     ArrayList<User> otherUsersList = tempUserFactory.getUsers();
@@ -54,6 +51,6 @@ public class GenderFinder {
 
     public ArrayList<User> getList(){
         return this.genderSuitFinder;
-    }
+    }//method to get list from this class
 
 }
