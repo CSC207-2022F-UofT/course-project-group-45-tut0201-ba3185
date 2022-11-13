@@ -18,13 +18,13 @@ public class FinderController {
     public void optionControl(){
         switch (userOption){
             case 1:
-                PreferenceController preferenceController = new PreferenceController();
-                // 用preferenceController. 里面的method 没有return 是void
+                PreferencesFinder preferencesFinder = new PreferencesFinder();
+                preferenceFinder.recommendListGenerator();
                 break;
 
             case 2:
-                LocationController locationController = new LocationController();
-                // 用locationController. 里面的method
+                LocationFinder locationFinder = new LocationFinder();
+                locationFinder.getNearbyUser();
                 break;
 
             case 3:

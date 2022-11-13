@@ -120,7 +120,7 @@ public class SearchFinder implements SearchFinderInputBoundary {
         if(marriageState.equals(user.getUserInfo("marriageState"))){
             score = score + 1;
         }
-        if(relationship.equals("Doesn't care") || relationship.equals(user.getUserInfo("relationship"))){
+        if(relationship.equals("Doesn't care") || relationship.equals(user.getUserInfo("relationshipType"))){
             score = score + 1;
         }
         if(pet.equals(null) || pet.equals(user.getUserInfo("pet"))){
