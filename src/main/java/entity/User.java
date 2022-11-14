@@ -2,12 +2,13 @@ package entity;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Arrays;
+import java.util.Iterator;
 
 /*
    This is an entity class to store User information,
  */
 
-public class User implements Comparable<User>{
+public class User implements Comparable<User> {
     /*
      * @param
      * username: A String of the username of the user,
@@ -21,9 +22,8 @@ public class User implements Comparable<User>{
     private final String username;
     private final String name;
     private String password;
-    private UserPreference preference;
-    private ArrayList<Float> location;
-    private ArrayList<User> blockList;
+    private ArrayList<Double> location;
+    private ArrayList<String> blockList;
     private HashMap<String, Object> userInfo;
     private ArrayList<String> interestRank;
 
@@ -34,19 +34,19 @@ public class User implements Comparable<User>{
         this.password = password;
         // implement default preference later
         this.location = null;
-        this.blockList = new ArrayList<User>();
+        this.blockList = new ArrayList<String>();
         this.userInfo = new HashMap<String, Object>();
         this.interestRank = new ArrayList<String>(Arrays.asList("age", "areaOfInterest", "income", "maritalStatus", "pet", "relationshipType"));
     }
 
     // case when user decide to give you location data
-    public User(String user, String name, String password, ArrayList<Float> loc) {
+    public User(String user, String name, String password, ArrayList<Double> loc) {
         this.username = user;
         this.name = name;
         this.password = password;
         // implement default preference later
         this.location = loc;
-        this.blockList = new ArrayList<User>();
+        this.blockList = new ArrayList<String>();
         this.userInfo = new HashMap<String, Object>();
         this.interestRank = new ArrayList<String>(Arrays.asList("age", "areaOfInterest", "income", "maritalStatus", "pet", "relationshipType"));
     }
@@ -56,7 +56,7 @@ public class User implements Comparable<User>{
         return this.username;
     }
 
-    public ArrayList<Float> getLocation() {
+    public ArrayList<Double> getLocation() {
         return this.location;
     }
 
@@ -67,16 +67,16 @@ public class User implements Comparable<User>{
         else return "INVALID_KEY";
     }
 
-    public ArrayList<User> getBlockList() {
+    public ArrayList<String> getBlockList() {
         return this.blockList;
-    }
-
-    public UserPreference getPreference() {
-        return this.preference;
     }
 
     public ArrayList<String> getInterestRank() {
         return this.interestRank;
+    }
+
+    public String getPassword() {
+        return this.password;
     }
 
     // Setter functions
@@ -88,30 +88,43 @@ public class User implements Comparable<User>{
         } else return false;
     }
 
-    public void setLocation(ArrayList<Float> loc) {
+    public void setLocation(ArrayList<Double> loc) {
         this.location = loc;
     }
 
-    public void addBlockList(User user) {
-        this.blockList.add(user);
+    public void addBlockList(String username) {
+        this.blockList.add(username);
     }
 
     public void setUserInfo(String key, Object obj) {
         this.userInfo.put(key, obj);
     }
-
-    public void setPreference(String key, Object obj) {
-        this.preference.setPreference(key, obj);
-    }
-
     public void setInterestRank(ArrayList<String> lst) {
         this.interestRank = lst;
     }
 
     @Override
     public int compareTo(User o) {
-        if (this.username.equals(o.getUsername())) {
-            return 0;
-        } else return -1;
+        return Integer.compare(o.hashCode(), this.hashCode());
+    }
+
+    @Override
+    public String toString() {
+        return this.username;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash = 17 * hash + (username != null ? username.hashCode() : 0);
+        hash = 17 * hash + (password != null ? password.hashCode() : 0);
+        return hash;
+    }
+    @Override
+    public boolean equals(Object o) {
+        if(this == o) { return true; }
+        if(o == null) { return false; }
+        if(o.getClass() != this.getClass()) { return false; }
+        return ((User) o).getUsername().equals(this.username);
     }
 }
