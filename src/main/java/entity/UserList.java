@@ -3,9 +3,22 @@ package entity;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+/*
+    UserList Entity is an entity to allow iterable to be implemented to a list of Users,
+ */
 public class UserList implements Iterable<User> {
-    private int size;
+    /*
+     @params:
+        lst: an ArrayList of users
+
+     @methods:
+        iterator(): returns a new UserListIterator, this allows iterator function in iterable.
+     */
     private ArrayList<User> lst;
+
+    public UserList() {
+        this.lst = new ArrayList<User>();
+    }
     @Override
     public Iterator<User> iterator() {
         return new UserListIterator<User>(this);
