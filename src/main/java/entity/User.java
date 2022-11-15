@@ -2,7 +2,6 @@ package entity;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Arrays;
-import java.util.Iterator;
 
 /*
    This is an entity class to store User information,
@@ -26,6 +25,7 @@ public class User implements Comparable<User> {
     private ArrayList<String> blockList;
     private HashMap<String, Object> userInfo;
     private ArrayList<String> interestRank;
+    private ArrayList<String> userChatted;
 
     // case when user does not give location data
     public User(String user, String name, String password) {
