@@ -6,6 +6,12 @@ import entity.TwoTruthsAndALiePlayer;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ *  Use Case for Two Truths And A Lie Game Page
+ *  Responsible for managing the page of Two Truths and A Lie games, without managing the details of each game
+ *  @author  Eric Xue
+ */
 public class TwoTruthsAndALiePageManager implements TwoTruthsAndALiePageInputBoundary{
 
     private List<TwoTruthsAndALieGame> games;
@@ -23,6 +29,10 @@ public class TwoTruthsAndALiePageManager implements TwoTruthsAndALiePageInputBou
         this.games.add(game);
     }
 
+    /**
+     * Loads all the games that the current user is a part of
+     * Makes the presenter to show all current games
+     */
     public void loadUserGames(TwoTruthsAndALiePageRequestModel requestModel) {
         List<TwoTruthsAndALieGame> userGames = new ArrayList<>();
         for (TwoTruthsAndALieGame game : this.games) {
@@ -32,6 +42,10 @@ public class TwoTruthsAndALiePageManager implements TwoTruthsAndALiePageInputBou
             }
         }
         presenter.showGames(userGames);
+    }
+
+    public List<TwoTruthsAndALieGame> getGames() {
+        return games;
     }
 }
 

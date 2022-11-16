@@ -2,7 +2,7 @@ package presenter;
 
 import use_case_two_truths_and_a_lie.TwoTruthsAndALieGameOutputBoundary;
 
-public class TwoTruthsAndALiePresenter implements TwoTruthsAndALieGameOutputBoundary {
+public class TwoTruthsAndALieGamePresenter implements TwoTruthsAndALieGameOutputBoundary {
 
     @Override
     public void showInputFields() {

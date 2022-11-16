@@ -1,5 +1,10 @@
 package entity;
 
+/**
+ *  A Two Truths And A Lie Statements Entity
+ *  Belongs to a player entity; keeps track of that player's statements
+ *  @author  Eric Xue
+ */
 public class TwoTruthsAndALieStatements {
     String truth1;
     String truth2;

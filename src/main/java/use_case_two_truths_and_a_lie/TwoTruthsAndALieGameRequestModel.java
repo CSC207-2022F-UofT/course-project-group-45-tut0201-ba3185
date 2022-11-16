@@ -2,6 +2,11 @@ package use_case_two_truths_and_a_lie;
 import entity.User;
 import entity.TwoTruthsAndALieGame;
 
+/**
+ *  Request Model for Two Truths And A Lie Game
+ *  Bundles necessary input data and pass them into TwoTruthsAndALieGameManager
+ *  @author  Eric Xue
+ */
 public class TwoTruthsAndALieGameRequestModel {
     private TwoTruthsAndALieGame game;
     private User currentUser;

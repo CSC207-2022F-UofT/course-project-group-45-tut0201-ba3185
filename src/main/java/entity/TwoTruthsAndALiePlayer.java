@@ -1,5 +1,12 @@
 package entity;
 
+/**
+ *  A Two Truths And A Lie Game Player
+ *  Each player entity is unique; the player entity is specific to each Two Truths And A Lie Game
+ *  This means a user are different players in different games
+ *  Keeps track of the user behind the player and the player's statements
+ *  @author  Eric Xue
+ */
 public class TwoTruthsAndALiePlayer {
     private User user;
     private TwoTruthsAndALieStatements statements;
