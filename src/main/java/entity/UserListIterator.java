@@ -15,11 +15,13 @@ public class UserListIterator<U> implements Iterator<User> {
 
     @Override
     public boolean hasNext() {
-        return pointer+1 == lst.size();
+        return pointer+1 <= lst.size();
     }
 
     @Override
     public User next() {
-        return lst.get(pointer+1);
+        User ret = lst.get(pointer);
+        pointer+=1;
+        return ret;
     }
 }

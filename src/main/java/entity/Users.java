@@ -6,6 +6,7 @@ import java.util.Set;
 
 public class Users {
     private static HashMap<String, User> userList;
+    private static User currentUser;
 
     public Users() {
         userList = new HashMap<>();
@@ -13,6 +14,15 @@ public class Users {
     public void addUser(String username, User user) {
         userList.put(username, user);
     }
+
+    public static entity.User getCurrentUser() {
+        return currentUser;
+    }
+
+    public void setCurrentUser(User user) {
+        currentUser = user;
+    }
+
 
     public ArrayList<User> getUserList() {
         return (ArrayList<User>) userList.values();
