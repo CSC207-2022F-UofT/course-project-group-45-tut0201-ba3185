@@ -1,28 +1,27 @@
 package Discovery.DiscoveryUseCase;
 import User.User;
+import User.Users;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+
 /**
  * This class is intended to help PreferenceFinder
  * Access it by its parameter
  */
 public class PreferenceFinderHelper {
-    private final int INITIAL_SCORE = 6;
-    User otherUser;
     Integer score;
-    User mainUser = new User();
-    ArrayList<String> rankOrder = mainUser.getUserInfo("rankOrder");
+    User mainUser = Users.getCurrentUser();
+    ArrayList<String> mainUserRankOrder = mainUser.getInterestRank();
 
     public PreferenceFinderHelper(User otherUser){
-        this.otherUser = otherUser;
         int resScore = 0;//to record the score of the users
         int sameCount = 0; //to record the number of spot that are the same for both users
-        for (int i = 0; i < otherUser.getUserInfo("rankOrder").size(); i++){
+        for (int i = 0; i < otherUser.getInterestRank().size(); i++){
             //the size should be 6
-            String otherUserInterest = otherUser.getUserInfo("rankOrder").get(i);
-            String mainUserInterest = rankOrder.get(i);
+            String otherUserInterest = otherUser.getInterestRank().get(i);
+            String mainUserInterest = mainUserRankOrder.get(i);
             if (otherUserInterest.equals(mainUserInterest)){
+                int INITIAL_SCORE = 6;
                 resScore = resScore + INITIAL_SCORE - i;
                 sameCount++;
             }

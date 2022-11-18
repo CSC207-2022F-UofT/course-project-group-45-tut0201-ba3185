@@ -18,22 +18,22 @@ public class PreferenceFinder implements PreferenceFinderInputBoundary{
 
     private DiscoveryListOutputBoundary presenter;//this is for returning the list
 
-    GenderFinder tempGenderFinder = new GenderFinder();
-    ArrayList<User> afterGenderFinder = tempGenderFinder.getList();
-
     public PreferenceFinder(DiscoveryListOutputBoundary presenter){
         this.presenter = presenter;
     }
 
-    public ArrayList<User> getList(){
+    GenderFinder tempGenderFinder = new GenderFinder();
+    ArrayList<User> afterGenderFinder = tempGenderFinder.getList();
+
+    public ArrayList<String> getList(){
         HashMap<User, Integer> scoreStorage = new HashMap<>();
         for (User otherUser:afterGenderFinder){
-            PreferenceFinderHelper temp = new PreferenceFinderHelper(otherUser);
-            scoreStorage.put(otherUser, temp.getScore());
+            PreferenceFinderHelper tempPreferenceFinderHelper = new PreferenceFinderHelper(otherUser);
+            scoreStorage.put(otherUser, tempPreferenceFinderHelper.getScore());
         }
         // list of username after arranged by score from high to low
-        PreferenceScoreHelper temp = new PreferenceScoreHelper(scoreStorage);
-        return temp.getList();
+        PreferenceScoreHelper tempPreferenceScoreHelper = new PreferenceScoreHelper(scoreStorage);
+        return tempPreferenceScoreHelper.getList();
     }
 
     public void recommendListGenerator(){

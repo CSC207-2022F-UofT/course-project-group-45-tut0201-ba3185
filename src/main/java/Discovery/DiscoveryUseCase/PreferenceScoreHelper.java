@@ -6,12 +6,14 @@ import User.User;
 
 /**
  * This class is intended to help PreferenceFinder
- * To get the highest score from the HashMap and then
+ * To get the highest score from the HashMap,
+ * arranged them in descending order,
+ * and return a list of username(String)
  */
 public class PreferenceScoreHelper {
     HashMap<User, Integer> scoreStorage;
     ArrayList<Integer> totalScoreList;//to get the all the possible value of score
-    ArrayList<User> totalUserList;
+    ArrayList<String> totalUsername;
 
     public PreferenceScoreHelper(HashMap<User, Integer> scoreStorage){
         this.scoreStorage = scoreStorage;
@@ -23,16 +25,16 @@ public class PreferenceScoreHelper {
         tempScoreList.sort(Collections.reverseOrder());
         this.totalScoreList = tempScoreList;//now this.totalScoreList is in descending order
 
-        ArrayList<User> tempTotalUserList = new ArrayList<>();
+        ArrayList<String> resTotalUsername = new ArrayList<>();
         for (int score: this.totalScoreList){
             for (User key:this.scoreStorage.keySet()){
-                if (this.scoreStorage.get(key).equals(score)){tempTotalUserList.add(key);}
+                if (this.scoreStorage.get(key).equals(score)){resTotalUsername.add((String)key.getUserInfo("Username"));}
             }
         }
-        this.totalUserList = tempTotalUserList;
+        this.totalUsername = resTotalUsername;
     }
 
-    public ArrayList<User> getList(){
-        return this.totalUserList;
+    public ArrayList<String> getList(){
+        return this.totalUsername;
     }
 }

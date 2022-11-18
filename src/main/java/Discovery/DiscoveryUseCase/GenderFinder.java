@@ -1,6 +1,5 @@
 package Discovery.DiscoveryUseCase;
-
-import User.UserFactory;
+import User.Users;
 import User.User;
 
 import java.util.ArrayList;
@@ -16,41 +15,46 @@ import java.util.ArrayList;
  * open: return all the users
  */
 
-//to use the class, create an instance of GenderFinder and then call the function method getList
+//to use the class, create an instance of GenderFinder and then call the method getList
 public class GenderFinder {
     ArrayList<User> genderSuitFinder;//list to store the user after GenderFinder
-    String userChoice = User.getSexualOrientation(); //to get the main user's sexualOrientation
-    UserFactory tempUserFactory = new UserFactory(); //to get a List of other users
-    ArrayList<User> otherUsersList = tempUserFactory.getUsers();
+
+    User mainUser = Users.getCurrentUser(); //to get the main user's sexualOrientation
+    String mainUserChoice = (String)mainUser.getUserInfo("sexualOrientation");
+    //UserFactory tempUserFactory = new UserFactory(); //to get a List of other users
+    UsersList userLst;//the type of user list that allows to loop over
 
     public GenderFinder(){
         ArrayList<User> res = new ArrayList<>();
         //male,female, transgender cases
-        if (userChoice.equals("male")||
-                userChoice.equals("female")||
-                userChoice.equals("transgender")){
-            for (User otherUsers:otherUsersList){
+        if (mainUserChoice.equals("male")||
+                mainUserChoice.equals("female")||
+                mainUserChoice.equals("transgender")){
+            for (User otherUsers:userLst){
                 //user.sexualOrientation is variable recording user's sexualOrientation
-                if (User.getSexualOrientation().equals(userChoice)){res.add(otherUsers);}
+                if (otherUsers.getUserInfo("gender").equals(mainUserChoice)){res.add(otherUsers);}
             }
             this.genderSuitFinder = res;
             return;
         }
         //the bisexual cases
-        if (userChoice.equals("bisexual")){
-            for (User otherUsers:otherUsersList){
-                if (User.getSexualOrientation().equals("male")||
-                        User.getSexualOrientation().equals("female")){res.add(otherUsers);}
+        if (mainUserChoice.equals("bisexual")){
+            for (User otherUsers:userLst){
+                if (otherUsers.getUserInfo("gender").equals("male")||
+                        otherUsers.getUserInfo("gender").equals("female")){res.add(otherUsers);}
             }
             this.genderSuitFinder = res;
             return;
         }
         //open case
-        this.genderSuitFinder = otherUsersList;
+            for (User otherUsers:userLst){
+                res.add(otherUsers);}
+
+            this.genderSuitFinder = res;
+        }
+    public ArrayList<User> getList(){return this.genderSuitFinder;}
+
     }
 
-    public ArrayList<User> getList(){
-        return this.genderSuitFinder;
-    }//method to get list from this class
 
-}
+
