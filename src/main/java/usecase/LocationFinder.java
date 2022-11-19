@@ -1,6 +1,7 @@
 package usecase;
 
 import java.util.ArrayList;
+import usecase.GenderFinder;
 import entity.User;
 import entity.Users;
 
