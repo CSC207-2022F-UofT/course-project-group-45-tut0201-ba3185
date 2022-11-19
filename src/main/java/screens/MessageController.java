@@ -1,27 +1,19 @@
 package screens;
 
-import entity.Message;
-import use_case_chat.ChatInputBoundary;
-import use_case_chat.MessageRequestModel;
-import use_case_chat.MessageResponseModel;
+import entity.User;
+import use_case_message.MessageInputBoundary;
+import use_case_message.MessageRequestModel;
+import use_case_message.MessageResponseModel;
+import use_case_message.MessageViewModel;
 
 public class MessageController {
-    ChatInputBoundary chatInput;
-    String targetUserid;
-    String msgValue;
-    public MessageController(ChatInputBoundary chatInputBoundary, String msgValue) {
-        this.chatInput = chatInputBoundary;
-        this.msgValue = msgValue;
-    }
-
-    public MessageRequestModel createRM(String target, String msgValue){
-        MessageRequestModel requestModel = new MessageRequestModel(target, msgValue);
+    public MessageRequestModel create(User user, String target){
+        MessageRequestModel requestModel = new MessageRequestModel(user, target);
         return requestModel;
     }
 
-    MessageResponseModel create(String target, Message message) {
-        MessageRequestModel requestModel = new MessageRequestModel(target, message);
-        return chatInput.create(requestModel);
-    } //I am confused... why we need this?问Jennifer
-
+    public MessageRequestModel create(User user, String target, String msgValue){
+        MessageRequestModel requestModel = new MessageRequestModel(user, target, msgValue);
+        return requestModel;
     }
+}

@@ -1,13 +1,19 @@
-package use_case_chat;
+package use_case_message;
 
-import entity.Message;
+import entity.User;
 
 public class MessageRequestModel {
-    private final String user;
+    private final User user;
     private final String target;
     private final String msg;
 
-    public MessageRequestModel(String user, String target, Object msg){
+    public MessageRequestModel(User user, String target){
+        this.user = user;
+        this.target = target;
+        this.msg = null;
+    }
+
+    public MessageRequestModel(User user, String target, Object msg){
         this.user = user;
         this.target = target;
         if(msg instanceof String){
@@ -18,8 +24,12 @@ public class MessageRequestModel {
         }
     }
 
-    public String getUser() {
+    public User getUser() {
         return user;
+    }
+
+    public String getUserString() {
+        return user.getUsername();
     }
 
     public String getTarget() {

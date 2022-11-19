@@ -1,10 +1,9 @@
 package entity;
 
-import use_case_chat.MessageManager;
+import use_case_message.MessageManager;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class MessageManagers {
     List<MessageManager> MessageManagers;

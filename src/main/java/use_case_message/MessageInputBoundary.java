@@ -1,5 +1,5 @@
-package use_case_chat;
+package use_case_message;
 
-public interface ChatInputBoundary {
+public interface MessageInputBoundary {
     MessageResponseModel create(MessageRequestModel requestModel);
 }

@@ -2,7 +2,8 @@ package screens;
 
 //import controller.StrengthCheckerUIControl;
 
-import use_case_chat.ChatInputBoundary;
+import use_case_message.MessageOutputBoundary;
+import use_case_message.MessageViewModel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,67 +19,86 @@ public class ChatScreen extends JPanel implements ActionListener{
     /**
      * Creates all UI components of StrengthCheckerBox UI
      */
-    public ChatScreen(int page_h, int page_w, MessageController controller, ChatOutputBoundary chatOutputBoundary)  {
+    public ChatScreen(int page_h, int page_w, MessageController controller, MessageViewModel messageViewModel) {
 
-        this.controller = controller;
+        int screen_h = page_h * 9 / 10; //the screen is 90% of our page size. quote from Eric.
 
-        int screen_h = page_h * 9/10; //the screen is 90% of our page size. quote from Eric.
-
+        JPanel textFieldBox = new JPanel();
+        JPanel buttonbox = new JPanel();
 
         JPanel chatScreen = new JPanel();//initialize our chatScreen
-        chatScreen.setSize(page_w, screen_h); //(w = 414, h = 736*0.9)
+        chatScreen.setPreferredSize(new Dimension(page_w, screen_h)); //(w = 414, h = 736*0.9)
+        SpringLayout layout = new SpringLayout();
+        chatScreen.setLayout(layout);
+        Color c = new Color(204, 255, 255);
+        chatScreen.setBackground(c);
 
 
-        int display_h = screen_h /2;
+        int display_h = screen_h / 2;
         JPanel messageDisplayBox = new JPanel();
-        messageDisplayBox.setBounds(0, 0, display_h, page_w);// the place we can see our chat messages
-        //messageDisplayBox.add(chatOutputBoundary.generateResponseMsg()) 问一下Jennifer
+        //messageDisplayBox.setBounds(page_w / 10, page_w / 10, page_w - 80, display_h);// the place we can see our chat messages
+        Color m = new Color(0, 255, 255);
+        messageDisplayBox.setBackground(m);
 
-        JTextField textField = new JTextField();
-        int boundx = 2;
-        int boundy = 420;
-        int textFieldWidth = 409;
-        int textFieldHeight = 200;
-        textField.setBounds(boundx, boundy, textFieldWidth, textFieldHeight); //textfeild for input message
+        for (String i :messageViewModel.getMessages()){
+            JLabel msgvalue = new JLabel();
+            msgvalue.setFont(new Font("Serif", Font.PLAIN, 14));
+        }
+
+
+
+
+
+        JTextField textField = new JTextField(); //user input area
+        textField.setBounds(page_w / 10, screen_h / 2 + 80, page_w - 80, display_h); //textfeild for input message
+        Color t = new Color(0, 200, 255);
+        textField.setBackground(t);
+        textFieldBox.add(textField);
+
+
         JScrollPane scrollbar = new JScrollPane(textField);
-
+        scrollbar.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollbar.setSize(40, 60);
 
         JLabel label = new JLabel("enter message here:");
         int label_x = 0;
-        int label_Width = page_w * 8/10;
-        int label_Height = screen_h /10;
-        label.setBounds(label_x,screen_h /2,label_Width,label_Height);
+        int label_Width = page_w * 8 / 10;
+        int label_Height = screen_h / 10;
+        label.setBounds(label_x, screen_h / 2, label_Width, label_Height);
+        label.setLabelFor(textField);
 
-        int bound_x = 130;
+
+        int bound_x = 140;
         int bound_y = 600;
         int bound_width = 60;
         int bound_height = 30;
-        sendButton = new Button();
-        sendButton.createButtonWithText("send", bound_x, bound_y, bound_width, bound_height);
+        sendButton = new JButton();
+        sendButton.setBounds(bound_x, bound_y, bound_width, bound_height);
+        sendButton.setText("send");
+        sendButton.addActionListener(this);
+        buttonbox.add(sendButton);
 
-        chatScreen.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS)); //use boxlayout in our chatScreen
-        Color c = new Color(204,255,255);
-        chatScreen.setBackground(c);
+        layout.putConstraint(SpringLayout.NORTH, messageDisplayBox, 40, SpringLayout.NORTH, this);
+        layout.putConstraint(SpringLayout.EAST, messageDisplayBox, 40, SpringLayout.EAST, this);
+        layout.putConstraint(SpringLayout.WEST, messageDisplayBox, 40, SpringLayout.WEST, this);
+        layout.putConstraint(SpringLayout.SOUTH, messageDisplayBox, display_h-340, SpringLayout.SOUTH, this);
 
+        layout.putConstraint(SpringLayout.NORTH, textFieldBox, 176, SpringLayout.NORTH, this);
+        layout.putConstraint(SpringLayout.EAST, textFieldBox, 40, SpringLayout.EAST, this);
+        layout.putConstraint(SpringLayout.WEST, textFieldBox, 40, SpringLayout.WEST, this);
+        layout.putConstraint(SpringLayout.SOUTH, textFieldBox, 40, SpringLayout.SOUTH, this);
+
+        layout.putConstraint(SpringLayout.NORTH,  buttonbox, 176, SpringLayout.NORTH, this);
+        layout.putConstraint(SpringLayout.EAST, buttonbox, 40, SpringLayout.EAST, this);
+        layout.putConstraint(SpringLayout.WEST, buttonbox, 40, SpringLayout.WEST, this);
+        layout.putConstraint(SpringLayout.SOUTH, buttonbox, 40, SpringLayout.SOUTH, this);
+
+        chatScreen.add(buttonbox);
+        chatScreen.add(textFieldBox);
         chatScreen.add(messageDisplayBox);
-        chatScreen.add(textField);
-        chatScreen.add(scrollbar);
-        chatScreen.add(sendButton.getButton());
-        chatScreen.setVisible(true);
 
-        sendButton.getButton().addActionListener(this);// Each time we click button, we pass msg value to controller
 
-        messageValue = textField.getText();
-    }
+        this.add(chatScreen);
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        controller.createRM(targetUserId, messageValue);
-
-        try {
-            controller.create(, messageValue);
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, ex.getMessage());
-        }
     }
 }

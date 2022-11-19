@@ -1,8 +1,7 @@
-package use_case_chat;
+package use_case_message;
 //use case layer
 
 import entity.ChatHistory;
-import entity.Message;
 
 public class MessageManager {
     private final String user1;

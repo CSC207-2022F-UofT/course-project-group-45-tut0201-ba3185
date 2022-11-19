@@ -37,6 +37,7 @@ public class User implements Comparable<User> {
         this.blockList = new ArrayList<String>();
         this.userInfo = new HashMap<String, Object>();
         this.interestRank = new ArrayList<String>(Arrays.asList("age", "areaOfInterest", "income", "maritalStatus", "pet", "relationshipType"));
+        this.userChatted = new ArrayList<String>();
     }
 
     // case when user decide to give you location data
@@ -79,6 +80,10 @@ public class User implements Comparable<User> {
         return this.password;
     }
 
+    public ArrayList<String> getUserChatted() {
+        return userChatted;
+    }
+
     // Setter functions
 
     public boolean setPassword(String pass) {
@@ -99,8 +104,13 @@ public class User implements Comparable<User> {
     public void setUserInfo(String key, Object obj) {
         this.userInfo.put(key, obj);
     }
+
     public void setInterestRank(ArrayList<String> lst) {
         this.interestRank = lst;
+    }
+
+    public void addUserChatted(String target){
+        this.userChatted.add(target);
     }
 
     @Override
