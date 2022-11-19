@@ -13,8 +13,8 @@ import java.awt.event.ActionListener;
 public class ChatScreen extends JPanel implements ActionListener {
     JButton sendButton;
     String userid;
-    String messageValue;//get this from input Box
-    String targetUserId;// get this from messageDisplayBox
+    String messageValue; //get this from input Box
+    String targetUserId; // get this from messageDisplayBox
     MessageController controller;
 
     /**

@@ -1,6 +1,6 @@
 package screens;
-import presenter.FrontPagePresenter;
-import use_case_frontpage.FrontPageOutputBoundary;
+//import presenter.FrontPagePresenter;
+//import use_case_frontpage.FrontPageOutputBoundary;
 import use_case_frontpage.FrontPageViewModel;
 
 
