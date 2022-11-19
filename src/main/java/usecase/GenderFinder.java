@@ -1,4 +1,5 @@
 package usecase;
+import entity.UserList;
 import entity.Users;
 import entity.User;
 
@@ -22,7 +23,7 @@ public class GenderFinder {
     User mainUser;  //to get the main user's sexualOrientation
     String mainUserChoice = (String)mainUser.getUserInfo("sexualOrientation");
     //UserFactory tempUserFactory = new UserFactory(); //to get a List of other users
-    UsersList userLst;//the type of user list that allows to loop over
+    UserList userLst;//the type of user list that allows to loop over
 
     public GenderFinder(){
         users = new Users();

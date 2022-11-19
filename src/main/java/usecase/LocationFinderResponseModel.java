@@ -1,9 +1,8 @@
-package Presenter;
-import usecase.LocationFinderOutputBoundary;
+package usecase;
 
 import java.util.ArrayList;
 
-public class DiscoveryResultPresenter implements LocationFinderOutputBoundary{
+public class LocationFinderResponseModel implements LocationFinderOutputBoundary{
     static final int displayAmount = 15;
 
 
