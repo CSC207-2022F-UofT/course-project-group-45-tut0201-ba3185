@@ -10,7 +10,6 @@ import java.util.List;
 public class NearbyUserPanel extends JPanel implements ActionListener{
 
     private ArrayList<String> UserNameDistance;
-    private List<ActionListener> actionListeners;
 
     public NearbyUserPanel(ArrayList<String> UserNameDistance){
 
@@ -18,13 +17,9 @@ public class NearbyUserPanel extends JPanel implements ActionListener{
         this.setBackground(Color.pink);
         this.add(new TextField("This is the Nearby User page."));
 
-        this.actionListeners = new ArrayList<>();
-
         this.UserNameDistance = UserNameDistance;
-    }
 
-    private void setButtons(){
-        for(String u: UserNameDistance){
+    for(String u: UserNameDistance){
             JButton button = new JButton(u);
             button.setOpaque(false);
             button.setContentAreaFilled(false);
@@ -36,12 +31,12 @@ public class NearbyUserPanel extends JPanel implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        String action = e.getActionCommand();
         for(String u: UserNameDistance){
-            String action = e.getActionCommand();
             if(action.equals(u)){
                 //jump to user profile page
             }
         }
     }
 }
-}
+

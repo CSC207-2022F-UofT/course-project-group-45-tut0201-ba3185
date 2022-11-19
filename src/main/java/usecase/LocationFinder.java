@@ -25,6 +25,7 @@ public class LocationFinder implements LocationFinderInputBoundary{
     GenderFinder temGenderFinder = new GenderFinder();
     ArrayList<User> userList = temGenderFinder.genderSuitFinder;
 
+    //return a list of usernames and their distance
     public ArrayList<String> getNearbyUser() {
         HashMap<String, Double> UserDistance = new HashMap<>();
         ArrayList<Double> listDistance = new ArrayList<>();
