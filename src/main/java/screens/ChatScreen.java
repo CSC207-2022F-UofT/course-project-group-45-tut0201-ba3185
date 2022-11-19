@@ -10,14 +10,15 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ChatScreen extends JPanel implements ActionListener{
-    Button sendButton;
-    String messageValue;
-    String targetUserId;// get this from
+public class ChatScreen extends JPanel implements ActionListener {
+    JButton sendButton;
+    String userid;
+    String messageValue;//get this from input Box
+    String targetUserId;// get this from messageDisplayBox
     MessageController controller;
 
     /**
-     * Creates all UI components of StrengthCheckerBox UI
+     * Creates all UI components of ChatScreen UI
      */
     public ChatScreen(int page_h, int page_w, MessageController controller, MessageViewModel messageViewModel) {
 
@@ -99,6 +100,11 @@ public class ChatScreen extends JPanel implements ActionListener{
 
 
         this.add(chatScreen);
+
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
 
     }
 }
