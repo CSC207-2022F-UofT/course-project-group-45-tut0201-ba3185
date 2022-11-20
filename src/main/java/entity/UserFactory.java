@@ -1,6 +1,4 @@
 package entity;
-
-import use_case_signin_signup.SignupPageRequestModel;
 import use_case_signin_signup.UserRequestModel;
 
 import java.util.ArrayList;

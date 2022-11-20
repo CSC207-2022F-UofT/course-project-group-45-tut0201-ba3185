@@ -50,7 +50,14 @@ public class csvManager {
             writer.write(String.join(",", Headers));
             writer.newLine();
 
-
+            for(int i = 0 ; i < userMap.values().size() ; i++) {
+                UserResponseModel currentUser = (UserResponseModel) userMap.values().toArray()[i];
+                ArrayList<Object> userInfo = currentUser.getInfo();
+                String write = (i+","+userInfo.get(0)+","+userInfo.get(1)+","+userInfo.get(2));
+                writer.write(write);
+                writer.newLine();
+            }
+            writer.close();
         }
         catch (IOException exception) {
             throw new RuntimeException(exception);
