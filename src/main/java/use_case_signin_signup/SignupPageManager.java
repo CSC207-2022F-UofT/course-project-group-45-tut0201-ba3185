@@ -20,10 +20,7 @@ public class SignupPageManager implements SignupPageInputBoundary {
 
     @Override
     public void getFieldInfo(SignupPageRequestModel reqmodel) {
-        this.username = reqmodel.getUsername();
-        this.name = reqmodel.getName();
-        this.password = reqmodel.getPassword();
-        this.location = reqmodel.getLocation();
+
     }
 
     @Override
