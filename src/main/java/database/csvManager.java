@@ -42,6 +42,15 @@ public class csvManager {
         return userMap;
     }
 
+    /*public User readCurrentUser(String path) throw IOException {
+        try {
+            FileCsv
+        }
+        catch(IOException exception) {
+            throw new RuntimeException(exception);
+        }
+    }*/
+
     public void writeUser(Map<String, UserResponseModel> userMap, String path) {
         ArrayList<String> Headers = new ArrayList<String>(Arrays.asList("id", "username",
                 "name", "password"));
@@ -50,7 +59,7 @@ public class csvManager {
             writer.write(String.join(",", Headers));
             writer.newLine();
 
-            for(int i = 0 ; i < userMap.values().size() ; i++) {
+            for(int i = userMap.values().size()-1 ; i >=  0; i--) {
                 UserResponseModel currentUser = (UserResponseModel) userMap.values().toArray()[i];
                 ArrayList<Object> userInfo = currentUser.getInfo();
                 String write = (i+","+userInfo.get(0)+","+userInfo.get(1)+","+userInfo.get(2));

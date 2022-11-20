@@ -20,23 +20,31 @@ public class UserUseCase {
 
     public boolean addUser(String name, String username, String password) {
         User currentUser = new User(name,username,password);
-        if(!userExists(currentUser)) {
+        if(!userExists(currentUser.getUsername())) {
             userMap.put(currentUser.getUsername(), currentUser);
             return true;
         }
         return false;
     }
 
-    public boolean userExists(User user) {
-        for(User usr : userMap.values()) {
-            if(user.getUsername().equals(usr.getUsername())) {
-                return true;
-            }
-        }
-        return false;
+    public boolean userExists(String username) {
+        return userMap.containsKey(username);
     }
 
-    public HashMap<String, User> getUserMap() {
-        return userMap;
+    public String getUserPassword(String username) {
+        if(userMap.get(username) != null) {
+            return userMap.get(username).getPassword();
+        }
+        return null;
+    }
+
+    public HashMap<String, UserResponseModel> getUserMap() {
+        HashMap<String, UserResponseModel> responseMap = new HashMap<>();
+        for(User user : userMap.values()) {
+            UserResponseModel currentUser = new UserResponseModel();
+            currentUser.setInfo(user.getUsername(),user.getName(), user.getPassword());
+            responseMap.put(user.getUsername(),currentUser);
+        }
+        return responseMap;
     }
 }

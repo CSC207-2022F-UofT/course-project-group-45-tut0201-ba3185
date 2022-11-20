@@ -37,9 +37,14 @@ public class SignupPageUI extends JFrame {
         passwordField.setMaximumSize(new Dimension(PAGE_WIDTH-20, 20));
         password.setLabelFor(passwordField);
 
+        JLabel passwordConfirm = new JLabel("Confirm Password:", JLabel.TRAILING);
+        JPasswordField confirmPasswordField = new JPasswordField(10);
+        confirmPasswordField.setMaximumSize(new Dimension(PAGE_WIDTH-20, 20));
+        passwordConfirm.setLabelFor(confirmPasswordField);
+
         // Populate the fieldPanel
         JPanel fieldPanel = new JPanel(new SpringLayout());
-        fieldPanel.setPreferredSize(new Dimension(PAGE_WIDTH/2,PAGE_HEIGHT/5));
+        fieldPanel.setPreferredSize(new Dimension((int) (PAGE_WIDTH/1.6),PAGE_HEIGHT/3));
 
         fieldPanel.add(usernameTextField);
         fieldPanel.add(nameTextField);
@@ -47,6 +52,8 @@ public class SignupPageUI extends JFrame {
         fieldPanel.add(username);
         fieldPanel.add(name);
         fieldPanel.add(password);
+        fieldPanel.add(confirmPasswordField);
+        fieldPanel.add(passwordConfirm);
 
         // fieldPanel Layout
         SpringLayout fieldLayout = (SpringLayout) fieldPanel.getLayout();
@@ -55,20 +62,24 @@ public class SignupPageUI extends JFrame {
         fieldLayout.putConstraint(WEST, username, 0, WEST, fieldPanel);
         fieldLayout.putConstraint(WEST, password, 0, WEST, fieldPanel);
         fieldLayout.putConstraint(NORTH, name, 10, NORTH, fieldPanel);
+        fieldLayout.putConstraint(WEST, passwordConfirm, 0, WEST, fieldPanel);
 
         // distance between Label
         fieldLayout.putConstraint(NORTH, username, 30, SOUTH, name);
         fieldLayout.putConstraint(NORTH, password, 30, SOUTH, username);
+        fieldLayout.putConstraint(NORTH, passwordConfirm, 30, SOUTH, password);
 
         // Put Field to the East wall
         fieldLayout.putConstraint(EAST, nameTextField,0 ,EAST, fieldPanel);
         fieldLayout.putConstraint(EAST, usernameTextField,0 ,EAST, fieldPanel);
         fieldLayout.putConstraint(EAST, passwordField,0 ,EAST, fieldPanel);
+        fieldLayout.putConstraint(EAST, confirmPasswordField, 0 ,EAST, fieldPanel);
 
         // Label and Field on same horizontal
         fieldLayout.putConstraint(NORTH,nameTextField, 7, NORTH, fieldPanel);
         fieldLayout.putConstraint(NORTH, usernameTextField, 20, SOUTH, nameTextField);
         fieldLayout.putConstraint(NORTH, passwordField, 20, SOUTH, usernameTextField);
+        fieldLayout.putConstraint(NORTH, confirmPasswordField, 20, SOUTH, passwordField);
 
         // Creating TextPanel
         JPanel textPanel = new JPanel(new SpringLayout());
@@ -123,13 +134,32 @@ public class SignupPageUI extends JFrame {
             String currentUsername = usernameTextField.getText();
             String currentName = nameTextField.getText();
             String currentPassword = String.valueOf(passwordField.getPassword());
-            try {
-                Boolean isUserRegistered = new SignupPageController().create(currentUsername,currentName,
-                        currentPassword);
+            String confirmPassword = String.valueOf(confirmPasswordField.getPassword());
+            if(!currentName.equals("") && !currentUsername.equals("") && !currentPassword.equals("") &&
+                    !confirmPassword.equals("")) {
+                if(confirmPassword.equals(currentPassword)) {
+                    try {
+                        Boolean isUserRegistered = new SignupPageController().create(currentUsername,currentName,
+                                currentPassword);
+                        if(isUserRegistered) {
+                            dispose();
+                        }
+                        else {
+                            JOptionPane.showMessageDialog(null, "Username is already taken! Please " +
+                                    "try with another.");
+                        }
 
+                    }
+                    catch (IOException exception) {
+                        throw new RuntimeException(exception);
+                    }
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Your password does not match.");
+                }
             }
-            catch (IOException exception) {
-                throw new RuntimeException(exception);
+            else {
+                JOptionPane.showMessageDialog(null, "Please fill all fields");
             }
         });
 

@@ -12,11 +12,12 @@ public class SignupPageController {
 
     public boolean create(String username, String name, String password) throws IOException {
         csvManager csvManager = new csvManager();
-        HashMap<String, UserRequestModel> userMap = csvManager.readUser("database/user.csv");
+        HashMap<String, UserRequestModel> userMap = csvManager.readUser("src/main/java/database/user.csv");
         UserUseCase usecase = new UserUseCase(userMap);
         // Check if the user is already in the Database
-        if(usecase.addUser(name,username,password)) {
-            //csvInteractor.writeUser();
+        if(usecase.addUser(username,name,password)) {
+            csvManager.writeUser(usecase.getUserMap(), "src/main/java/database/user.csv");
+            return true;
         }
         return false; // remove later
     }

@@ -55,6 +55,9 @@ public class User implements Comparable<User> {
     public String getUsername() {
         return this.username;
     }
+    public String getName() {
+        return this.name;
+    }
 
     public ArrayList<Double> getLocation() {
         return this.location;

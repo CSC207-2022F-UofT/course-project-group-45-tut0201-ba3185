@@ -1,31 +1,27 @@
 package controller;
-import entity.User;
-import use_case_signin_signup.SigninPageRequestModel;
-import use_case_signin_signup.SigninPageInputBoundary;
+import database.csvManager;
+import use_case_signin_signup.UserRequestModel;
+import use_case_signin_signup.UserUseCase;
 
-import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.util.HashMap;
 
 public class SigninPageController {
-    private SigninPageInputBoundary manager;
-    private String username;
-    private String pass;
-
-    public SigninPageController(SigninPageInputBoundary manager, JTextField username, JPasswordField password) {
-        this.manager = manager;
-        username.addActionListener(ae -> {
-            this.username = username.getText();
-        });
-
-        password.addActionListener(ae -> {
-            this.pass = String.valueOf(password.getPassword());
-        });
+    public boolean userExist(String username) throws IOException {
+        csvManager manager = new csvManager();
+        HashMap<String, UserRequestModel> userMap = manager.readUser("src/main/java/database/user.csv");
+        UserUseCase usecase = new UserUseCase(userMap);
+        return usecase.userExists(username);
     }
 
-    public void updateTextField() {
-        SigninPageRequestModel reqmodel = new SigninPageRequestModel();
-        reqmodel.setUsername(this.username);
-        reqmodel.setPassword(this.pass);
+    public boolean matchingPassword(String username, String password) throws IOException {
+        csvManager manager = new csvManager();
+        HashMap<String, UserRequestModel> userMap = manager.readUser("src/main/java/database/user.csv");
+        UserUseCase usecase = new UserUseCase(userMap);
+        String userPassword = usecase.getUserPassword(username);
+        if(userPassword!=null) {
+            return usecase.getUserPassword(username).equals(password);
+        }
+        return false;
     }
 }

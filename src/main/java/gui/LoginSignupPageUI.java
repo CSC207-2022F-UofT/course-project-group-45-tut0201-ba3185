@@ -1,7 +1,5 @@
 package gui;
 
-import use_case_signin_signup.SignupPageRequestModel;
-
 import javax.swing.*;
 import java.awt.*;
 
