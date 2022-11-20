@@ -9,8 +9,10 @@ import java.util.HashMap;
 
 public class LocationFinder implements LocationFinderInputBoundary{
     private LocationFinderOutputBoundary presenter;
+    //the location of the current user
     ArrayList<Double> userLocation;
     Users users;
+    //The current user
     User currentUser;
 
     //constructor
@@ -24,7 +26,7 @@ public class LocationFinder implements LocationFinderInputBoundary{
     GenderFinder temGenderFinder = new GenderFinder();
     ArrayList<User> userList = temGenderFinder.genderSuitFinder;
 
-    //return a list of usernames and their distance
+    //return a sorted list of usernames and their distance.
     public ArrayList<String> getNearbyUser() {
         HashMap<String, Double> UserDistance = new HashMap<>();
         ArrayList<Double> listDistance = new ArrayList<>();
