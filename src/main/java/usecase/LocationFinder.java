@@ -1,6 +1,8 @@
 package usecase;
 
 import java.util.ArrayList;
+
+import Presenter.NearbyUserPresenter;
 import entity.User;
 import entity.Users;
 
@@ -8,7 +10,6 @@ import java.util.Collections;
 import java.util.HashMap;
 
 public class LocationFinder implements LocationFinderInputBoundary{
-    private LocationFinderOutputBoundary presenter;
     //the location of the current user
     ArrayList<Double> userLocation;
     Users users;
@@ -17,7 +18,7 @@ public class LocationFinder implements LocationFinderInputBoundary{
 
     //constructor
     public LocationFinder(LocationFinderOutputBoundary presenter){
-        this.presenter = presenter;
+        //this.presenter = presenter;
         users = new Users();
         currentUser = users.getCurrentUser();
         userLocation = currentUser.getLocation();
@@ -51,7 +52,6 @@ public class LocationFinder implements LocationFinderInputBoundary{
         return listUserDistance;
         }
 
-
     //helper: compute and return the distance (in KM) of two users
     private double distance(ArrayList<Double> v1, ArrayList<Double> v2){
         double lon1 = v1.get(0);
@@ -79,9 +79,11 @@ public class LocationFinder implements LocationFinderInputBoundary{
         // calculate the result
         return(c * r);
     }
+
     public void recommendListGenerator(){
-
-        presenter.displayList(getNearbyUser());
+        LocationFinderResponseModel responseModel = new LocationFinderResponseModel(getNearbyUser());
+        LocationFinderOutputBoundary presenter = new NearbyUserPresenter(responseModel);
+        presenter.displayList();
     }
 
-    }
+}
