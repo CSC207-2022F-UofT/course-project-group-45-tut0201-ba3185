@@ -8,7 +8,7 @@ public class LocationFinderResponseModel {
     public LocationFinderResponseModel(ArrayList<String> recommendList){
         this.recommendList = recommendList;
     }
-    public ArrayList<String> recommendListGenerator(){
+    public ArrayList<String> getRecommendList(){
 
         return recommendList;
     }
