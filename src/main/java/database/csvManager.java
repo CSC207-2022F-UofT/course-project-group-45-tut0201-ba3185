@@ -1,17 +1,18 @@
 package database;
 
 import entity.User;
+import use_case_signin_signup.UserRequestModel;
+import use_case_signin_signup.UserResponseModel;
 
 import java.io.*;
-import java.nio.Buffer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-public class csvInteractor {
+public class csvManager {
 
-    public Map<String, User> readUser(String path) throws IOException {
+    public HashMap<String, UserRequestModel> readUser(String path) throws IOException {
         /**
          * This method reads the user csv file to get all registered User
          *
@@ -21,7 +22,7 @@ public class csvInteractor {
          */
         String row;
         File csv = new File(path);
-        Map<String, User> userMap = new HashMap<>();
+        HashMap<String, UserRequestModel> userMap = new HashMap<>();
 
         BufferedReader reader = new BufferedReader(new FileReader(csv));
         reader.readLine();
@@ -32,15 +33,16 @@ public class csvInteractor {
             String name = String.valueOf(col[2]);
             String password = String.valueOf(col[3]);
 
-            User current = new User(username, name,password);
-            userMap.put(username, current);
+            UserRequestModel currentUser = new UserRequestModel();
+            currentUser.setInfo(username, name, password);
+            userMap.put(username, currentUser);
             row = reader.readLine();
         }
         reader.close();
         return userMap;
     }
 
-    public void writeUser(Map<String, User> userMap, String path) {
+    public void writeUser(Map<String, UserResponseModel> userMap, String path) {
         ArrayList<String> Headers = new ArrayList<String>(Arrays.asList("id", "username",
                 "name", "password"));
         try {

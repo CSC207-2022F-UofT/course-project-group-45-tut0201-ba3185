@@ -1,23 +1,17 @@
 package controller;
-import database.csvInteractor;
+import database.csvManager;
 import entity.User;
-import entity.Users;
-import use_case_signin_signup.SigninSignupUseCase;
-import use_case_signin_signup.SignupPageRequestModel;
-import use_case_signin_signup.SignupPageInputBoundary;
+import use_case_signin_signup.UserUseCase;
 
-import javax.swing.*;
-import java.awt.event.*;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Map;
 
 public class SignupPageController {
 
     public boolean create(String username, String name, String password) throws IOException {
-        csvInteractor csvInteractor = new csvInteractor();
+        csvManager csvInteractor = new csvManager();
         Map<String, User> userMap = csvInteractor.readUser("database/user.csv");
-        SigninSignupUseCase usecase = new SigninSignupUseCase(userMap);
+        UserUseCase usecase = new UserUseCase(userMap);
         if(usecase.addUser(name,username,password)) {
             //csvInteractor.writeUser();
         }

@@ -1,14 +1,21 @@
 package use_case_signin_signup;
 
 import entity.User;
+import entity.UserFactory;
 
+import java.util.HashMap;
 import java.util.Map;
 
-public class SigninSignupUseCase {
-    private Map<String, User> userMap;
+public class UserUseCase {
+    private HashMap<String, User> userMap;
 
-    public SigninSignupUseCase(Map<String, User> userMap) {
-        this.userMap = userMap;
+    public UserUseCase(HashMap<String, UserRequestModel> userMap) {
+        this.userMap = new HashMap<>();
+        UserFactory factory = new UserFactory();
+        for(UserRequestModel requestModel : userMap.values()) {
+            User current = factory.create(requestModel);
+            this.userMap.put(current.getUsername(),current);
+        }
     }
 
     public boolean addUser(String name, String username, String password) {
@@ -29,7 +36,7 @@ public class SigninSignupUseCase {
         return false;
     }
 
-    public Map<String, User> getUserMap() {
+    public HashMap<String, User> getUserMap() {
         return userMap;
     }
 }
