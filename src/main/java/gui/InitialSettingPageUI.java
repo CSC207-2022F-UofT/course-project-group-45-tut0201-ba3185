@@ -11,14 +11,14 @@ import java.util.Arrays;
 
 import static javax.swing.SpringLayout.*;
 
-public class InitialSettingPageUI extends JFrame {
+public class InitialSettingPageUI extends JPanel {
     public static final int PAGE_HEIGHT = 736;
     public static final int PAGE_WIDTH = 414;
 
-    public InitialSettingPageUI(String username, String name, String password) {
+    public InitialSettingPageUI(MainFrameInterface frame, String username, String name, String password) {
         this.setSize(PAGE_WIDTH, PAGE_HEIGHT);
-        this.setResizable(false);
-        this.getContentPane().setLayout(new BoxLayout(this.getContentPane(), BoxLayout.PAGE_AXIS));
+        //this.setResizable(false);
+        //this.getContentPane().setLayout(new BoxLayout(this.getContentPane(), BoxLayout.PAGE_AXIS));
         JPanel parentPanel = new JPanel(new SpringLayout());
         parentPanel.setPreferredSize(new Dimension(PAGE_WIDTH,PAGE_HEIGHT));
         SpringLayout parentLayout = (SpringLayout) parentPanel.getLayout();
@@ -117,7 +117,7 @@ public class InitialSettingPageUI extends JFrame {
                     Boolean isUserRegistered = new SignupPageController().create(requestModel);
 
                     if (isUserRegistered) {
-                        dispose();
+                        frame.switchToMain();
                         // move to main panel
                     } else {
                         JOptionPane.showMessageDialog(null,
@@ -135,6 +135,6 @@ public class InitialSettingPageUI extends JFrame {
         });
 
         this.add(parentPanel);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }

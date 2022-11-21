@@ -11,15 +11,15 @@ import java.util.List;
 
 import static javax.swing.SpringLayout.*;
 
-public class SignupPageUI extends JFrame {
+public class SignupPageUI extends JPanel {
     public static final int PAGE_HEIGHT = 736;
     public static final int PAGE_WIDTH = 414;
 
-    public SignupPageUI() {
+    public SignupPageUI(MainFrameInterface frame) {
         // Setup basic Frame structure
         this.setSize(PAGE_WIDTH, PAGE_HEIGHT);
-        this.setResizable(false);
-        this.getContentPane().setLayout(new BoxLayout(this.getContentPane(), BoxLayout.PAGE_AXIS));
+        // this.setResizable(false);
+        // this.getContentPane().setLayout(new BoxLayout(this.getContentPane(), BoxLayout.PAGE_AXIS));
         JPanel parentPanel = new JPanel(new SpringLayout());
         parentPanel.setPreferredSize(new Dimension(PAGE_WIDTH,PAGE_HEIGHT));
         SpringLayout parentLayout = (SpringLayout) parentPanel.getLayout();
@@ -128,7 +128,7 @@ public class SignupPageUI extends JFrame {
 
         // Switches the view when User presses on login
         switchView.addActionListener( ae -> {
-            this.getParent().removeAll();
+            frame.switchToLogin();
         });
 
         SignupButton.addActionListener( ae -> {
@@ -143,7 +143,7 @@ public class SignupPageUI extends JFrame {
                         Boolean isUserTaken = new SignupPageController().userExist(currentUsername);
 
                         if(!isUserTaken) {
-                            InitialSettingPageUI initialSettingPageUI = new InitialSettingPageUI(currentUsername,
+                            InitialSettingPageUI initialSettingPageUI = new InitialSettingPageUI(frame, currentUsername,
                                     currentName, currentPassword);
                             initialSettingPageUI.setVisible(true);
                         }
@@ -166,6 +166,6 @@ public class SignupPageUI extends JFrame {
         });
 
         this.add(parentPanel);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        // this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }

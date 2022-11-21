@@ -12,7 +12,7 @@ import static javax.swing.SpringLayout.*;
 public class LoginPageUI extends JPanel {
     public static final int PAGE_HEIGHT = 736;
     public static final int PAGE_WIDTH = 414;
-    public LoginPageUI() {
+    public LoginPageUI(MainFrameInterface frame) {
         this.setSize(PAGE_WIDTH, PAGE_HEIGHT);
 
         JPanel parentPanel = new JPanel(new SpringLayout());
@@ -100,7 +100,7 @@ public class LoginPageUI extends JPanel {
         parentPanel.add(textPanel);
 
         switchView.addActionListener( ae -> {
-            this.removeAll();
+            frame.switchToSignup();
         });
 
         LoginButton.addActionListener( ae -> {
@@ -113,6 +113,8 @@ public class LoginPageUI extends JPanel {
                 Boolean checkPassword = controller.matchingPassword(currentUsername, currentPassword);
                 if(isUserReal && checkPassword) {
                     controller.setCurrentUser(currentUsername);
+                    frame.switchToMain();
+
                 }
                 else {
                     if(!isUserReal) {

@@ -5,7 +5,7 @@ import gui.LoginPageUI;
 
 import java.awt.*;
 
-public class MainFrame extends JFrame {
+public class MainFrame extends JFrame implements MainFrameInterface {
 
     public static final int PAGE_WIDTH = 414;
     public static final int PAGE_HEIGHT = 736;
@@ -24,11 +24,31 @@ public class MainFrame extends JFrame {
         }
         // If user is not logged in
         else {
-            SignupPageUI signupPageUI = new SignupPageUI();
             this.getContentPane().removeAll();
-            this.add(signupPageUI.getContentPane());
+            SignupPageUI signupPageUI = new SignupPageUI(this);
+            this.add(signupPageUI);
         }
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
+    public void switchToLogin() {
+        this.getContentPane().removeAll();
+        LoginPageUI loginPageUI = new LoginPageUI(this);
+        this.add(loginPageUI);
+        this.revalidate();
+    }
+
+    public void switchToSignup() {
+        this.getContentPane().removeAll();
+        SignupPageUI signupPageUI = new SignupPageUI(this);
+        this.add(signupPageUI);
+        this.revalidate();
+    }
+
+    public void switchToMain() {
+        this.getContentPane().removeAll();
+        this.add(new MainPanel());
+        this.revalidate();
     }
 }
