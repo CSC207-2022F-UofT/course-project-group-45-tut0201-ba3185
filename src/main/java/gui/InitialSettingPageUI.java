@@ -1,9 +1,11 @@
 package gui;
 
+import controller.SignupPageController;
+import use_case_signin_signup.UserRequestModel;
+
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
-import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -13,7 +15,7 @@ public class InitialSettingPageUI extends JFrame {
     public static final int PAGE_HEIGHT = 736;
     public static final int PAGE_WIDTH = 414;
 
-    public InitialSettingPageUI() {
+    public InitialSettingPageUI(String username, String name, String password) {
         this.setSize(PAGE_WIDTH, PAGE_HEIGHT);
         this.setResizable(false);
         this.getContentPane().setLayout(new BoxLayout(this.getContentPane(), BoxLayout.PAGE_AXIS));
@@ -28,8 +30,8 @@ public class InitialSettingPageUI extends JFrame {
         JLabel gender = new JLabel("Gender:");
         JLabel pet = new JLabel("Pet:");
         JLabel maritalStatus = new JLabel("Marital Status:");
-        JLabel relationshipType = new JLabel("Relationship Type");
-        ArrayList<Object> labels = new ArrayList<>(Arrays.asList(age,income,location,gender,maritalStatus,
+        JLabel relationshipType = new JLabel("Relationship Type:");
+        ArrayList<Object> labels = new ArrayList<>(Arrays.asList(age,income,location,gender,pet,maritalStatus,
                 relationshipType));
 
         // create selectors
@@ -48,7 +50,7 @@ public class InitialSettingPageUI extends JFrame {
 
         // create and populate selector panel
         JPanel selectorPanel = new JPanel(new SpringLayout());
-        selectorPanel.setPreferredSize(new Dimension((int) (PAGE_WIDTH/2), PAGE_HEIGHT/2));
+        selectorPanel.setPreferredSize(new Dimension((int) (PAGE_WIDTH/1.4), PAGE_HEIGHT/2));
         SpringLayout selectorPanelLayout = (SpringLayout) selectorPanel.getLayout();
 
         for(Object obj : selectors) {
@@ -58,25 +60,81 @@ public class InitialSettingPageUI extends JFrame {
             selectorPanel.add((Component) obj);
         }
 
-        // Format label to West wall of Panel
-        for(Object obj : labels) {
-            selectorPanelLayout.putConstraint(WEST, (Component) obj, 0 , WEST, selectorPanel);
-        }
-
-        // Format selectors to East wall of panel
-        for(Object obj : selectors) {
-            selectorPanelLayout.putConstraint(EAST, (Component) obj, 0, EAST, selectorPanel);
-        }
-
-        // Format distances between labels
+        // Initially add the first component of field and label
         selectorPanelLayout.putConstraint(NORTH,age, 7, NORTH, selectorPanel);
+        selectorPanelLayout.putConstraint(NORTH, ageTextField, 10, NORTH, selectorPanel);
+        selectorPanelLayout.putConstraint(WEST, age , 0 , WEST, selectorPanel);
+        selectorPanelLayout.putConstraint(EAST, ageTextField, 0 ,EAST, selectorPanel);
         for(int i = 1; i < labels.size(); i++) {
-            selectorPanelLayout.putConstraint(NORTH, (Component) labels.get(i), 15, NORTH,
+            selectorPanelLayout.putConstraint(WEST, (Component) labels.get(i), 0 , WEST, selectorPanel);
+            selectorPanelLayout.putConstraint(EAST, (Component) selectors.get(i), 0, EAST, selectorPanel);
+            selectorPanelLayout.putConstraint(NORTH, (Component) labels.get(i), 27, SOUTH,
                     (Component) labels.get(i-1));
+            selectorPanelLayout.putConstraint(NORTH, (Component) selectors.get(i), 15, SOUTH,
+                    (Component) selectors.get(i-1));
         }
 
-        // Format distances between selectors
-        selectorPanelLayout.putConstraint(NORTH, ageTextField, 10, NORTH, selectorPanel);
-        for(int i = 1; )
+        // Create button and populate panel
+        JPanel buttonPanel = new JPanel(new SpringLayout());
+        SpringLayout buttonPanelLayout = (SpringLayout) buttonPanel.getLayout();
+        buttonPanel.setPreferredSize(new Dimension(PAGE_WIDTH, 100));
+
+        JButton submitButton = new JButton("Submit");
+        submitButton.setPreferredSize(new Dimension(PAGE_WIDTH/2, 40));
+        buttonPanel.add(submitButton);
+
+        // format buttonPanel
+        buttonPanelLayout.putConstraint(HORIZONTAL_CENTER, submitButton, 0, HORIZONTAL_CENTER, buttonPanel);
+
+        parentLayout.putConstraint(HORIZONTAL_CENTER, selectorPanel, 0, HORIZONTAL_CENTER, this);
+        parentLayout.putConstraint(NORTH, selectorPanel, PAGE_HEIGHT/4, NORTH, this);
+        parentLayout.putConstraint(SOUTH, buttonPanel, 0, SOUTH, this);
+        parentPanel.add(selectorPanel);
+        parentPanel.add(buttonPanel);
+
+        submitButton.addActionListener( ae -> {
+            String currentAge = ageTextField.getText();
+            String currentIncome = incomeTextField.getText();
+            String currentLocation = locationLocator.getText();
+            String currentMaritalStatus = String.valueOf(martialStatusChooser.getSelectedItem());
+            String currentGender = String.valueOf(genderChooser.getSelectedItem());
+            String currentPet = petTextField.getText();
+            String currentRelationshipType = String.valueOf(relationshipChooser.getSelectedItem());
+
+            if(!currentAge.equals("") && !currentIncome.equals("") && !currentLocation.equals("") &&
+                    !currentPet.equals("")) {
+                int convertedAge = Integer.parseInt(currentAge);
+                int convertedIncome = Integer.parseInt(currentIncome);
+
+                try {
+                    String[] tmp = currentLocation.split(",");
+                    ArrayList<Double> currentLocationSplit = new ArrayList<>();
+                    currentLocationSplit.add(Double.valueOf(tmp[0]));
+                    currentLocationSplit.add(Double.valueOf(tmp[1]));
+                    UserRequestModel requestModel = new UserRequestModel();
+                    requestModel.setInfo(username, name, password, convertedAge, convertedIncome, currentGender,
+                            currentRelationshipType,currentMaritalStatus,currentPet, currentLocationSplit);
+                    Boolean isUserRegistered = new SignupPageController().create(requestModel);
+
+                    if (isUserRegistered) {
+                        dispose();
+                        // move to main panel
+                    } else {
+                        JOptionPane.showMessageDialog(null,
+                                "Something went wrong, try again later");
+                    }
+                }
+                catch (IOException exception) {
+                    throw new RuntimeException(exception);
+                }
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "Please fill in all fields before submitting");
+            }
+
+        });
+
+        this.add(parentPanel);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }

@@ -1,2 +1,2 @@
-id,username,name,password,gender,age,income,pet,maritalStatus,relationshipType,location
-2,sunny,Sunny,password,male,13,1,something,Something,Somerthing,"11,11"
+username,name,password,gender,age,income,pet,martialStatus,relationshipType,locationX,locationY
+hehe,haha,haha,Male,14,14,Snake,Single,Straight,14.5,14.5

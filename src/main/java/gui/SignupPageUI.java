@@ -139,16 +139,18 @@ public class SignupPageUI extends JFrame {
                     !confirmPassword.equals("")) {
                 if(confirmPassword.equals(currentPassword)) {
                     try {
-                        Boolean isUserRegistered = new SignupPageController().create(currentUsername,currentName,
-                                currentPassword);
-                        if(isUserRegistered) {
+                        Boolean isUserTaken = new SignupPageController().userExist(currentUsername);
+
+                        if(!isUserTaken) {
+                            InitialSettingPageUI initialSettingPageUI = new InitialSettingPageUI(currentUsername,
+                                    currentName, currentPassword);
+                            initialSettingPageUI.setVisible(true);
                             dispose();
                         }
                         else {
-                            JOptionPane.showMessageDialog(null, "Username is already taken! Please " +
-                                    "try with another.");
+                            JOptionPane.showMessageDialog(null,
+                                    "This username is already taken");
                         }
-
                     }
                     catch (IOException exception) {
                         throw new RuntimeException(exception);

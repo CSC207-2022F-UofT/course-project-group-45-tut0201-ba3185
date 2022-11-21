@@ -1,65 +1,42 @@
 package use_case_signin_signup;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+        import java.util.ArrayList;
+        import java.util.HashMap;
 
 public class UserResponseModel implements UserOutputBoundary {
     private String username;
     private String name;
     private String password;
-    private int age;
-    private int income;
-    private String gender;
-    private String pet;
-    private String maritalStatus;
-    private String relationshipType;
+    private HashMap<String, Object> userSettings;
     private ArrayList<Double> location;
-
     private ArrayList<Object> userInfo;
 
     public UserResponseModel() {
         this.userInfo = new ArrayList<>();
+        this.userSettings = new HashMap<>();
     }
 
-    public void setInfo(String username, String name, String password) {
+    public void setInfo(String username, String name, String password, int age, int income,
+                        String gender, String relationshipType, String maritalStatus, String pet,
+                        ArrayList<Double> location) {
         this.username = username;
         this.name = name;
         this.password = password;
-    }
-
-    public void setAllInfo(String username, String name, String password, String gender, String pet,
-                           String maritalStatus, String relationshipType, int age, int income,
-                           ArrayList<Double> location) {
-        this.username = username;
-        this.name = name;
-        this.password = password;
-        this.gender = gender;
-        this.pet = pet;
-        this.maritalStatus = maritalStatus;
-        this.relationshipType = relationshipType;
-        this.age = age;
-        this.income = income;
         this.location = location;
+        this.userSettings.put("age", age);
+        this.userSettings.put("income", income);
+        this.userSettings.put("maritalStatus", maritalStatus);
+        this.userSettings.put("pet", pet);
+        this.userSettings.put("relationshipType", relationshipType);
+        this.userSettings.put("gender", gender);
     }
 
     public ArrayList<Object> getInfo() {
         this.userInfo.add(username);
         this.userInfo.add(name);
         this.userInfo.add(password);
-        return this.userInfo;
-    }
-
-    public ArrayList<Object> getAllInfo() {
-        this.userInfo.add(username);
-        this.userInfo.add(name);
-        this.userInfo.add(password);
-        this.userInfo.add(gender);
-        this.userInfo.add(age);
-        this.userInfo.add(income);
-        this.userInfo.add(pet);
-        this.userInfo.add(maritalStatus);
-        this.userInfo.add(relationshipType);
         this.userInfo.add(location);
+        this.userInfo.add(userSettings);
         return this.userInfo;
     }
 }

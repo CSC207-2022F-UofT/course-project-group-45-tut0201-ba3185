@@ -1,4 +1,5 @@
-id,username,name,password,gender,age,income,pet,maritalStatus,relationshipType,location
-2,sunny,Sunny,password,male,13,1,something,Something,Somerthing,"11,11"
-1,cc,aa,aaa,male,13,1,somehitn,s,ss,"12,12"
-0,bb,aa,cc,male,13,1,ws,ss,ssa,"14,14"
+id,username,name,password,gender,age,income,pet,martialStatus,relationshipType,locationX,locationY
+3,sunny,sunny,sunny,Male,14,14512,Kat,Single,Straight,1.5,17.5
+2,suny,suny,suny,Male,14,14,KAt,Single,Straight,14.5,14.5
+1,hehe,haha,haha,Male,14,14,Snake,Single,Straight,14.5,14.5
+0,Kevin,kevin,kevin,Male,25,10,Nothing,Single,Straight,0.5,2.5

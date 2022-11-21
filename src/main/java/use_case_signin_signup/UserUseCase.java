@@ -3,8 +3,8 @@ package use_case_signin_signup;
 import entity.User;
 import entity.UserFactory;
 
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 public class UserUseCase {
     private HashMap<String, User> userMap;
@@ -18,9 +18,11 @@ public class UserUseCase {
         }
     }
 
-    public boolean addUser(String name, String username, String password) {
-        User currentUser = new User(name,username,password);
-        if(!userExists(currentUser.getUsername())) {
+    public boolean addUser(String name, String username, String password, ArrayList<Double> location,
+                           HashMap<String, Object> userSetting) {
+        User currentUser = new User(name,username,password, location, userSetting);
+        System.out.println(username);
+        if(!userExists(username)) {
             userMap.put(currentUser.getUsername(), currentUser);
             return true;
         }
@@ -42,7 +44,11 @@ public class UserUseCase {
         HashMap<String, UserResponseModel> responseMap = new HashMap<>();
         for(User user : userMap.values()) {
             UserResponseModel currentUser = new UserResponseModel();
-            currentUser.setInfo(user.getUsername(),user.getName(), user.getPassword());
+            currentUser.setInfo(user.getUsername(),user.getName(), user.getPassword(), (Integer) user.getUserInfo("age"),
+                    (Integer) user.getUserInfo("income"),
+                    (String) user.getUserInfo("gender"), (String) user.getUserInfo("relationshipType"),
+                    (String) user.getUserInfo("maritalStatus"), (String) user.getUserInfo("pet"),
+                    user.getLocation());
             responseMap.put(user.getUsername(),currentUser);
         }
         return responseMap;
