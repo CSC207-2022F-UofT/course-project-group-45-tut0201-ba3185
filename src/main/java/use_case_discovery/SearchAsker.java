@@ -24,8 +24,8 @@ public class SearchAsker implements SearchAskerInputBoundary {
 
         ArrayList<String> question_list = new ArrayList<>();
         // ask about the income
-        question_list.add("What is the range of income you are looking for?(in unit of k)"); // 1
-        question_list.add("What is the range of age you are looking for?(0-100)");// 2
+        question_list.add("Range of Income (in unit of k)"); // 1
+        question_list.add("Range of Age(0-100)");// 2
         question_list.add("What marriage status are you looking for?");//3
         question_list.add("Single,Divorce,Married");//4
         question_list.add("What are the hobbies you want them to have?"); //5
