@@ -43,11 +43,12 @@ public class LocationFinder implements LocationFinderInputBoundary{
                 }
             }
         }
-        ArrayList<String> listUserDistance = new ArrayList<>();
-        for(String u: listUsername){
-            listUserDistance.add(u + ": " + String.format("%.2f", UserDistance.get(u)) + "km");
-        }
-        return listUserDistance;
+        //ArrayList<String> listUserDistance = new ArrayList<>();
+        //for(String u: listUsername){
+            //listUserDistance.add(u + ": " + String.format("%.2f", UserDistance.get(u)) + "km");
+        //}
+        //return listUserDistance;
+        return listUsername;
         }
 
     //helper: compute and return the distance (in KM) of two users
