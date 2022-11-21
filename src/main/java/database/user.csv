@@ -1,3 +1,4 @@
-id,username,name,password
-1,bb,aa,cc
-0,cc,aa,aaa
+id,username,name,password,gender,age,income,pet,maritalStatus,relationshipType,location
+2,sunny,Sunny,password,male,13,1,something,Something,Somerthing,"11,11"
+1,cc,aa,aaa,male,13,1,somehitn,s,ss,"12,12"
+0,bb,aa,cc,male,13,1,ws,ss,ssa,"14,14"
