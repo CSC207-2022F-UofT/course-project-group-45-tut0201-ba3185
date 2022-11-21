@@ -26,7 +26,7 @@ public class MessagePresenter implements MessageOutputBoundary {
                 String timeName = i.getKey();
                 String msg = i.getValue();
                 messages.add(timeName + ": " + msg);
-            }
+            }                                          //this is when we click button on Frontpage, then we load chathistory
             return new MessageViewModel(messages);
         }
         else{
@@ -35,7 +35,7 @@ public class MessagePresenter implements MessageOutputBoundary {
             String msg = content.get(timeName);
             ArrayList<String> messages = new ArrayList<>();
             messages.add(timeName + ": " + msg);
-            return new MessageViewModel(messages);
+            return new MessageViewModel(messages);   //this is when we click sendButton on ChatScreen.
         }
     }
 

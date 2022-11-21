@@ -1,19 +1,18 @@
 package use_case_message;
 
 import entity.MessageManagers;
-import presenter.MessagePresenter;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 
 public class MessageInteractor implements MessageInputBoundary {
-    final MessagePresenter messagePresenter;
+    final MessageOutputBoundary messageOutputBoundary;
     final MessageManagerFactory chatFactory;
     MessageManagers messageManagers;
 
-    public MessageInteractor(MessagePresenter messagePresenter,
+    public MessageInteractor(MessageOutputBoundary messageOutputBoundary,
                              MessageManagerFactory chatFactory, MessageManagers messageManagers) {
-        this.messagePresenter = messagePresenter;
+        this.messageOutputBoundary = messageOutputBoundary;
         this.chatFactory = chatFactory;
         this.messageManagers = messageManagers;
     }

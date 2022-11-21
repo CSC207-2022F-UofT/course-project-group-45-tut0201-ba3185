@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MessageManagers {
-    List<MessageManager> MessageManagers;
+    List<MessageManager> MessageManagers; //MessageManager is use case??
     public MessageManagers(){
         MessageManagers = new ArrayList<>();
     }

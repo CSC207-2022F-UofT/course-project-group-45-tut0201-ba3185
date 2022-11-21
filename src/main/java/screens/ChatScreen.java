@@ -15,96 +15,79 @@ public class ChatScreen extends JPanel implements ActionListener {
     String userid;
     String messageValue; //get this from input Box
     String targetUserId; // get this from messageDisplayBox
+    //User user;
+    JTextField textField;
     MessageController controller;
+    MessageViewModel messageViewModel;
+    JPanel messageDisplaybox;
+    final int PAGE_W = 414;
+    final int PAGE_H = 736;
 
     /**
      * Creates all UI components of ChatScreen UI
      */
-    public ChatScreen(int page_h, int page_w, MessageController controller, MessageViewModel messageViewModel) {
+    public ChatScreen(String targetUserId){
+        this.controller = new MessageController();
+        //this.messageViewModel = messageViewmodel;
+        this.targetUserId = targetUserId;
+        //this.userId = userId;
+        this.sendButton = new JButton();
+        this.textField = new JTextField();
+    }
 
-        int screen_h = page_h * 9 / 10; //the screen is 90% of our page size. quote from Eric.
 
-        JPanel textFieldBox = new JPanel();
-        JPanel buttonbox = new JPanel();
+    public JPanel updateChatScreen(MessageViewModel messageViewModel) {
 
-        JPanel chatScreen = new JPanel();//initialize our chatScreen
-        chatScreen.setPreferredSize(new Dimension(page_w, screen_h)); //(w = 414, h = 736*0.9)
-        SpringLayout layout = new SpringLayout();
-        chatScreen.setLayout(layout);
-        Color c = new Color(204, 255, 255);
+        JPanel chatScreen = new JPanel();             //initialize our chatScreen
+        chatScreen.setLayout(new BorderLayout());
+        chatScreen.setPreferredSize(new Dimension(PAGE_W, PAGE_H * 9 / 10));
+        Color c = new Color(255, 255, 255);
         chatScreen.setBackground(c);
 
 
-        int display_h = screen_h / 2;
-        JPanel messageDisplayBox = new JPanel();
-        //messageDisplayBox.setBounds(page_w / 10, page_w / 10, page_w - 80, display_h);// the place we can see our chat messages
-        Color m = new Color(0, 255, 255);
-        messageDisplayBox.setBackground(m);
+        this.messageDisplaybox = new JPanel();      //the place it shows chatHistory
+        messageDisplaybox.setBackground(new Color(246, 167, 232));
+        messageDisplaybox.setPreferredSize(new Dimension(400, 300));
+        messageDisplaybox.setLayout(new GridLayout(0, 1));
 
-        for (String i :messageViewModel.getMessages()){
-            JLabel msgvalue = new JLabel();
-            msgvalue.setFont(new Font("Serif", Font.PLAIN, 14));
-        }
+        //controller.create(userid, targetUserId);
 
 
+        for (String i : messageViewModel.getMessages()){
+            JLabel msgValue = new JLabel(i, SwingConstants.LEFT);
+            messageDisplaybox.add(msgValue);
+        }                                            //load chatHistory into messageDisplaybox
+
+        JScrollPane pane = new JScrollPane(messageDisplaybox, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        pane.setPreferredSize(new Dimension(400,300));
+        chatScreen.add(pane, BorderLayout.NORTH);
 
 
-
-        JTextField textField = new JTextField(); //user input area
-        textField.setBounds(page_w / 10, screen_h / 2 + 80, page_w - 80, display_h); //textfeild for input message
-        Color t = new Color(0, 200, 255);
-        textField.setBackground(t);
-        textFieldBox.add(textField);
-
-
-        JScrollPane scrollbar = new JScrollPane(textField);
-        scrollbar.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        scrollbar.setSize(40, 60);
-
-        JLabel label = new JLabel("enter message here:");
-        int label_x = 0;
-        int label_Width = page_w * 8 / 10;
-        int label_Height = screen_h / 10;
-        label.setBounds(label_x, screen_h / 2, label_Width, label_Height);
-        label.setLabelFor(textField);
+         //user input area
+        textField.setSize(400, 200);
+        textField.setBackground(new Color(246, 200, 255));
+        JScrollPane textPane = new JScrollPane(textField, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        textPane.setPreferredSize(new Dimension(400,200));
+        chatScreen.add(textPane, BorderLayout.CENTER);
 
 
-        int bound_x = 140;
-        int bound_y = 600;
-        int bound_width = 60;
-        int bound_height = 30;
-        sendButton = new JButton();
-        sendButton.setBounds(bound_x, bound_y, bound_width, bound_height);
         sendButton.setText("send");
         sendButton.addActionListener(this);
-        buttonbox.add(sendButton);
-
-        layout.putConstraint(SpringLayout.NORTH, messageDisplayBox, 40, SpringLayout.NORTH, this);
-        layout.putConstraint(SpringLayout.EAST, messageDisplayBox, 40, SpringLayout.EAST, this);
-        layout.putConstraint(SpringLayout.WEST, messageDisplayBox, 40, SpringLayout.WEST, this);
-        layout.putConstraint(SpringLayout.SOUTH, messageDisplayBox, display_h-340, SpringLayout.SOUTH, this);
-
-        layout.putConstraint(SpringLayout.NORTH, textFieldBox, 176, SpringLayout.NORTH, this);
-        layout.putConstraint(SpringLayout.EAST, textFieldBox, 40, SpringLayout.EAST, this);
-        layout.putConstraint(SpringLayout.WEST, textFieldBox, 40, SpringLayout.WEST, this);
-        layout.putConstraint(SpringLayout.SOUTH, textFieldBox, 40, SpringLayout.SOUTH, this);
-
-        layout.putConstraint(SpringLayout.NORTH,  buttonbox, 176, SpringLayout.NORTH, this);
-        layout.putConstraint(SpringLayout.EAST, buttonbox, 40, SpringLayout.EAST, this);
-        layout.putConstraint(SpringLayout.WEST, buttonbox, 40, SpringLayout.WEST, this);
-        layout.putConstraint(SpringLayout.SOUTH, buttonbox, 40, SpringLayout.SOUTH, this);
-
-        chatScreen.add(buttonbox);
-        chatScreen.add(textFieldBox);
-        chatScreen.add(messageDisplayBox);
+        sendButton.setBackground(new Color(218, 164, 202));
+        sendButton.setPreferredSize(new Dimension(80, 50));
+        chatScreen.add(sendButton, BorderLayout.SOUTH);
 
 
-        this.add(chatScreen);
+        return chatScreen;
 
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        messageValue = textField.getText();
+
+
+        //requestthis.controller.create(targetUserId, user, messageValue);
 
     }
 }
