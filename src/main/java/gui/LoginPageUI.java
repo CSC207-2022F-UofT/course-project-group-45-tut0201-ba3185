@@ -1,6 +1,7 @@
 package gui;
 
 import controller.SigninPageController;
+import database.csvManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -111,6 +112,7 @@ public class LoginPageUI extends JPanel {
                 Boolean isUserReal = controller.userExist(currentUsername);
                 Boolean checkPassword = controller.matchingPassword(currentUsername, currentPassword);
                 if(isUserReal && checkPassword) {
+                    controller.setCurrentUser(currentUsername);
                 }
                 else {
                     if(!isUserReal) {
