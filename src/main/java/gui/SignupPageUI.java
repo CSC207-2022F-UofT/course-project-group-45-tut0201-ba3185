@@ -143,9 +143,7 @@ public class SignupPageUI extends JPanel {
                         Boolean isUserTaken = new SignupPageController().userExist(currentUsername);
 
                         if(!isUserTaken) {
-                            InitialSettingPageUI initialSettingPageUI = new InitialSettingPageUI(frame, currentUsername,
-                                    currentName, currentPassword);
-                            initialSettingPageUI.setVisible(true);
+                            frame.switchToInitSetup(currentUsername,currentName,currentPassword);
                         }
                         else {
                             JOptionPane.showMessageDialog(null,

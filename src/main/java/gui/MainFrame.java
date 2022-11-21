@@ -51,4 +51,10 @@ public class MainFrame extends JFrame implements MainFrameInterface {
         this.add(new MainPanel());
         this.revalidate();
     }
+    public void switchToInitSetup(String username, String name, String password) {
+        this.getContentPane().removeAll();
+        InitialSettingPageUI initialSettingPageUI = new InitialSettingPageUI(this, username, name, password);
+        this.add(initialSettingPageUI);
+        this.revalidate();
+    }
 }
