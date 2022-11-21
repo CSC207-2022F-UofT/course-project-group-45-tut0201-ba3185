@@ -8,13 +8,11 @@ import java.io.IOException;
 
 import static javax.swing.SpringLayout.*;
 
-public class LoginPageUI extends JFrame {
+public class LoginPageUI extends JPanel {
     public static final int PAGE_HEIGHT = 736;
     public static final int PAGE_WIDTH = 414;
     public LoginPageUI() {
         this.setSize(PAGE_WIDTH, PAGE_HEIGHT);
-        this.setResizable(false);
-        this.getContentPane().setLayout(new BoxLayout(this.getContentPane(), BoxLayout.PAGE_AXIS));
 
         JPanel parentPanel = new JPanel(new SpringLayout());
         parentPanel.setPreferredSize(new Dimension(PAGE_WIDTH,PAGE_HEIGHT));
@@ -101,9 +99,7 @@ public class LoginPageUI extends JFrame {
         parentPanel.add(textPanel);
 
         switchView.addActionListener( ae -> {
-            SignupPageUI signupPageUI = new SignupPageUI();
-            signupPageUI.setVisible(true);
-            dispose();
+            this.removeAll();
         });
 
         LoginButton.addActionListener( ae -> {
@@ -115,7 +111,6 @@ public class LoginPageUI extends JFrame {
                 Boolean isUserReal = controller.userExist(currentUsername);
                 Boolean checkPassword = controller.matchingPassword(currentUsername, currentPassword);
                 if(isUserReal && checkPassword) {
-                    dispose();
                 }
                 else {
                     if(!isUserReal) {
@@ -133,6 +128,5 @@ public class LoginPageUI extends JFrame {
         });
 
         this.add(parentPanel);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }

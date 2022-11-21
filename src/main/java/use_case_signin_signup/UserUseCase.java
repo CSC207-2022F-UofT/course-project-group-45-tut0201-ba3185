@@ -1,5 +1,6 @@
 package use_case_signin_signup;
 
+import database.csvManager;
 import entity.User;
 import entity.UserFactory;
 
@@ -17,6 +18,8 @@ public class UserUseCase {
             this.userMap.put(current.getUsername(),current);
         }
     }
+
+    public UserUseCase() {}
 
     public boolean addUser(String name, String username, String password, ArrayList<Double> location,
                            HashMap<String, Object> userSetting) {
@@ -52,5 +55,11 @@ public class UserUseCase {
             responseMap.put(user.getUsername(),currentUser);
         }
         return responseMap;
+    }
+
+    public boolean isUserLoggedIn() {
+        csvManager manager = new csvManager();
+        User current = manager.readCurrentUser("src/main/java/database/currentUser.csv");
+        return current!=null;
     }
 }

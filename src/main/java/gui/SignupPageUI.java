@@ -4,7 +4,10 @@ import controller.SignupPageController;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import static javax.swing.SpringLayout.*;
 
@@ -125,9 +128,7 @@ public class SignupPageUI extends JFrame {
 
         // Switches the view when User presses on login
         switchView.addActionListener( ae -> {
-            LoginPageUI loginPageUI = new LoginPageUI();
-            loginPageUI.setVisible(true);
-            dispose();
+            this.getParent().removeAll();
         });
 
         SignupButton.addActionListener( ae -> {
@@ -145,7 +146,6 @@ public class SignupPageUI extends JFrame {
                             InitialSettingPageUI initialSettingPageUI = new InitialSettingPageUI(currentUsername,
                                     currentName, currentPassword);
                             initialSettingPageUI.setVisible(true);
-                            dispose();
                         }
                         else {
                             JOptionPane.showMessageDialog(null,
