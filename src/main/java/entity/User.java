@@ -70,10 +70,8 @@ public class User implements Comparable<User>{
         this.blockList.remove(username);
     }
 
-    public String checkBlockList(String username){
-        if (this.getBlockList().contains(username)) {
-            return username + "is in your BlockList";
-        } else return username + "is not in your BlockList";
+    public boolean checkBlockList(String username){
+        return this.getBlockList().contains(username);
     }
 
     @Override

@@ -13,4 +13,14 @@ public class BlockListController {
     public void addBlockList(String username){  // trigger by UI
         blockListInoutBoundary.addBlockList(username);
     }
+
+    public void removeBlockList(String username){  // trigger by UI
+        blockListInoutBoundary.removeBlockList(username);
+    }
+
+    public void checkBlockList(String username){  // trigger by UI
+        blockListInoutBoundary.checkBlockList(username);
+    }
+
+
 }

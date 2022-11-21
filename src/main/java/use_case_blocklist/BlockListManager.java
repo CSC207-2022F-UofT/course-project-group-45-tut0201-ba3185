@@ -3,11 +3,11 @@ import entity.User;
 
 
 public class BlockListManager implements BlockListInputBoundary {
-    private final BlockListOutputBoundary BlockListOutputBoundary;
+    private final BlockListOutputBoundary blockListOutputBoundary;
     private User user;
 
-    public BlockListManager(BlockListOutputBoundary BlockListOutputBoundary, User user) {
-        this.BlockListOutputBoundary = BlockListOutputBoundary;
+    public BlockListManager(BlockListOutputBoundary blockListOutputBoundary, User user) {
+        this.blockListOutputBoundary = blockListOutputBoundary;
         this.user = user;
     }
 
@@ -23,10 +23,11 @@ public class BlockListManager implements BlockListInputBoundary {
         this.user.removeBlockList(username);
     }
 
-    public void checkBlockList(String username){
-        this.user.checkBlockList(username);
-        BlockListOutputBoundary.displayResult(username);
-        }
+    @Override
+    public boolean checkBlockList(String username) {
+        blockListOutputBoundary.displayResult(username);
+        return this.user.checkBlockList(username);
     }
+}
 
 
