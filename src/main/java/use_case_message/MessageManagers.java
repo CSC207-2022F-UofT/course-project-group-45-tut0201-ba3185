@@ -1,4 +1,4 @@
-package entity;
+package use_case_message;
 
 import use_case_message.MessageManager;
 

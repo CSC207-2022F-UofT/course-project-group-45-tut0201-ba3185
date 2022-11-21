@@ -1,7 +1,5 @@
 package use_case_message;
 
-import entity.MessageManagers;
-
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 

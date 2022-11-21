@@ -1,10 +1,6 @@
-import entity.ChatHistory;
-import entity.MessageManagers;
-import entity.User;
+import use_case_message.MessageManagers;
 import gui.MainFrame;
 import presenter.MessagePresenter;
-import screens.ChatScreen;
-import screens.MessageController;
 import use_case_message.*;
 
 public class Main {
