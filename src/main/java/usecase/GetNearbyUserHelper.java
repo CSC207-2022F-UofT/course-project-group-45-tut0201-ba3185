@@ -10,12 +10,13 @@ public class GetNearbyUserHelper {
     User currentUser;
     ArrayList<User> userList;
 
+    //help to get a list of nearby users
     public GetNearbyUserHelper(User currentUser, ArrayList<User> userList){
         this.currentUser = currentUser;
         this.userList = userList;
     }
 
-    //return a sorted list of usernames and their distance.
+    //return a sorted list of usernames based on their distance.
     public ArrayList<String> getNearbyUser() {
         HashMap<String, Double> UserDistance = new HashMap<>();
         ArrayList<Double> listDistance = new ArrayList<>();

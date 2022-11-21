@@ -19,14 +19,12 @@ public class LocationFinder implements LocationFinderInputBoundary{
     }
 
     GenderFinder temGenderFinder = new GenderFinder();
-    ArrayList<User> userList = temGenderFinder.genderSuitFinder;
+    ArrayList<User> userList = temGenderFinder.getList();
 
     GetNearbyUserHelper helper = new GetNearbyUserHelper(currentUser, userList);
-
+    LocationFinderResponseModel responseModel = new LocationFinderResponseModel(helper.getNearbyUser());
     public void recommendListGenerator(){
-        LocationFinderResponseModel responseModel = new LocationFinderResponseModel(helper.getNearbyUser());
         DiscoveryListOutputBoundary presenter = new DiscoveryListOutputBoundary(0, responseModel.getRecommendList());
         presenter.displayList();
     }
-
 }
