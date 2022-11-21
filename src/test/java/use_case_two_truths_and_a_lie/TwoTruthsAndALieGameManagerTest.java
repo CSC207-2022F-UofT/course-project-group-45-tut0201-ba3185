@@ -18,20 +18,9 @@ public class TwoTruthsAndALieGameManagerTest {
 
     @BeforeEach
     public void createManagerAndGame() {
-        TwoTruthsAndALieGameOutputBoundary gamePresenter = new TwoTruthsAndALieGamePresenter();
-        this.gameManager = new TwoTruthsAndALieGameManager(gamePresenter);
-
-        TwoTruthsAndALiePageOutputBoundary pagePresenter = new TwoTruthsAndALiePagePresenter();
-        this.pageManager = new TwoTruthsAndALiePageManager(pagePresenter);
-
-        TwoTruthsAndALiePageRequestModel requestModel = new TwoTruthsAndALiePageRequestModel();
-
-        this.currentUser = new User();
-        requestModel.setCurrentUser(this.currentUser);
-        User otherUser = new User();
-        requestModel.setOtherUser(otherUser);
-
-        this.pageManager.createGame(requestModel);
+        this.gameManager = new TwoTruthsAndALieGameManager();
+        this.pageManager = new TwoTruthsAndALiePageManager();
+        // this.pageManager.createGame();
     }
 
     @Test

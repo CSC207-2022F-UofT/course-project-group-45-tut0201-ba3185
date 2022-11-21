@@ -2,6 +2,7 @@ package use_case_two_truths_and_a_lie;
 import java.util.*;
 
 import entity.*;
+import presenter.TwoTruthsAndALieGamePresenter;
 
 
 /**
@@ -12,8 +13,8 @@ import entity.*;
 public class TwoTruthsAndALieGameManager implements TwoTruthsAndALieGameInputBoundary {
     private TwoTruthsAndALieGameOutputBoundary presenter;
 
-    public TwoTruthsAndALieGameManager(TwoTruthsAndALieGameOutputBoundary presenter) {
-        this.presenter = presenter;
+    public TwoTruthsAndALieGameManager() {
+        this.presenter = new TwoTruthsAndALieGamePresenter();
     }
 
     /**

@@ -1,5 +1,8 @@
 package use_case_two_truths_and_a_lie;
 import entity.User;
+import gui.TwoTruthsAndALiePagePanelInterface;
+
+import javax.swing.*;
 
 /**
  *  Request Model for Two Truths And A Lie Page
@@ -9,6 +12,16 @@ import entity.User;
 public class TwoTruthsAndALiePageRequestModel {
     private User currentUser;
     private User otherUser;
+
+    private TwoTruthsAndALiePagePanelInterface panel;
+
+    public TwoTruthsAndALiePagePanelInterface getPanel() {
+        return panel;
+    }
+
+    public void setPanel(TwoTruthsAndALiePagePanelInterface panel) {
+        this.panel = panel;
+    }
 
     public User getCurrentUser() {
         return currentUser;

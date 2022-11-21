@@ -13,7 +13,7 @@ public class TwoTruthsAndALiePageManagerTest {
     @BeforeEach
     public void createManager() {
         TwoTruthsAndALiePageOutputBoundary presenter = new TwoTruthsAndALiePagePresenter();
-        this.manager = new TwoTruthsAndALiePageManager(presenter);
+        this.manager = new TwoTruthsAndALiePageManager();
     }
 
     @Test
@@ -28,7 +28,7 @@ public class TwoTruthsAndALiePageManagerTest {
         User otherUser = new User();
         requestModel.setOtherUser(otherUser);
 
-        this.manager.createGame(requestModel);
+        // this.manager.createGame();
 
         Assertions.assertEquals(1, this.manager.getGames().size());
     }

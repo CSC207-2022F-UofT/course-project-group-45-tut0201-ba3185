@@ -2,8 +2,8 @@ package gui;
 import javax.swing.*;
 import java.awt.*;
 
-public class TwoTruthsAndALieGameUI extends JPanel {
-    public TwoTruthsAndALieGameUI() {
+public class TwoTruthsAndALieGamePanel extends JPanel {
+    public TwoTruthsAndALieGamePanel() {
         this.setSize(MainFrame.PAGE_WIDTH, MainFrame.PAGE_HEIGHT / 3);
         this.setPreferredSize(new Dimension(MainFrame.PAGE_WIDTH, MainFrame.PAGE_HEIGHT / 3));
 
@@ -12,8 +12,7 @@ public class TwoTruthsAndALieGameUI extends JPanel {
         JLabel label = new JLabel("Game");
         this.add(label);
 
-        JButton button = new JButton();
-        button.setText("Press to Win");
-        this.add(button);
+        JButton gameButton = new JButton();
+        gameButton.setText("Play game");
     }
 }

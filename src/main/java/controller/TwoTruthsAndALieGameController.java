@@ -1,13 +1,15 @@
 package controller;
 import entity.TwoTruthsAndALieGame;
+import entity.User;
 import use_case_two_truths_and_a_lie.TwoTruthsAndALieGameInputBoundary;
+import use_case_two_truths_and_a_lie.TwoTruthsAndALieGameManager;
 import use_case_two_truths_and_a_lie.TwoTruthsAndALieGameRequestModel;
 
 public class TwoTruthsAndALieGameController {
     private TwoTruthsAndALieGameInputBoundary manager;
 
-    public TwoTruthsAndALieGameController(TwoTruthsAndALieGameInputBoundary manager) {
-        this.manager = manager;
+    public TwoTruthsAndALieGameController() {
+        this.manager = new TwoTruthsAndALieGameManager();
     }
 
     public void submitStatements(TwoTruthsAndALieGame game, String truth1, String truth2, String lie) {
