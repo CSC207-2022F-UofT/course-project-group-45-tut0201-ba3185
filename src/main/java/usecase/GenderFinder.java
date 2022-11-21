@@ -18,40 +18,47 @@ import java.util.ArrayList;
 
 //to use the class, create an instance of GenderFinder and then call the method getList
 public class GenderFinder {
-    ArrayList<User> genderSuitFinder;//list to store the user after GenderFinder
+    ArrayList<User> genderSuitFinder;//list to store the users after GenderFinder
     Users users;
-    User mainUser;  //to get the main user's sexualOrientation
-    String mainUserChoice = (String)mainUser.getUserInfo("sexualOrientation");
+    User currentUser;  //to get the main user's sexualOrientation
+    String currentUserChoice; //= (String)currentUser.getUserInfo("relationshipType");
     //UserFactory tempUserFactory = new UserFactory(); //to get a List of other users
     UserList userLst;//the type of user list that allows to loop over
 
     public GenderFinder(){
         users = new Users();
-        mainUser = users.getCurrentUser();
+        currentUser = users.getCurrentUser();
+        currentUserChoice = (String)currentUser.getUserInfo("relationshipType");
         ArrayList<User> res = new ArrayList<>();
         //male,female, transgender cases
-        if (mainUserChoice.equals("male")||
-                mainUserChoice.equals("female")||
-                mainUserChoice.equals("transgender")){
-            for (User otherUsers:userLst){
-                //user.sexualOrientation is variable recording user's sexualOrientation
-                if (otherUsers.getUserInfo("gender").equals(mainUserChoice)){res.add(otherUsers);}
+        if (currentUserChoice.equals("male")||
+                currentUserChoice.equals("female")||
+                currentUserChoice.equals("transgender")){
+            for (User otherUser:userLst){
+                //user.relationshipType is variable recording user's preferred relationshipType
+                if (otherUser.getUserInfo("gender").equals(currentUserChoice)){
+                    res.add(otherUser);
+                }
             }
             this.genderSuitFinder = res;
             return;
         }
         //the bisexual cases
-        if (mainUserChoice.equals("bisexual")){
+        else if (currentUserChoice.equals("bisexual")){
             for (User otherUsers:userLst){
                 if (otherUsers.getUserInfo("gender").equals("male")||
-                        otherUsers.getUserInfo("gender").equals("female")){res.add(otherUsers);}
+                        otherUsers.getUserInfo("gender").equals("female")){
+                    res.add(otherUsers);
+                }
             }
             this.genderSuitFinder = res;
             return;
         }
         //open case
+        else{
         for (User otherUsers:userLst){
             res.add(otherUsers);}
+        }
 
         this.genderSuitFinder = res;
     }
