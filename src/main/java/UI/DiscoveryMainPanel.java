@@ -23,6 +23,7 @@ public class DiscoveryMainPanel extends JPanel{
             optionDisplayPanel.removeAll();
             switch (e.getActionCommand()) {
                 case "Preference":
+
                     this.add(displayPage);
                     break;
                 case "Location":

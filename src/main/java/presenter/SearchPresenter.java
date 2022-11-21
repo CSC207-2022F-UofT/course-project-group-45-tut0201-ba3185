@@ -16,14 +16,12 @@ public class SearchPresenter implements SearchAskerOutputBoundary {
 
     private SearchQuestionPanelInterface panel;
 
-   public SearchPresenter(SearchQuestionPanelInterface panel, SearchAskResponseModel responseModel){
-        this.panel = panel;
+   public SearchPresenter(SearchAskResponseModel responseModel){
         this.responseModel = responseModel;
     }
 
     public void displayQuestion(){
-        // panel = new SearchQuestionPanel();
-        // responseModel = new SearchAskResponseModel();
+
         this.question = responseModel.getSearchQuestion();
         viewModel.setIncomeQuestion(question.get(0));
         viewModel.setAgeQuestion(question.get(1));
@@ -38,6 +36,7 @@ public class SearchPresenter implements SearchAskerOutputBoundary {
 
         int FRAME_WIDTH = 414;
         int FRAME_HEIGHT = 736;
+        panel = responseModel.getPanel();
         panel.update(FRAME_WIDTH,FRAME_HEIGHT, viewModel);
 
     }

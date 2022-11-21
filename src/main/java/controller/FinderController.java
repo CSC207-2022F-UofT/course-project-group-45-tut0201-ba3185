@@ -1,18 +1,19 @@
 package controller;
 
 import UI.SearchQuestionPanelInterface;
+import use_case_discovery.SearchQuestionRequestModel;
 import use_case_discovery.SearchAsker;
 import use_case_discovery.SearchAskerInputBoundary;
 
 public class FinderController {
     private int userOption;
-    // private SearchAskerInputBoundary searchAsker;
+
     SearchQuestionPanelInterface panel;
+    SearchQuestionRequestModel model;
 
     public FinderController(int userOption, SearchQuestionPanelInterface panel){
         this.userOption = userOption;
         this.panel = panel;
-        // this.searchAsker = searchAsker;
     }
 
     public void optionControl(){
@@ -24,11 +25,12 @@ public class FinderController {
 
             //case 2:
             //    LocationFinder locationFinder = new LocationFinder();
-            //    locationFinder.getNearbyUser();
+            //    locationFinder.recommendListGenerator();
             //    break;
 
             case 3:
-                SearchAskerInputBoundary searchAsker = new SearchAsker(panel);
+                model.setPanel(panel);
+                SearchAskerInputBoundary searchAsker = new SearchAsker(model);
                 searchAsker.generateQuestion();
                 break;
         }

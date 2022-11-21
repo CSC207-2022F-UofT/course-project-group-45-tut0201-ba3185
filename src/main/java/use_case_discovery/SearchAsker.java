@@ -5,17 +5,17 @@ import presenter.SearchPresenter;
 
 import java.util.ArrayList;
 
-
 public class SearchAsker implements SearchAskerInputBoundary {
-    public SearchAskerOutputBoundary presenter;
-    //private SearchPresenter;
+    private SearchAskerOutputBoundary presenter;
     private SearchAskResponseModel responseModel;
+
+    private SearchQuestionRequestModel model;
 
     private SearchQuestionPanelInterface panel;
 
-    public SearchAsker(SearchQuestionPanelInterface panel){
-        //this.presenter = presenter;
-        this.panel = panel;
+    public SearchAsker(SearchQuestionRequestModel model){
+        this.model = model;
+        this.responseModel = new SearchAskResponseModel();
     }
 
     public void generateQuestion(){
@@ -36,7 +36,9 @@ public class SearchAsker implements SearchAskerInputBoundary {
         question_list.add("Yes,No,Doesn't Care");//10
 
         responseModel.setSearchQuestion(question_list);
-        this.presenter = new SearchPresenter(panel,responseModel);
+        panel = model.getPanel();
+        responseModel.setPanel(panel);
+        this.presenter = new SearchPresenter(responseModel);
         presenter.displayQuestion();
 
     }

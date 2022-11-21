@@ -10,17 +10,11 @@ public class SearchQuestionPanel extends JPanel implements SearchQuestionPanelIn
 
     private SearchAskerViewModel viewModel;
 
-   // private FinderController controller;
-    public SearchQuestionPanel(){}
+    public SearchQuestionPanel(){this.actionListeners = new ArrayList<>();}
 
-    // public SearchAsker asker = new SearchAsker();
-
-   // private FinderController controller = new FinderController(3,asker);
 
     public void update(int width, int height, SearchAskerViewModel viewModel) {
-        // controller.optionControl();
-        // this.viewModel = new SearchAskerViewModel();
-        this.actionListeners = new ArrayList<>();
+
         this.setBackground(Color.PINK);
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.setBounds(0, 0, width,height);
