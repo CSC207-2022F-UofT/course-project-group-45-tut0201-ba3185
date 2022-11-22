@@ -1,17 +1,15 @@
 package use_case_chatScreen_test;
 
 import entity.ChatHistory;
-import entity.Message;
-import entity.MessageManagers;
+import org.junit.Test;
+import use_case_message.MessageManagers;
 import entity.User;
-import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
 import use_case_message.*;
 
 import static org.junit.jupiter.api.Assertions.assertSame;
 
-public class ChatScreenInteractorUnitTest {
+class ChatScreenInteractorUnitTest {
     @Test
     void create() {
         MessageOutputBoundary outputboundary = new MessageOutputBoundary() {

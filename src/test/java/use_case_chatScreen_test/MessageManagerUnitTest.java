@@ -1,9 +1,7 @@
-package entity;
+package use_case_chatScreen_test;
 
 import org.junit.jupiter.api.Test;
-import use_case_message.MessageManager;
-
-import java.util.ArrayList;
+import use_case_message.MessageManagers;
 
 import static org.junit.jupiter.api.Assertions.assertSame;
 
