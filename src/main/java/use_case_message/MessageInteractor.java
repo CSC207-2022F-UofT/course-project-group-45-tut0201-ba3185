@@ -4,6 +4,11 @@ import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 
 public class MessageInteractor implements MessageInputBoundary {
+    /**
+     * The interactor for chat page that processes the request model to update the
+     * chat history and creates a response model which is passed to the presenter to
+     * update the view.
+     */
     final MessageOutputBoundary messageOutputBoundary;
     final MessageManagerFactory chatFactory;
     MessageManagers messageManagers;

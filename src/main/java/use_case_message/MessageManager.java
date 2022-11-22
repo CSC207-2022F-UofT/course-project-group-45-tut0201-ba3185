@@ -4,6 +4,9 @@ package use_case_message;
 import entity.ChatHistory;
 
 public class MessageManager {
+    /**
+     * The use case that stores and updates the chat history of two users accordingly
+     */
     private final String user1;
     private final String user2;
     private ChatHistory history;

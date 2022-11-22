@@ -4,6 +4,9 @@ import java.util.LinkedHashMap;
 
 //entity layer
 public class ChatHistory {
+    /**
+     * The entity that stores the chat history of two users
+     */
     private final String user1;
     private final String user2;
     public LinkedHashMap<String, String> content;

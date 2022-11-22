@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MessageManagers {
+    /**
+     * The use case that stores all the MessageManagers in the program
+     */
     List<MessageManager> MessageManagers; //MessageManager is use case??
     public MessageManagers(){
         MessageManagers = new ArrayList<>();

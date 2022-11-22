@@ -5,6 +5,11 @@ import presenter.FrontPagePresenter;
 import java.util.ArrayList;
 
 public class FrontPageInteractor implements FrontPageInputBoundary{
+    /**
+     * The interactor for front page that processes the request model to update the
+     * prior targets (people who chatted with the user) and creates a response model
+     * which is passed to the presenter to update the view.
+     */
     final FrontPagePresenter frontPagePresenter;
     User user;
 
