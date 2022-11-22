@@ -1,8 +1,9 @@
 package use_case_discovery;
+import entity.User;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import User.User;
 
 /**
  * This class is intended to help PreferenceFinder

@@ -1,4 +1,4 @@
-package User;
+package entity;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Arrays;
@@ -8,6 +8,16 @@ import java.util.Arrays;
  */
 
 public class User implements Comparable<User> {
+    /*
+     * @param
+     * username: A String of the username of the user,
+     * name: A String of the name of the user,
+     * password: A String of the password of the user,
+     * preference: A UserPreference of the preferences of the user,
+     * location: An ArrayList of floats representing the longitude and latitude of the user,
+     * blockList: an ArrayList of users of the blocked users,
+     * userInfo: A Hashmap pairing String to Objects to contain the information of the user,
+     */
     private final String username;
     private final String name;
     private String password;
@@ -120,4 +130,3 @@ public class User implements Comparable<User> {
         return ((User) o).getUsername().equals(this.username);
     }
 }
-

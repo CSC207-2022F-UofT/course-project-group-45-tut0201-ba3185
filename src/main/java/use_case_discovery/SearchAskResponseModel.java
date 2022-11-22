@@ -1,6 +1,6 @@
 package use_case_discovery;
 
-import UI.SearchQuestionPanelInterface;
+import gui.SearchQuestionPanelInterface;
 
 import java.util.ArrayList;
 

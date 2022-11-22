@@ -1,4 +1,4 @@
-package UI;
+package gui;
 
 import use_case_discovery.DiscoveryOptionChooser;
 

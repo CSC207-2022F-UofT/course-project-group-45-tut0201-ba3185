@@ -1,7 +1,6 @@
 package use_case_discovery;
 
-import UI.SearchQuestionPanel;
-import UI.SearchQuestionPanelInterface;
+import gui.SearchQuestionPanelInterface;
 
 public class SearchQuestionRequestModel {
     private SearchQuestionPanelInterface panel;

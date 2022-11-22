@@ -1,4 +1,4 @@
-package UI;
+package gui;
 
 import controller.FinderController;
 

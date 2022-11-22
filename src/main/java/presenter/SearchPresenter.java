@@ -1,6 +1,6 @@
 package presenter;
 
-import UI.SearchQuestionPanelInterface;
+import gui.SearchQuestionPanelInterface;
 import use_case_discovery.DiscoveryOptionChooser;
 import use_case_discovery.SearchAskResponseModel;
 import use_case_discovery.SearchAskerOutputBoundary;

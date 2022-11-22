@@ -1,6 +1,6 @@
 package controller;
 
-import UI.SearchQuestionPanelInterface;
+import gui.SearchQuestionPanelInterface;
 import use_case_discovery.SearchQuestionRequestModel;
 import use_case_discovery.SearchAsker;
 import use_case_discovery.SearchAskerInputBoundary;

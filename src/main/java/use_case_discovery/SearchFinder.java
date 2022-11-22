@@ -1,6 +1,6 @@
 package use_case_discovery;
 
-import User.User;
+import entity.User;
 import presenter.DiscoveryResultPresenter;
 
 import java.util.ArrayList;
