@@ -1,5 +1,7 @@
 package UI;
 
+import use_case_discovery.DiscoveryOptionChooser;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -8,12 +10,12 @@ import java.util.ArrayList;
 public class SearchQuestionPanel extends JPanel implements SearchQuestionPanelInterface{
     private ArrayList<ActionListener> actionListeners;
 
-    private SearchAskerViewModel viewModel;
+    private DiscoveryOptionChooser.SearchAskerViewModel viewModel;
 
     public SearchQuestionPanel(){this.actionListeners = new ArrayList<>();}
 
 
-    public void update(int width, int height, SearchAskerViewModel viewModel) {
+    public void update(int width, int height, DiscoveryOptionChooser.SearchAskerViewModel viewModel) {
 
         this.setBackground(Color.PINK);
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));

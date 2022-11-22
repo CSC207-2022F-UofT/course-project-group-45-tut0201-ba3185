@@ -39,14 +39,14 @@ public class DiscoveryMainPanel extends JPanel{
             this.revalidate();
         });
 
-       // panelS.addActionListener(e -> {
-       //     panelS.removeAll();
-       //     switch (e.getActionCommand()) {
-       //         case "submit":
-       //             this.add(displayPage);
-       //     }
-       //     this.revalidate();
-       //});
+       panelS.addActionListener(e -> {
+            panelS.removeAll();
+            switch (e.getActionCommand()) {
+                case "submit":
+                    this.add(displayPage);
+            }
+            this.revalidate();
+       });
 
         this.add(optionDisplayPanel);
 

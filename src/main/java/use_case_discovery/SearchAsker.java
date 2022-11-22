@@ -39,7 +39,7 @@ public class SearchAsker implements SearchAskerInputBoundary {
         panel = model.getPanel();
         responseModel.setPanel(panel);
         this.presenter = new SearchPresenter(responseModel);
-        presenter.displayQuestion();
+        presenter.splitQuestion();
 
     }
 }

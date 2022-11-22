@@ -10,15 +10,14 @@ import java.util.ArrayList;
 public class SearchController {
     private ArrayList<Integer> userAnswer;
     private SearchFinderInputBoundary searchFinder;
+    private SearchAnswerRequestModel requestModel = new SearchAnswerRequestModel();
 
-    public SearchController(ArrayList<Integer> userAnswer, SearchFinderInputBoundary searchFinder){
+    public SearchController(ArrayList<Integer> userAnswer){
 
         this.userAnswer = userAnswer;
-        this.searchFinder = searchFinder;
     }
 
     public void matchAnswer(){
-        SearchAnswerRequestModel requestModel = new SearchAnswerRequestModel();
         requestModel.setIncomeLow(userAnswer.get(0));
         requestModel.setIncomeUp(userAnswer.get(1));
         requestModel.setAgeLow(userAnswer.get(2));
@@ -29,7 +28,13 @@ public class SearchController {
         requestModel.setPetOp(userAnswer.get(7));
     }
 
+    /**
+     * This method create a new searchFinder and calls the method
+     * to generate the list based on the answer user enters.
+     *
+     */
     public void generateRecommendation(){
+        this.searchFinder = new SearchFinder(requestModel);;
         searchFinder.recommendListGenerator();
     }
 }

@@ -1,5 +1,9 @@
 package use_case_discovery;
 
+/**
+ * This is the requestModel that stores user's answer to each question.
+ *
+ */
 public class SearchAnswerRequestModel {
     private int incomeUp;
     private int incomeLow;

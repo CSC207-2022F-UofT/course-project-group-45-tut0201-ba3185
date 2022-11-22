@@ -1,7 +1,7 @@
 package presenter;
 
-import UI.SearchAskerViewModel;
 import UI.SearchQuestionPanelInterface;
+import use_case_discovery.DiscoveryOptionChooser;
 import use_case_discovery.SearchAskResponseModel;
 import use_case_discovery.SearchAskerOutputBoundary;
 
@@ -12,7 +12,7 @@ public class SearchPresenter implements SearchAskerOutputBoundary {
 
     private ArrayList<String> question;
 
-    private SearchAskerViewModel viewModel = new SearchAskerViewModel();
+    private DiscoveryOptionChooser.SearchAskerViewModel viewModel = new DiscoveryOptionChooser.SearchAskerViewModel();
 
     private SearchQuestionPanelInterface panel;
 
@@ -20,7 +20,15 @@ public class SearchPresenter implements SearchAskerOutputBoundary {
         this.responseModel = responseModel;
     }
 
-    public void displayQuestion(){
+    /**
+     * This method get the Search Questions from the response model
+     * and split it into small question and store it into the viewModel.
+     * Then it calls the update method in the Search Asker question panel
+     * to update the view.
+     *
+     */
+
+    public void splitQuestion(){
 
         this.question = responseModel.getSearchQuestion();
         viewModel.setIncomeQuestion(question.get(0));

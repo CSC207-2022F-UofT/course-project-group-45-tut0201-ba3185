@@ -52,7 +52,6 @@ public class OptionDisplayPanel extends JPanel{
 
     }
 
-
     public void addActionListener(ActionListener a){
         if(!actionListeners.contains(a))
             actionListeners.add(a);
