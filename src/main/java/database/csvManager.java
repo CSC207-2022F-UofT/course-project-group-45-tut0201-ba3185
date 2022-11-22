@@ -32,9 +32,19 @@ public class csvManager {
             String username = String.valueOf(col[1]);
             String name = String.valueOf(col[2]);
             String password = String.valueOf(col[3]);
+            String gender = String.valueOf(col[4]);
+            int age = Integer.parseInt(String.valueOf(col[5]));
+            int income = Integer.parseInt(String.valueOf(col[6]));
+            String pet = String.valueOf(col[7]);
+            String maritalStatus = String.valueOf(col[8]);
+            String relationshipType = String.valueOf(col[9]);
+            ArrayList<Double> currentLocation = new ArrayList<>();
+            currentLocation.add(Double.parseDouble(String.valueOf(col[10])));
+            currentLocation.add(Double.parseDouble(String.valueOf(col[11])));
 
             UserRequestModel currentUser = new UserRequestModel();
-            currentUser.setInfo(username, name, password);
+            currentUser.setInfo(username, name, password, age, income, gender,relationshipType,maritalStatus,pet,
+                    currentLocation);
             userMap.put(username, currentUser);
             row = reader.readLine();
         }
@@ -50,20 +60,18 @@ public class csvManager {
             String row = reader.readLine();
             if(row != null) {
                 String[] col = row.split(",");
-                String username = String.valueOf(col[1]);
-                String name = String.valueOf(col[2]);
-                String password = String.valueOf(col[3]);
-                String gender = String.valueOf(col[4]);
-                int age = Integer.parseInt(col[5]);
-                int income = Integer.parseInt(col[6]);
-                String pet = String.valueOf(col[7]);
-                String maritalStatus = String.valueOf(col[8]);
-                String relationshipType = String.valueOf(col[9]);
-                String location = col[10];
-                String[] tmp = location.split(",");
-                ArrayList<Double> currentLocation = new ArrayList<>();
-                currentLocation.add(Double.valueOf(tmp[0]));
-                currentLocation.add(Double.valueOf(tmp[1]));
+                String username = String.valueOf(col[0]);
+                String name = String.valueOf(col[1]);
+                String password = String.valueOf(col[2]);
+                String gender = String.valueOf(col[3]);
+                int age = Integer.parseInt(col[4]);
+                int income = Integer.parseInt(col[5]);
+                String pet = String.valueOf(col[6]);
+                String maritalStatus = String.valueOf(col[7]);
+                String relationshipType = String.valueOf(col[8]);
+                ArrayList<Double> location = new ArrayList<>();
+                location.add(Double.parseDouble(col[9]));
+                location.add(Double.parseDouble(col[10]));
 
                 HashMap<String, Object> userInfo = new HashMap<>();
                 userInfo.put("gender", gender);
@@ -73,7 +81,8 @@ public class csvManager {
                 userInfo.put("maritalStatus", maritalStatus);
                 userInfo.put("relationshipType", relationshipType);
 
-                User user = new User(username, name, password, currentLocation, userInfo);
+
+                User user = new User(username, name, password, location, userInfo);
                 return user;
             }
             return null;
@@ -82,19 +91,23 @@ public class csvManager {
             throw new RuntimeException(exception);
         }
     }
+    public void writeCurrentUser(String username, String name, String password, ArrayList<Double> location,
+            HashMap<String, Object> userSetting, String path) {
+        ArrayList<String> Headers = new ArrayList<String>(Arrays.asList("username",
+                "name", "password", "gender", "age", "income", "pet", "martialStatus", "relationshipType","locationX",
+                "locationY"));
 
-    public void writeCurrentUser(UserResponseModel responseModel, String path) {
-        ArrayList<String> Headers = new ArrayList<>(Arrays.asList("username", "name", "password","gender", "age",
-                "income", "pet", "maritalStatus", "relationshipType", "location"));
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(path));
             writer.write(String.join(",", Headers));
             writer.newLine();
 
-            ArrayList<Object> userInfo = responseModel.getAllInfo();
-            String write = (userInfo.get(0)+","+userInfo.get(1)+","+userInfo.get(2)+","+userInfo.get(3)+","+
-                    userInfo.get(4)+","+userInfo.get(5)+","+userInfo.get(6)+","+userInfo.get(7)+","+
-                    userInfo.get(8)+","+userInfo.get(9));
+            String write = (username+","+name+","+password+","+
+                        userSetting.get("gender")+","+userSetting.get("age")+","+userSetting.get("income")+"," +
+                        userSetting.get("pet")+","+userSetting.get("maritalStatus")+","+
+                        userSetting.get("relationshipType")+","+location.get(0)+","+ location.get(1));
+
+
             writer.write(write);
             writer.close();
         }
@@ -105,7 +118,8 @@ public class csvManager {
 
     public void writeUser(Map<String, UserResponseModel> userMap, String path) {
         ArrayList<String> Headers = new ArrayList<String>(Arrays.asList("id", "username",
-                "name", "password"));
+                "name", "password", "gender", "age", "income", "pet", "martialStatus", "relationshipType","locationX",
+                "locationY"));
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(path));
             writer.write(String.join(",", Headers));
@@ -114,7 +128,12 @@ public class csvManager {
             for(int i = userMap.values().size()-1 ; i >=  0; i--) {
                 UserResponseModel currentUser = (UserResponseModel) userMap.values().toArray()[i];
                 ArrayList<Object> userInfo = currentUser.getInfo();
-                String write = (i+","+userInfo.get(0)+","+userInfo.get(1)+","+userInfo.get(2));
+                ArrayList<Double> location = (ArrayList<Double>) userInfo.get(3);
+                HashMap<String, Object> userSettings = (HashMap<String, Object>) userInfo.get(4);
+                String write = (i+","+userInfo.get(0)+","+userInfo.get(1)+","+userInfo.get(2)+","+
+                        userSettings.get("gender")+","+userSettings.get("age")+","+userSettings.get("income")+"," +
+                        userSettings.get("pet")+","+userSettings.get("maritalStatus")+","+
+                        userSettings.get("relationshipType")+","+location.get(0)+","+ location.get(1));
                 writer.write(write);
                 writer.newLine();
             }
