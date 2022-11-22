@@ -1,43 +1,49 @@
 package Discovery.DiscoveryUseCase;
-import User.User;
+import Discovery.DiscoveryPresenter.PreferencePresenter;
+import User.UserForTest;
+import gui.discovery_part.PreferencePanelInterface;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * PreferenceFinder help find other users that also rank the characteristics in a close way
- * 1. rankOrder ranks the characteristics from 1 to 6, where 1 is the most important and 6 is the least
- * for each characteristic that matches on the same rank order, a default point is added
- * i.e. first position the same, 6 points added; and the point descends as rank order increasing
- * 2. there's a bonus one-point mark to add for the user that has more than 2 same spots
- * and filter other users based on this order(i.e.)
- * default is to display 15 users everytime
+ * PreferenceFinder help find other users that also rank the interest
+ * in a similar way by using a scoring system
  */
 public class PreferenceFinder implements PreferenceFinderInputBoundary{
+    //TODO: fetch with User Class
+    ArrayList<String> testMainUserInterestRank = new TestUser().mainUser.getInterestRank();
+    public DiscoveryListOutputBoundary presenter;
+    private DiscoveryResponseModel DResponseModel;
+    private PreferencePanelInterface pPanel;
+    private ArrayList<String> returnUserNames;
+    ArrayList<UserForTest> afterGenderFinder = new GenderFinder().getList();
 
+    /**
+     *
+     * @param pPanel the panel that display the result of preference discovery
+     */
 
-    private DiscoveryListOutputBoundary presenter;//this is for returning the list
-
-    public PreferenceFinder(DiscoveryListOutputBoundary presenter){
-        this.presenter = presenter;
-    }
-
-    GenderFinder tempGenderFinder = new GenderFinder();
-    ArrayList<User> afterGenderFinder = tempGenderFinder.getList();
-
-    public ArrayList<String> getList(){
-        HashMap<User, Integer> scoreStorage = new HashMap<>();
-        for (User otherUser:afterGenderFinder){
-            PreferenceFinderHelper tempPreferenceFinderHelper = new PreferenceFinderHelper(otherUser);
+    public PreferenceFinder(PreferencePanelInterface pPanel){
+        this.pPanel = pPanel;
+        HashMap<UserForTest, Integer> scoreStorage = new HashMap<>();
+        for (UserForTest otherUser:afterGenderFinder){
+            PreferenceFinderHelper tempPreferenceFinderHelper = new PreferenceFinderHelper(otherUser,
+                    testMainUserInterestRank);
             scoreStorage.put(otherUser, tempPreferenceFinderHelper.getScore());
         }
-        // list of username after arranged by score from high to low
         PreferenceScoreHelper tempPreferenceScoreHelper = new PreferenceScoreHelper(scoreStorage);
-        return tempPreferenceScoreHelper.getList();
+        this.returnUserNames = tempPreferenceScoreHelper.getList();
     }
 
-    public void recommendListGenerator(){
-        presenter.displayList(0,getList());
+    @Override
+    public void recommendListGenerator() {
+        //Set up response model to store info of userNames
+        this.DResponseModel = new DiscoveryResponseModel();
+        this.DResponseModel.setUserNames(this.returnUserNames);
+        //presenter takes the panel and response model for information
+        this.presenter = new PreferencePresenter(this.pPanel, DResponseModel);
+        this.presenter.displayList();
     }
 
 }

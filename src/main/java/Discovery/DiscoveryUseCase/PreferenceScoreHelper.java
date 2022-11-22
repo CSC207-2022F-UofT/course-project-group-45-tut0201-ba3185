@@ -2,7 +2,7 @@ package Discovery.DiscoveryUseCase;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import User.User;
+import User.UserForTest;
 
 /**
  * This class is intended to help PreferenceFinder
@@ -11,14 +11,19 @@ import User.User;
  * and return a list of username(String)
  */
 public class PreferenceScoreHelper {
-    HashMap<User, Integer> scoreStorage;
+    HashMap<UserForTest, Integer> scoreStorage;
     ArrayList<Integer> totalScoreList;//to get the all the possible value of score
     ArrayList<String> totalUsername;
 
-    public PreferenceScoreHelper(HashMap<User, Integer> scoreStorage){
+    /**
+     *
+     * @param scoreStorage stores the information of user with his/hers score
+     */
+
+    public PreferenceScoreHelper(HashMap<UserForTest, Integer> scoreStorage){
         this.scoreStorage = scoreStorage;
         ArrayList<Integer> tempScoreList = new ArrayList<>();
-        for (User key:this.scoreStorage.keySet()){
+        for (UserForTest key:this.scoreStorage.keySet()){
             int tempPoint = this.scoreStorage.get(key);
             if (!tempScoreList.contains(tempPoint)){tempScoreList.add(tempPoint);}
         }
@@ -27,8 +32,8 @@ public class PreferenceScoreHelper {
 
         ArrayList<String> resTotalUsername = new ArrayList<>();
         for (int score: this.totalScoreList){
-            for (User key:this.scoreStorage.keySet()){
-                if (this.scoreStorage.get(key).equals(score)){resTotalUsername.add((String)key.getUserInfo("Username"));}
+            for (UserForTest key:this.scoreStorage.keySet()){
+                if (this.scoreStorage.get(key).equals(score)){resTotalUsername.add((String)key.getUsername());}
             }
         }
         this.totalUsername = resTotalUsername;
