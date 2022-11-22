@@ -1,8 +1,7 @@
 package use_case_discovery;
 
-
-
 import User.User;
+import presenter.DiscoveryResultPresenter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -10,7 +9,7 @@ import java.util.HashMap;
 public class SearchFinder implements SearchFinderInputBoundary {
 
     private DiscoveryListOutputBoundary presenter;
-    private ArrayList<User> searchList;
+    // private ArrayList<User> searchList;
     private SearchAnswerRequestModel requestModel;
     private String marriageState;
     private String areaOfInterest;
@@ -19,10 +18,17 @@ public class SearchFinder implements SearchFinderInputBoundary {
 
     private Boolean pet;
 
+    private int incomeLow;
+
+    private int incomeUp;
+
+
+
     //constructor with parameter
-    public SearchFinder(SearchAnswerRequestModel requestModel, DiscoveryListOutputBoundary presenter){
+    public SearchFinder(SearchAnswerRequestModel requestModel){
         this.requestModel = requestModel;
-        this.presenter = presenter;
+        incomeLow = requestModel.getIncomeLow();
+        incomeUp = requestModel.getIncomeUp();
         covertMarriageStateOP();
         convertAreaOfInterest();
         convertRelationship();
@@ -107,14 +113,18 @@ public class SearchFinder implements SearchFinderInputBoundary {
 
     ArrayList<User> userList = tempGenderFinder.genderSuitFinder;
 
+
     // helper
     public int getScore(User user){
 
         int score = 0;
-        if(requestModel.getIncomeLow() <= user.getUserInfo("income") <= requestModel.getIncomeUp()){
+        int userIncome = (int) (user.getUserInfo("income"));
+        int userAge = (int) user.getUserInfo("age");
+
+        if(incomeLow < userIncome && userIncome < incomeUp){
             score = score + 1;
         }
-        if(requestModel.getIncomeLow() <= user.getUserInfo("age") <= requestModel.getIncomeUp()){
+        if(requestModel.getIncomeLow() < userAge &&  userAge < requestModel.getIncomeUp()){
             score = score + 1;
         }
         if(marriageState.equals(user.getUserInfo("marriageState"))){
@@ -133,21 +143,20 @@ public class SearchFinder implements SearchFinderInputBoundary {
     }
 
     public void recommendListGenerator(){
+
         HashMap<User, Integer> UserListWithScore = new HashMap<User, Integer>();
 
         for(User user: userList){
-            UserListWithScore.put(User, getScore(User));
+            UserListWithScore.put(user, getScore(user));
         }
 
-
         // use the helper function and this will return a sorted list with list of username and score
-        PreferenceScoreHelper preferenceScoreHelper = new PreferenceScoreHelper(userList);
-        ArrayList<User> recommendList = preferenceScoreHelper.getList(); // return a list
+        PreferenceScoreHelper preferenceScoreHelper = new PreferenceScoreHelper(UserListWithScore);
+        ArrayList<String> recommendList = preferenceScoreHelper.getList(); // return a list
 
         //call presenter
-
+        presenter = new DiscoveryResultPresenter();
         presenter.displayList(0, recommendList);
-
 
     }
 
