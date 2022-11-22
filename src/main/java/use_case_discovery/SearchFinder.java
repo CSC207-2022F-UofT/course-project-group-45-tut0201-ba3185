@@ -9,7 +9,6 @@ import java.util.HashMap;
 public class SearchFinder implements SearchFinderInputBoundary {
 
     private DiscoveryListOutputBoundary presenter;
-    // private ArrayList<User> searchList;
     private SearchAnswerRequestModel requestModel;
     private String marriageState;
     private String areaOfInterest;
@@ -21,7 +20,6 @@ public class SearchFinder implements SearchFinderInputBoundary {
     private int incomeLow;
 
     private int incomeUp;
-
 
 
     //constructor with parameter
