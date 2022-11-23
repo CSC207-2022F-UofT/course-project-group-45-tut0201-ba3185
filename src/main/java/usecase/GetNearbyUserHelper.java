@@ -22,14 +22,16 @@ public class GetNearbyUserHelper {
         ArrayList<Double> listDistance = new ArrayList<>();
         ArrayList<String> listUsername = new ArrayList<>();
         ArrayList<Double> userLocation = currentUser.getLocation();
+        ArrayList<String> usernameList = new ArrayList<>();
         for (User u : userList) {
             double d = distance(userLocation, u.getLocation());
             UserDistance.put(u.getUsername(), d);
             listDistance.add(d);
+            usernameList.add(u.getUsername());
         }
         Collections.sort(listDistance);
         for (Double d : listDistance) {
-            for (String u : UserDistance.keySet()) {
+            for (String u : usernameList) {
                 if (!listUsername.contains(u) && d.equals(UserDistance.get(u))) {
                     listUsername.add(u);
                 }

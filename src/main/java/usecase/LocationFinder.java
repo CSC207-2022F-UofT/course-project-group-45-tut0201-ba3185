@@ -3,6 +3,7 @@ package usecase;
 import java.util.ArrayList;
 
 import Presenter.NearbyUserPresenter;
+import UI.NearbyUserInterface;
 import entity.User;
 import entity.Users;
 
@@ -14,19 +15,24 @@ public class LocationFinder implements LocationFinderInputBoundary{
     User currentUser;
     LocationFinderOutputBoundary presenter;
 
+    NearbyUserInterface panel;
+
+
     //constructor
-    public LocationFinder(){
+    public LocationFinder(NearbyUserInterface panel){
+        this.panel = panel;
         users = new Users();
         currentUser = users.getCurrentUser();
-        this.presenter = new NearbyUserPresenter();
     }
 
     GenderFinder temGenderFinder = new GenderFinder();
     ArrayList<User> userList = temGenderFinder.getList();
-
     GetNearbyUserHelper helper = new GetNearbyUserHelper(currentUser, userList);
-    LocationFinderResponseModel responseModel = new LocationFinderResponseModel(helper.getNearbyUser());
+
     public void recommendListGenerator(){
-        presenter.displayList(responseModel);
+        LocationFinderResponseModel responseModel = new LocationFinderResponseModel();
+        responseModel.setRecommendList(helper.getNearbyUser());
+        presenter = new NearbyUserPresenter(panel, responseModel);
+        presenter.displayList();
     }
 }
