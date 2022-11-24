@@ -62,4 +62,9 @@ public class UserUseCase {
         User current = manager.readCurrentUser("src/main/java/database/currentUser.csv");
         return current!=null;
     }
+
+    public void logoutUser() {
+        csvManager manager = new csvManager();
+        manager.logoutCurrentUser("src/main/java/database/currentUser.csv");
+    }
 }

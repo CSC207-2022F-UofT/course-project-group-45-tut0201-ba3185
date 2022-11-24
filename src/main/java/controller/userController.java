@@ -11,4 +11,9 @@ public class userController {
         UserUseCase useCase = new UserUseCase();
         return useCase.isUserLoggedIn();
     }
+
+    public void logoutUser() {
+        UserUseCase useCase = new UserUseCase();
+        useCase.logoutUser();
+    }
 }

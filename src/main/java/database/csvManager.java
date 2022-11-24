@@ -114,6 +114,20 @@ public class csvManager {
         }
     }
 
+    public void logoutCurrentUser(String path) {
+        ArrayList<String> Headers = new ArrayList<String>(Arrays.asList("username",
+                "name", "password", "gender", "age", "income", "pet", "martialStatus", "relationshipType","locationX",
+                "locationY"));
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(path));
+            writer.write(String.join(",", Headers));
+            writer.close();
+        }
+        catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
+    }
+
     public void writeUser(Map<String, UserResponseModel> userMap, String path) {
         ArrayList<String> Headers = new ArrayList<String>(Arrays.asList("id", "username",
                 "name", "password", "gender", "age", "income", "pet", "martialStatus", "relationshipType","locationX",
