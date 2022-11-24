@@ -39,6 +39,12 @@ public class MainFrame extends JFrame implements MainFrameInterface {
         this.revalidate();
     }
 
+    public void switchToInitialSetting(String username, String name, String password) {
+        this.getContentPane().removeAll();
+        this.add(new InitialSettingPageUI(this, username,name,password));
+        this.revalidate();
+    }
+
     public void switchToSignup() {
         this.getContentPane().removeAll();
         SignupPageUI signupPageUI = new SignupPageUI(this);
