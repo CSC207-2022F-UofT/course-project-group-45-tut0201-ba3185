@@ -1,5 +1,4 @@
-package Discovery.DiscoveryUseCase;
-import User.Users;
+package use_case.discovery;
 import User.UserForTest;
 
 import java.util.ArrayList;
@@ -17,6 +16,8 @@ import java.util.ArrayList;
 
 public class GenderFinder {
     // TODO: need to fetch with User
+    //csvManager manager = new csvManager();
+    //manager.read
     TestUser testUser = new TestUser();
     ArrayList<UserForTest> genderSuitFinder;//list to store the user after GenderFinder
     UserForTest mainUser = testUser.getMainUser(); //to get the main user's sexualOrientation
@@ -45,8 +46,7 @@ public class GenderFinder {
             return;
         }
         //open case
-            for (UserForTest otherUsers:otherUsersList){
-                res.add(otherUsers);}
+        res.addAll(otherUsersList);
             this.genderSuitFinder = res;
         }
     public ArrayList<UserForTest> getList(){return this.genderSuitFinder;}

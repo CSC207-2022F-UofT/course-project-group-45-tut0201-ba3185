@@ -1,20 +1,20 @@
-package Discovery.DiscoveryUseCase;
+package use_case.discovery;
 import User.UserForTest;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This class is intended to help PreferenceFinder
  * by comparing the InterestRank and return the score of each user
  * based on how matched two users are
  */
-public class PreferenceFinderHelper {
+public class PreferenceScoreCalculator {
     Integer score;
     //TODO: fetch with user
-    ArrayList<String> testMainUserInterestRank;
+    List<String> testMainUserInterestRank;
 
-    public PreferenceFinderHelper(UserForTest otherUser,
-                                  ArrayList<String> testMainUserInterestRank){
+    public PreferenceScoreCalculator(UserForTest otherUser,
+                                     List<String> testMainUserInterestRank){
         this.testMainUserInterestRank = testMainUserInterestRank;
         int resScore = 0;//to record the score of the users
         int sameCount = 0; //to record the number of spot that are the same for both users
@@ -31,7 +31,6 @@ public class PreferenceFinderHelper {
         if (sameCount > 2){resScore++;}
         this.score = resScore;
     }
-
     public int getScore(){
         return this.score;
     }

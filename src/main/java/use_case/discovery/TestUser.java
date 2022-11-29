@@ -1,4 +1,4 @@
-package Discovery.DiscoveryUseCase;
+package use_case.discovery;
 
 import User.UserForTest;
 
