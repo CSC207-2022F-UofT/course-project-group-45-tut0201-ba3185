@@ -1,6 +1,6 @@
 package gui;
-import gui.discovery_part.OptionPanel;
-import gui.discovery_part.UsersBtnPanel;
+import gui.discovery.OptionPanel;
+import gui.discovery.UsersBtnPanel;
 import use_case.discovery.DiscoveryInputBoundary;
 import controller.DiscoveryController;
 import use_case.discovery.PreferenceInteractor;
