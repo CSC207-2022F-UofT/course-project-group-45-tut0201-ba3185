@@ -2,6 +2,7 @@ package presenter;
 
 // Use case layer
 
+<<<<<<< HEAD
 import use_case_message.MessageOutputBoundary;
 import use_case_message.MessageResponseModel;
 import use_case_message.MessageViewModel;
@@ -48,4 +49,10 @@ public class MessagePresenter implements MessageOutputBoundary {
             return new MessageViewModel(messages);   //this is when we click sendButton on ChatScreen.
         }
     }
+=======
+import use_case_chat.MessageResponseModel;
+
+public interface MessagePresenter {
+    MessageResponseModel prepareSuccessView(MessageResponseModel backMsg);
+>>>>>>> main
 }
