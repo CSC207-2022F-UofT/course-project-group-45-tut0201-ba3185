@@ -1,7 +1,11 @@
 package use_case_blocklist;
 
+import entity.User;
+
 public interface BlockListOutputBoundary {
 
-    String displayResult(String username);
+    String displayResult(User user);
+
+
 
 }

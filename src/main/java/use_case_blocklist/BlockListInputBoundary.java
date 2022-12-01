@@ -1,9 +1,11 @@
 package use_case_blocklist;
 
+import entity.User;
+
 public interface BlockListInputBoundary {
-    void addBlockList(String username);
+    void addBlockList(User user);
 
-    void removeBlockList(String username);
+    void removeBlockList(User user);
 
-    boolean checkBlockList(String username);
+    boolean checkBlockList(User user);
 }

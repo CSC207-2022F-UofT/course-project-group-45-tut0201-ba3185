@@ -10,16 +10,16 @@ public class BlockListController {
         this.blockListInoutBoundary = blockListInoutBoundary;
     }
 
-    public void addBlockList(String username){  // trigger by UI
-        blockListInoutBoundary.addBlockList(username);
+    public void addBlockList(User user){  // trigger by UI
+        blockListInoutBoundary.addBlockList(user);
     }
 
-    public void removeBlockList(String username){  // trigger by UI
-        blockListInoutBoundary.removeBlockList(username);
+    public void removeBlockList(User user){  // trigger by UI
+        blockListInoutBoundary.removeBlockList(user);
     }
 
-    public void checkBlockList(String username){  // trigger by UI
-        blockListInoutBoundary.checkBlockList(username);
+    public void checkBlockList(User user){  // trigger by UI
+        blockListInoutBoundary.checkBlockList(user);
     }
 
 
