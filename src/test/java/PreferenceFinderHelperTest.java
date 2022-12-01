@@ -1,5 +1,5 @@
 
-import Discovery.DiscoveryUseCase.PreferenceFinderHelper;
+import use_case.discovery.PreferenceScoreCalculator;
 import User.UserForTest;
 import org.junit.Before;
 import org.junit.Test;
@@ -52,27 +52,27 @@ public class PreferenceFinderHelperTest {
     }
     @Test
     public void allSameCaseTest() {
-        PreferenceFinderHelper pfh = new PreferenceFinderHelper(user1, mainUserInterestRank);
+        PreferenceScoreCalculator pfh = new PreferenceScoreCalculator(user1, mainUserInterestRank);
         Assertions.assertEquals(22, pfh.getScore());
     }
     @Test
     public void allDifferentCaseTest() {
-        PreferenceFinderHelper pfh = new PreferenceFinderHelper(user2, mainUserInterestRank);
+        PreferenceScoreCalculator pfh = new PreferenceScoreCalculator(user2, mainUserInterestRank);
         Assertions.assertEquals(0, pfh.getScore());
     }
     @Test
     public void MoreThanTwoCaseTest() {
-        PreferenceFinderHelper pfh = new PreferenceFinderHelper(user3, mainUserInterestRank);
+        PreferenceScoreCalculator pfh = new PreferenceScoreCalculator(user3, mainUserInterestRank);
         Assertions.assertEquals(13, pfh.getScore());
     }
     @Test
     public void WithOneCaseTest() {
-        PreferenceFinderHelper pfh = new PreferenceFinderHelper(user4, mainUserInterestRank);
+        PreferenceScoreCalculator pfh = new PreferenceScoreCalculator(user4, mainUserInterestRank);
         Assertions.assertEquals(6, pfh.getScore());
     }
     @Test
     public void WithTwoCaseTest() {
-        PreferenceFinderHelper pfh = new PreferenceFinderHelper(user5, mainUserInterestRank);
+        PreferenceScoreCalculator pfh = new PreferenceScoreCalculator(user5, mainUserInterestRank);
         Assertions.assertEquals(7, pfh.getScore());
     }
 

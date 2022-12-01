@@ -8,7 +8,7 @@ import java.util.List;
  * by comparing the InterestRank and return the score of each user
  * based on how matched two users are
  */
-public class PreferenceScoreCalculator {
+public class PreferenceScoreCalculator implements ScoreCalculator{
     Integer score;
     //TODO: fetch with user
     List<String> testMainUserInterestRank;

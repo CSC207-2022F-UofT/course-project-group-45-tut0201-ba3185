@@ -1,4 +1,4 @@
-package gui.discovery_part;
+package gui.discovery;
 
 import gui.MainFrame;
 

@@ -1,4 +1,4 @@
-package use_case_signin_signup;
+package use_case.signin_signup;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -1,4 +1,4 @@
-package use_case_signin_signup;
+package use_case.signin_signup;
 
 import database.csvManager;
 import entity.User;

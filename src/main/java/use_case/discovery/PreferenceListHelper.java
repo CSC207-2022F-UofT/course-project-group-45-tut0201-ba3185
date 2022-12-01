@@ -15,8 +15,8 @@ public class PreferenceListHelper {
     public PreferenceListHelper(){
         Map<UserForTest, Integer> scoreStorage = new HashMap<>();
         for (UserForTest otherUser:afterGenderFinder){
-            PreferenceScoreCalculator tempPreferenceFinderHelper = new PreferenceScoreCalculator(otherUser, testMainUserInterestRank);
-            scoreStorage.put(otherUser, tempPreferenceFinderHelper.getScore());
+            ScoreCalculator scoreCalculator = new PreferenceScoreCalculator(otherUser, testMainUserInterestRank);
+            scoreStorage.put(otherUser, scoreCalculator.getScore());
         }
         ScoreHelper tempPreferenceScoreHelper = new ScoreHelper(scoreStorage);
         this.returnUserNames = tempPreferenceScoreHelper.getList();

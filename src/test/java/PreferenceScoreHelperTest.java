@@ -1,5 +1,5 @@
 
-import Discovery.DiscoveryUseCase.PreferenceScoreHelper;
+import use_case.discovery.ScoreHelper;
 import org.junit.Before;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -48,7 +48,7 @@ class PreferenceScoreHelperTest {
         res.add(user1.getUsername());
         res.add(user5.getUsername());
         res.add(user6.getUsername());
-        PreferenceScoreHelper psh = new PreferenceScoreHelper(scoreStorage);
+        ScoreHelper psh = new ScoreHelper(scoreStorage);
         Assertions.assertEquals(res, psh.getList());
     }
 
@@ -62,7 +62,7 @@ class PreferenceScoreHelperTest {
         res.add(user1.getUsername());
         res.add(user3.getUsername());
         res.add(user4.getUsername());
-        PreferenceScoreHelper psh = new PreferenceScoreHelper(scoreStorage);
+        ScoreHelper psh = new ScoreHelper(scoreStorage);
         Assertions.assertEquals(res, psh.getList());
     }
 
@@ -76,7 +76,7 @@ class PreferenceScoreHelperTest {
         res.add(user2.getUsername());
         res.add(user1.getUsername());
         res.add(user4.getUsername());
-        PreferenceScoreHelper psh = new PreferenceScoreHelper(scoreStorage);
+        ScoreHelper psh = new ScoreHelper(scoreStorage);
         Assertions.assertEquals(res, psh.getList());
     }
 
