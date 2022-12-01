@@ -9,15 +9,13 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ChatScreen extends JPanel implements ActionListener {
+public class ChatScreen extends JPanel implements ActionListener,ChatScreenInterface{
     JButton sendButton;
     String userid;
     String messageValue; //get this from input Box
     String targetUserId; // get this from messageDisplayBox
-    //User user;
     JTextField textField;
     MessageController controller;
-    MessageViewModel messageViewModel;
     JPanel messageDisplaybox;
     final int PAGE_W = 414;
     final int PAGE_H = 736;
@@ -46,13 +44,7 @@ public class ChatScreen extends JPanel implements ActionListener {
         messageDisplaybox.setPreferredSize(new Dimension(400, 300));
         messageDisplaybox.setLayout(new GridLayout(0, 1));
 
-        //controller.create(userid, targetUserId);
-
-
-        for (String i : messageViewModel.getMessages()){
-            JLabel msgValue = new JLabel(i, SwingConstants.LEFT);
-            messageDisplaybox.add(msgValue);
-        }                                            //load chatHistory into messageDisplaybox
+        controller.create(targetUserId);
 
         JScrollPane pane = new JScrollPane(messageDisplaybox, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         pane.setPreferredSize(new Dimension(400,300));
@@ -77,13 +69,14 @@ public class ChatScreen extends JPanel implements ActionListener {
         return chatScreen;
 
     }
-
     @Override
     public void actionPerformed(ActionEvent e) {
         messageValue = textField.getText();
+        controller.create(targetUserId, messageValue);
+    }
 
-
-        //requestthis.controller.create(targetUserId, user, messageValue);
-
+    public void loadChat(String msg){
+        JLabel msgValue = new JLabel(msg, SwingConstants.LEFT);
+        messageDisplaybox.add(msgValue);
     }
 }

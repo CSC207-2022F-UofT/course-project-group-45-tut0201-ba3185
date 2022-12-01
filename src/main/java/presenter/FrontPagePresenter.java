@@ -1,5 +1,7 @@
 package presenter;
 
+import gui.MainFrame;
+import gui.FrontPagePanel;
 import use_case_frontpage.FrontPageOutputBoundary;
 import use_case_frontpage.FrontPageResponseModel;
 

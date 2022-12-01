@@ -1,6 +1,9 @@
 package gui;
+import screens.ChatScreen;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class FrontPagePanel extends JPanel implements ActionListener {
     int page_h;
