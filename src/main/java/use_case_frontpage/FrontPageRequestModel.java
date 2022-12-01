@@ -1,5 +1,6 @@
 package use_case_frontpage;
 
+import database.csvManager;
 import entity.User;
 
 public class FrontPageRequestModel {
@@ -11,7 +12,7 @@ public class FrontPageRequestModel {
     private final String target;
 
     public FrontPageRequestModel(User user, String target){
-        this.user = user;
+        this.user = csvManager.readCurrentUser("src/main/java/database/currentUser.csv");
         this.target = target;
     }
 

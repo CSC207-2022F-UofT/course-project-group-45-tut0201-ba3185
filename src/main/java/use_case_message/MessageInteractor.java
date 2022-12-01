@@ -1,5 +1,7 @@
 package use_case_message;
 
+import presenter.MessagePresenter;
+
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 
@@ -21,7 +23,7 @@ public class MessageInteractor implements MessageInputBoundary {
     }
 
     @Override
-    public MessageResponseModel create(MessageRequestModel requestModel) {
+    public void create(MessageRequestModel requestModel) {
         String user1 = requestModel.getUserString();
         String user2 = requestModel.getTarget();
         MessageManager mm;
@@ -37,12 +39,15 @@ public class MessageInteractor implements MessageInputBoundary {
         SimpleDateFormat now = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         String msg = requestModel.getMsg();
-        if(msg != null){
+        if(msg != null){ // if the message is not null, update it onto the screen
             mm.SaveChatHistory(now.format(timestamp), user1, msg); //record the new message
+            MessageResponseModel messageResponseModel = new MessageResponseModel(mm.getChatHistory());
+
+            messageOutputBoundary.update(messageResponseModel);
         }
 
+        // if the message is null, load all chat history
         MessageResponseModel messageResponseModel = new MessageResponseModel(mm.getChatHistory());
-
-        return messageResponseModel;
+        messageOutputBoundary.create(messageResponseModel);
     }
 }

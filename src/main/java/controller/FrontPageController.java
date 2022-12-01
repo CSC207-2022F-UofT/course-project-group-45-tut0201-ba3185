@@ -1,11 +1,8 @@
-package screens;
+package controller;
 
 public class FrontPageController {
-<<<<<<< HEAD
     /**
      * Requires future implementation
      */
-=======
->>>>>>> main
 
 }

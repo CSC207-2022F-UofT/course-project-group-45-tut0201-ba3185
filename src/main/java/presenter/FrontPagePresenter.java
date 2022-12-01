@@ -2,7 +2,6 @@ package presenter;
 
 import use_case_frontpage.FrontPageOutputBoundary;
 import use_case_frontpage.FrontPageResponseModel;
-import use_case_frontpage.FrontPageViewModel;
 
 import java.util.ArrayList;
 
@@ -15,9 +14,13 @@ public class FrontPagePresenter implements FrontPageOutputBoundary {
      *                      through outputBoundary to the presenter
      * @return the view model that is passed to the view for the result to be shown
      */
-    @Override
-    public FrontPageViewModel create(FrontPageResponseModel responseModel){
+    public void create(FrontPageResponseModel responseModel){
         ArrayList<String> targetIdList = responseModel.getTargetUsers();
-        return new FrontPageViewModel(targetIdList);
+
+        FrontPagePanel frontPage = new FrontPagePanel();
+        for (String i : targetIdList) {
+            frontPage.loadUser(i);
+        }
+        frontPage.createFrontPageScreen();
     }
 }

@@ -1,7 +1,5 @@
 package use_case_message;
 
-import use_case_message.MessageManager;
-
 import java.util.ArrayList;
 import java.util.List;
 

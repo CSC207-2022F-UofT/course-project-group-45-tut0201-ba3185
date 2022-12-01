@@ -2,5 +2,6 @@ package use_case_message;
 
 //interface adapter layer
 public interface MessageOutputBoundary {
-    MessageViewModel create(MessageResponseModel responseModel);
+    void create(MessageResponseModel responseModel);
+    void update(MessageResponseModel responseModel);
 }

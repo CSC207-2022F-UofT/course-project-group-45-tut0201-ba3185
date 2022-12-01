@@ -1,5 +1,6 @@
 package use_case_message;
 
+import database.csvManager;
 import entity.User;
 
 public class MessageRequestModel {
@@ -11,14 +12,14 @@ public class MessageRequestModel {
     private final String target;
     private final String msg;
 
-    public MessageRequestModel(User user, String target){
-        this.user = user;
+    public MessageRequestModel(String target){
+        this.user = csvManager.readCurrentUser("src/main/java/database/currentUser.csv");
         this.target = target;
         this.msg = null;
     }
 
-    public MessageRequestModel(User user, String target, Object msg){
-        this.user = user;
+    public MessageRequestModel(String target, Object msg){
+        this.user = csvManager.readCurrentUser("src/main/java/database/currentUser.csv");
         this.target = target;
         if(msg instanceof String){
             this.msg = (String) msg;

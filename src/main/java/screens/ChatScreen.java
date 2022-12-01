@@ -2,8 +2,7 @@ package screens;
 
 //import controller.StrengthCheckerUIControl;
 
-import use_case_message.MessageOutputBoundary;
-import use_case_message.MessageViewModel;
+import controller.MessageController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -28,15 +27,12 @@ public class ChatScreen extends JPanel implements ActionListener {
      */
     public ChatScreen(String targetUserId){
         this.controller = new MessageController();
-        //this.messageViewModel = messageViewmodel;
         this.targetUserId = targetUserId;
-        //this.userId = userId;
         this.sendButton = new JButton();
         this.textField = new JTextField();
     }
 
-
-    public JPanel updateChatScreen(MessageViewModel messageViewModel) {
+    public JPanel create() {
 
         JPanel chatScreen = new JPanel();             //initialize our chatScreen
         chatScreen.setLayout(new BorderLayout());

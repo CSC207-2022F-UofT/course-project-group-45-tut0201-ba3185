@@ -37,27 +37,26 @@ public class User implements Comparable<User> {
         this.blockList = new ArrayList<String>();
         this.userInfo = new HashMap<String, Object>();
         this.interestRank = new ArrayList<String>(Arrays.asList("age", "areaOfInterest", "income", "maritalStatus", "pet", "relationshipType"));
-<<<<<<< HEAD
         this.userChatted = new ArrayList<String>();
-=======
->>>>>>> main
     }
 
     // case when user decide to give you location data
-    public User(String user, String name, String password, ArrayList<Double> loc) {
-        this.username = user;
+    public User(String username, String name, String password, ArrayList<Double> location,
+                HashMap<String, Object> userInfo) {
+        this.username = username;
         this.name = name;
         this.password = password;
-        // implement default preference later
-        this.location = loc;
-        this.blockList = new ArrayList<String>();
-        this.userInfo = new HashMap<String, Object>();
-        this.interestRank = new ArrayList<String>(Arrays.asList("age", "areaOfInterest", "income", "maritalStatus", "pet", "relationshipType"));
+        this.location = location;
+        this.userInfo = userInfo;
     }
 
     // Getter functions
     public String getUsername() {
         return this.username;
+    }
+    
+    public String getName() {
+        return this.name;
     }
 
     public ArrayList<Double> getLocation() {
@@ -83,13 +82,10 @@ public class User implements Comparable<User> {
         return this.password;
     }
 
-<<<<<<< HEAD
     public ArrayList<String> getUserChatted() {
         return userChatted;
     }
 
-=======
->>>>>>> main
     // Setter functions
 
     public boolean setPassword(String pass) {
@@ -110,21 +106,17 @@ public class User implements Comparable<User> {
     public void setUserInfo(String key, Object obj) {
         this.userInfo.put(key, obj);
     }
-<<<<<<< HEAD
 
-=======
->>>>>>> main
     public void setInterestRank(ArrayList<String> lst) {
         this.interestRank = lst;
     }
 
-<<<<<<< HEAD
+
     public void addUserChatted(String target){
         this.userChatted.add(target);
     }
 
-=======
->>>>>>> main
+
     @Override
     public int compareTo(User o) {
         return Integer.compare(o.hashCode(), this.hashCode());
