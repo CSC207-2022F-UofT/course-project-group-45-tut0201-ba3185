@@ -32,7 +32,7 @@ and it provides the block function if the user hates someone as well.
 7. To use block feature
 
 
-/////////////////////////////Template below//////////////////////////
+////////////////////////////Template below//////////////////////////
 
 **If your team has trouble with any of these steps, please ask on Piazza. For example, with how GitHub Classroom works, your team *may* not have permissions to do some of the first few steps, in which case we'll post alternative instructions as needed.**
 
