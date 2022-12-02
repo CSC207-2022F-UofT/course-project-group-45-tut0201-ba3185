@@ -1,7 +1,6 @@
 package controller;
 import database.csvManager;
 import use_case_signin_signup.UserRequestModel;
-import use_case_signin_signup.UserResponseModel;
 import use_case_signin_signup.UserUseCase;
 
 import java.io.IOException;
