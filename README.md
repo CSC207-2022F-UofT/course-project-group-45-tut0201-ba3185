@@ -11,7 +11,7 @@ and it provides the block function if the user hates someone as well.
 * User can fill in a simple questionnaire to provides their personal information that they feel comfortable to share with
 * Use can use discovery to explore other users
   * _By preference_ is to look for others that share a similar perspective on the importance of characteristics
-  * _By search_ asks user to fill the specific range of characteristics that he/she is looking for
+  * _By search_ asks user to fill the specific range/option of characteristics that he/she is looking for
   * _By location_ is to look for others that are close to the user's location
 * User can use chat function to communicate with other users, and the chat history is displayed in the chat window
 * User can play the two lies and a truth game with other users
@@ -24,7 +24,8 @@ and it provides the block function if the user hates someone as well.
 4. To use discovery feature:
    * click the discovery button(the magnifier icon) on the navigation panel at the bottom,
    and it will bring you to the page of discovery with three buttons indicating different discovery methods
-   *  after clicking one of the method button, a yellow panel will pop up 15 buttons with other users' name on it
+   * For search option, a list will be generated and needed to be answer.
+   * after clicking one of the method button or submit the answer, a yellow panel will pop up 15 buttons with other users' name on it
    * click the button with username allows you to browse the user's info
    * the user info page also comes with chat button and block button
 5. To use chat feature
