@@ -10,4 +10,4 @@ public class ChatHistoryUnitTest {
         assertSame("alyssa_my_li", chatHistory.getUser1());
         assertSame("jennifer_xxx", chatHistory.getUser2());
     }
-}
+} 
