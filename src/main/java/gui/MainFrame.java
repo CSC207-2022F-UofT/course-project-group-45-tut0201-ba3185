@@ -1,6 +1,9 @@
 package gui;
 import javax.swing.*;
 import controller.userController;
+import gui.LoginPageUI;
+
+import java.awt.*;
 
 public class MainFrame extends JFrame implements MainFrameInterface {
 

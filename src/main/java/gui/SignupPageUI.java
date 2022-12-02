@@ -4,7 +4,10 @@ import controller.SignupPageController;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import static javax.swing.SpringLayout.*;
 
@@ -15,6 +18,8 @@ public class SignupPageUI extends JPanel {
     public SignupPageUI(MainFrameInterface frame) {
         // Setup basic Frame structure
         this.setSize(PAGE_WIDTH, PAGE_HEIGHT);
+        // this.setResizable(false);
+        // this.getContentPane().setLayout(new BoxLayout(this.getContentPane(), BoxLayout.PAGE_AXIS));
         JPanel parentPanel = new JPanel(new SpringLayout());
         parentPanel.setPreferredSize(new Dimension(PAGE_WIDTH,PAGE_HEIGHT));
         SpringLayout parentLayout = (SpringLayout) parentPanel.getLayout();
@@ -159,5 +164,6 @@ public class SignupPageUI extends JPanel {
         });
 
         this.add(parentPanel);
+        // this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }
