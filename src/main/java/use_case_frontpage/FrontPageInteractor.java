@@ -1,5 +1,6 @@
 package use_case_frontpage;
 
+import database.csvManager;
 import entity.User;
 import presenter.FrontPagePresenter;
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ public class FrontPageInteractor implements FrontPageInputBoundary{
 
     @Override
     public void create(FrontPageRequestModel requestModel) {
-        User user = requestModel.getUser();
+        User user = csvManager.readCurrentUser("src/main/java/database/currentUser.csv");
         String target = requestModel.getTarget();
 
         ArrayList<String> userTargetList = user.getUserChatted();

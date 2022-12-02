@@ -1,5 +1,6 @@
 package use_case_message;
 
+import database.csvManager;
 import presenter.MessagePresenter;
 
 import java.sql.Timestamp;
@@ -24,7 +25,7 @@ public class MessageInteractor implements MessageInputBoundary {
 
     @Override
     public void create(MessageRequestModel requestModel) {
-        String user1 = requestModel.getUserString();
+        String user1 = csvManager.readCurrentUser("src/main/java/database/currentUser.csv").toString();
         String user2 = requestModel.getTarget();
         MessageManager mm;
 
