@@ -1,114 +1,149 @@
 package gui;
 
-import use_case_discovery.DiscoveryOptionChooser;
+import controller.DiscoveryController;
+import controller.SearchController;
+import use_case_discovery.*;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.List;
 
-public class SearchQuestionPanel extends JPanel implements SearchQuestionPanelInterface{
+public class SearchQuestionPanel extends JPanel implements SearchQuestionPresenter {
+
+    public static final int PAGE_WIDTH = 414;
+    public static final int PAGE_HEIGHT = 736;
+    public static int flag = 0;
+    public static List<Integer> answerList = new ArrayList<Integer>();
+
     private ArrayList<ActionListener> actionListeners;
-
-    private DiscoveryOptionChooser.SearchAskerViewModel viewModel;
 
     public SearchQuestionPanel(){this.actionListeners = new ArrayList<>();}
 
 
-    public void update(int width, int height, DiscoveryOptionChooser.SearchAskerViewModel viewModel) {
+
+
+    public void update(SearchAskResponseModel sResponseModel) {
 
         this.setBackground(Color.PINK);
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        this.setBounds(0, 0, width,height);
+        this.setBounds(0, 0, PAGE_WIDTH * 9 /10,PAGE_HEIGHT * 9 /10);
 
-        JLabel questionTitle = new JLabel();
-        questionTitle.setBounds(20, 20, 160, 20);
-        questionTitle.setText(viewModel.getIncomeQuestion());
-        this.add(questionTitle);
+        JLabel incomeQuestionLabel = new JLabel();
+        incomeQuestionLabel.setBounds(20, 20, 160, 20);
+        incomeQuestionLabel.setText(sResponseModel.getIncomeQuestion());
+        this.add(incomeQuestionLabel);
 
-        TextField textFieldLow = new TextField();
-        textFieldLow.setBounds(40, 80, 50, 20);
-        //textFieldLow.setBackground(Color.cyan);
-        this.add(textFieldLow);
+        TextField incomeLowTextField = new TextField();
+        incomeLowTextField.setBounds(40, 80, 50, 20);
+        this.add(incomeLowTextField);
 
         JLabel connect = new JLabel();
         connect.setText("to");
         connect.setBounds(93, 80, 10, 10);
         this.add(connect);
 
-        TextField textFieldHigh = new TextField();
-        textFieldHigh.setBounds(120, 80, 50, 20);
-        this.add(textFieldHigh);
+        TextField incomeHighTextField = new TextField();
+        incomeHighTextField.setBounds(120, 80, 50, 20);
+        this.add(incomeHighTextField);
 
 
         // question 2
 
-        JLabel questionTitle2 = new JLabel();
-        questionTitle2.setBounds(40, 70, 160, 20);
-        questionTitle2.setText(viewModel.getAgeQuestion());
-        this.add(questionTitle2);
+        JLabel ageQuestionLabel = new JLabel();
+        ageQuestionLabel.setBounds(40, 70, 160, 20);
+        ageQuestionLabel.setText(sResponseModel.getAgeQuestion());
+        this.add(ageQuestionLabel);
 
-        TextField textField2Low = new TextField();
-        textField2Low.setBounds(20, 95, 50, 20);
-        this.add(textField2Low);
+        TextField ageLowTextField = new TextField();
+        ageLowTextField.setBounds(20, 95, 50, 20);
+        this.add(ageLowTextField);
 
         JLabel connectM = new JLabel();
         connectM.setText("to");
         connectM.setBounds(73, 95, 10, 10);
         this.add(connectM);
 
-        TextField textField2High = new TextField();
-        textField2High.setBounds(85, 95, 50, 20);
-        this.add(textField2High);
-        JLabel marriageQuestion = new JLabel(viewModel.getMarriageQuestion());
+        TextField ageHighTextField = new TextField();
+        ageHighTextField.setBounds(85, 95, 50, 20);
+        this.add(ageHighTextField);
+
+        JLabel marriageQuestion = new JLabel(sResponseModel.getMarriageQuestion());
         marriageQuestion.setBounds(10, 10, 100, 20);
         this.add(marriageQuestion);
 
-        String marriageOption[] = viewModel.getMarriageOption();
+        String marriageOption[] = sResponseModel.getMarriageOption();
         JComboBox marriageComboBox = new JComboBox(marriageOption);
         marriageComboBox.setBounds(20,30,20, 40);
         this.add(marriageComboBox);
 
-        JLabel hobbyQuestion = new JLabel(viewModel.getHobbyQuestion());
+        JLabel hobbyQuestion = new JLabel(sResponseModel.getHobbyQuestion());
         hobbyQuestion.setBounds(10, 70, 100, 20);
         this.add(hobbyQuestion);
-        String sportOption[] = viewModel.getHobbyOption();
-        JComboBox sportComboBox = new JComboBox(sportOption);
-        sportComboBox.setBounds(20,80,20, 40);
-        this.add(sportComboBox);
+
+        String hobbyOption[] = sResponseModel.getHobbyOption();
+        JComboBox hobbyComboBox = new JComboBox(hobbyOption);
+        hobbyComboBox.setBounds(20,80,20, 40);
+        this.add(hobbyComboBox);
 
 
-        JLabel relationshipQuestion = new JLabel(viewModel.getRelationshipQuestion());
+        JLabel relationshipQuestion = new JLabel(sResponseModel.getRelationshipQuestion());
         relationshipQuestion.setBounds(10, 130, 100, 20);
         this.add(relationshipQuestion);
-        String relationshipOption[] = viewModel.getRelationshipOption();
+        String relationshipOption[] = sResponseModel.getRelationshipOption();
         JComboBox relationshipComboBox = new JComboBox(relationshipOption);
         relationshipComboBox.setBounds(20,155,20, 40);
         this.add(relationshipComboBox);
 
-        JLabel petOptionQuestion = new JLabel(viewModel.getPetQuestion());
+        JLabel petOptionQuestion = new JLabel(sResponseModel.getPetQuestion());
         petOptionQuestion.setBounds(10, 200, 100, 20);
         this.add(petOptionQuestion);
-        String petOption[] = viewModel.getPetOption();
+
+        String petOption[] = sResponseModel.getPetOption();
         JComboBox petOptionComboBox = new JComboBox(petOption);
         petOptionComboBox.setBounds(20,230,20, 40);
         this.add(petOptionComboBox);
 
 
-        Button submitButton = new Button(70, height, 20,
-                20, "submit");
+        JButton submitButton = new JButton();
+        submitButton.setText("submit");
+        submitButton.setBounds(70,PAGE_HEIGHT * 9 /10, 20, 20);
         submitButton.setActionCommand("submit");
+
+        // answerList = null;
+        // flag = 0;
         submitButton.addActionListener(e -> {
-            for(ActionListener listener: actionListeners){
-                listener.actionPerformed(e);
-            }
+
+
+            int incomeLow = Integer.parseInt(incomeLowTextField.getText());
+
+            answerList.add(incomeLow);
+            int incomeHigh = Integer.parseInt((incomeHighTextField.getText()));
+            answerList.add(incomeHigh);
+            int ageLow = Integer.parseInt(ageLowTextField.getText());
+            answerList.add(ageLow);
+            int ageHigh = Integer.parseInt((ageHighTextField.getText()));
+            answerList.add(ageHigh);
+            int marriageOp = marriageComboBox.getSelectedIndex();
+            answerList.add(marriageOp);
+            int hobbyOp = hobbyComboBox.getSelectedIndex();
+            answerList.add(hobbyOp);
+            int relationshipOp = relationshipComboBox.getSelectedIndex();
+            answerList.add(relationshipOp);
+            int petOp = petOptionComboBox.getSelectedIndex();
+            answerList.add(petOp);
+
+            flag = 1;
+            System.out.println("done save");
+            this.setVisible(false);
+            // DisplayPage displayPage = new DisplayPage("Search");
+            // flag = displayPage.updatePageSearch(answerList);
+
         });
         this.add(submitButton);
 
     }
-    public void addActionListener(ActionListener a){
-        if(!actionListeners.contains(a))
-            actionListeners.add(a);
-    }
+
 
 }

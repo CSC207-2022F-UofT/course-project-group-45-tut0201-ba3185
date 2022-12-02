@@ -1,54 +1,50 @@
 package gui;
 
-import controller.FinderController;
+import controller.DiscoveryController;
+import use_case_discovery.DiscoveryInputBoundary;
+import use_case_discovery.SearchAskerInteractor;
 
 import javax.swing.*;
 
 public class DiscoveryMainPanel extends JPanel{
+    public static final int PAGE_WIDTH = 414;
+    public static final int PAGE_HEIGHT = 736;
+    // public DiscoveryPanel panel = new DiscoveryPanel();
 
-    private SearchQuestionPanel panelS;
 
-
-    public DiscoveryMainPanel(int width, int height){
-        this.setBounds(0,0,width, height);
+    public DiscoveryMainPanel(){
+        this.setBounds(0,0,PAGE_WIDTH, PAGE_HEIGHT);
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
-        DisplayPage displayPage = new DisplayPage(width,height);
-
-        panelS = new SearchQuestionPanel();
-
-
-        OptionDisplayPanel optionDisplayPanel = new OptionDisplayPanel(width, height);
+        OptionPanel optionDisplayPanel = new OptionPanel();
         optionDisplayPanel.addActionListener(e -> {
-            optionDisplayPanel.removeAll();
+            // optionDisplayPanel.removeAll();
             switch (e.getActionCommand()) {
-                case "Preference":
-
-                    this.add(displayPage);
+                case "preference":
+                    DisplayPage preferenceDisplayPage = new DisplayPage("Preference");
+                    preferenceDisplayPage.updatePage();
+                    // this.add();
+                    //panel.switchToDisplay(preferenceDisplayPage);
+                    // panel.switchToDisplay();
                     break;
-                case "Location":
-                    this.add(displayPage);
+                case "nearby":
+                    DisplayPage locationDisplayPage = new DisplayPage("Location");
+                    locationDisplayPage.updatePage();
+                    this.add(locationDisplayPage);
+                    // panel.switchToDisplay(preferenceDisplayPage);
+                    // panel.switchToDisplay();
                     break;
-                case "Search":
-                   // SearchAsker asker = new SearchAsker();
-                    FinderController controller = new FinderController(3,panelS);
-                    controller.optionControl();
+                case "search":
+                    SearchQuestionPanel panelS = new SearchQuestionPanel();
+                    DiscoveryInputBoundary interactor = new SearchAskerInteractor(panelS);
+                    DiscoveryController controller = new DiscoveryController(interactor);
+                    controller.trigger();
+                    // panel.switchToQuestion(panelS);
                     this.add(panelS);
                     break;
             }
             this.revalidate();
         });
-
-       panelS.addActionListener(e -> {
-            panelS.removeAll();
-            switch (e.getActionCommand()) {
-                case "submit":
-                    this.add(displayPage);
-            }
-            this.revalidate();
-       });
-
         this.add(optionDisplayPanel);
-
     }
 }

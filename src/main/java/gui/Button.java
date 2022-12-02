@@ -2,20 +2,25 @@ package gui;
 
 import javax.swing.*;
 
-public class Button extends JButton {
+public class Button {
+    JButton button;
 
     /**
-     * This method generate a button with given text and size.
-     * @param boundX the x position of the button
-     * @param boundY the y position of the button
-     * @param boundWidth the width of the button
-     * @param boundHeight the height of the button
-     * @param text  the text on the button
      *
+     * @param btnName the name of button
      */
+    public Button(String btnName){
+        button = new JButton(btnName);
+        button.setOpaque(false);
+        button.setContentAreaFilled(false);
+        button.setFocusPainted(false);
+        button.setActionCommand("userInfo");
+    }
 
-    public Button(int boundX, int boundY, int boundWidth, int boundHeight, String text) {
-        this.setBounds(boundX, boundY, boundWidth, boundHeight);
-        this.setText(text);
+
+    public JButton getButton() {
+        return button;
     }
 }
+
+

@@ -1,9 +1,7 @@
 package use_case_discovery;
 import entity.User;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
+import java.util.*;
 
 /**
  * This class is intended to help PreferenceFinder
@@ -11,14 +9,16 @@ import java.util.HashMap;
  * arranged them in descending order,
  * and return a list of username(String)
  */
-public class PreferenceScoreHelper {
-    HashMap<User, Integer> scoreStorage;
-    ArrayList<Integer> totalScoreList;//to get the all the possible value of score
-    ArrayList<String> totalUsername;
+public class ScoreHelper {
+    Map<User, Integer> scoreStorage;
+    List<Integer> totalScoreList;//to get the all the possible value of score
+    List<String> totalUsername;
 
-    public PreferenceScoreHelper(HashMap<User, Integer> scoreStorage){
+
+    public ScoreHelper(Map<User, Integer> scoreStorage){
         this.scoreStorage = scoreStorage;
-        ArrayList<Integer> tempScoreList = new ArrayList<>();
+        this.scoreStorage = scoreStorage;
+        List<Integer> tempScoreList = new ArrayList<>();
         for (User key:this.scoreStorage.keySet()){
             int tempPoint = this.scoreStorage.get(key);
             if (!tempScoreList.contains(tempPoint)){tempScoreList.add(tempPoint);}
@@ -26,16 +26,17 @@ public class PreferenceScoreHelper {
         tempScoreList.sort(Collections.reverseOrder());
         this.totalScoreList = tempScoreList;//now this.totalScoreList is in descending order
 
-        ArrayList<String> resTotalUsername = new ArrayList<>();
+        List<String> resTotalUsername = new ArrayList<>();
         for (int score: this.totalScoreList){
             for (User key:this.scoreStorage.keySet()){
-                if (this.scoreStorage.get(key).equals(score)){resTotalUsername.add((String)key.getUserInfo("Username"));}
+                if (this.scoreStorage.get(key).equals(score)){resTotalUsername.add(key.getUsername());}
             }
         }
         this.totalUsername = resTotalUsername;
     }
 
-    public ArrayList<String> getList(){
+    public List<String> getList(){
         return this.totalUsername;
     }
+
 }

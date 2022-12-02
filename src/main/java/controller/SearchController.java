@@ -1,20 +1,22 @@
 package controller;
 
+import gui.DiscoveryPanel;
+import use_case_discovery.DiscoveryListPresenter;
 import use_case_discovery.SearchAnswerRequestModel;
-import use_case_discovery.SearchAsker;
-import use_case_discovery.SearchFinder;
-import use_case_discovery.SearchFinderInputBoundary;
+import use_case_discovery.SearchInteractor;
+import use_case_discovery.SearchInputBoundary;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class SearchController {
-    private ArrayList<Integer> userAnswer;
-    private SearchFinderInputBoundary searchFinder;
+    private List<Integer> userAnswer;
     private SearchAnswerRequestModel requestModel = new SearchAnswerRequestModel();
+    private SearchInputBoundary interactor;
 
-    public SearchController(ArrayList<Integer> userAnswer){
-
+    public SearchController(List<Integer> userAnswer, SearchInputBoundary interactor){
         this.userAnswer = userAnswer;
+        this.interactor = interactor;
     }
 
     public void matchAnswer(){
@@ -29,12 +31,11 @@ public class SearchController {
     }
 
     /**
-     * This method create a new searchFinder and calls the method
+     * This method create a new searchInteractor and calls the method
      * to generate the list based on the answer user enters.
      *
      */
     public void generateRecommendation(){
-        this.searchFinder = new SearchFinder(requestModel);;
-        searchFinder.recommendListGenerator();
+        interactor.recommendListGenerator(requestModel);
     }
 }
