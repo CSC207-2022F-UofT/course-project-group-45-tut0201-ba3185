@@ -11,14 +11,14 @@ import java.util.HashMap;
 public class SigninPageController {
     public boolean userExist(String username) throws IOException {
         csvManager manager = new csvManager();
-        HashMap<String, UserRequestModel> userMap = manager.readUser("src/main/java/database/user.csv");
+        HashMap<String, UserRequestModel> userMap = manager.readUser();
         UserUseCase usecase = new UserUseCase(userMap);
         return usecase.userExists(username);
     }
 
     public boolean matchingPassword(String username, String password) throws IOException {
         csvManager manager = new csvManager();
-        HashMap<String, UserRequestModel> userMap = manager.readUser("src/main/java/database/user.csv");
+        HashMap<String, UserRequestModel> userMap = manager.readUser();
         UserUseCase usecase = new UserUseCase(userMap);
         String userPassword = usecase.getUserPassword(username);
         if(userPassword!=null) {
@@ -29,11 +29,10 @@ public class SigninPageController {
 
     public void setCurrentUser(String username) throws IOException {
         csvManager manager = new csvManager();
-        HashMap<String, UserRequestModel> userMap = manager.readUser("src/main/java/database/user.csv");
+        HashMap<String, UserRequestModel> userMap = manager.readUser();
         UserRequestModel requestModel = userMap.get(username);
         manager.writeCurrentUser((String) requestModel.getInfo().get(0), (String) requestModel.getInfo().get(1),
                 (String) requestModel.getInfo().get(2), (ArrayList<Double>) requestModel.getInfo().get(3),
-                (HashMap<String, Object>) requestModel.getInfo().get(4),
-                "src/main/java/database/currentUser.csv");
+                (HashMap<String, Object>) requestModel.getInfo().get(4));
     }
 }
