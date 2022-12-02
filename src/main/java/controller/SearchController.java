@@ -1,12 +1,8 @@
 package controller;
 
-import gui.DiscoveryPanel;
-import use_case_discovery.DiscoveryListPresenter;
 import use_case_discovery.SearchAnswerRequestModel;
-import use_case_discovery.SearchInteractor;
 import use_case_discovery.SearchInputBoundary;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class SearchController {
@@ -17,18 +13,24 @@ public class SearchController {
     public SearchController(List<Integer> userAnswer, SearchInputBoundary interactor){
         this.userAnswer = userAnswer;
         this.interactor = interactor;
+        requestModel.setIncomeLow(this.userAnswer.get(0));
+        System.out.println(requestModel.getIncomeLow());
+        requestModel.setIncomeUp(this.userAnswer.get(1));
+        System.out.println(requestModel.getIncomeUp());
+        requestModel.setAgeLow(this.userAnswer.get(2));
+        System.out.println(requestModel.getAgeLow());
+        requestModel.setAgeUp(this.userAnswer.get(3));
+        System.out.println(requestModel.getAgeUp());
+        requestModel.setMarriageStateOP(this.userAnswer.get(4));
+        System.out.println(requestModel.getMarriageStateOP());
+        requestModel.setAreaOfInterestOp(this.userAnswer.get(5));
+        System.out.println(requestModel.getAreaOfInterestOp());
+        requestModel.setRelationshipOp(this.userAnswer.get(6));
+        System.out.println(requestModel.getRelationshipOp());
+        requestModel.setPetOp(this.userAnswer.get(7));
+        System.out.println(requestModel.getPetOp());
     }
 
-    public void matchAnswer(){
-        requestModel.setIncomeLow(userAnswer.get(0));
-        requestModel.setIncomeUp(userAnswer.get(1));
-        requestModel.setAgeLow(userAnswer.get(2));
-        requestModel.setAgeUp(userAnswer.get(3));
-        requestModel.setMarriageStateOP(userAnswer.get(4));
-        requestModel.setAreaOfInterestOp(userAnswer.get(5));
-        requestModel.setRelationshipOp(userAnswer.get(6));
-        requestModel.setPetOp(userAnswer.get(7));
-    }
 
     /**
      * This method create a new searchInteractor and calls the method
@@ -36,6 +38,6 @@ public class SearchController {
      *
      */
     public void generateRecommendation(){
-        interactor.recommendListGenerator(requestModel);
+        this.interactor.recommendListGenerator(requestModel);
     }
 }

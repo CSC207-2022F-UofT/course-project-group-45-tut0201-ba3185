@@ -1,4 +1,4 @@
-package User;
+package use_case_discovery;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -30,7 +30,8 @@ public class UserForTest implements Comparable<UserForTest> {
 
     // case when user does not give location data
     public UserForTest(String user, String name, String password,
-                       String gender, String sexualOrientation) {
+                       String gender, String sexualOrientation, int income, int age, boolean pet, String
+                       relationshipType, String marriageState, String areaOfInterest) {
         this.sexualOrientation = sexualOrientation;
         this.gender = gender;
         this.username = user;
@@ -40,7 +41,14 @@ public class UserForTest implements Comparable<UserForTest> {
         this.location = null;
         this.blockList = new ArrayList<String>();
         this.userInfo = new HashMap<String, Object>();
-        this.interestRank = new ArrayList<String>(Arrays.asList("age", "areaOfInterest", "income", "maritalStatus", "pet", "relationshipType"));
+        userInfo.put("income", income);
+        userInfo.put("age", age);
+        userInfo.put("pet", pet);
+        userInfo.put("marriageState", marriageState);
+        userInfo.put("relationship", relationshipType);
+        userInfo.put("areaOfInterest", areaOfInterest);
+
+        // this.interestRank = new ArrayList<String>(Arrays.asList("age", "areaOfInterest", "income", "maritalStatus", "pet", "relationshipType"));
     }
 
     // case when user decide to give you location data
@@ -62,6 +70,9 @@ public class UserForTest implements Comparable<UserForTest> {
     public String getGender(){return this.gender;}
     public String getSexualOrientation(){return this.sexualOrientation;}
 
+    public HashMap<String, Object> getUserInfo() {
+        return userInfo;
+    }
 
     public ArrayList<String> getBlockList() {
         return this.blockList;

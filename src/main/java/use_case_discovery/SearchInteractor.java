@@ -4,14 +4,12 @@ import java.util.List;
 
 public class SearchInteractor implements SearchInputBoundary {
 
-    // private DiscoveryListOutputBoundary presenter;
     private final DiscoveryListPresenter pPanel;
 
     // private SearchAnswerRequestModel model;
     public SearchInteractor(DiscoveryListPresenter pPanel){
         this.pPanel = pPanel;
     }
-
 
 
     public void recommendListGenerator(SearchAnswerRequestModel model){
@@ -22,6 +20,7 @@ public class SearchInteractor implements SearchInputBoundary {
        //     UserListWithScore.put(user, getScore(user));
        // }
         // create the list of recommended user
+        System.out.println(model.getIncomeLow() + "interator");
         SearchListHelper listHelper = new SearchListHelper(model);
         List recommendList = listHelper.getList();
         //create a response model for the user

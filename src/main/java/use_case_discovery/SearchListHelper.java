@@ -13,27 +13,36 @@ import java.util.Map;
 public class SearchListHelper {
     private SearchAnswerRequestModel model;
     private List<String> recommendedList;
-    private List<User> userList;
+    // private List<User> userList;
+    private List<UserForTest> userList;
     private Map<String, String> answerList;
+
 
 
     public SearchListHelper(SearchAnswerRequestModel model){
         this.model = model;
+        System.out.println(model.getIncomeLow() + "helper");
         GenderFinder tempGenderFinder = new GenderFinder();
-        userList = tempGenderFinder.genderSuitFinder;
+        this.userList = tempGenderFinder.genderSuitFinder;
 
-        SearchAnswerConverter converter = new SearchAnswerConverter(model);
-        answerList = converter.getAnswer();
     }
 
     public void generateList(){
-        Map<User, Integer> UserListWithScore = new HashMap<>();
+        SearchAnswerConverter converter = new SearchAnswerConverter(model);
+        answerList = converter.getAnswer();
+
         SearchScoreCalculator scoreCalculator = new SearchScoreCalculator(answerList);
-        for(User user: userList){
-            scoreCalculator.calculateScore(user);
-            UserListWithScore.put(user, scoreCalculator.getScore());
+        //for(User user: userList){
+        Map<UserForTest, Integer> userListWithScore = new HashMap<>();
+
+        for(UserForTest otherUser:userList){
+            //scoreCalculator.calculateScore(user);
+            //UserListWithScore.put(user, scoreCalculator.getScore());
+            scoreCalculator.calculateScore(otherUser);
+            userListWithScore.put(otherUser,scoreCalculator.getScore() );
+
         }
-        ScoreHelper scoreHelper = new ScoreHelper(UserListWithScore);
+        ScoreHelper scoreHelper = new ScoreHelper(userListWithScore);
         this. recommendedList = scoreHelper.getList(); // get the sorted list using the helper
 
     }

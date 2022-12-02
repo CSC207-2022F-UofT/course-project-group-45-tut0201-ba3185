@@ -16,6 +16,7 @@ public class SearchQuestionPanel extends JPanel implements SearchQuestionPresent
     public static final int PAGE_HEIGHT = 736;
     public static int flag = 0;
     public static List<Integer> answerList = new ArrayList<Integer>();
+    // public static DisplayPage displayPage;
 
     private ArrayList<ActionListener> actionListeners;
 
@@ -137,7 +138,25 @@ public class SearchQuestionPanel extends JPanel implements SearchQuestionPresent
             flag = 1;
             System.out.println("done save");
             this.setVisible(false);
-            // DisplayPage displayPage = new DisplayPage("Search");
+            this.removeAll();
+
+            UsersBtnPanel usersBtnPanel = new UsersBtnPanel();
+            SearchInputBoundary searchInteractor = new SearchInteractor(usersBtnPanel);
+            SearchController controller = new SearchController(answerList, searchInteractor);
+            // controller.matchAnswer();
+            controller.generateRecommendation();
+            //this.add(new JLabel("display"));
+            this.add(usersBtnPanel);
+            this.revalidate();
+            this.setVisible(true);
+
+
+
+            //DisplayPage displayPage = new DisplayPage("Search");
+            //UsersBtnPanel panelP = displayPage.updatePageSearch(answerList);
+            // this.add(panelP);
+            //this.setVisible(true);
+            // displayPage = new DisplayPage("Search",answerList);
             // flag = displayPage.updatePageSearch(answerList);
 
         });

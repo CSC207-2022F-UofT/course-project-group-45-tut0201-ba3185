@@ -10,16 +10,16 @@ import java.util.*;
  * and return a list of username(String)
  */
 public class ScoreHelper {
-    Map<User, Integer> scoreStorage;
+    Map<UserForTest, Integer> scoreStorage;
     List<Integer> totalScoreList;//to get the all the possible value of score
     List<String> totalUsername;
 
 
-    public ScoreHelper(Map<User, Integer> scoreStorage){
+    public ScoreHelper(Map<UserForTest, Integer> scoreStorage){
         this.scoreStorage = scoreStorage;
         this.scoreStorage = scoreStorage;
         List<Integer> tempScoreList = new ArrayList<>();
-        for (User key:this.scoreStorage.keySet()){
+        for (UserForTest key:this.scoreStorage.keySet()){
             int tempPoint = this.scoreStorage.get(key);
             if (!tempScoreList.contains(tempPoint)){tempScoreList.add(tempPoint);}
         }
@@ -28,7 +28,7 @@ public class ScoreHelper {
 
         List<String> resTotalUsername = new ArrayList<>();
         for (int score: this.totalScoreList){
-            for (User key:this.scoreStorage.keySet()){
+            for (UserForTest key:this.scoreStorage.keySet()){
                 if (this.scoreStorage.get(key).equals(score)){resTotalUsername.add(key.getUsername());}
             }
         }

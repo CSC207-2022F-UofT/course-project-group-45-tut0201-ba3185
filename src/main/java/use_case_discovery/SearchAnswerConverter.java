@@ -1,5 +1,6 @@
 package use_case_discovery;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -26,7 +27,12 @@ public class SearchAnswerConverter {
     //constructor with parameter
     public SearchAnswerConverter(SearchAnswerRequestModel requestModel){
         this.requestModel = requestModel;
+        System.out.println(requestModel.getIncomeLow() + "converter");
+        answerList = new HashMap<>();
+        store();
 
+    }
+    public void store(){
         incomeLow = requestModel.getIncomeLow();
         answerList.put("incomeLow", incomeLow.toString());
         incomeUp = requestModel.getIncomeUp();
@@ -34,7 +40,7 @@ public class SearchAnswerConverter {
         covertMarriageStateOP();
 
         ageLow = requestModel.getAgeLow();
-        answerList.put("ageUp = requestModel.getIncomeUp();", incomeLow.toString());
+        answerList.put("ageLow", ageLow.toString());
         ageUp = requestModel.getAgeUp();
         answerList.put("ageUp", ageUp.toString());
 
@@ -46,6 +52,7 @@ public class SearchAnswerConverter {
         answerList.put("relationship",relationship);
         convertPet();
         answerList.put("pet",pet.toString());
+
     }
 
     public void covertMarriageStateOP() {
