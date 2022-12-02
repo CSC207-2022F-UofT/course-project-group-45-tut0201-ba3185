@@ -27,33 +27,23 @@ public class User implements Comparable<User> {
     private ArrayList<String> interestRank;
     private ArrayList<String> userChatted;
 
-    // case when user does not give location data
-    public User(String user, String name, String password) {
-        this.username = user;
+    // case when user decide to give you everything
+    public User(String username, String name, String password, ArrayList<Double> location,
+                HashMap<String, Object> userInfo) {
+        this.username = username;
         this.name = name;
         this.password = password;
-        // implement default preference later
-        this.location = null;
-        this.blockList = new ArrayList<String>();
-        this.userInfo = new HashMap<String, Object>();
-        this.interestRank = new ArrayList<String>(Arrays.asList("age", "areaOfInterest", "income", "maritalStatus", "pet", "relationshipType"));
-    }
-
-    // case when user decide to give you location data
-    public User(String user, String name, String password, ArrayList<Double> loc) {
-        this.username = user;
-        this.name = name;
-        this.password = password;
-        // implement default preference later
-        this.location = loc;
-        this.blockList = new ArrayList<String>();
-        this.userInfo = new HashMap<String, Object>();
-        this.interestRank = new ArrayList<String>(Arrays.asList("age", "areaOfInterest", "income", "maritalStatus", "pet", "relationshipType"));
+        this.location = location;
+        this.userInfo = userInfo;
     }
 
     // Getter functions
     public String getUsername() {
         return this.username;
+    }
+
+    public String getName() {
+        return this.name;
     }
 
     public ArrayList<Double> getLocation() {
