@@ -39,6 +39,7 @@ public class User implements Comparable<User> {
      */
     public User(String username, String name, String password, List<Double> location,
                 Map<String, Object> userInfo) {
+
         this.username = username;
         this.name = name;
         this.password = password;
