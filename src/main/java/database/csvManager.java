@@ -13,7 +13,7 @@ import java.util.Map;
 public class csvManager {
 
     private final String userPath = "src/main/java/database/user.csv";
-    private final String currentUserPath = "src/main/java/database/currentUser.csv";
+    private static final String currentUserPath = "src/main/java/database/currentUser.csv";
 
     public HashMap<String, UserRequestModel> readUser() throws IOException {
         /**
@@ -55,7 +55,7 @@ public class csvManager {
         return userMap;
     }
 
-    public User readCurrentUser() {
+    public static User readCurrentUser() {
         try {
             File csv = new File(currentUserPath);
             BufferedReader reader = new BufferedReader(new FileReader(csv));

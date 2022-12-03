@@ -25,7 +25,7 @@ public class MessageInteractor implements MessageInputBoundary {
 
     @Override
     public void create(MessageRequestModel requestModel) {
-        String user1 = csvManager.readCurrentUser("src/main/java/database/currentUser.csv").toString();
+        String user1 = csvManager.readCurrentUser().toString();
         String user2 = requestModel.getTarget();
         MessageManager mm;
 

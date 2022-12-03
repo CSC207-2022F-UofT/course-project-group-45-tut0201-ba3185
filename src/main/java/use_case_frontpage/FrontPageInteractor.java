@@ -19,7 +19,7 @@ public class FrontPageInteractor implements FrontPageInputBoundary{
 
     @Override
     public void create(FrontPageRequestModel requestModel) {
-        User user = csvManager.readCurrentUser("src/main/java/database/currentUser.csv");
+        User user = csvManager.readCurrentUser();
         String target = requestModel.getTarget();
 
         ArrayList<String> userTargetList = user.getUserChatted();
