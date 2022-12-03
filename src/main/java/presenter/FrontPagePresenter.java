@@ -1,6 +1,5 @@
 package presenter;
 
-import gui.MainFrame;
 import gui.FrontPagePanel;
 import use_case_frontpage.FrontPageOutputBoundary;
 import use_case_frontpage.FrontPageResponseModel;
@@ -13,8 +12,8 @@ public class FrontPagePresenter implements FrontPageOutputBoundary {
      * to UI to show the user the updates of their prior chat targets on the front page.
      *
      * @param responseModel the response model created by the interactor and passed
-     *                      through outputBoundary to the presenter
-     * @return the view model that is passed to the view for the result to be shown
+     *                      through outputBoundary to the presenter to show all chatted
+     *                      users
      */
     public void create(FrontPageResponseModel responseModel){
         ArrayList<String> targetIdList = responseModel.getTargetUsers();

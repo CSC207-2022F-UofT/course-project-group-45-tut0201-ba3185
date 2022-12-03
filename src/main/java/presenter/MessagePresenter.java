@@ -1,7 +1,5 @@
 package presenter;
 
-// Use case layer
-
 import screens.ChatScreenInterface;
 import use_case_message.MessageOutputBoundary;
 import use_case_message.MessageResponseModel;
@@ -11,8 +9,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * The presenter that implements the OutputBoundary to return the view model
- * to UI to show the user their updated chatting information on the chat page.
+ * The presenter that implements the OutputBoundary and updates the chat history on the chat page.
  */
 public class MessagePresenter implements MessageOutputBoundary {
     final ChatScreenInterface cs;

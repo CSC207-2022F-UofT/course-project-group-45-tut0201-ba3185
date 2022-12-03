@@ -1,7 +1,6 @@
 package use_case_message;
 
 import database.csvManager;
-import presenter.MessagePresenter;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
@@ -10,7 +9,7 @@ public class MessageInteractor implements MessageInputBoundary {
     /**
      * The interactor for chat page that processes the request model to update the
      * chat history and creates a response model which is passed to the presenter to
-     * update the view.
+     * update the view (load the message).
      */
     final MessageOutputBoundary messageOutputBoundary;
     final MessageManagerFactory chatFactory;
@@ -35,6 +34,7 @@ public class MessageInteractor implements MessageInputBoundary {
         }
         else{
             mm = chatFactory.create(user1, user2);
+            messageManagers.addMM(mm);
         }
 
         SimpleDateFormat now = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

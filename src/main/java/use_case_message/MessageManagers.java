@@ -2,6 +2,7 @@ package use_case_message;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class MessageManagers {
     /**
@@ -22,8 +23,8 @@ public class MessageManagers {
 
     public MessageManager find(String user1, String user2){
         for (MessageManager mm : MessageManagers){
-            if ((mm.getUser1() == user1 && mm.getUser2() == user2) ||
-                    (mm.getUser2() == user1 && mm.getUser1() == user2)){
+            if ((Objects.equals(mm.getUser1(), user1) && Objects.equals(mm.getUser2(), user2)) ||
+                    (Objects.equals(mm.getUser2(), user1) && Objects.equals(mm.getUser1(), user2))){
                 return mm;
             }
         }

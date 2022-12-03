@@ -12,12 +12,10 @@ public class MessageController {
      * input boundary
      */
     public MessageRequestModel create(String target){
-        MessageRequestModel requestModel = new MessageRequestModel(target);
-        return requestModel;
+        return new MessageRequestModel(target);
     }
 
     public MessageRequestModel create(String target, String msgValue){
-        MessageRequestModel requestModel = new MessageRequestModel(target, msgValue);
-        return requestModel;
+        return new MessageRequestModel(target, msgValue);
     }
 }

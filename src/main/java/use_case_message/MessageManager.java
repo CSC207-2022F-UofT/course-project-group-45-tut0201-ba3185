@@ -5,7 +5,7 @@ import entity.ChatHistory;
 
 public class MessageManager {
     /**
-     * The use case that stores and updates the chat history of two users accordingly
+     * The use case that stores and updates the chat history between two users accordingly
      */
     private final String user1;
     private final String user2;
@@ -16,9 +16,9 @@ public class MessageManager {
         this.user2 = user2;
         this.history = new ChatHistory(user1, user2);
     }
-    public void TriggerBlocklistManager(){
-
-    }
+//    public void TriggerBlocklistManager(){
+//
+//    }
 
     public String getUser1() {
         return user1;
