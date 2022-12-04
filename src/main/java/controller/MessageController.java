@@ -13,13 +13,13 @@ public class MessageController {
     public MessageController(MessageInputBoundary messageInputBoundary){
         this.messageInputBoundary = messageInputBoundary;
     }
-    public MessageRequestModel create(String target){
-        MessageRequestModel messageRequestModel = new MessageRequestModel(target)
+    public void create(String target){
+        MessageRequestModel messageRequestModel = new MessageRequestModel(target);
         this.messageInputBoundary.create(messageRequestModel);
     }
 
-    public MessageRequestModel create(String target, String msgValue){
-        MessageRequestModel messageRequestModel = new MessageRequestModel(target, msgValue)
+    public void create(String target, String msgValue){
+        MessageRequestModel messageRequestModel = new MessageRequestModel(target, msgValue);
         this.messageInputBoundary.create(messageRequestModel);
     }
 }
