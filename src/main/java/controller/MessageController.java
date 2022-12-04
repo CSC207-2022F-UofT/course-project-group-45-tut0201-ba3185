@@ -1,21 +1,25 @@
 package controller;
 
+import use_case_message.MessageInputBoundary;
 import use_case_message.MessageRequestModel;
 
 public class MessageController {
     /**
      * The controller of message that converts the request of sending a new message
-     * or loading chat history into a request model and passes it to the interactor.
+     * or loading chat history into a request model and passes it to the interactor
      *
-     * @param target the target user who the user wants to talk to
-     * @return the request model that will be passed to the interactor through
-     * input boundary
      */
+    final MessageInputBoundary messageInputBoundary;
+    public MessageController(MessageInputBoundary messageInputBoundary){
+        this.messageInputBoundary = messageInputBoundary;
+    }
     public MessageRequestModel create(String target){
-        return new MessageRequestModel(target);
+        MessageRequestModel messageRequestModel = new MessageRequestModel(target)
+        this.messageInputBoundary.create(messageRequestModel);
     }
 
     public MessageRequestModel create(String target, String msgValue){
-        return new MessageRequestModel(target, msgValue);
+        MessageRequestModel messageRequestModel = new MessageRequestModel(target, msgValue)
+        this.messageInputBoundary.create(messageRequestModel);
     }
 }
