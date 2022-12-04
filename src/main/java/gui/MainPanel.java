@@ -20,7 +20,7 @@ public class MainPanel extends JPanel {
                     contentPanel.add(new HomePanel());
                     break;
                 case "discoveryButton":
-                    contentPanel.add(new DiscoveryPanelTest());
+                    contentPanel.add(new DiscoveryPanel());
                     break;
                 case "gameButton":
                     contentPanel.add(new GamePanel());

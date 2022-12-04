@@ -1,20 +1,18 @@
 package gui;
 
 import controller.DiscoveryController;
-import controller.SearchController;
 import use_case_discovery.*;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.List;
 
 /*
 To display the panel for discovery
  */
-public class DiscoveryPanelTest extends JPanel {
+public class DiscoveryPanel extends JPanel {
     private UsersBtnPanel panelP;
 
-    public DiscoveryPanelTest() {
+    public DiscoveryPanel() {
         this.setLayout(null);
         this.setLayout(new FlowLayout(FlowLayout.CENTER));
         this.setBackground(Color.pink);

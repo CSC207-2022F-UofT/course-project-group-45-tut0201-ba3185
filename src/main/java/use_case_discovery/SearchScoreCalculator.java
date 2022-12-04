@@ -16,8 +16,9 @@ public class SearchScoreCalculator implements ScoreCalculator{
     }
 
     // public void calculateScore(User user){
-    public void calculateScore(UserForTest user){
-        HashMap<String, Object> userInfo = user.getUserInfo();
+    public void calculateScore(UserForTest user1){
+        System.out.println(user1.getUsername());
+        HashMap<String, Object> userInfo = user1.getUserInfo();
         int userIncome = (int) userInfo.get("income");
         int userAge = (int) userInfo.get("age");
         int incomeLow = Integer.parseInt(searchAnswers.get("incomeLow"));

@@ -37,16 +37,15 @@ public class UserForTest implements Comparable<UserForTest> {
         this.username = user;
         this.name = name;
         this.password = password;
-        // implement default preference later
         this.location = null;
         this.blockList = new ArrayList<String>();
         this.userInfo = new HashMap<String, Object>();
-        userInfo.put("income", income);
-        userInfo.put("age", age);
-        userInfo.put("pet", pet);
-        userInfo.put("marriageState", marriageState);
-        userInfo.put("relationship", relationshipType);
-        userInfo.put("areaOfInterest", areaOfInterest);
+        this.userInfo.put("income", income);
+        this.userInfo.put("age", age);
+        this.userInfo.put("pet", pet);
+        this.userInfo.put("marriageState", marriageState);
+        this.userInfo.put("relationship", relationshipType);
+        this.userInfo.put("areaOfInterest", areaOfInterest);
 
         // this.interestRank = new ArrayList<String>(Arrays.asList("age", "areaOfInterest", "income", "maritalStatus", "pet", "relationshipType"));
     }
@@ -59,7 +58,7 @@ public class UserForTest implements Comparable<UserForTest> {
         // implement default preference later
         this.location = loc;
         this.blockList = new ArrayList<String>();
-        this.userInfo = new HashMap<String, Object>();
+        //this.userInfo = new HashMap<String, Object>();
         this.interestRank = new ArrayList<String>(Arrays.asList("age", "areaOfInterest", "income", "maritalStatus", "pet", "relationshipType"));
     }
 
@@ -71,7 +70,7 @@ public class UserForTest implements Comparable<UserForTest> {
     public String getSexualOrientation(){return this.sexualOrientation;}
 
     public HashMap<String, Object> getUserInfo() {
-        return userInfo;
+        return this.userInfo;
     }
 
     public ArrayList<String> getBlockList() {

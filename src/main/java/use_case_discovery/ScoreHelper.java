@@ -17,7 +17,6 @@ public class ScoreHelper {
 
     public ScoreHelper(Map<UserForTest, Integer> scoreStorage){
         this.scoreStorage = scoreStorage;
-        this.scoreStorage = scoreStorage;
         List<Integer> tempScoreList = new ArrayList<>();
         for (UserForTest key:this.scoreStorage.keySet()){
             int tempPoint = this.scoreStorage.get(key);
