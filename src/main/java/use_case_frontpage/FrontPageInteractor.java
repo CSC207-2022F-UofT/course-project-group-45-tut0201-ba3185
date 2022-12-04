@@ -23,8 +23,8 @@ public class FrontPageInteractor implements FrontPageInputBoundary{
 
         ArrayList<String> userTargetList = user.getUserChatted();
 
-        // add the target in user if it is a new target
-        if (!userTargetList.contains(target)){
+        // add the target in user if there is a new target
+        if (target != null && !userTargetList.contains(target)){
             user.addUserChatted(target);
         }
 

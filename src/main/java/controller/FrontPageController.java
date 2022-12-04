@@ -14,6 +14,12 @@ public class FrontPageController {
     public FrontPageController(FrontPageInputBoundary frontPageInputBoundary){
         this.frontPageInputBoundary = frontPageInputBoundary;
     }
+
+    public void create(){
+        FrontPageRequestModel frontPageRequestModel = new FrontPageRequestModel();
+        this.frontPageInputBoundary.create(frontPageRequestModel);
+    }
+
     public void create(String target){
         FrontPageRequestModel frontPageRequestModel = new FrontPageRequestModel(target);
         this.frontPageInputBoundary.create(frontPageRequestModel);

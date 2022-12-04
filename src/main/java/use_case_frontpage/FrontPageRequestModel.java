@@ -8,6 +8,10 @@ public class FrontPageRequestModel {
      */
     private final String target;
 
+    public FrontPageRequestModel(){
+        this.target = null;
+    }
+
     public FrontPageRequestModel(String target){
         this.target = target;
     }
