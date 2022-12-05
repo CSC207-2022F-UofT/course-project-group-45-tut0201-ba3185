@@ -112,6 +112,7 @@ public class SearchQuestionPanel extends JPanel implements SearchQuestionInterfa
         submitButton.setActionCommand("submit");
 
         submitButton.addActionListener(e -> {
+            answerList = new ArrayList<>();
 
 
             int incomeLow = Integer.parseInt(incomeLowTextField.getText());
@@ -132,7 +133,6 @@ public class SearchQuestionPanel extends JPanel implements SearchQuestionInterfa
             int petOp = petOptionComboBox.getSelectedIndex();
             answerList.add(petOp);
 
-            flag = 1;
             this.setVisible(false);
             this.removeAll();
 

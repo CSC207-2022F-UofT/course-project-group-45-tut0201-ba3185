@@ -22,6 +22,7 @@ public class SearchInteractor implements SearchInputBoundary {
         // call the list helper
         SearchListHelper listHelper = new SearchListHelper(model);
         List recommendList = listHelper.getList();
+
         //create a response model for the user
         DiscoveryResponseModel dResponseModel = new DiscoveryResponseModel(recommendList);
 

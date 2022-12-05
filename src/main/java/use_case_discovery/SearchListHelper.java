@@ -19,8 +19,6 @@ public class SearchListHelper {
 
     public SearchListHelper(SearchAnswerRequestModel model){
         this.model = model;
-        GenderInteractor tempGenderFinder = new GenderInteractor();
-        this.userList = tempGenderFinder.genderSuitFinder;
 
     }
 
@@ -29,6 +27,10 @@ public class SearchListHelper {
      * calculator and score helper.
      */
     public void generateList(){
+        GenderInteractor genderInteractor = new GenderInteractor();
+        this.userList = genderInteractor.getList();
+
+
         SearchAnswerConverter converter = new SearchAnswerConverter(model);
         answerList = converter.getAnswer();
 
@@ -36,8 +38,10 @@ public class SearchListHelper {
         Map<UserForTest, Integer> userListWithScore = new HashMap<>();
 
         for(UserForTest user:userList){ // need to change to User
+
             scoreCalculator.calculateScore(user);
-            userListWithScore.put(user,scoreCalculator.getScore() );
+            System.out.println(user.getUsername() + scoreCalculator.getScore());
+            userListWithScore.put(user,scoreCalculator.getScore());
 
         }
         ScoreHelper scoreHelper = new ScoreHelper(userListWithScore);

@@ -18,6 +18,7 @@ public class DiscoveryResponseModel {
     public String getUserName3(){return this.userNames.get(2);}
     public String getUserName4(){return this.userNames.get(3);}
     public String getUserName5(){return this.userNames.get(4);}
+
     public String getUserName6(){return this.userNames.get(5);}
     public String getUserName7(){return this.userNames.get(6);}
     public String getUserName8(){return this.userNames.get(7);}
@@ -28,4 +29,6 @@ public class DiscoveryResponseModel {
     public String getUserName13(){return this.userNames.get(12);}
     public String getUserName14(){return this.userNames.get(13);}
     public String getUserName15(){return this.userNames.get(14);}
+
+
 }

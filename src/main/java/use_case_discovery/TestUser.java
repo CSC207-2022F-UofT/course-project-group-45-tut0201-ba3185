@@ -28,21 +28,22 @@ public class TestUser {
     UserForTest user18;
     ArrayList<UserForTest> otherUsers;
     public TestUser(){
+
         this.mainUser = new UserForTest("alyssa", "alyssa", "111", "Female", "Female",
        10, 23, true, "Long-term", "Single", "Sport");
-        this.user1 = new UserForTest("cami", "cami", "111", "Female", "Male",
-                8, 23, true, "Long-term", "Married", "Music");
-        this.user2 = new UserForTest("chris", "chris", "222", "Female", "Male",
-                10, 40, false, "Long-term", "Single", "Music");
-        this.user3 = new UserForTest("amber", "amber", "333", "Female", "Male",
-                18, 70, true, "Short-term", "Single", "Sport");
-        this.user4 = new UserForTest("sunny", "sunny", "333", "Male", "Female",
-                6, 18, false, "Short-term", "Single", "Art");
-        this.user5 = new UserForTest("eric", "eric", "333", "Male", "Female",
-                3, 17, false, "One-Night", "Single", "Game");
-        this.user6 = new UserForTest("jeniffer", "jeniffer", "333", "Female", "Male",
-                19, 21, true, "Long-term", "Single", "Cook");
 
+        this.user1 = new UserForTest("cami", "cami", "111", "Female", "Female",
+                7, 27, true, "Short-term", "Married", "Art");
+        this.user2 = new UserForTest("chris", "chris", "222", "Female", "Female",
+                10, 40, true, "One-Night", "Divorce", "Game");
+        this.user3 = new UserForTest("amber", "amber", "333", "Female", "Male",
+                18, 70, false, "Short-term", "Single", "Sport");
+        this.user4 = new UserForTest("sunny", "sunny", "333", "Female", "Female",
+                13, 21, false, "Long-term", "Single", "Music");
+        this.user5 = new UserForTest("jeniffer", "jeniffer", "333", "Female", "Female",
+                6, 19, false, "Long-term", "Single", "Music");
+        this.user6 = new UserForTest("oh", "o'h", "333", "Female", "Male",
+                3, 21, false, "Long-term", "Single", "Music");
         this.user7 = new UserForTest("aa", "aa", "111", "Female", "Male",
                 10, 17, false, "Short-term", "Married", "Cook");
         this.user8 = new UserForTest("bb", "bb", "222", "Female", "Male",
@@ -68,43 +69,9 @@ public class TestUser {
         this.user18 = new UserForTest("ll", "ll", "333", "Female", "Male",
                 10, 36, true, "Long-term", "Divorce", "Cook");
 
-        ArrayList<String> mainUserInterestRank = new ArrayList<>(Arrays.asList("income", "pet", "marryStatus", "areaOfInterest", "age", "relationshipType"));
-        //same as mainUser
-        ArrayList<String> lst1 = new ArrayList<>(Arrays.asList("income", "pet", "marryStatus", "areaOfInterest", "age", "relationshipType"));
-        //completely opposite
-        ArrayList<String> lst2 = new ArrayList<>(Arrays.asList("relationshipType", "age", "areaOfInterest", "marryStatus", "pet", "income"));
-        //with more than 2 same as mainUser
-        ArrayList<String> lst3 = new ArrayList<>(Arrays.asList("income", "pet", "areaOfInterest", "age", "marryStatus", "relationshipType"));
-        //with 1(less than 2) same as mainUser
-        ArrayList<String> lst4 = new ArrayList<>(Arrays.asList("income", "age", "areaOfInterest", "marryStatus", "relationshipType", "pet"));
-        //with exactly 2
-        ArrayList<String> lst5 = new ArrayList<>(Arrays.asList("income", "age", "areaOfInterest", "marryStatus", "pet", "relationshipType"));
-        //with exactly 1
-        ArrayList<String> lst6 = new ArrayList<>(Arrays.asList("relationshipType", "age", "marryStatus", "pet", "areaOfInterest", "income"));
 
-        //Set interest rank
-        mainUser.setInterestRank(mainUserInterestRank);
-        user1.setInterestRank(lst1);
-        user2.setInterestRank(lst2);
-        user3.setInterestRank(lst3);
-        user4.setInterestRank(lst4);
-        user5.setInterestRank(lst5);
-        user6.setInterestRank(lst6);
-        user7.setInterestRank(lst1);
-        user8.setInterestRank(lst2);
-        user9.setInterestRank(lst3);
-        user10.setInterestRank(lst4);
-        user11.setInterestRank(lst5);
-        user12.setInterestRank(lst6);
-        user13.setInterestRank(lst1);
-        user14.setInterestRank(lst2);
-        user15.setInterestRank(lst3);
-        user16.setInterestRank(lst4);
-        user17.setInterestRank(lst5);
-        user18.setInterestRank(lst6);
-
-        this.otherUsers = new ArrayList<>(Arrays.asList(user1, user2, user3, user4, user5, user6, user7, user8,
-                user9, user10, user11, user12, user13, user14, user15,user16,user17,user18));
+        this.otherUsers = new ArrayList<>(Arrays.asList(user1, user2, user3, user4, user5,user6, user7, user8,user9, user10,
+                user11,user12,user13,user14,user15,user16,user17,user18));
     }
 
     public UserForTest getMainUser() {

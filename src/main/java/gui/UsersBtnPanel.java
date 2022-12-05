@@ -38,7 +38,6 @@ public class UsersBtnPanel extends JPanel implements DiscoveryListInterface {
         Button btn5 = new Button(dResponseModel.getUserName5());
         btn5.getButton().addActionListener(new UserInfo(this, dResponseModel.getUserName5(), Color.CYAN));
         add(btn5.getButton());
-
         Button btn6 = new Button(dResponseModel.getUserName6());
         btn6.getButton().addActionListener(new UserInfo(this, dResponseModel.getUserName6(), Color.CYAN));
         add(btn6.getButton());
@@ -78,5 +77,6 @@ public class UsersBtnPanel extends JPanel implements DiscoveryListInterface {
         Button btn15 = new Button(dResponseModel.getUserName15());
         btn15.getButton().addActionListener(new UserInfo(this, dResponseModel.getUserName15(), Color.CYAN));
         add(btn15.getButton());
+
     }
 }

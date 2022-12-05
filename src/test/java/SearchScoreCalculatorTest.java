@@ -37,9 +37,9 @@ public class SearchScoreCalculatorTest {
                 10, 40, true, "One-Night", "Divorce", "Game");
         user3 = new UserForTest("amber", "amber", "333", "Female", "Male",
                 18, 70, false, "Short-term", "Single", "Sport");
-        user4 = new UserForTest("sunny", "sunny", "333", "Male", "Female",
+        user4 = new UserForTest("jeniffer", "jeniffer", "333", "Male", "Female",
                 6, 19, false, "Long-term", "Single", "Music");
-        user5 = new UserForTest("jeniffer", "jeniffer", "333", "Female", "Male",
+        user5 = new UserForTest("sunny", "sunny", "333", "Female", "Male",
                 13, 21, false, "Long-term", "Single", "Music");
         answerList = new HashMap<>();
         answerList.put("incomeLow", "8");
