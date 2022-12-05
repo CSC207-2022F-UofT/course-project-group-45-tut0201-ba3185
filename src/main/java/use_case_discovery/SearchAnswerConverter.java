@@ -1,11 +1,14 @@
 package use_case_discovery;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
+/**
+ * This class convert users answer from integer to the corresponding string
+ *
+ */
 public class SearchAnswerConverter {
-    private SearchAnswerRequestModel requestModel;
+    private final SearchAnswerRequestModel requestModel;
     private String marriageState;
     private String areaOfInterest;
 
@@ -13,18 +16,8 @@ public class SearchAnswerConverter {
 
     private String pet;
 
-    private Integer incomeLow;
+    private final Map<String,String> answerList;
 
-    private Integer incomeUp;
-
-    private Integer ageLow;
-
-    private Integer ageUp;
-
-    private Map<String,String> answerList;
-
-
-    //constructor with parameter
     public SearchAnswerConverter(SearchAnswerRequestModel requestModel){
         this.requestModel = requestModel;
         answerList = new HashMap<>();
@@ -32,16 +25,16 @@ public class SearchAnswerConverter {
 
     }
     public void store(){
-        incomeLow = requestModel.getIncomeLow();
-        answerList.put("incomeLow", incomeLow.toString());
-        incomeUp = requestModel.getIncomeUp();
-        answerList.put("incomeUp", incomeUp.toString());
+        int incomeLow = requestModel.getIncomeLow();
+        answerList.put("incomeLow", Integer.toString(incomeLow));
+        int incomeUp = requestModel.getIncomeUp();
+        answerList.put("incomeUp", Integer.toString(incomeUp));
         covertMarriageStateOP();
 
-        ageLow = requestModel.getAgeLow();
-        answerList.put("ageLow", ageLow.toString());
-        ageUp = requestModel.getAgeUp();
-        answerList.put("ageUp", ageUp.toString());
+        int ageLow = requestModel.getAgeLow();
+        answerList.put("ageLow", Integer.toString(ageLow));
+        int ageUp = requestModel.getAgeUp();
+        answerList.put("ageUp", Integer.toString(ageUp));
 
         covertMarriageStateOP();
         answerList.put("marriageState",marriageState);

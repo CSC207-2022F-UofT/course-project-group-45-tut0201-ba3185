@@ -1,5 +1,7 @@
 package use_case_discovery;
 
+import presenter.SearchQuestionInterface;
+
 public class SearchAskerInteractor implements DiscoveryInputBoundary {
     private SearchAskResponseModel responseModel;
 
@@ -8,9 +10,9 @@ public class SearchAskerInteractor implements DiscoveryInputBoundary {
 
     // private SearchQuestionPanelInterface panel;
 
-    private final SearchQuestionPresenter dPanel;
+    private final SearchQuestionInterface dPanel;
 
-    public SearchAskerInteractor(SearchQuestionPresenter dPanel){
+    public SearchAskerInteractor(SearchQuestionInterface dPanel){
         this.dPanel = dPanel;
         this.responseModel = new SearchAskResponseModel();
     }

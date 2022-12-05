@@ -6,20 +6,19 @@ import use_case_discovery.*;
 import javax.swing.*;
 import java.awt.*;
 
-/*
-To display the panel for discovery
+/**
+ * This panel is the panel for discovery, the option panel are added to this
  */
 public class DiscoveryPanel extends JPanel {
-    private UsersBtnPanel panelP;
 
     public DiscoveryPanel() {
         this.setLayout(null);
         this.setLayout(new FlowLayout(FlowLayout.CENTER));
         this.setBackground(Color.pink);
-        // this.add(new JLabel("This is the discovery page."));
-        //        this.add(new JLabel("To use the 'By preference', " +
-        //                "click the scope image and click the button again to see another" +
-        //                "user's info"));
+
+        this.add(new JLabel("To use the 'By preference', " +
+                        "click the scope image and click the button again to see another" +
+                        "user's info"));
 
 
 
@@ -29,10 +28,9 @@ public class DiscoveryPanel extends JPanel {
                 case "preference":
                     //UsersBtnPanel presenter = new UsersBtnPanel();
                     //DiscoveryInputBoundary interactor = new PreferenceInteractor(presenter);
-                    //DiscoveryController controller = new DiscoveryController(1,interactor);
+                    //DiscoveryController controller = new DiscoveryController(interactor);
                     //controller.optionControl();
                     //this.add(presenter);
-                    // this.add(new JLabel("this is display page"));
                     //panel.updatePanel();
                     break;
                 case "search":
@@ -45,13 +43,13 @@ public class DiscoveryPanel extends JPanel {
                     break;
 
                 case "nearBy":
-//                 //UsersBtnPanel presenter = new UsersBtnPanel();
-//                //DiscoveryInputBoundary interactor = new PreferenceInteractor(presenter);
-//                //DiscoveryController controller = new DiscoveryController(1,interactor);
-//                //controller.optionControl();
-//                //this.add(presenter);
-//                //this.add(new JLabel("this is display page"));
-//                break;
+                 //UsersBtnPanel presenter = new UsersBtnPanel();
+                //DiscoveryInputBoundary interactor = new PreferenceInteractor(presenter);
+                //DiscoveryController controller = new DiscoveryController(1,interactor);
+                //controller.optionControl();
+                //this.add(presenter);
+                 //this.add(new JLabel("this is display page"));
+                  // break;
             }
             this.revalidate();
         });

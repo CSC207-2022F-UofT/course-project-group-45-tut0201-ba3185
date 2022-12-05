@@ -7,7 +7,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-/*
+/**
 To generate user info panel with given username by using nested class
 to generate the panel to add on
  */

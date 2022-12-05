@@ -2,6 +2,9 @@ package controller;
 
 import use_case_discovery.DiscoveryInputBoundary;
 
+/**
+ * This controller call's the create method to generate the list
+ */
 
 public class DiscoveryController {
     DiscoveryInputBoundary interactor;

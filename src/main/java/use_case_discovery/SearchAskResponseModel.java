@@ -1,5 +1,8 @@
 package use_case_discovery;
 
+/**
+ * This is the response model that store the questions generated from the searchAnswerInteractor
+ */
 public class SearchAskResponseModel {
         private String incomeQuestion;
         private String ageQuestion;

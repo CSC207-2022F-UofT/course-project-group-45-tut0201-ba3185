@@ -1,7 +1,7 @@
 package gui;
 
-import controller.DiscoveryController;
 import controller.SearchController;
+import presenter.SearchQuestionInterface;
 import use_case_discovery.*;
 
 import javax.swing.*;
@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SearchQuestionPanel extends JPanel implements SearchQuestionPresenter {
+public class SearchQuestionPanel extends JPanel implements SearchQuestionInterface {
 
     public static final int PAGE_WIDTH = 414;
     public static final int PAGE_HEIGHT = 736;

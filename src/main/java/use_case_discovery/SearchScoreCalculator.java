@@ -7,6 +7,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * This function help calculate the score of the user based on the answer user entered
+ *
+ */
 public class SearchScoreCalculator implements ScoreCalculator{
     private int score;
     private Map<String,String>  searchAnswers;
@@ -15,8 +19,8 @@ public class SearchScoreCalculator implements ScoreCalculator{
         this.searchAnswers = searchAnswers;
     }
 
-    // public void calculateScore(User user){
-    public void calculateScore(UserForTest user1){
+
+    public void calculateScore(UserForTest user1){ // need to change to the actual user
         HashMap<String, Object> userInfo = user1.getUserInfo();
         int userIncome = (int) userInfo.get("income");
         int userAge = (int) userInfo.get("age");
@@ -50,6 +54,11 @@ public class SearchScoreCalculator implements ScoreCalculator{
         }
     }
 
+    /**
+     * This funciton convert the string petOP to the boolean pet Option
+     * @param petOp a string of true false or null according to user's ansert
+     * @return boolean petOp
+     */
     public Object convertB(String petOp){
         if (petOp.equals("true")){
             return true;

@@ -1,14 +1,12 @@
 package use_case_discovery;
 
-import entity.User;
-
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 /**
- * This function help generate the recommended list
+ * This function help generate the recommended list by getting user's answer
+ * and generate the score then sort to find the first 15 matching user.
  */
 public class SearchListHelper {
     private SearchAnswerRequestModel model;
@@ -22,29 +20,29 @@ public class SearchListHelper {
     public SearchListHelper(SearchAnswerRequestModel model){
         this.model = model;
         System.out.println(model.getIncomeLow() + "helper");
-        GenderFinder tempGenderFinder = new GenderFinder();
+        GenderInteractor tempGenderFinder = new GenderInteractor();
         this.userList = tempGenderFinder.genderSuitFinder;
 
     }
 
+    /**
+     * The method generate the recommended list by calling the score
+     * calculator and score helper.
+     */
     public void generateList(){
         SearchAnswerConverter converter = new SearchAnswerConverter(model);
         answerList = converter.getAnswer();
 
         SearchScoreCalculator scoreCalculator = new SearchScoreCalculator(answerList);
-        //for(User user: userList){
         Map<UserForTest, Integer> userListWithScore = new HashMap<>();
 
-        for(UserForTest otherUser:userList){
-            //scoreCalculator.calculateScore(user);
-            //UserListWithScore.put(user, scoreCalculator.getScore());
-            scoreCalculator.calculateScore(otherUser);
-            userListWithScore.put(otherUser,scoreCalculator.getScore() );
+        for(UserForTest user:userList){ // need to change to User
+            scoreCalculator.calculateScore(user);
+            userListWithScore.put(user,scoreCalculator.getScore() );
 
         }
         ScoreHelper scoreHelper = new ScoreHelper(userListWithScore);
         this. recommendedList = scoreHelper.getList(); // get the sorted list using the helper
-
     }
 
     public List<String> getList(){

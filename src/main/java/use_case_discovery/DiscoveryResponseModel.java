@@ -12,9 +12,6 @@ public class DiscoveryResponseModel {
     public DiscoveryResponseModel(List<String> userNames){
         this.userNames = userNames;
     }
-//    public List<String> getUserNames(){
-//        return this.userNames;
-//    }
 
     public String getUserName1(){return this.userNames.get(0);}
     public String getUserName2(){return this.userNames.get(1);}

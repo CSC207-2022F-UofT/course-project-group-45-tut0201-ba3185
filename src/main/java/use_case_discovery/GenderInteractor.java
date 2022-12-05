@@ -1,13 +1,11 @@
 package use_case_discovery;
 
-import entity.User;
-
 import java.util.ArrayList;
 
 /**
-     * GenderFinder takes user's sexual orientation and filter other users based
+     * GenderInteractor takes user's sexual orientation and filter other users based
      * Documentary of possible sexual orientation:
-     *(possible sexual orientation): (return from GenderFinder)
+     *(possible sexual orientation): (return from GenderInteractor)
      * male: return only users identified themselves as male
      * female: return only users identified themselves as female
      * bisexual: return only users identified themselves as both male and female
@@ -15,16 +13,16 @@ import java.util.ArrayList;
      * open: return all the users
      */
 
-//to use the class, create an instance of GenderFinder and then call the method getList
-    public class GenderFinder {
+//to use the class, create an instance of GenderInteractor and then call the method getList
+    public class GenderInteractor {
 
     TestUser testUser = new TestUser();
-    ArrayList<UserForTest> genderSuitFinder;//list to store the user after GenderFinder
+    ArrayList<UserForTest> genderSuitFinder;//list to store the user after GenderInteractor
     UserForTest mainUser = testUser.getMainUser(); //to get the main user's sexualOrientation
     String mainSexualOrientation = mainUser.getSexualOrientation();
     ArrayList<UserForTest> otherUsersList= testUser.getOtherUsers();
 
-    public GenderFinder(){
+    public GenderInteractor(){
         ArrayList<UserForTest> res = new ArrayList<>();
         if (mainSexualOrientation.equals("Male")||
                 mainSexualOrientation.equals("Female")||

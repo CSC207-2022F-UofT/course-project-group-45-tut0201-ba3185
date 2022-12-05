@@ -4,7 +4,7 @@ import entity.User;
 import java.util.*;
 
 /**
- * This class is intended to help PreferenceFinder
+ * This class is intended to help discoveryInteractors
  * To get the highest score from the HashMap,
  * arranged them in descending order,
  * and return a list of username(String)
@@ -23,7 +23,7 @@ public class ScoreHelper {
             if (!tempScoreList.contains(tempPoint)){tempScoreList.add(tempPoint);}
         }
         tempScoreList.sort(Collections.reverseOrder());
-        this.totalScoreList = tempScoreList;//now this.totalScoreList is in descending order
+        this.totalScoreList = tempScoreList;// at this step this.totalScoreList is in descending order
 
         List<String> resTotalUsername = new ArrayList<>();
         for (int score: this.totalScoreList){

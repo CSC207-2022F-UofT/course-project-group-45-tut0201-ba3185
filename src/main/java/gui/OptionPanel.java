@@ -6,6 +6,10 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This panel contains the option that user can choose from the three button and it will dispaly
+ * the list based on the option chosen.
+ */
 public class OptionPanel extends JPanel {
     private List<ActionListener> actionListeners;//users click three bottons
     public OptionPanel(){
@@ -22,7 +26,7 @@ public class OptionPanel extends JPanel {
         });
         //TODO: need to fetch with other two buttons
         Button nearByBtn = new Button("By Near");
-        nearByBtn.getButton().setActionCommand("//");
+        nearByBtn.getButton().setActionCommand("nearby");
         nearByBtn.getButton().addActionListener(e -> {
             for(ActionListener listener: actionListeners){
                 listener.actionPerformed(e);
