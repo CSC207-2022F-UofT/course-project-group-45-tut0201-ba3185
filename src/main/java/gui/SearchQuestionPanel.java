@@ -16,11 +16,10 @@ public class SearchQuestionPanel extends JPanel implements SearchQuestionInterfa
     public static final int PAGE_HEIGHT = 736;
     public static int flag = 0;
     public static List<Integer> answerList = new ArrayList<Integer>();
-    // public static DisplayPage displayPage;
 
-    private ArrayList<ActionListener> actionListeners;
-
-    public SearchQuestionPanel(){this.actionListeners = new ArrayList<>();}
+    public SearchQuestionPanel(){
+        ArrayList<ActionListener> actionListeners = new ArrayList<>();
+    }
 
 
 
@@ -74,7 +73,7 @@ public class SearchQuestionPanel extends JPanel implements SearchQuestionInterfa
         marriageQuestion.setBounds(10, 10, 100, 20);
         this.add(marriageQuestion);
 
-        String marriageOption[] = sResponseModel.getMarriageOption();
+        String[] marriageOption = sResponseModel.getMarriageOption();
         JComboBox marriageComboBox = new JComboBox(marriageOption);
         marriageComboBox.setBounds(20,30,20, 40);
         this.add(marriageComboBox);
@@ -83,7 +82,7 @@ public class SearchQuestionPanel extends JPanel implements SearchQuestionInterfa
         hobbyQuestion.setBounds(10, 70, 100, 20);
         this.add(hobbyQuestion);
 
-        String hobbyOption[] = sResponseModel.getHobbyOption();
+        String[] hobbyOption = sResponseModel.getHobbyOption();
         JComboBox hobbyComboBox = new JComboBox(hobbyOption);
         hobbyComboBox.setBounds(20,80,20, 40);
         this.add(hobbyComboBox);
@@ -92,7 +91,7 @@ public class SearchQuestionPanel extends JPanel implements SearchQuestionInterfa
         JLabel relationshipQuestion = new JLabel(sResponseModel.getRelationshipQuestion());
         relationshipQuestion.setBounds(10, 130, 100, 20);
         this.add(relationshipQuestion);
-        String relationshipOption[] = sResponseModel.getRelationshipOption();
+        String[] relationshipOption = sResponseModel.getRelationshipOption();
         JComboBox relationshipComboBox = new JComboBox(relationshipOption);
         relationshipComboBox.setBounds(20,155,20, 40);
         this.add(relationshipComboBox);
@@ -101,7 +100,7 @@ public class SearchQuestionPanel extends JPanel implements SearchQuestionInterfa
         petOptionQuestion.setBounds(10, 200, 100, 20);
         this.add(petOptionQuestion);
 
-        String petOption[] = sResponseModel.getPetOption();
+        String[] petOption = sResponseModel.getPetOption();
         JComboBox petOptionComboBox = new JComboBox(petOption);
         petOptionComboBox.setBounds(20,230,20, 40);
         this.add(petOptionComboBox);
@@ -112,8 +111,6 @@ public class SearchQuestionPanel extends JPanel implements SearchQuestionInterfa
         submitButton.setBounds(70,PAGE_HEIGHT * 9 /10, 20, 20);
         submitButton.setActionCommand("submit");
 
-        // answerList = null;
-        // flag = 0;
         submitButton.addActionListener(e -> {
 
 
@@ -136,16 +133,13 @@ public class SearchQuestionPanel extends JPanel implements SearchQuestionInterfa
             answerList.add(petOp);
 
             flag = 1;
-            System.out.println("done save");
             this.setVisible(false);
             this.removeAll();
 
             UsersBtnPanel usersBtnPanel = new UsersBtnPanel();
             SearchInputBoundary searchInteractor = new SearchInteractor(usersBtnPanel);
             SearchController controller = new SearchController(answerList, searchInteractor);
-            // controller.matchAnswer();
             controller.generateRecommendation();
-            //this.add(new JLabel("display"));
             this.add(usersBtnPanel);
             this.revalidate();
             this.setVisible(true);
