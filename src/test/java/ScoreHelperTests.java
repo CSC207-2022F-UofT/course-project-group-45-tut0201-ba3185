@@ -6,7 +6,6 @@ import use_case_discovery.UserForTest;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class ScoreHelperTests {
      UserForTest user1;

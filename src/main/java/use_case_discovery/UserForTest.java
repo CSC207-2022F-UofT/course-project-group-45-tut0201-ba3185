@@ -44,7 +44,7 @@ public class UserForTest implements Comparable<UserForTest> {
         this.userInfo.put("age", age);
         this.userInfo.put("pet", pet);
         this.userInfo.put("marriageState", marriageState);
-        this.userInfo.put("relationship", relationshipType);
+        this.userInfo.put("relationshipType", relationshipType);
         this.userInfo.put("areaOfInterest", areaOfInterest);
 
         // this.interestRank = new ArrayList<String>(Arrays.asList("age", "areaOfInterest", "income", "maritalStatus", "pet", "relationshipType"));

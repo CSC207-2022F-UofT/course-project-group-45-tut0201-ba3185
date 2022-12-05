@@ -17,7 +17,6 @@ public class SearchScoreCalculator implements ScoreCalculator{
 
     // public void calculateScore(User user){
     public void calculateScore(UserForTest user1){
-        System.out.println(user1.getUsername());
         HashMap<String, Object> userInfo = user1.getUserInfo();
         int userIncome = (int) userInfo.get("income");
         int userAge = (int) userInfo.get("age");
@@ -26,16 +25,19 @@ public class SearchScoreCalculator implements ScoreCalculator{
         int ageLow = Integer.parseInt(searchAnswers.get("ageLow"));
         int ageUp = Integer.parseInt(searchAnswers.get("ageUp"));
 
-        if(incomeLow < userIncome && userIncome < incomeUp){
+        if(incomeLow <= userIncome && userIncome <= incomeUp){
             this.score = this.score + 1;
         }
-        if(ageLow < userAge &&  userAge < ageUp){
+        if(ageLow <= userAge &&  userAge <= ageUp){
             this.score = this.score + 1;
         }
         if(searchAnswers.get("marriageState").equals(userInfo.get("marriageState"))){
             this.score = this.score + 1;
         }
-        if(searchAnswers.get("relationship").equals("Doesn't care") || searchAnswers.get("relationship").equals(userInfo.get("relationshipType"))){
+        System.out.println(searchAnswers.get("relationship"));
+        System.out.println(userInfo.get("relationshipType"));
+
+        if(searchAnswers.get("relationship").equals("Doesn't care") ||searchAnswers.get("relationship").equals(userInfo.get("relationshipType"))){
             this.score = this.score + 1;
         }
 

@@ -11,7 +11,7 @@ public class SearchAnswerConverter {
 
     private String relationship;
 
-    private Boolean pet;
+    private String pet;
 
     private Integer incomeLow;
 
@@ -27,7 +27,6 @@ public class SearchAnswerConverter {
     //constructor with parameter
     public SearchAnswerConverter(SearchAnswerRequestModel requestModel){
         this.requestModel = requestModel;
-        System.out.println(requestModel.getIncomeLow() + "converter");
         answerList = new HashMap<>();
         store();
 
@@ -47,11 +46,11 @@ public class SearchAnswerConverter {
         covertMarriageStateOP();
         answerList.put("marriageState",marriageState);
         convertAreaOfInterest();
-        answerList.put("areaOfInterest",areaOfInterest);
+        answerList.put("areaOfInterest", areaOfInterest);
         convertRelationship();
         answerList.put("relationship",relationship);
         convertPet();
-        answerList.put("pet",pet.toString());
+        answerList.put("pet",pet);
 
     }
 
@@ -118,13 +117,13 @@ public class SearchAnswerConverter {
     public void convertPet() {
         switch (requestModel.getPetOp()) {
             case 0:
-                pet = true;
+                pet = "true";
                 break;
             case 1:
-                pet = false;
+                pet = "false";
                 break;
             case 2:
-                pet = null;
+                pet = "null";
                 break;
         }
     }
