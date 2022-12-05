@@ -16,8 +16,7 @@ public class UserFactory {
      * @return A new User object created from the information in the requestModel
      */
     public User create(UserRequestModel requestModel) {
-        ArrayList<Object> userInfo = requestModel.getInfo();
-        return new User((String) userInfo.get(0), (String) userInfo.get(1), (String) userInfo.get(2),
-                (ArrayList<Double>) userInfo.get(3), (HashMap<String, Object>) userInfo.get(4));
+        return new User(requestModel.getUsername(), requestModel.getName(), requestModel.getPassword(),
+                requestModel.getLocation(), requestModel.getUserSetting());
     }
 }

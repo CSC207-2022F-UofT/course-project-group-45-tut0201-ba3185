@@ -52,8 +52,7 @@ public class SigninPageController {
         csvManager manager = new csvManager();
         Map<String, UserRequestModel> userMap = manager.readUser();
         UserRequestModel requestModel = userMap.get(username);
-        manager.writeCurrentUser((String) requestModel.getInfo().get(0), (String) requestModel.getInfo().get(1),
-                (String) requestModel.getInfo().get(2), (ArrayList<Double>) requestModel.getInfo().get(3),
-                (HashMap<String, Object>) requestModel.getInfo().get(4));
+        manager.writeCurrentUser(requestModel.getUsername(), requestModel.getName(), requestModel.getPassword(),
+                requestModel.getLocation(), requestModel.getUserSetting());
     }
 }

@@ -6,6 +6,7 @@ import use_case_signin_signup.UserUseCase;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -23,11 +24,11 @@ public class SignupPageController {
         csvManager csvManager = new csvManager();
         Map<String, UserRequestModel> userMap = csvManager.readUser();
         UserUseCase usecase = new UserUseCase(userMap);
-        String username = (String) requestModel.getInfo().get(0);
-        String name = (String) requestModel.getInfo().get(1);
-        String password = (String) requestModel.getInfo().get(2);
-        ArrayList<Double> location = (ArrayList<Double>) requestModel.getInfo().get(3);
-        HashMap<String, Object> userSetting = (HashMap<String, Object>) requestModel.getInfo().get(4);
+        String username = requestModel.getUsername();
+        String name = requestModel.getName();
+        String password = requestModel.getPassword();
+        List<Double> location = requestModel.getLocation();
+        Map<String, Object> userSetting = requestModel.getUserSetting();
         // Check if the user is already in the Database
         if(usecase.addUser(username, name, password, location, userSetting)) {
             csvManager.writeUser(usecase.getUserMap());
