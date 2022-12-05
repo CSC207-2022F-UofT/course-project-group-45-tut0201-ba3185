@@ -21,7 +21,7 @@ public class UserRequestModel implements UserInputBoundary {
 
     public void setInfo(String username, String name, String password, int age, int income,
                         String gender, String relationshipType, String maritalStatus, String pet,
-                        List<Double> location) {
+                        List<Double> location, String sexualOrientation) {
         this.username = username;
         this.name = name;
         this.password = password;
@@ -32,6 +32,7 @@ public class UserRequestModel implements UserInputBoundary {
         this.userSettings.put("pet", pet);
         this.userSettings.put("relationshipType", relationshipType);
         this.userSettings.put("gender", gender);
+        this.userSettings.put("sexualOrientation", sexualOrientation);
     }
 
     public ArrayList<Object> getInfo() {

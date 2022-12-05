@@ -87,7 +87,7 @@ public class UserUseCase {
                     (Integer) user.getUserInfo("income"),
                     (String) user.getUserInfo("gender"), (String) user.getUserInfo("relationshipType"),
                     (String) user.getUserInfo("maritalStatus"), (String) user.getUserInfo("pet"),
-                    user.getLocation());
+                    user.getLocation(), (String) user.getUserInfo("sexualOrientation"));
             responseMap.put(user.getUsername(),currentUser);
         }
         return responseMap;
