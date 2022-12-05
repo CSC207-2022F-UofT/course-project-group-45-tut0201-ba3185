@@ -4,7 +4,7 @@ import java.awt.*;
 
 public class MainPanel extends JPanel {
 
-    public MainPanel() {
+    public MainPanel(MainFrameInterface frame) {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.setPreferredSize(new Dimension(MainFrame.PAGE_WIDTH, MainFrame.PAGE_HEIGHT / 10 * 9));
         this.setMaximumSize( this.getPreferredSize() );
@@ -26,7 +26,7 @@ public class MainPanel extends JPanel {
                     contentPanel.add(new GamePanel());
                     break;
                 case "settingsButton":
-                    contentPanel.add(new SettingsPanel());
+                    contentPanel.add(new SettingsPanel(frame));
                     break;
             }
             contentPanel.revalidate();

@@ -102,4 +102,10 @@ public class UserUseCase {
         UserResponseModel current = manager.readCurrentUser();
         return current!=null;
     }
+
+    public void logoutUser() {
+        csvManager manager = new csvManager();
+        manager.logoutUser();
+
+    }
 }

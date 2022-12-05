@@ -168,4 +168,17 @@ public class csvManager {
             throw new RuntimeException(exception);
         }
     }
+
+    public void logoutUser() {
+        ArrayList<String> Headers = new ArrayList<String>(Arrays.asList("id", "username",
+                "name", "password", "gender", "age", "income", "pet", "martialStatus", "relationshipType",
+                "sexualOrientation","locationX", "locationY"));
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(currentUserPath));
+            writer.write(String.join(",", Headers));
+        }
+        catch(IOException exception) {
+            throw new RuntimeException(exception);
+        }
+    }
 }
