@@ -11,6 +11,6 @@ public class userController {
 
     public void logoutUser() {
         UserUseCase useCase = new UserUseCase();
-        useCase.logoutUser();
+        // useCase.logoutUser();
     }
 }

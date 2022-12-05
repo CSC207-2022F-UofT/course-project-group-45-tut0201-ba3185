@@ -19,7 +19,6 @@ public class SearchListHelper {
 
     public SearchListHelper(SearchAnswerRequestModel model){
         this.model = model;
-        System.out.println(model.getIncomeLow() + "helper");
         GenderInteractor tempGenderFinder = new GenderInteractor();
         this.userList = tempGenderFinder.genderSuitFinder;
 

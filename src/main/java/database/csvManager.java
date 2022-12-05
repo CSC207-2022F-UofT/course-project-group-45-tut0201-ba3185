@@ -12,17 +12,27 @@ import java.util.Map;
 
 public class csvManager {
 
-    public HashMap<String, UserRequestModel> readUser(String path) throws IOException {
+    /**
+     * csvManager is the database interactor that reads and writes to the various data files
+     *
+     * @param userPath is the path to the user data file
+     * @param currentUserPath is the path to the currentUser data file
+     */
+
+    private final String userPath = "src/main/java/database/user.csv";
+    private final String currentUserPath = "src/main/java/database/currentUser.csv";
+
+    public Map<String, UserRequestModel> readUser() throws IOException {
         /**
          * This method reads the user csv file to get all registered User
          *
          * @param path, the path of the csv file
-         * @return a map of users
+         * @return a map of usernames and UserRequestModels
          * @throws IOException when the reader fails to read.
          */
         String row;
-        File csv = new File(path);
-        HashMap<String, UserRequestModel> userMap = new HashMap<>();
+        File csv = new File(userPath);
+        Map<String, UserRequestModel> userMap = new HashMap<>();
 
         BufferedReader reader = new BufferedReader(new FileReader(csv));
         reader.readLine();
@@ -52,9 +62,14 @@ public class csvManager {
         return userMap;
     }
 
-    public User readCurrentUser(String path) {
+    public UserResponseModel readCurrentUser() {
+        /**
+         * reads the current user from the currentUser data file
+         * @return a userResponse model of the data from currentUser data file
+         * @throws IOException when the reader fails to read
+         */
         try {
-            File csv = new File(path);
+            File csv = new File(currentUserPath);
             BufferedReader reader = new BufferedReader(new FileReader(csv));
             reader.readLine();
             String row = reader.readLine();
@@ -73,16 +88,10 @@ public class csvManager {
                 location.add(Double.parseDouble(col[9]));
                 location.add(Double.parseDouble(col[10]));
 
-                HashMap<String, Object> userInfo = new HashMap<>();
-                userInfo.put("gender", gender);
-                userInfo.put("age", age);
-                userInfo.put("income", income);
-                userInfo.put("pet", pet);
-                userInfo.put("maritalStatus", maritalStatus);
-                userInfo.put("relationshipType", relationshipType);
-
-                User user = new User(username, name, password, location, userInfo);
-                return user;
+                UserResponseModel responseModel = new UserResponseModel();
+                responseModel.setInfo(username, name, password,
+                        age, income, gender,relationshipType, maritalStatus,pet,location);
+                return responseModel;
             }
             return null;
         }
@@ -91,20 +100,30 @@ public class csvManager {
         }
     }
 
+    /**
+     * write to the currentUser data file with the new user information
+     * @param username: username of the user
+     * @param name: name of the user
+     * @param password: password of the user
+     * @param location: location of the user
+     * @param userSetting: user information
+     *
+     * @throws IOException if the reader fails to read
+     */
     public void writeCurrentUser(String username, String name, String password, ArrayList<Double> location,
-            HashMap<String, Object> userSetting, String path) {
+                                 HashMap<String, Object> userSetting) {
         ArrayList<String> Headers = new ArrayList<String>(Arrays.asList("username",
                 "name", "password", "gender", "age", "income", "pet", "martialStatus", "relationshipType","locationX",
                 "locationY"));
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(path));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(currentUserPath));
             writer.write(String.join(",", Headers));
             writer.newLine();
 
             String write = (username+","+name+","+password+","+
-                        userSetting.get("gender")+","+userSetting.get("age")+","+userSetting.get("income")+"," +
-                        userSetting.get("pet")+","+userSetting.get("maritalStatus")+","+
-                        userSetting.get("relationshipType")+","+location.get(0)+","+ location.get(1));
+                    userSetting.get("gender")+","+userSetting.get("age")+","+userSetting.get("income")+"," +
+                    userSetting.get("pet")+","+userSetting.get("maritalStatus")+","+
+                    userSetting.get("relationshipType")+","+location.get(0)+","+ location.get(1));
 
             writer.write(write);
             writer.close();
@@ -114,26 +133,16 @@ public class csvManager {
         }
     }
 
-    public void logoutCurrentUser(String path) {
-        ArrayList<String> Headers = new ArrayList<String>(Arrays.asList("username",
-                "name", "password", "gender", "age", "income", "pet", "martialStatus", "relationshipType","locationX",
-                "locationY"));
-        try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(path));
-            writer.write(String.join(",", Headers));
-            writer.close();
-        }
-        catch (IOException exception) {
-            throw new RuntimeException(exception);
-        }
-    }
-
-    public void writeUser(Map<String, UserResponseModel> userMap, String path) {
+    /**
+     * writes to the user data file, writes all the users in the database
+     * @param userMap: map of username and UserResponse model
+     */
+    public void writeUser(Map<String, UserResponseModel> userMap) {
         ArrayList<String> Headers = new ArrayList<String>(Arrays.asList("id", "username",
                 "name", "password", "gender", "age", "income", "pet", "martialStatus", "relationshipType","locationX",
                 "locationY"));
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(path));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(userPath));
             writer.write(String.join(",", Headers));
             writer.newLine();
 

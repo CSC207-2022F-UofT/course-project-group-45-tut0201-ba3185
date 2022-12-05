@@ -38,8 +38,6 @@ public class SearchScoreCalculator implements ScoreCalculator{
         if(searchAnswers.get("marriageState").equals(userInfo.get("marriageState"))){
             this.score = this.score + 1;
         }
-        System.out.println(searchAnswers.get("relationship"));
-        System.out.println(userInfo.get("relationshipType"));
 
         if(searchAnswers.get("relationship").equals("Doesn't care") ||searchAnswers.get("relationship").equals(userInfo.get("relationshipType"))){
             this.score = this.score + 1;

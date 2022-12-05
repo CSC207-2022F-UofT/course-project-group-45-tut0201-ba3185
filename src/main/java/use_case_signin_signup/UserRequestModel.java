@@ -1,15 +1,18 @@
 package use_case_signin_signup;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.List;
 
 public class UserRequestModel implements UserInputBoundary {
     private String username;
     private String name;
     private String password;
-    private HashMap<String, Object> userSettings;
-    private ArrayList<Double> location;
-    private ArrayList<Object> userInfo;
+    private Map<String, Object> userSettings;
+    private List<Double> location;
+    private List<Object> userInfo;
 
     public UserRequestModel() {
         this.userInfo = new ArrayList<>();
@@ -18,7 +21,7 @@ public class UserRequestModel implements UserInputBoundary {
 
     public void setInfo(String username, String name, String password, int age, int income,
                         String gender, String relationshipType, String maritalStatus, String pet,
-                        ArrayList<Double> location) {
+                        List<Double> location) {
         this.username = username;
         this.name = name;
         this.password = password;
@@ -37,6 +40,6 @@ public class UserRequestModel implements UserInputBoundary {
         this.userInfo.add(password);
         this.userInfo.add(location);
         this.userInfo.add(userSettings);
-        return this.userInfo;
+        return (ArrayList<Object>) this.userInfo;
     }
 }
