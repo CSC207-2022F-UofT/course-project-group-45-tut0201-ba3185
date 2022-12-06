@@ -10,19 +10,32 @@ import use_case_message.*;
 
 
 class MessageInteractorUnitTest {
-   @Test
-   void create(){
-       csvManager.readCurrentUser("src/main/java/database/currentUser.csv");
-       MessagePresenter messagePresenter;
-       MessageManagerFactory chatFactory;
-       String msg = new String("Hello your test is running successfully");
+    MessageOutputBoundary messageOutputBoundary;
+    MessageManagers messageManagers;
+    MessageManagerFactory chatFactory;
+    @Test
+    void updateChatScreen(){
+        this.chatFactory = new MessageManagerFactory();
+        //this.messageManagers = MainFrame.messageManagers;
+        this.messageOutputBoundary = new MessageOutputBoundary() {
+            @Override
+            public void create(MessageResponseModel responseModel) {
+                //messages.
+            }
 
-       @Override
-       public void create(MessageRequestModel requestModel){
-            assertEqual("")
-       }
+            @Override
+            public void update(MessageResponseModel responseModel) {
 
+            }
+        };
+        MessageInputBoundary interactor = new MessageInteractor();
 
-   }
+        MessageRequestModel inputData = new MessageRequestModel("sunny", "Did you see the giant dinosaur in Robarts");
 
+        interactor.create(inputData);
+    }
+
+    void loadChatScreen(){
+
+    }
 }
