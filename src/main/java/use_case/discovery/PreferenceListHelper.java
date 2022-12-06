@@ -1,27 +1,28 @@
 package use_case.discovery;
 
-import User.UserForTest;
-
+import database.csvManager;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class PreferenceListHelper {
     //TODO: fetch with users
-    List<String> testMainUserInterestRank = new TestUser().mainUser.getInterestRank();
-    private final List<String> returnUserNames;
-    List<UserForTest> afterGenderFinder = new GenderFinder().getList();
+    UserAccess manager = new csvManager();
+    Map<String, Object> cUserSettings = manager.readCurrentUser().getUserSetting();
+    List<String> mainInterestRank = (List) cUserSettings.get("interestRank");
+    //List<String> mainInterestRank = cUserSettings.getInterestRank();
 
-    public PreferenceListHelper(){
-        Map<UserForTest, Integer> scoreStorage = new HashMap<>();
-        for (UserForTest otherUser:afterGenderFinder){
-            ScoreCalculator scoreCalculator = new PreferenceScoreCalculator(otherUser, testMainUserInterestRank);
+    List<String> afterGenderInteractor = new GenderInteractor().getList();
+
+    public PreferenceListHelper(){}
+    public List<String> getList(){
+        Map<String, Integer> scoreStorage = new HashMap<>();
+        for (String otherUser: afterGenderInteractor){
+            ScoreCalculator scoreCalculator = new PreferenceScoreCalculator(otherUser, mainInterestRank);
             scoreStorage.put(otherUser, scoreCalculator.getScore());
         }
-        ScoreHelper tempPreferenceScoreHelper = new ScoreHelper(scoreStorage);
-        this.returnUserNames = tempPreferenceScoreHelper.getList();
-    }
-    public List<String> getList(){
-        return this.returnUserNames;
+        ScoreHelper tempScoreHelper = new ScoreHelper(scoreStorage);
+        return tempScoreHelper.getList();
     }
 }
