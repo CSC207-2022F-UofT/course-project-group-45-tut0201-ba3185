@@ -1,9 +1,6 @@
 package gui;
 import javax.swing.*;
 import controller.userController;
-import gui.LoginPageUI;
-
-import java.awt.*;
 
 public class MainFrame extends JFrame implements MainFrameInterface {
 
@@ -49,6 +46,12 @@ public class MainFrame extends JFrame implements MainFrameInterface {
     public void switchToMain() {
         this.getContentPane().removeAll();
         this.add(new MainPanel());
+        this.revalidate();
+    }
+    public void switchToInitSetup(String username, String name, String password) {
+        this.getContentPane().removeAll();
+        InitialSettingPageUI initialSettingPageUI = new InitialSettingPageUI(this, username, name, password);
+        this.add(initialSettingPageUI);
         this.revalidate();
     }
 }

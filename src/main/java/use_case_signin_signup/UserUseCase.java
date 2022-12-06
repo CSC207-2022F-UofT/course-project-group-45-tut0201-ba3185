@@ -59,7 +59,7 @@ public class UserUseCase {
 
     public boolean isUserLoggedIn() {
         csvManager manager = new csvManager();
-        User current = manager.readCurrentUser("src/main/java/database/currentUser.csv");
+        User current = manager.readCurrentUser();
         return current!=null;
     }
 }

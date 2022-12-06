@@ -12,7 +12,10 @@ import java.util.Map;
 
 public class csvManager {
 
-    public HashMap<String, UserRequestModel> readUser(String path) throws IOException {
+    private final String userPath = "src/main/java/database/user.csv";
+    private final String currentUserPath = "src/main/java/database/currentUser.csv";
+
+    public HashMap<String, UserRequestModel> readUser() throws IOException {
         /**
          * This method reads the user csv file to get all registered User
          *
@@ -21,7 +24,7 @@ public class csvManager {
          * @throws IOException when the reader fails to read.
          */
         String row;
-        File csv = new File(path);
+        File csv = new File(userPath);
         HashMap<String, UserRequestModel> userMap = new HashMap<>();
 
         BufferedReader reader = new BufferedReader(new FileReader(csv));
@@ -52,9 +55,9 @@ public class csvManager {
         return userMap;
     }
 
-    public User readCurrentUser(String path) {
+    public User readCurrentUser() {
         try {
-            File csv = new File(path);
+            File csv = new File(currentUserPath);
             BufferedReader reader = new BufferedReader(new FileReader(csv));
             reader.readLine();
             String row = reader.readLine();
@@ -92,13 +95,13 @@ public class csvManager {
         }
     }
     public void writeCurrentUser(String username, String name, String password, ArrayList<Double> location,
-            HashMap<String, Object> userSetting, String path) {
+            HashMap<String, Object> userSetting) {
         ArrayList<String> Headers = new ArrayList<String>(Arrays.asList("username",
                 "name", "password", "gender", "age", "income", "pet", "martialStatus", "relationshipType","locationX",
                 "locationY"));
 
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(path));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(currentUserPath));
             writer.write(String.join(",", Headers));
             writer.newLine();
 
@@ -116,12 +119,12 @@ public class csvManager {
         }
     }
 
-    public void writeUser(Map<String, UserResponseModel> userMap, String path) {
+    public void writeUser(Map<String, UserResponseModel> userMap) {
         ArrayList<String> Headers = new ArrayList<String>(Arrays.asList("id", "username",
                 "name", "password", "gender", "age", "income", "pet", "martialStatus", "relationshipType","locationX",
                 "locationY"));
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(path));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(userPath));
             writer.write(String.join(",", Headers));
             writer.newLine();
 
