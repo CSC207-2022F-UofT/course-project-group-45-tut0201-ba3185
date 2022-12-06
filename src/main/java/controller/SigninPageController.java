@@ -2,10 +2,7 @@ package controller;
 import database.csvManager;
 import use_case.signin_signup.UserRequestModel;
 import use_case.signin_signup.UserUseCase;
-
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -53,6 +50,7 @@ public class SigninPageController {
         Map<String, UserRequestModel> userMap = manager.readUser();
         UserRequestModel requestModel = userMap.get(username);
         manager.writeCurrentUser(requestModel.getUsername(), requestModel.getName(), requestModel.getPassword(),
-                requestModel.getLocation(), requestModel.getUserSetting());
+                requestModel.getLocation(), requestModel.getUserSetting(), requestModel.getInterestRank(),
+                requestModel.getAreaOfInterest());
     }
 }

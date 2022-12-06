@@ -1,7 +1,5 @@
 package controller;
-
 import use_case.discovery.DiscoveryInputBoundary;
-
 
 public class DiscoveryController {
     private final int userOption;

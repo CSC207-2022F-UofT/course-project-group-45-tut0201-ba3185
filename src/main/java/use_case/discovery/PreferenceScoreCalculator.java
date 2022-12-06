@@ -1,60 +1,44 @@
 package use_case.discovery;
-import database.csvManager;
-import use_case.signin_signup.UserRequestModel;
 
-import java.io.IOException;
 import java.util.List;
-import java.util.Map;
-
-import static use_case.discovery.GenderInteractor.USER_SETTING;
-
 /**
- * This class is intended to help PreferenceFinder
- * by comparing the InterestRank and return the score of each user
- * based on how matched two users are
+ * PreferenceScoreCalculator is a helper class of PreferenceListHelper
+ * The class compares the variable "interestRank" between current user and a given other user,
+ * and returns the score of the given other user
+ * The score is calculated based on the position and the number of matches, it follows the algorithm below:
+ * If both "interestRank" matches at index 0, 6 points is added;
+ * if both "interestRank" matches at index 1, 5 points is added;
+ * if both "interestRank" matches at index 2, 4 points is added...
+ * In addition, if there are more than 2 matches(regardless the index position), an extra point will be added
  */
-public class PreferenceScoreCalculator implements ScoreCalculator{
+public class PreferenceScoreCalculator extends ParentClass implements ScoreCalculator{
     private final static int INTEREST_RANK = 6;
-    Integer score;
-    List<String> mainInterestRank;
-    //fetched with user 1205
-    UserAccess manager = new csvManager();
-    Map<String, UserRequestModel> otherUsers;
-    String otherUserName;
+    List<String> cInterestRank;
+    String oName;
 
     /**
-     *
-     * @param otherUserName is the provided name of other user
-     * @param mainInterestRank is the list of interest rank from the current user
+     * @param oName is the provided name of other user
+     * @param cInterestRank is the list of interest rank from the current user
      */
-    public PreferenceScoreCalculator(String otherUserName, List<String> mainInterestRank){
-        this.mainInterestRank = mainInterestRank;
-        this.otherUserName = otherUserName;
-        try{
-            this.otherUsers = manager.readUser();
-        }
-        catch (IOException exception){
-            throw new RuntimeException(exception);
-        };
+    public PreferenceScoreCalculator(String oName, List<String> cInterestRank){
+        this.cInterestRank = cInterestRank;
+        this.oName = oName;
     }
-
     public int getScore(){
         int resScore = 0;//to record the score of the users
         int sameCount = 0; //to record the number of spot that are the same for both users
         for (int i = 0; i < INTEREST_RANK; i++){
-            Map<String, Object> oUser = this.otherUsers.get(this.otherUserName).getUserSetting();
-            List<String> oInterestRank = (List<String>)oUser.get("interestRank");
-            //List<String> oInterestRank = oUser.getInterestRank();
-            String otherUserInterest = oInterestRank.get(i);
-            String mainUserInterest = this.mainInterestRank.get(i);
-            if (otherUserInterest.equals(mainUserInterest)){
+            List<String> oInterestRankList = super.otherUsersInfo.get(this.oName).getInterestRank();
+            String oInterestRank = oInterestRankList.get(i);
+            String cInterestRank = this.cInterestRank.get(i);
+            if (oInterestRank.equals(cInterestRank)){
                 int INITIAL_SCORE = 6;
                 resScore = resScore + INITIAL_SCORE - i;
                 sameCount++;
             }
         }
         if (sameCount > 2){resScore++;}
-        this.score = resScore;
-        return this.score;
+//        this.score = resScore;
+        return resScore;
     }
 }

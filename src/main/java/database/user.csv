@@ -1,8 +1,28 @@
-id,username,name,password,gender,age,income,pet,martialStatus,relationshipType,locationX,locationY
-6,lll,lll,lll,Male,14,14,14,Single,Straight,14.5,14.5
-5,sunny,sunny,sunny,Male,14,14512,Kat,Single,Straight,1.5,17.5
-4,suny,suny,suny,Male,14,14,KAt,Single,Straight,14.5,14.5
-3,hehe,haha,haha,Male,14,14,Snake,Single,Straight,14.5,14.5
-2,jason,Jason,jason,Male,14,122,Sam,Single,Straight,14.5,14.5
-1,eric,eric,eric,Male,22,11,NOthing,Single,Straight,14.5,14.5
-0,Kevin,kevin,kevin,Male,25,10,Nothing,Single,Straight,0.5,2.5
+id,username,name,password,gender,age,income,pet,martialStatus,relationshipType,sexualOrientation,interestRank,areaOfInterest,locationX,locationY
+0,sunny,sunny,sunny,male,124124,124124,yes,single,friend,male,sport/age/marital status/interests/relationship type/pet,sport,1.0,1.0
+0,author,author,author,male,124124,124124,yes,single,friend,male,sport/age/marital status/interests/relationship type/pet,sport,1.0,1.0
+0,ben,ben,ben,male,124124,124124,yes,single,friend,male,sport/age/marital status/interests/relationship type/pet,sport,1.0,1.0
+0,chen,chen,chen,male,124124,124124,yes,single,friend,male,sport/age/marital status/interests/relationship type/pet,sport,1.0,1.0
+0,daniel,daniel,daniel,male,124124,124124,yes,single,friend,male,sport/age/marital status/interests/relationship type/pet,sport,1.0,1.0
+0,eric,eric,eric,male,124124,124124,yes,single,friend,male,sport/age/marital status/interests/relationship type/pet,sport,1.0,1.0
+0,finch,finch,finch,male,124124,124124,yes,single,friend,male,sport/age/marital status/interests/relationship type/pet,sport,1.0,1.0
+0,gavin,gavin,gavin,male,124124,124124,yes,single,friend,male,sport/age/marital status/interests/relationship type/pet,sport,1.0,1.0
+0,henry,henry,henry,male,124124,124124,yes,single,friend,male,sport/age/marital status/interests/relationship type/pet,sport,1.0,1.0
+0,ian,ian,ian,male,124124,124124,yes,single,friend,male,sport/age/marital status/interests/relationship type/pet,sport,1.0,1.0
+0,jack,jack,jack,male,124124,124124,yes,single,friend,male,sport/age/marital status/interests/relationship type/pet,sport,1.0,1.0
+0,leo,sunny,sunny,male,124124,124124,yes,single,friend,male,sport/age/marital status/interests/relationship type/pet,sport,1.0,1.0
+0,ming,sunny,sunny,male,124124,124124,yes,single,friend,male,sport/age/marital status/interests/relationship type/pet,sport,1.0,1.0
+0,nick,sunny,sunny,male,124124,124124,yes,single,friend,male,sport/age/marital status/interests/relationship type/pet,sport,1.0,1.0
+0,olivia,sunny,sunny,male,124124,124124,yes,single,friend,male,sport/age/marital status/interests/relationship type/pet,sport,1.0,1.0
+0,paige,sunny,sunny,male,124124,124124,yes,single,friend,male,sport/age/marital status/interests/relationship type/pet,sport,1.0,1.0
+0,queen,sunny,sunny,male,124124,124124,yes,single,friend,male,sport/age/marital status/interests/relationship type/pet,sport,1.0,1.0
+0,rihana,sunny,sunny,male,124124,124124,yes,single,friend,male,sport/age/marital status/interests/relationship type/pet,sport,1.0,1.0
+0,stella,sunny,sunny,male,124124,124124,yes,single,friend,male,sport/age/marital status/interests/relationship type/pet,sport,1.0,1.0
+0,tiffany,sunny,sunny,male,124124,124124,yes,single,friend,male,sport/age/marital status/interests/relationship type/pet,sport,1.0,1.0
+0,una,sunny,sunny,male,124124,124124,yes,single,friend,male,sport/age/marital status/interests/relationship type/pet,sport,1.0,1.0
+0,vivian,sunny,sunny,male,124124,124124,yes,single,friend,male,sport/age/marital status/interests/relationship type/pet,sport,1.0,1.0
+0,willa,sunny,sunny,male,124124,124124,yes,single,friend,male,sport/age/marital status/interests/relationship type/pet,sport,1.0,1.0
+0,xiomara,sunny,sunny,male,124124,124124,yes,single,friend,male,sport/age/marital status/interests/relationship type/pet,sport,1.0,1.0
+0,yara,sunny,sunny,male,124124,124124,yes,single,friend,male,sport/age/marital status/interests/relationship type/pet,sport,1.0,1.0
+0,zuri,sunny,sunny,male,124124,124124,yes,single,friend,male,sport/age/marital status/interests/relationship type/pet,sport,1.0,1.0
+

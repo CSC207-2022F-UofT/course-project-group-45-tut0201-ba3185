@@ -1,15 +1,12 @@
 package database;
 
-import entity.User;
-import use_case.discovery.UserAccess;
 import use_case.signin_signup.UserRequestModel;
 import use_case.signin_signup.UserResponseModel;
-
 
 import java.io.*;
 import java.util.*;
 
-public class csvManager implements UserAccess {
+public class csvManager implements csvInterface {
 
     /**
      * csvManager is the database interactor that reads and writes to the various data files
@@ -18,8 +15,8 @@ public class csvManager implements UserAccess {
      * @param currentUserPath is the path to the currentUser data file
      */
 
-    private final String userPath = "src/main/java/database/user.csv";
-    private final String currentUserPath = "src/main/java/database/currentUser.csv";
+    private final String  USER_PATH = "src/main/java/database/user.csv";
+    private final String CURRENT_USER_PATH  = "src/main/java/database/currentUser.csv";
 
     public Map<String, UserRequestModel> readUser() throws IOException {
         /**
@@ -30,7 +27,7 @@ public class csvManager implements UserAccess {
          * @throws IOException when the reader fails to read.
          */
         String row;
-        File csv = new File(userPath);
+        File csv = new File(USER_PATH);
         Map<String, UserRequestModel> userMap = new HashMap<>();
 
         BufferedReader reader = new BufferedReader(new FileReader(csv));
@@ -48,13 +45,18 @@ public class csvManager implements UserAccess {
             String maritalStatus = String.valueOf(col[8]);
             String relationshipType = String.valueOf(col[9]);
             String sexualOrientation = String.valueOf(col[10]);
+            String interestRank = String.valueOf(col[11]);
+
+            List<String> interestRanked = List.of(interestRank.split("/"));
+
+            String areaOfInterest = String.valueOf(col[12]);
             ArrayList<Double> currentLocation = new ArrayList<>();
-            currentLocation.add(Double.parseDouble(String.valueOf(col[11])));
-            currentLocation.add(Double.parseDouble(String.valueOf(col[12])));
+            currentLocation.add(Double.parseDouble(String.valueOf(col[13])));
+            currentLocation.add(Double.parseDouble(String.valueOf(col[14])));
 
             UserRequestModel currentUser = new UserRequestModel();
             currentUser.setInfo(username, name, password, age, income, gender,relationshipType,maritalStatus,pet,
-                    currentLocation, sexualOrientation);
+                    currentLocation, sexualOrientation, interestRanked, areaOfInterest);
             userMap.put(username, currentUser);
             row = reader.readLine();
         }
@@ -62,14 +64,14 @@ public class csvManager implements UserAccess {
         return userMap;
     }
 
-    public UserResponseModel readCurrentUser() {
+    public UserRequestModel readCurrentUser() {
         /**
          * reads the current user from the currentUser data file
          * @return a userResponse model of the data from currentUser data file
          * @throws IOException when the reader fails to read
          */
         try {
-            File csv = new File(currentUserPath);
+            File csv = new File(CURRENT_USER_PATH);
             BufferedReader reader = new BufferedReader(new FileReader(csv));
             reader.readLine();
             String row = reader.readLine();
@@ -85,13 +87,20 @@ public class csvManager implements UserAccess {
                 String maritalStatus = String.valueOf(col[7]);
                 String relationshipType = String.valueOf(col[8]);
                 String sexualOrientation = String.valueOf(col[9]);
-                ArrayList<Double> location = new ArrayList<>();
-                location.add(Double.parseDouble(col[10]));
-                location.add(Double.parseDouble(col[11]));
+                String interestRank = String.valueOf(col[10]);
+                List<String> interestRanked = List.of(interestRank.split("/"));
 
-                UserResponseModel responseModel = new UserResponseModel();
+                System.out.println(interestRanked);
+
+                String areaOfInterest = String.valueOf(col[11]);
+                ArrayList<Double> location = new ArrayList<>();
+                location.add(Double.parseDouble(col[12]));
+                location.add(Double.parseDouble(col[13]));
+
+                UserRequestModel responseModel = new UserRequestModel();
                 responseModel.setInfo(username, name, password,
-                        age, income, gender,relationshipType, maritalStatus,pet,location,sexualOrientation);
+                        age, income, gender,relationshipType, maritalStatus,pet,location,sexualOrientation,
+                        interestRanked, areaOfInterest);
                 return responseModel;
             }
             return null;
@@ -112,20 +121,24 @@ public class csvManager implements UserAccess {
      * @throws IOException if the reader fails to read
      */
     public void writeCurrentUser(String username, String name, String password, List<Double> location,
-                                 Map<String, Object> userSetting) {
+                                 Map<String, Object> userSetting, List<String> interestRank, String areaOfInterest) {
         ArrayList<String> Headers = new ArrayList<String>(Arrays.asList("username",
                 "name", "password", "gender", "age", "income", "pet", "martialStatus", "relationshipType",
-                "sexualOrientation","locationX", "locationY"));
+                "sexualOrientation","interestRank","areaOfInterest","locationX", "locationY"));
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(currentUserPath));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(CURRENT_USER_PATH));
             writer.write(String.join(",", Headers));
             writer.newLine();
+
+            String interestRanks = interestRank.toString();
+            interestRanks = interestRanks.replace(", ", "/");
+            interestRanks = interestRanks.substring(1, interestRanks.length()-1);
 
             String write = (username+","+name+","+password+","+
                     userSetting.get("gender")+","+userSetting.get("age")+","+userSetting.get("income")+"," +
                     userSetting.get("pet")+","+userSetting.get("maritalStatus")+","+
-                    userSetting.get("relationshipType")+","+userSetting.get("sexualOrientation")+","+
-                    location.get(0)+","+ location.get(1));
+                    userSetting.get("relationshipType")+","+userSetting.get("sexualOrientation")+","+interestRanks+
+                    ","+areaOfInterest+","+location.get(0)+","+ location.get(1));
 
             writer.write(write);
             writer.close();
@@ -142,9 +155,9 @@ public class csvManager implements UserAccess {
     public void writeUser(Map<String, UserResponseModel> userMap) {
         ArrayList<String> Headers = new ArrayList<String>(Arrays.asList("id", "username",
                 "name", "password", "gender", "age", "income", "pet", "martialStatus", "relationshipType",
-                "sexualOrientation","locationX", "locationY"));
+                "sexualOrientation","interestRank","areaOfInterest","locationX", "locationY"));
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(userPath));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(USER_PATH));
             writer.write(String.join(",", Headers));
             writer.newLine();
 
@@ -152,11 +165,19 @@ public class csvManager implements UserAccess {
                 UserResponseModel currentUser = (UserResponseModel) userMap.values().toArray()[i];
                 List<Double> location = currentUser.getLocation();
                 Map<String, Object> userSettings = currentUser.getUserSetting();
+
+                String interestRank = currentUser.getInterestRank().toString();
+                interestRank = interestRank.replace(", ", "/");
+                interestRank = interestRank.substring(1,interestRank.length()-1);
+
+                System.out.println(interestRank);
+
                 String write = (i+","+currentUser.getUsername()+","+currentUser.getName()+","+currentUser.getPassword()
                         +","+ userSettings.get("gender")+","+userSettings.get("age")+","+userSettings.get("income")+
                         "," + userSettings.get("pet")+","+userSettings.get("maritalStatus")+","+
-                        userSettings.get("relationshipType")+","+userSettings.get("sexualOrientation")+","
-                        +location.get(0)+","+ location.get(1));
+                        userSettings.get("relationshipType")+","+userSettings.get("sexualOrientation")+","+
+                        interestRank+","+currentUser.getAreaOfInterest()+","+
+                        location.get(0)+","+ location.get(1));
                 writer.write(write);
                 writer.newLine();
             }
@@ -170,9 +191,9 @@ public class csvManager implements UserAccess {
     public void logoutUser() {
         ArrayList<String> Headers = new ArrayList<String>(Arrays.asList("id", "username",
                 "name", "password", "gender", "age", "income", "pet", "martialStatus", "relationshipType",
-                "sexualOrientation","locationX", "locationY"));
+                "sexualOrientation","interestRank", "areaOfInterest","locationX", "locationY"));
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(currentUserPath));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(CURRENT_USER_PATH));
             writer.write(String.join(",", Headers));
         }
         catch(IOException exception) {

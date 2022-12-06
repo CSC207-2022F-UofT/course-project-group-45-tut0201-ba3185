@@ -9,7 +9,6 @@ public class PreferenceInteractor implements DiscoveryInputBoundary {
     private final Presenter pPanel;
 
     /**
-     *
      * @param pPanel the panel that display the result of preference discovery
      */
 

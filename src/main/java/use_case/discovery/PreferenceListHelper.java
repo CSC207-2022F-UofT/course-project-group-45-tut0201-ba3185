@@ -1,25 +1,29 @@
 package use_case.discovery;
-
+import database.csvInterface;
 import database.csvManager;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * PreferenceListHelper is to return a list of usernames.
+ * The users in the list are those who share the most similarity with the current user in terms of "interestRank"
+ * "interestRank" is a variable of a list that contains six strings: "income", "pet",
+ * "marital status", "relationship type", "areaOfInterest", "age".
+ * String put at the front of rank is the aspect that current user cares the most;
+ * String put at the end is the aspect that current user cares the least.
+ */
 public class PreferenceListHelper {
     //TODO: fetch with users
-    UserAccess manager = new csvManager();
-    Map<String, Object> cUserSettings = manager.readCurrentUser().getUserSetting();
-    List<String> mainInterestRank = (List) cUserSettings.get("interestRank");
-    //List<String> mainInterestRank = cUserSettings.getInterestRank();
-
+    csvInterface manager = new csvManager();
+    List<String> cInterestRank = manager.readCurrentUser().getInterestRank();
     List<String> afterGenderInteractor = new GenderInteractor().getList();
 
     public PreferenceListHelper(){}
     public List<String> getList(){
         Map<String, Integer> scoreStorage = new HashMap<>();
         for (String otherUser: afterGenderInteractor){
-            ScoreCalculator scoreCalculator = new PreferenceScoreCalculator(otherUser, mainInterestRank);
+            ScoreCalculator scoreCalculator = new PreferenceScoreCalculator(otherUser, cInterestRank);
             scoreStorage.put(otherUser, scoreCalculator.getScore());
         }
         ScoreHelper tempScoreHelper = new ScoreHelper(scoreStorage);

@@ -1,13 +1,9 @@
 package use_case.discovery;
 import java.util.*;
 
-import User.UserForTest;
-
 /**
- * This class is intended to help PreferenceFinder
- * To get the highest score from the HashMap,
- * arranged them in descending order,
- * and return a list of username(String)
+ * ScoreHelper is to help PreferenceListHelper by arranging users in descending order based on their scores.
+ * A list of usernames is returned.
  */
 public class ScoreHelper {
     Map<String, Integer> scoreStorage;
@@ -15,7 +11,6 @@ public class ScoreHelper {
     List<String> totalUsername;
 
     /**
-     *
      * @param scoreStorage stores the information of user with his/hers score
      */
 
