@@ -1,4 +1,2 @@
 id,username,name,password,gender,age,income,pet,martialStatus,relationshipType,sexualOrientation,interestRank,areaOfInterest,locationX,locationY
-2,lll,lll,lll,male,29,1942,yes,single,friend,straight,income,sport,2.0,2.0
-1,sunny,sunny,sunny,male,14,1231,yes,single,friend,straight,interests,game,14.5,14.5
-0,eric,eric,eric,male,19,1934190348,yes,single,friend,straight,income,sport,1.0,1.0
+0,sunny,sunny,sunny,male,12412,12412,yes,single,friend,male,sport.age.marital status.interests.relationship type.pet,sport,1.0,1.0

@@ -25,7 +25,7 @@ public class User implements Comparable<User> {
     private List<Double> location;
     private List<String> blockList;
     private Map<String, Object> userInfo;
-    private String interestRank;
+    private List<String> interestRank;
     private List<String> userChatted;
     private String areaOfInterest;
 
@@ -39,7 +39,7 @@ public class User implements Comparable<User> {
      * @param userInfo: all user information that was reported when creating the user
      */
     public User(String username, String name, String password, List<Double> location,
-                Map<String, Object> userInfo, String interestRank, String areaOfInterest) {
+                Map<String, Object> userInfo, List<String> interestRank, String areaOfInterest) {
 
         this.username = username;
         this.name = name;
@@ -103,7 +103,7 @@ public class User implements Comparable<User> {
      * getting the rank of interests of the user
      * @return returns a list of their interest ranked
      */
-    public String getInterestRank() {
+    public List<String> getInterestRank() {
         return this.interestRank;
     }
 
@@ -162,7 +162,7 @@ public class User implements Comparable<User> {
      * update the ranking of the interests
      * @param rank: new rank as a string
      */
-    public void setInterestRank(String rank) {
+    public void setInterestRank(List<String> rank) {
         this.interestRank = rank;
     }
 

@@ -25,7 +25,7 @@ public class SignupPageController {
         String username = requestModel.getUsername();
         String name = requestModel.getName();
         String password = requestModel.getPassword();
-        String interestRank = requestModel.getInterestRank();
+        List<String> interestRank = requestModel.getInterestRank();
         String areaOfInterest = requestModel.getAreaOfInterest();
         List<Double> location = requestModel.getLocation();
         Map<String, Object> userSetting = requestModel.getUserSetting();

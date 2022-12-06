@@ -4,6 +4,7 @@ import controller.SignupPageController;
 import use_case_signin_signup.UserRequestModel;
 
 import javax.swing.*;
+import java.util.List;
 import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -39,7 +40,7 @@ public class InitialSettingPageUI extends JPanel {
         String[] genders = {"male", "female", "others"};
         String[] martialStatus = {"single", "married", "divorced"};
         String[] relationshipTypes = {"friend", "one-night", "long-term","short-term"};
-        String[] sexualOrientations = {"straight", "gay", "bisexual"};
+        String[] sexualOrientations = {"male", "female", "bisexual"};
         String[] booleanTypes = {"yes", "no"};
         String[] interestRanks = {"income", "age", "marital status", "interests", "relationship type", "pet"};
         String[] interestArea = {"sport", "art", "music", "game", "movie", "cooking", "reading"};
@@ -126,9 +127,18 @@ public class InitialSettingPageUI extends JPanel {
                     currentLocationSplit.add(Double.valueOf(tmp[0]));
                     currentLocationSplit.add(Double.valueOf(tmp[1]));
                     UserRequestModel requestModel = new UserRequestModel();
+
+                    List<String> interest = new ArrayList<>(Arrays.asList("income", "age", "marital status",
+                            "interests", "relationship type", "pet"));
+                    interest.remove(interestRankChosen);
+
+                    List<String> interestR = new ArrayList<>();
+                    interestR.add(interestAreaChosen);
+                    interestR.addAll(interest);
+
                     requestModel.setInfo(username, name, password, convertedAge, convertedIncome, currentGender,
                             currentRelationshipType,currentMaritalStatus,currentPet, currentLocationSplit,
-                            sexualOrientation, interestRankChosen, interestAreaChosen);
+                            sexualOrientation, interestR, interestAreaChosen);
                     Boolean isUserRegistered = new SignupPageController().create(requestModel);
 
                     if (isUserRegistered) {
