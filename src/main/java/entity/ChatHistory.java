@@ -1,9 +1,10 @@
 package entity;
 
+import java.io.Serializable;
 import java.util.LinkedHashMap;
 
 //entity layer
-public class ChatHistory {
+public class ChatHistory implements Serializable {
     /**
      * The entity that stores the chat history of two users
      */

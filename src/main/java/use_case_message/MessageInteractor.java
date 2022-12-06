@@ -2,6 +2,9 @@ package use_case_message;
 
 import database.csvManager;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 
@@ -50,6 +53,15 @@ public class MessageInteractor implements MessageInputBoundary {
                 // if the message is null, load all chat history
                 MessageResponseModel messageResponseModel = new MessageResponseModel(mm.getChatHistory());
                 messageOutputBoundary.create(messageResponseModel);
+            }
+            try {
+                ObjectOutputStream output = new ObjectOutputStream(
+                        new FileOutputStream("src/main/java/database/MessageManagers.ser"));
+                output.writeObject(messageManagers);
+                output.close();
+            }
+            catch (IOException ioe){
+                System.err.println("Error saving to file.");
             }
         }
         catch (NullPointerException exception){

@@ -3,7 +3,9 @@ package use_case_message;
 
 import entity.ChatHistory;
 
-public class MessageManager {
+import java.io.Serializable;
+
+public class MessageManager implements Serializable {
     /**
      * The use case that stores and updates the chat history between two users accordingly
      */

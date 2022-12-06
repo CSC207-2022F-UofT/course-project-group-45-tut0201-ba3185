@@ -1,10 +1,11 @@
 package use_case_message;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class MessageManagers {
+public class MessageManagers implements Serializable {
     /**
      * The use case that stores all the MessageManagers in the program
      */
