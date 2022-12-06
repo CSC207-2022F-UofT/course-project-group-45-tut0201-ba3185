@@ -56,7 +56,7 @@ public class NavigationPanel extends JPanel {
         settingsButton.setOpaque(false);
         settingsButton.setContentAreaFilled(false);
         settingsButton.setFocusPainted(false);
-        settingsButton.setActionCommand("settingsButton");
+        settingsButton.setActionCommand("frontPageButton");
         settingsButton.addActionListener(e -> {
             for(ActionListener listener: actionListeners){
                 listener.actionPerformed(e);

@@ -24,5 +24,4 @@ public class FrontPageController {
         FrontPageRequestModel frontPageRequestModel = new FrontPageRequestModel(target);
         this.frontPageInputBoundary.create(frontPageRequestModel);
     }
-
 }

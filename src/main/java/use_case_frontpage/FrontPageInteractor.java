@@ -21,15 +21,20 @@ public class FrontPageInteractor implements FrontPageInputBoundary{
         User user = csvManager.readCurrentUser();
         String target = requestModel.getTarget();
 
-        ArrayList<String> userTargetList = user.getUserChatted();
+        try {
+            ArrayList<String> userTargetList = user.getUserChatted();
 
-        // add the target in user if there is a new target
-        if (target != null && !userTargetList.contains(target)){
-            user.addUserChatted(target);
+            // add the target in user if there is a new target
+            if (target != null && !userTargetList.contains(target)) {
+                user.addUserChatted(target);
+            }
+
+            FrontPageResponseModel responseModel = new FrontPageResponseModel(user.getUserChatted());
+
+            frontPageOutputBoundary.create(responseModel);
         }
-
-        FrontPageResponseModel responseModel = new FrontPageResponseModel(user.getUserChatted());
-
-        frontPageOutputBoundary.create(responseModel);
+        catch (NullPointerException exception){
+            throw new RuntimeException("Current user not found. Please log in.");
+        }
     }
 }

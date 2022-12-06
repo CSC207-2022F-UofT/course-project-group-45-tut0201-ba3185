@@ -1,11 +1,12 @@
 package gui;
 import javax.swing.*;
 import controller.userController;
+import use_case_message.MessageManagers;
 
 public class MainFrame extends JFrame implements MainFrameInterface {
-
     public static final int PAGE_WIDTH = 414;
     public static final int PAGE_HEIGHT = 736;
+    public static MessageManagers messageManagers = new MessageManagers();
 
     public MainFrame() {
         this.setSize(PAGE_WIDTH, PAGE_HEIGHT);

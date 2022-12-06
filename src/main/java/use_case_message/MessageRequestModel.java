@@ -16,7 +16,7 @@ public class MessageRequestModel {
 
     public MessageRequestModel(String target, Object msg){
         this.target = target;
-        if(msg instanceof String){
+        if(msg instanceof String && ((String) msg).length() > 0){
             this.msg = (String) msg;
         }
         else {

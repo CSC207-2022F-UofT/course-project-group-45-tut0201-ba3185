@@ -19,15 +19,16 @@ public class FrontPagePanel extends JPanel implements ActionListener {
 
     public JScrollPane createFrontPageScreen() {
         //initialize our FrontPageScreen
+        controller.create("Sunny");
+        controller.create("Alyssa");
 
-        this.frontPageScreen = new JPanel();
-        frontPageScreen.setLayout(new BoxLayout(frontPageScreen, BoxLayout.Y_AXIS));
-        //int screen_h = page_h * ;
-        //frontPageScreen.setSize(page_w, screen_h); //(w = 414, h = 736*0.9)
+        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        this.setSize(PAGE_W, (int) (PAGE_H*0.9)); //(w = 414, h = 736*0.9)
         Color color = new Color(246, 186, 227);
-        frontPageScreen.setBackground(color);
+        this.setBackground(color);
 
-        JScrollPane scrollPane = new JScrollPane(frontPageScreen, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        JScrollPane scrollPane = new JScrollPane(this, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+                JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         //scrollPane.setSize(page_w, screen_h);
         return scrollPane;
     }
@@ -36,7 +37,7 @@ public class FrontPagePanel extends JPanel implements ActionListener {
         JButton button = new JButton();
         button.setText(username);
         button.setAlignmentX(Component.CENTER_ALIGNMENT);
-        frontPageScreen.add(button);
+        this.add(button);
         button.addActionListener(this);
     }
 

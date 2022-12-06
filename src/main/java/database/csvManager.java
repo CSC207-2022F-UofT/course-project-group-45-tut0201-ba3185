@@ -12,11 +12,11 @@ import java.util.Map;
 
 public class csvManager {
 
-    private final String userPath = "src/main/java/database/user.csv";
+    private static final String userPath = "src/main/java/database/user.csv";
     private static final String currentUserPath = "src/main/java/database/currentUser.csv";
 
-    public HashMap<String, UserRequestModel> readUser() throws IOException {
-        /**
+    public static HashMap<String, UserRequestModel> readUser() throws IOException {
+        /*
          * This method reads the user csv file to get all registered User
          *
          * @param path, the path of the csv file
@@ -96,8 +96,8 @@ public class csvManager {
 
     public void writeCurrentUser(String username, String name, String password, ArrayList<Double> location,
             HashMap<String, Object> userSetting) {
-        ArrayList<String> Headers = new ArrayList<String>(Arrays.asList("username",
-                "name", "password", "gender", "age", "income", "pet", "martialStatus", "relationshipType","locationX",
+        ArrayList<String> Headers = new ArrayList<>(Arrays.asList("username",
+                "name", "password", "gender", "age", "income", "pet", "martialStatus", "relationshipType", "locationX",
                 "locationY"));
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(currentUserPath));
@@ -118,8 +118,8 @@ public class csvManager {
     }
 
     public void writeUser(Map<String, UserResponseModel> userMap) {
-        ArrayList<String> Headers = new ArrayList<String>(Arrays.asList("id", "username",
-                "name", "password", "gender", "age", "income", "pet", "martialStatus", "relationshipType","locationX",
+        ArrayList<String> Headers = new ArrayList<>(Arrays.asList("id", "username",
+                "name", "password", "gender", "age", "income", "pet", "martialStatus", "relationshipType", "locationX",
                 "locationY"));
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(userPath));

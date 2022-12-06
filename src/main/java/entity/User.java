@@ -35,6 +35,7 @@ public class User implements Comparable<User> {
         this.password = password;
         this.location = location;
         this.userInfo = userInfo;
+        this.userChatted = new ArrayList<>();
     }
 
     // Getter functions
