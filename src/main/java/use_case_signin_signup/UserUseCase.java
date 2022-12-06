@@ -100,7 +100,7 @@ public class UserUseCase {
      */
     public boolean isUserLoggedIn() {
         csvManager manager = new csvManager();
-        UserResponseModel current = manager.readCurrentUser();
+        UserRequestModel current = manager.readCurrentUser();
         return current!=null;
     }
 

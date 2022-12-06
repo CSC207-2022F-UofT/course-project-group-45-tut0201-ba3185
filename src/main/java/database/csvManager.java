@@ -6,7 +6,7 @@ import use_case_signin_signup.UserResponseModel;
 import java.io.*;
 import java.util.*;
 
-public class csvManager {
+public class csvManager implements csvInterface {
 
     /**
      * csvManager is the database interactor that reads and writes to the various data files
@@ -63,7 +63,7 @@ public class csvManager {
         return userMap;
     }
 
-    public UserResponseModel readCurrentUser() {
+    public UserRequestModel readCurrentUser() {
         /**
          * reads the current user from the currentUser data file
          * @return a userResponse model of the data from currentUser data file
@@ -91,10 +91,10 @@ public class csvManager {
 
                 String areaOfInterest = String.valueOf(col[11]);
                 ArrayList<Double> location = new ArrayList<>();
-                location.add(Double.parseDouble(col[11]));
                 location.add(Double.parseDouble(col[12]));
+                location.add(Double.parseDouble(col[13]));
 
-                UserResponseModel responseModel = new UserResponseModel();
+                UserRequestModel responseModel = new UserRequestModel();
                 responseModel.setInfo(username, name, password,
                         age, income, gender,relationshipType, maritalStatus,pet,location,sexualOrientation,
                         interestRanked, areaOfInterest);
