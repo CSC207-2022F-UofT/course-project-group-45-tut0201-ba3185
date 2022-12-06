@@ -27,12 +27,13 @@ public class SignupPageController {
         String username = requestModel.getUsername();
         String name = requestModel.getName();
         String password = requestModel.getPassword();
+        String interestRank = requestModel.getInterestRank();
         List<Double> location = requestModel.getLocation();
         Map<String, Object> userSetting = requestModel.getUserSetting();
         // Check if the user is already in the Database
-        if(usecase.addUser(username, name, password, location, userSetting)) {
+        if(usecase.addUser(username, name, password, location, userSetting, interestRank)) {
             csvManager.writeUser(usecase.getUserMap());
-            csvManager.writeCurrentUser(username, name, password, location, userSetting);
+            csvManager.writeCurrentUser(username, name, password, location, userSetting, interestRank);
             return true;
         }
         return false;

@@ -7,10 +7,11 @@ import java.util.Map;
 public interface UserOutputBoundary {
     public void setInfo(String username, String name, String password, int age, int income,
                         String gender, String relationshipType, String maritalStatus, String pet,
-                        List<Double> location, String sexualOrientation);
+                        List<Double> location, String sexualOrientation, String interestRank);
     public String getUsername();
     public String getName();
     public String getPassword();
     public List<Double> getLocation();
     public Map<String, Object> getUserSetting();
+    public String getInterestRank();
 }

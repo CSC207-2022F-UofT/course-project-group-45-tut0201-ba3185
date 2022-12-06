@@ -8,6 +8,7 @@ public class UserResponseModel implements UserOutputBoundary {
     private String username;
     private String name;
     private String password;
+    private String interestRank;
     private Map<String, Object> userSettings;
     private List<Double> location;
 
@@ -17,11 +18,12 @@ public class UserResponseModel implements UserOutputBoundary {
 
     public void setInfo(String username, String name, String password, int age, int income,
                         String gender, String relationshipType, String maritalStatus, String pet,
-                        List<Double> location, String sexualOrientation) {
+                        List<Double> location, String sexualOrientation, String interestRank) {
         this.username = username;
         this.name = name;
         this.password = password;
         this.location = location;
+        this.interestRank = interestRank;
         this.userSettings.put("age", age);
         this.userSettings.put("income", income);
         this.userSettings.put("maritalStatus", maritalStatus);
@@ -54,5 +56,10 @@ public class UserResponseModel implements UserOutputBoundary {
     @Override
     public Map<String, Object> getUserSetting() {
         return this.userSettings;
+    }
+
+    @Override
+    public String getInterestRank() {
+        return this.interestRank;
     }
 }
