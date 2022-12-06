@@ -1,74 +1,49 @@
 package usecase;
 
-import entity.User;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class GetNearbyUserHelper {
-    User currentUser;
-    ArrayList<User> userList;
 
-    //help to get a list of nearby users
-    public GetNearbyUserHelper(User currentUser, ArrayList<User> userList){
-        this.currentUser = currentUser;
-        this.userList = userList;
-    }
-
-    //return a sorted list of usernames based on their distance.
-    public ArrayList<String> getNearbyUser() {
-        HashMap<String, Double> UserDistance = new HashMap<>();
-        ArrayList<Double> listDistance = new ArrayList<>();
-        ArrayList<String> listUsername = new ArrayList<>();
+    UserForTest currentUser; //The current user of UserForTest
+    // List of users after the gender finder
+    List<UserForTest> userList = new GenderFinder().getList();
+    // List of sorted usernames that needs to be returned
+    List<String> usernames;
+    // sort the list of usernames
+    public GetNearbyUserHelper(){
+        currentUser = new TestUser().mainUser;
+        Map<String, Integer> UserScore = new HashMap<>();
+        List<Integer> listScore = new ArrayList<>();
+        List<String> listUsername = new ArrayList<>();
+        // location of the current user
         ArrayList<Double> userLocation = currentUser.getLocation();
-        ArrayList<String> usernameList = new ArrayList<>();
-        for (User u : userList) {
-            double d = distance(userLocation, u.getLocation());
-            UserDistance.put(u.getUsername(), d);
-            listDistance.add(d);
-            usernameList.add(u.getUsername());
+        List<String> tempUsernameList = new ArrayList<>();
+        for (UserForTest u : userList) {
+            double d = new DistanceHelper(userLocation, u.getLocation()).getDistance();
+            Integer s = new LocationScoreCalculator(d).getScore();
+            UserScore.put(u.getUsername(), s);
+            listScore.add(s);
+            tempUsernameList.add(u.getUsername());
         }
-        Collections.sort(listDistance);
-        for (Double d : listDistance) {
-            for (String u : usernameList) {
-                if (!listUsername.contains(u) && d.equals(UserDistance.get(u))) {
+        listScore.sort(Collections.reverseOrder());
+        for (Integer s : listScore) {
+            for (String u : tempUsernameList) {
+                if (!listUsername.contains(u) && s.equals(UserScore.get(u))) {
                     listUsername.add(u);
                 }
             }
         }
-        //ArrayList<String> listUserDistance = new ArrayList<>();
-        //for(String u: listUsername){
-        //listUserDistance.add(u + ": " + String.format("%.2f", UserDistance.get(u)) + "km");
-        //}
-        //return listUserDistance;
-        return listUsername;
+        this.usernames = listUsername;
     }
-    //a method used to compute and return the distance (in KM) of two users
-    private double distance(ArrayList<Double> v1, ArrayList<Double> v2){
-        double lon1 = v1.get(0);
-        double lat1 = v1.get(1);
-        double lon2 = v2.get(0);
-        double lat2 = v2.get(1);
 
-        // The math module contains a function
-        // named toRadians which converts from degrees to radians.
-        lon1 = Math.toRadians(lon1);
-        lon2 = Math.toRadians(lon2);
-        lat1 = Math.toRadians(lat1);
-        lat2 = Math.toRadians(lat2);
+    //return a sorted list of usernames based on their distance.
+    public List<String> getList() {
 
-        double d_lon = lon2 - lon1;
-        double d_lat = lat2 - lat1;
-        double a = Math.pow(Math.sin(d_lat / 2), 2)
-                + Math.cos(lat1) * Math.cos(lat2)
-                * Math.pow(Math.sin(d_lon / 2),2);
-
-        double c = 2 * Math.asin(Math.sqrt(a));
-        // Radius of earth in kilometers. Use 395 for miles
-        double r = 6371;
-
-        // calculate the result
-        return(c * r);
+        return usernames;
     }
     }
