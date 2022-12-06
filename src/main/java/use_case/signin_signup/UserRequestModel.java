@@ -2,23 +2,23 @@ package use_case.signin_signup;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.List;
 
 public class UserRequestModel implements UserInputBoundary {
     private String username;
     private String name;
     private String password;
-    private HashMap<String, Object> userSettings;
-    private ArrayList<Double> location;
-    private ArrayList<Object> userInfo;
+    private Map<String, Object> userSettings;
+    private List<Double> location;
 
     public UserRequestModel() {
-        this.userInfo = new ArrayList<>();
         this.userSettings = new HashMap<>();
     }
 
     public void setInfo(String username, String name, String password, int age, int income,
                         String gender, String relationshipType, String maritalStatus, String pet,
-                        ArrayList<Double> location) {
+                        List<Double> location, String sexualOrientation) {
         this.username = username;
         this.name = name;
         this.password = password;
@@ -29,14 +29,31 @@ public class UserRequestModel implements UserInputBoundary {
         this.userSettings.put("pet", pet);
         this.userSettings.put("relationshipType", relationshipType);
         this.userSettings.put("gender", gender);
+        this.userSettings.put("sexualOrientation", sexualOrientation);
     }
 
-    public ArrayList<Object> getInfo() {
-        this.userInfo.add(username);
-        this.userInfo.add(name);
-        this.userInfo.add(password);
-        this.userInfo.add(location);
-        this.userInfo.add(userSettings);
-        return this.userInfo;
+    @Override
+    public String getUsername() {
+        return this.username;
+    }
+
+    @Override
+    public String getName() {
+        return this.name;
+    }
+
+    @Override
+    public String getPassword() {
+        return this.password;
+    }
+
+    @Override
+    public List<Double> getLocation() {
+        return this.location;
+    }
+
+    @Override
+    public Map<String, Object> getUserSetting() {
+        return this.userSettings;
     }
 }
