@@ -2,7 +2,6 @@ package gui;
 import controller.TwoTruthsAndALiePageController;
 import entity.TwoTruthsAndALieGame;
 import presenter.TwoTruthsAndALiePagePresenter;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -31,12 +30,23 @@ public class TwoTruthsAndALiePagePanel extends JPanel implements TwoTruthsAndALi
     }
 
     public void update(TwoTruthsAndALiePagePanelViewModel viewModel) {
+        this.removeAll();
+
+        JPanel createGamePanel = new JPanel();
+        createGamePanel.setBackground(Color.pink);
+        JButton createGameButton = new JButton();
+        createGameButton.setText("Create game");
+        createGameButton.addActionListener(e -> {
+            controller.createGame(this);
+        });
+        createGamePanel.add(createGameButton);
+        this.add(createGamePanel);
+
         for (TwoTruthsAndALieGame game: viewModel.games) {
             TwoTruthsAndALieGamePanel gamePanel = new TwoTruthsAndALieGamePanel();
             this.add(gamePanel);
             this.add(Box.createRigidArea(new Dimension(0, 10)));
             this.revalidate();
-
         }
     }
 }

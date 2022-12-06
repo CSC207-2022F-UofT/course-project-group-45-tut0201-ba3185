@@ -12,6 +12,8 @@ public class TwoTruthsAndALieGameController {
         this.manager = new TwoTruthsAndALieGameManager();
     }
 
+    public void showInput(T
+
     public void submitStatements(TwoTruthsAndALieGame game, String truth1, String truth2, String lie) {
         TwoTruthsAndALieGameRequestModel requestModel = new TwoTruthsAndALieGameRequestModel();
         requestModel.setGame(game);
