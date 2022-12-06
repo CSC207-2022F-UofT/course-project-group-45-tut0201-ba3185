@@ -1,5 +1,8 @@
 package use_case_discovery;
 
+import database.csvManager;
+import entity.User;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,7 +15,7 @@ public class SearchListHelper {
     private SearchAnswerRequestModel model;
     private List<String> recommendedList;
     // private List<User> userList;
-    private List<UserForTest> userList;
+    private List<String> userList;
     private Map<String, String> answerList;
 
 
@@ -27,20 +30,20 @@ public class SearchListHelper {
      * calculator and score helper.
      */
     public void generateList(){
+
+
         GenderInteractor genderInteractor = new GenderInteractor();
         this.userList = genderInteractor.getList();
 
 
         SearchAnswerConverter converter = new SearchAnswerConverter(model);
         answerList = converter.getAnswer();
-
+        Map<String, Integer> userListWithScore = new HashMap<>();
         SearchScoreCalculator scoreCalculator = new SearchScoreCalculator(answerList);
-        Map<UserForTest, Integer> userListWithScore = new HashMap<>();
 
-        for(UserForTest user:userList){ // need to change to User
 
+        for(String user:userList){ // need to change to User
             scoreCalculator.calculateScore(user);
-            System.out.println(user.getUsername() + scoreCalculator.getScore());
             userListWithScore.put(user,scoreCalculator.getScore());
 
         }

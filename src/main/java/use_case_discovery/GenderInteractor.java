@@ -1,53 +1,53 @@
 package use_case_discovery;
+import database.csvManager;
+import use_case_signin_signup.UserRequestModel;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 /**
-     * GenderInteractor takes user's sexual orientation and filter other users based
-     * Documentary of possible sexual orientation:
-     *(possible sexual orientation): (return from GenderInteractor)
-     * male: return only users identified themselves as male
-     * female: return only users identified themselves as female
-     * bisexual: return only users identified themselves as both male and female
-     * transgender: return only users identified themselves as transgender
-     * open: return all the users
-     */
+ * GenderFinder takes user's sexual orientation and filter other users based
+ * Documentary of possible sexual orientation:
+ *(possible sexual orientation): (return from GenderFinder)
+ * male: return only users identified themselves as male
+ * female: return only users identified themselves as female
+ * bisexual: return only users identified themselves as both male and female
+ */
 
-//to use the class, create an instance of GenderInteractor and then call the method getList
-    public class GenderInteractor {
-
-    TestUser testUser = new TestUser();
-    ArrayList<UserForTest> genderSuitFinder;//list to store the user after GenderInteractor
-    UserForTest mainUser = testUser.getMainUser(); //to get the main user's sexualOrientation
-    String mainSexualOrientation = mainUser.getSexualOrientation();
-    ArrayList<UserForTest> otherUsersList= testUser.getOtherUsers();
+public class GenderInteractor {
+    // fetched with User(1205)
+    public static final int USER_SETTING = 4;
+    UserAccess manager = new csvManager();
+    Map<String, Object> userSettings = manager.readCurrentUser().getUserSetting();
+    String mainSexualOrientation = (String)userSettings.get("sexualOrientation");
+    Map<String, UserRequestModel> otherUsers;
 
     public GenderInteractor(){
-        ArrayList<UserForTest> res = new ArrayList<>();
+        try{
+            this.otherUsers = manager.readUser();
+        }
+        catch (IOException exception){
+            throw new RuntimeException(exception);
+        };
+    }
+    public List<String> getList(){
+        List<String> resUserNames = new ArrayList<>();
+        //the case of Male or Female
         if (mainSexualOrientation.equals("Male")||
-                mainSexualOrientation.equals("Female")||
-                mainSexualOrientation.equals("Transgender")){
-            for (UserForTest otherUsers:otherUsersList){
-                //user.sexualOrientation is variable recording user's sexualOrientation
-                if (otherUsers.getGender().equals(mainSexualOrientation)){res.add(otherUsers);}
+                mainSexualOrientation.equals("Female")){
+            for (String key:this.otherUsers.keySet()){
+                Map<String, Object> user = this.otherUsers.get(key).getUserSetting();
+                if ((user.get("gender")).equals(mainSexualOrientation)){
+                    resUserNames.add(key);
+                }
             }
-            this.genderSuitFinder = res;
-            return;
         }
-        //the bisexual cases
+        //the case of Bisexual
         if (mainSexualOrientation.equals("Bisexual")){
-            for (UserForTest otherUsers:otherUsersList){
-                if (otherUsers.getGender().equals("Male")||
-                        otherUsers.getGender().equals("Female")){res.add(otherUsers);}
-            }
-            this.genderSuitFinder = res;
-            return;
+            resUserNames.addAll(this.otherUsers.keySet());
         }
-        //open case
-        res.addAll(otherUsersList);
-        this.genderSuitFinder = res;
+        return resUserNames;
     }
-    public ArrayList<UserForTest> getList(){return this.genderSuitFinder;}
-
-
-    }
+}

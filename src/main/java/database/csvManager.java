@@ -1,16 +1,14 @@
 package database;
 
 import entity.User;
+import use_case_discovery.UserAccess;
 import use_case_signin_signup.UserRequestModel;
 import use_case_signin_signup.UserResponseModel;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
-public class csvManager {
+public class csvManager implements UserAccess {
 
     /**
      * csvManager is the database interactor that reads and writes to the various data files
@@ -48,13 +46,14 @@ public class csvManager {
             String pet = String.valueOf(col[7]);
             String maritalStatus = String.valueOf(col[8]);
             String relationshipType = String.valueOf(col[9]);
+            String sexualOrientation = String.valueOf(col[10]);
             ArrayList<Double> currentLocation = new ArrayList<>();
-            currentLocation.add(Double.parseDouble(String.valueOf(col[10])));
             currentLocation.add(Double.parseDouble(String.valueOf(col[11])));
+            currentLocation.add(Double.parseDouble(String.valueOf(col[12])));
 
             UserRequestModel currentUser = new UserRequestModel();
             currentUser.setInfo(username, name, password, age, income, gender,relationshipType,maritalStatus,pet,
-                    currentLocation);
+                    currentLocation, sexualOrientation);
             userMap.put(username, currentUser);
             row = reader.readLine();
         }
@@ -84,13 +83,14 @@ public class csvManager {
                 String pet = String.valueOf(col[6]);
                 String maritalStatus = String.valueOf(col[7]);
                 String relationshipType = String.valueOf(col[8]);
+                String sexualOrientation = String.valueOf(col[9]);
                 ArrayList<Double> location = new ArrayList<>();
-                location.add(Double.parseDouble(col[9]));
                 location.add(Double.parseDouble(col[10]));
+                location.add(Double.parseDouble(col[11]));
 
                 UserResponseModel responseModel = new UserResponseModel();
                 responseModel.setInfo(username, name, password,
-                        age, income, gender,relationshipType, maritalStatus,pet,location);
+                        age, income, gender,relationshipType, maritalStatus,pet,location,sexualOrientation);
                 return responseModel;
             }
             return null;
@@ -110,11 +110,11 @@ public class csvManager {
      *
      * @throws IOException if the reader fails to read
      */
-    public void writeCurrentUser(String username, String name, String password, ArrayList<Double> location,
-                                 HashMap<String, Object> userSetting) {
+    public void writeCurrentUser(String username, String name, String password, List<Double> location,
+                                 Map<String, Object> userSetting) {
         ArrayList<String> Headers = new ArrayList<String>(Arrays.asList("username",
-                "name", "password", "gender", "age", "income", "pet", "martialStatus", "relationshipType","locationX",
-                "locationY"));
+                "name", "password", "gender", "age", "income", "pet", "martialStatus", "relationshipType",
+                "sexualOrientation","locationX", "locationY"));
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(currentUserPath));
             writer.write(String.join(",", Headers));
@@ -123,7 +123,8 @@ public class csvManager {
             String write = (username+","+name+","+password+","+
                     userSetting.get("gender")+","+userSetting.get("age")+","+userSetting.get("income")+"," +
                     userSetting.get("pet")+","+userSetting.get("maritalStatus")+","+
-                    userSetting.get("relationshipType")+","+location.get(0)+","+ location.get(1));
+                    userSetting.get("relationshipType")+","+userSetting.get("sexualOrientation")+","+
+                    location.get(0)+","+ location.get(1));
 
             writer.write(write);
             writer.close();
@@ -139,8 +140,8 @@ public class csvManager {
      */
     public void writeUser(Map<String, UserResponseModel> userMap) {
         ArrayList<String> Headers = new ArrayList<String>(Arrays.asList("id", "username",
-                "name", "password", "gender", "age", "income", "pet", "martialStatus", "relationshipType","locationX",
-                "locationY"));
+                "name", "password", "gender", "age", "income", "pet", "martialStatus", "relationshipType",
+                "sexualOrientation","locationX", "locationY"));
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(userPath));
             writer.write(String.join(",", Headers));
@@ -148,19 +149,32 @@ public class csvManager {
 
             for(int i = userMap.values().size()-1 ; i >=  0; i--) {
                 UserResponseModel currentUser = (UserResponseModel) userMap.values().toArray()[i];
-                ArrayList<Object> userInfo = currentUser.getInfo();
-                ArrayList<Double> location = (ArrayList<Double>) userInfo.get(3);
-                HashMap<String, Object> userSettings = (HashMap<String, Object>) userInfo.get(4);
-                String write = (i+","+userInfo.get(0)+","+userInfo.get(1)+","+userInfo.get(2)+","+
-                        userSettings.get("gender")+","+userSettings.get("age")+","+userSettings.get("income")+"," +
-                        userSettings.get("pet")+","+userSettings.get("maritalStatus")+","+
-                        userSettings.get("relationshipType")+","+location.get(0)+","+ location.get(1));
+                List<Double> location = currentUser.getLocation();
+                Map<String, Object> userSettings = currentUser.getUserSetting();
+                String write = (i+","+currentUser.getUsername()+","+currentUser.getName()+","+currentUser.getPassword()
+                        +","+ userSettings.get("gender")+","+userSettings.get("age")+","+userSettings.get("income")+
+                        "," + userSettings.get("pet")+","+userSettings.get("maritalStatus")+","+
+                        userSettings.get("relationshipType")+","+userSettings.get("sexualOrientation")+","
+                        +location.get(0)+","+ location.get(1));
                 writer.write(write);
                 writer.newLine();
             }
             writer.close();
         }
         catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
+    }
+
+    public void logoutUser() {
+        ArrayList<String> Headers = new ArrayList<String>(Arrays.asList("id", "username",
+                "name", "password", "gender", "age", "income", "pet", "martialStatus", "relationshipType",
+                "sexualOrientation","locationX", "locationY"));
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(currentUserPath));
+            writer.write(String.join(",", Headers));
+        }
+        catch(IOException exception) {
             throw new RuntimeException(exception);
         }
     }

@@ -29,22 +29,26 @@ public class InitialSettingPageUI extends JPanel {
         JLabel pet = new JLabel("Pet:");
         JLabel maritalStatus = new JLabel("Marital Status:");
         JLabel relationshipType = new JLabel("Relationship Type:");
+        JLabel sexualOrientationType = new JLabel("Sexual Orentation:");
         ArrayList<Object> labels = new ArrayList<>(Arrays.asList(age,income,location,gender,pet,maritalStatus,
-                relationshipType));
+                relationshipType, sexualOrientationType));
 
         // create selectors
-        String[] genders = {"Male", "Female", "Others"};
-        String[] martialStatus = {"Single", "Married", "Widowed", "Divorced"};
-        String[] relationshipTypes = {"Straight", "Not Straight"};
+        String[] genders = {"male", "female", "others"};
+        String[] martialStatus = {"single", "married", "divorced"};
+        String[] relationshipTypes = {"friend", "one-night", "long-term","short-term"};
+        String[] sexualOrientations = {"straight", "gay", "bisexual"};
+        String[] booleanTypes = {"yes", "no"};
         JTextField ageTextField = new JTextField(10);
         JTextField incomeTextField = new JTextField(10);
         JTextField locationLocator = new JTextField(10);
         JComboBox genderChooser = new JComboBox(genders);
-        JTextField petTextField = new JTextField(10);
+        JComboBox petTextField = new JComboBox(booleanTypes);
         JComboBox martialStatusChooser = new JComboBox(martialStatus);
         JComboBox relationshipChooser = new JComboBox(relationshipTypes);
+        JComboBox sexualOrientationChooser = new JComboBox(sexualOrientations);
         ArrayList<Object> selectors = new ArrayList<>(Arrays.asList(ageTextField,incomeTextField,locationLocator,
-                genderChooser, petTextField,martialStatusChooser,relationshipChooser));
+                genderChooser, petTextField,martialStatusChooser,relationshipChooser, sexualOrientationChooser));
 
         // create and populate selector panel
         JPanel selectorPanel = new JPanel(new SpringLayout());
@@ -96,8 +100,9 @@ public class InitialSettingPageUI extends JPanel {
             String currentLocation = locationLocator.getText();
             String currentMaritalStatus = String.valueOf(martialStatusChooser.getSelectedItem());
             String currentGender = String.valueOf(genderChooser.getSelectedItem());
-            String currentPet = petTextField.getText();
+            String currentPet = String.valueOf(petTextField.getSelectedItem());
             String currentRelationshipType = String.valueOf(relationshipChooser.getSelectedItem());
+            String sexualOrientation = String.valueOf(sexualOrientationChooser.getSelectedItem());
 
             if(!currentAge.equals("") && !currentIncome.equals("") && !currentLocation.equals("") &&
                     !currentPet.equals("")) {
@@ -111,7 +116,8 @@ public class InitialSettingPageUI extends JPanel {
                     currentLocationSplit.add(Double.valueOf(tmp[1]));
                     UserRequestModel requestModel = new UserRequestModel();
                     requestModel.setInfo(username, name, password, convertedAge, convertedIncome, currentGender,
-                            currentRelationshipType,currentMaritalStatus,currentPet, currentLocationSplit);
+                            currentRelationshipType,currentMaritalStatus,currentPet, currentLocationSplit,
+                            sexualOrientation);
                     Boolean isUserRegistered = new SignupPageController().create(requestModel);
 
                     if (isUserRegistered) {

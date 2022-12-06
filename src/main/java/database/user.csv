@@ -1,6 +1,11 @@
-id,username,name,password,gender,age,income,pet,martialStatus,relationshipType,locationX,locationY
-4,sunny,sunny,sunny,Male,14,14512,Kat,Single,Straight,1.5,17.5
-3,suny,suny,suny,Male,14,14,KAt,Single,Straight,14.5,14.5
-2,hehe,haha,haha,Male,14,14,Snake,Single,Straight,14.5,14.5
-1,test,test,test,Male,14,14,a14,Single,Straight,14.5,14.5
-0,Kevin,kevin,kevin,Male,25,10,Nothing,Single,Straight,0.5,2.5
+id,username,name,password,gender,age,income,pet,martialStatus,relationshipType,sexualOrientation,locationX,locationY
+2,lll,lll,lll,male,17,12,yes,single,friend,female,14.5,14.5
+1,sunny,sunny,sunny,male,21,40,yes,single,long-term,male,14.5,14.5
+0,eric,eric,eric,male,16,15,200,no,single,friend,female,14.5,14.5
+0,christina,christina,christina,female,16,15,70,yes,single,friend,male,14.5,14.5
+0,aa,aa,aa,male,16,15,200,yes,single,friend,male,14.5,14.5
+0,cami,cami,cami,female,27,30,yes,married,long-term,male,14.5,14.5
+0,eric,eric,eric,male,16,15,200,yes,single,friend,female,14.5,14.5
+0,eric,eric,eric,male,16,15,200,yes,single,friend,female,14.5,14.5
+
+
