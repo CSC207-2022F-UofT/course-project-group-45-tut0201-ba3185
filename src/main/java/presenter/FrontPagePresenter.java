@@ -12,10 +12,13 @@ public class FrontPagePresenter implements FrontPageOutputBoundary {
      * to UI to show the user the updates of their prior chat targets on the front page.
      *
      */
+    FrontPagePanel frontPage;
+    public FrontPagePresenter (FrontPagePanel frontPagePanel){
+        this.frontPage = frontPagePanel;
+    }
     public void create(FrontPageResponseModel responseModel){
         ArrayList<String> targetIdList = responseModel.getTargetUsers();
 
-        FrontPagePanel frontPage = new FrontPagePanel();
         for (String i : targetIdList) {
             frontPage.loadUser(i);
         }

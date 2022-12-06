@@ -37,14 +37,18 @@ public class ChatScreen extends JFrame implements ActionListener,ChatScreenInter
         this.controller= new MessageController(messageInteractor);
     }
 
-    public JPanel create() {
+    public void create() {
+        this.setSize(PAGE_W, PAGE_H);
+        this.setResizable(false);
+        this.getContentPane().setLayout(new BoxLayout(this.getContentPane(), BoxLayout.PAGE_AXIS));
+        this.setLocationRelativeTo(null);
 
         JPanel chatScreen = new JPanel();             //initialize our chatScreen
         chatScreen.setLayout(new BorderLayout());
         chatScreen.setPreferredSize(new Dimension(PAGE_W, PAGE_H * 9 / 10));
         Color c = new Color(255, 255, 255);
         chatScreen.setBackground(c);
-
+        this.add(new JLabel("Chat with "+targetUserId));
 
              //the place it shows chatHistory
         messageDisplaybox.setBackground(new Color(246, 167, 232));
@@ -89,5 +93,6 @@ public class ChatScreen extends JFrame implements ActionListener,ChatScreenInter
     public void loadChat(String msg){
         JLabel msgValue = new JLabel(msg, SwingConstants.LEFT);
         messageDisplaybox.add(msgValue);
+        this.setVisible(true);
     }
 }

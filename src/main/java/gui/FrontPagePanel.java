@@ -1,20 +1,23 @@
 package gui;
+import controller.FrontPageController;
+import presenter.FrontPagePresenter;
 import screens.ChatScreen;
+import use_case_frontpage.FrontPageInteractor;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class FrontPagePanel extends JPanel implements ActionListener {
-    int page_h;
-    int page_w;
-    JPanel frontPageScreen;
-
+    final int PAGE_W = 414;
+    final int PAGE_H = 736;
+    FrontPageController controller;
 
     public FrontPagePanel() {
-        //this.page_w = MainFrame.PAGE_WIDTH;
-        //this.page_h = MainFrame.PAGE_HEIGHT;
-
+        FrontPagePresenter presenter = new FrontPagePresenter(this); //initialize panel, no input data
+        FrontPageInteractor interactor = new FrontPageInteractor(presenter);
+        this.controller = new FrontPageController(interactor);
     }
 
     public JScrollPane createFrontPageScreen() {
@@ -30,6 +33,8 @@ public class FrontPagePanel extends JPanel implements ActionListener {
         JScrollPane scrollPane = new JScrollPane(this, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
                 JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         //scrollPane.setSize(page_w, screen_h);
+
+
         return scrollPane;
     }
 
