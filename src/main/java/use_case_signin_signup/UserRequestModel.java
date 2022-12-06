@@ -12,6 +12,7 @@ public class UserRequestModel implements UserInputBoundary {
     private Map<String, Object> userSettings;
     private List<Double> location;
     private String interestRank;
+    private String areaOfInterest;
 
     public UserRequestModel() {
         this.userSettings = new HashMap<>();
@@ -19,12 +20,14 @@ public class UserRequestModel implements UserInputBoundary {
 
     public void setInfo(String username, String name, String password, int age, int income,
                         String gender, String relationshipType, String maritalStatus, String pet,
-                        List<Double> location, String sexualOrientation, String interestRank) {
+                        List<Double> location, String sexualOrientation, String interestRank,
+                        String areaOfInterst) {
         this.username = username;
         this.name = name;
         this.password = password;
         this.location = location;
         this.interestRank = interestRank;
+        this.areaOfInterest = areaOfInterst;
         this.userSettings.put("age", age);
         this.userSettings.put("income", income);
         this.userSettings.put("maritalStatus", maritalStatus);
@@ -62,5 +65,10 @@ public class UserRequestModel implements UserInputBoundary {
     @Override
     public String getInterestRank() {
         return this.interestRank;
+    }
+
+    @Override
+    public String getAreaOfInterest() {
+        return this.areaOfInterest;
     }
 }

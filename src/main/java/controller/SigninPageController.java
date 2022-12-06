@@ -53,6 +53,7 @@ public class SigninPageController {
         Map<String, UserRequestModel> userMap = manager.readUser();
         UserRequestModel requestModel = userMap.get(username);
         manager.writeCurrentUser(requestModel.getUsername(), requestModel.getName(), requestModel.getPassword(),
-                requestModel.getLocation(), requestModel.getUserSetting(), requestModel.getInterestRank());
+                requestModel.getLocation(), requestModel.getUserSetting(), requestModel.getInterestRank(),
+                requestModel.getAreaOfInterest());
     }
 }

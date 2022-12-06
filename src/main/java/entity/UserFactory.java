@@ -17,6 +17,7 @@ public class UserFactory {
      */
     public User create(UserRequestModel requestModel) {
         return new User(requestModel.getUsername(), requestModel.getName(), requestModel.getPassword(),
-                requestModel.getLocation(), requestModel.getUserSetting(), requestModel.getInterestRank());
+                requestModel.getLocation(), requestModel.getUserSetting(), requestModel.getInterestRank(),
+                requestModel.getAreaOfInterest());
     }
 }

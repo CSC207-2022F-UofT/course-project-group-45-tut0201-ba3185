@@ -30,9 +30,10 @@ public class InitialSettingPageUI extends JPanel {
         JLabel maritalStatus = new JLabel("Marital Status:");
         JLabel relationshipType = new JLabel("Relationship Type:");
         JLabel sexualOrientationType = new JLabel("Sexual Orentation:");
+        JLabel interestAreaLabel = new JLabel("What are you interested in:");
         JLabel interestRank = new JLabel("Which of these are the most important to you:");
         ArrayList<Object> labels = new ArrayList<>(Arrays.asList(age,income,location,gender,pet,maritalStatus,
-                relationshipType, sexualOrientationType, interestRank));
+                relationshipType, sexualOrientationType, interestAreaLabel, interestRank));
 
         // create selectors
         String[] genders = {"male", "female", "others"};
@@ -41,6 +42,7 @@ public class InitialSettingPageUI extends JPanel {
         String[] sexualOrientations = {"straight", "gay", "bisexual"};
         String[] booleanTypes = {"yes", "no"};
         String[] interestRanks = {"income", "age", "marital status", "interests", "relationship type", "pet"};
+        String[] interestArea = {"sport", "art", "music", "game", "movie", "cooking", "reading"};
         JTextField ageTextField = new JTextField(10);
         JTextField incomeTextField = new JTextField(10);
         JTextField locationLocator = new JTextField(10);
@@ -50,9 +52,10 @@ public class InitialSettingPageUI extends JPanel {
         JComboBox relationshipChooser = new JComboBox(relationshipTypes);
         JComboBox sexualOrientationChooser = new JComboBox(sexualOrientations);
         JComboBox interestRankChooser = new JComboBox(interestRanks);
+        JComboBox interestAreaChooser = new JComboBox(interestArea);
         ArrayList<Object> selectors = new ArrayList<>(Arrays.asList(ageTextField,incomeTextField,locationLocator,
                 genderChooser, petTextField,martialStatusChooser,relationshipChooser, sexualOrientationChooser,
-                interestRankChooser));
+                interestAreaChooser, interestRankChooser));
 
         // create and populate selector panel
         JPanel selectorPanel = new JPanel(new SpringLayout());
@@ -80,7 +83,7 @@ public class InitialSettingPageUI extends JPanel {
                     (Component) selectors.get(i-1));
         }
 
-        selectorPanelLayout.putConstraint(NORTH, interestRankChooser, 40, SOUTH, sexualOrientationChooser);
+        selectorPanelLayout.putConstraint(NORTH, interestRankChooser, 40, SOUTH, interestAreaChooser);
 
         // Create button and populate panel
         JPanel buttonPanel = new JPanel(new SpringLayout());
@@ -88,7 +91,7 @@ public class InitialSettingPageUI extends JPanel {
         buttonPanel.setPreferredSize(new Dimension(PAGE_WIDTH, 100));
 
         JButton submitButton = new JButton("Submit");
-        submitButton.setPreferredSize(new Dimension(PAGE_WIDTH/2, 40));
+        submitButton.setPreferredSize(new Dimension(PAGE_WIDTH/2, 45));
         buttonPanel.add(submitButton);
 
         // format buttonPanel
@@ -110,6 +113,7 @@ public class InitialSettingPageUI extends JPanel {
             String currentRelationshipType = String.valueOf(relationshipChooser.getSelectedItem());
             String sexualOrientation = String.valueOf(sexualOrientationChooser.getSelectedItem());
             String interestRankChosen = String.valueOf(interestRankChooser.getSelectedItem());
+            String interestAreaChosen = String.valueOf(interestAreaChooser.getSelectedItem());
 
             if(!currentAge.equals("") && !currentIncome.equals("") && !currentLocation.equals("") &&
                     !currentPet.equals("")) {
@@ -124,7 +128,7 @@ public class InitialSettingPageUI extends JPanel {
                     UserRequestModel requestModel = new UserRequestModel();
                     requestModel.setInfo(username, name, password, convertedAge, convertedIncome, currentGender,
                             currentRelationshipType,currentMaritalStatus,currentPet, currentLocationSplit,
-                            sexualOrientation, interestRankChosen);
+                            sexualOrientation, interestRankChosen, interestAreaChosen);
                     Boolean isUserRegistered = new SignupPageController().create(requestModel);
 
                     if (isUserRegistered) {

@@ -1,4 +1,4 @@
-id,username,name,password,gender,age,income,pet,martialStatus,relationshipType,sexualOrientation,interestRank,locationX,locationY
-2,lll,lll,lll,male,19,1203,yes,single,friend,straight,marital status,7.0,7.0
-1,sunny,sunny,sunny,male,14,1502,yes,single,friend,straight,interests,14.5,14.5
-0,eric,eric,eric,male,19,1209481092,yes,single,friend,straight,relationship type,17.0,15.0
+id,username,name,password,gender,age,income,pet,martialStatus,relationshipType,sexualOrientation,interestRank,areaOfInterest,locationX,locationY
+2,lll,lll,lll,male,29,1942,yes,single,friend,straight,income,sport,2.0,2.0
+1,sunny,sunny,sunny,male,14,1231,yes,single,friend,straight,interests,game,14.5,14.5
+0,eric,eric,eric,male,19,1934190348,yes,single,friend,straight,income,sport,1.0,1.0
