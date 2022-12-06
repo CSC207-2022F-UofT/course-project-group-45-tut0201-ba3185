@@ -1,6 +1,5 @@
 package controller;
 
-import entity.User;
 import use_case_signin_signup.UserUseCase;
 
 /**

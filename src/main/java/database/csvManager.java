@@ -1,6 +1,5 @@
 package database;
 
-import entity.User;
 import use_case_signin_signup.UserRequestModel;
 import use_case_signin_signup.UserResponseModel;
 
@@ -16,8 +15,8 @@ public class csvManager {
      * @param currentUserPath is the path to the currentUser data file
      */
 
-    private final String userPath = "src/main/java/database/user.csv";
-    private final String currentUserPath = "src/main/java/database/currentUser.csv";
+    private final String  USER_PATH = "src/main/java/database/user.csv";
+    private final String CURRENT_USER_PATH  = "src/main/java/database/currentUser.csv";
 
     public Map<String, UserRequestModel> readUser() throws IOException {
         /**
@@ -28,7 +27,7 @@ public class csvManager {
          * @throws IOException when the reader fails to read.
          */
         String row;
-        File csv = new File(userPath);
+        File csv = new File(USER_PATH);
         Map<String, UserRequestModel> userMap = new HashMap<>();
 
         BufferedReader reader = new BufferedReader(new FileReader(csv));
@@ -69,7 +68,7 @@ public class csvManager {
          * @throws IOException when the reader fails to read
          */
         try {
-            File csv = new File(currentUserPath);
+            File csv = new File(CURRENT_USER_PATH);
             BufferedReader reader = new BufferedReader(new FileReader(csv));
             reader.readLine();
             String row = reader.readLine();
@@ -120,7 +119,7 @@ public class csvManager {
                 "name", "password", "gender", "age", "income", "pet", "martialStatus", "relationshipType",
                 "sexualOrientation","interestRank","areaOfInterest","locationX", "locationY"));
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(currentUserPath));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(CURRENT_USER_PATH));
             writer.write(String.join(",", Headers));
             writer.newLine();
 
@@ -147,7 +146,7 @@ public class csvManager {
                 "name", "password", "gender", "age", "income", "pet", "martialStatus", "relationshipType",
                 "sexualOrientation","interestRank","areaOfInterest","locationX", "locationY"));
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(userPath));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(USER_PATH));
             writer.write(String.join(",", Headers));
             writer.newLine();
 
@@ -176,7 +175,7 @@ public class csvManager {
                 "name", "password", "gender", "age", "income", "pet", "martialStatus", "relationshipType",
                 "sexualOrientation","interestRank", "areaOfInterest","locationX", "locationY"));
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(currentUserPath));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(CURRENT_USER_PATH));
             writer.write(String.join(",", Headers));
         }
         catch(IOException exception) {
