@@ -39,10 +39,10 @@ public class SearchAnswerConverterTest {
         expected.put("incomeUp","20");
         expected.put("ageLow","18");
         expected.put("ageUp","30");
-        expected.put("marriageState","Single");
-        expected.put("areaOfInterest","Sport");
-        expected.put("relationship","Friend");
-        expected.put("pet","true");
+        expected.put("marriageState","single");
+        expected.put("areaOfInterest","sport");
+        expected.put("relationship","friend");
+        expected.put("pet","yes");
 
         Assertions.assertEquals(expected, converter.getAnswer());
 
@@ -65,10 +65,10 @@ public class SearchAnswerConverterTest {
         expected1.put("incomeUp","20");
         expected1.put("ageLow","17");
         expected1.put("ageUp","21");
-        expected1.put("marriageState","Married");
-        expected1.put("areaOfInterest","Game");
-        expected1.put("relationship","One-Night");
-        expected1.put("pet","false");
+        expected1.put("marriageState","married");
+        expected1.put("areaOfInterest","game");
+        expected1.put("relationship","one-night");
+        expected1.put("pet","no");
 
         Assertions.assertEquals(expected1, converter.getAnswer());
 
@@ -92,10 +92,10 @@ public class SearchAnswerConverterTest {
         expected2.put("incomeUp","22");
         expected2.put("ageLow","17");
         expected2.put("ageUp","21");
-        expected2.put("marriageState","Married");
-        expected2.put("areaOfInterest","Read");
-        expected2.put("relationship","Doesn't care");
-        expected2.put("pet","null");
+        expected2.put("marriageState","married");
+        expected2.put("areaOfInterest","read");
+        expected2.put("relationship","doesn't care");
+        expected2.put("pet","doesn't care");
 
         Assertions.assertEquals(expected2, converter.getAnswer());
 

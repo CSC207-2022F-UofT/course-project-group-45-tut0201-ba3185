@@ -50,13 +50,13 @@ public class SearchAnswerConverter {
     public void covertMarriageStateOP() {
         switch (requestModel.getMarriageStateOP()) {
             case 0:
-                marriageState = "Single";
+                marriageState = "single";
                 break;
             case 1:
-                marriageState = "Divorce";
+                marriageState = "divorce";
                 break;
             case 2:
-                marriageState = "Married";
+                marriageState = "married";
                 break;
         }
     }
@@ -64,25 +64,25 @@ public class SearchAnswerConverter {
     public void convertAreaOfInterest() {
         switch (requestModel.getAreaOfInterestOp()) {
             case 0:
-                areaOfInterest = "Sport";
+                areaOfInterest = "sport";
                 break;
             case 1:
-                areaOfInterest = "Art";
+                areaOfInterest = "art";
                 break;
             case 2:
-                areaOfInterest = "Music";
+                areaOfInterest = "music";
                 break;
             case 3:
-                areaOfInterest = "Game";
+                areaOfInterest = "game";
                 break;
             case 4:
-                areaOfInterest = "Movie";
+                areaOfInterest = "movie";
                 break;
             case 5:
-                areaOfInterest = "Cook";
+                areaOfInterest = "cook";
                 break;
             case 6:
-                areaOfInterest = "Read";
+                areaOfInterest = "read";
                 break;
         }
     }
@@ -90,19 +90,19 @@ public class SearchAnswerConverter {
     public void convertRelationship() {
         switch (requestModel.getRelationshipOp()) {
             case 0:
-                relationship = "Friend";
+                relationship = "friend";
                 break;
             case 1:
-                relationship = "One-Night";
+                relationship = "one-Night";
                 break;
             case 2:
-                relationship = "Long-term";
+                relationship = "long-term";
                 break;
             case 3:
-                relationship = "Short-term";
+                relationship = "short-term";
                 break;
             case 4:
-                relationship = "Doesn't care";
+                relationship = "doesn't care";
                 break;
         }
     }
@@ -110,13 +110,13 @@ public class SearchAnswerConverter {
     public void convertPet() {
         switch (requestModel.getPetOp()) {
             case 0:
-                pet = "true";
+                pet = "yes";
                 break;
             case 1:
-                pet = "false";
+                pet = "no";
                 break;
             case 2:
-                pet = "null";
+                pet = "doesn't care";
                 break;
         }
     }

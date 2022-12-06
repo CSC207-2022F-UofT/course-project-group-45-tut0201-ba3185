@@ -58,28 +58,13 @@ public class SearchScoreCalculator implements ScoreCalculator{
             this.score = this.score + 1;
         }
 
-        Boolean pet = (Boolean) convertB(searchAnswers.get("pet"));
-        if(pet == null || pet.equals(userInfo.get("pet"))){
+        String pet = searchAnswers.get("pet");
+        if(pet.equals("doesn't care") || pet.equals(userInfo.get("pet"))){
             this.score = this.score + 1;
         }
-        if(searchAnswers.get("areaOfInterest").equals(userInfo.get("areaOfInterest"))) {
+        if(searchAnswers.get("areaOfInterest").equals(otherUsers.get(user).getAreaOfInterest())) {
             this.score = this.score + 1;
         }
-    }
-
-    /**
-     * This funciton convert the string petOP to the boolean pet Option
-     * @param petOp a string of true false or null according to user's ansert
-     * @return boolean petOp
-     */
-    public Object convertB(String petOp){
-        if (petOp.equals("true")){
-            return true;
-        }
-        if (petOp.equals("false")){
-            return false;
-        }
-        return null;
     }
     @Override
     public int getScore() {

@@ -35,8 +35,8 @@ public class GenderInteractor {
     public List<String> getList(){
         List<String> resUserNames = new ArrayList<>();
         //the case of Male or Female
-        if (mainSexualOrientation.equals("Male")||
-                mainSexualOrientation.equals("Female")){
+        if (mainSexualOrientation.equals("male")||
+                mainSexualOrientation.equals("female")){
             for (String key:this.otherUsers.keySet()){
                 Map<String, Object> user = this.otherUsers.get(key).getUserSetting();
                 if ((user.get("gender")).equals(mainSexualOrientation)){
@@ -45,7 +45,7 @@ public class GenderInteractor {
             }
         }
         //the case of Bisexual
-        if (mainSexualOrientation.equals("Bisexual")){
+        if (mainSexualOrientation.equals("bisexual")){
             resUserNames.addAll(this.otherUsers.keySet());
         }
         return resUserNames;
