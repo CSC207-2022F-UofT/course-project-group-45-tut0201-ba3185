@@ -47,7 +47,8 @@ public class csvManager implements csvInterface {
             String sexualOrientation = String.valueOf(col[10]);
             String interestRank = String.valueOf(col[11]);
 
-            List<String> interestRanked = List.of(interestRank.split("."));
+            List<String> interestRanked = List.of(interestRank.split("/"));
+
             String areaOfInterest = String.valueOf(col[12]);
             ArrayList<Double> currentLocation = new ArrayList<>();
             currentLocation.add(Double.parseDouble(String.valueOf(col[13])));
@@ -87,7 +88,9 @@ public class csvManager implements csvInterface {
                 String relationshipType = String.valueOf(col[8]);
                 String sexualOrientation = String.valueOf(col[9]);
                 String interestRank = String.valueOf(col[10]);
-                List<String> interestRanked = List.of(interestRank.split("."));
+                List<String> interestRanked = List.of(interestRank.split("/"));
+
+                System.out.println(interestRanked);
 
                 String areaOfInterest = String.valueOf(col[11]);
                 ArrayList<Double> location = new ArrayList<>();
@@ -128,7 +131,7 @@ public class csvManager implements csvInterface {
             writer.newLine();
 
             String interestRanks = interestRank.toString();
-            interestRanks = interestRanks.replace(", ", ".");
+            interestRanks = interestRanks.replace(", ", "/");
             interestRanks = interestRanks.substring(1, interestRanks.length()-1);
 
             String write = (username+","+name+","+password+","+
@@ -164,7 +167,7 @@ public class csvManager implements csvInterface {
                 Map<String, Object> userSettings = currentUser.getUserSetting();
 
                 String interestRank = currentUser.getInterestRank().toString();
-                interestRank = interestRank.replace(", ", ".");
+                interestRank = interestRank.replace(", ", "/");
                 interestRank = interestRank.substring(1,interestRank.length()-1);
 
                 System.out.println(interestRank);
