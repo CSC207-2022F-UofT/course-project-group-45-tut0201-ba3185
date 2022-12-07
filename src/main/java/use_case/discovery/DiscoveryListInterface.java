@@ -1,5 +1,5 @@
 package use_case.discovery;
 
-public interface Presenter {
+public interface DiscoveryListInterface {
     void update(DiscoveryResponseModel dResponseModel);
 }

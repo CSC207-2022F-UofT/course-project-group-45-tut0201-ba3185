@@ -8,7 +8,7 @@ import java.util.List;
 
 
 public class OptionPanel extends JPanel {
-    private List<ActionListener> actionListeners;//users click three bottons
+    private final List<ActionListener> actionListeners;//users click three bottons
     public OptionPanel(){
         this.actionListeners = new ArrayList<>();
         this.setLayout(new GridBagLayout());

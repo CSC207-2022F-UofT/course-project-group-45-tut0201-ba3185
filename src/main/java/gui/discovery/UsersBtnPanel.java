@@ -2,15 +2,15 @@ package gui.discovery;
 
 import gui.MainFrame;
 import use_case.discovery.DiscoveryResponseModel;
-import use_case.discovery.Presenter;
+import use_case.discovery.DiscoveryListInterface;
 
 import javax.swing.*;
 import java.awt.*;
 
-/*
-To display the 15 users found after discovery, each button links to user's personal info page
+/**
+ * Displays the 15 users found after discovery, each button links to user's personal info page
  */
-public class UsersBtnPanel extends JPanel implements Presenter {
+public class UsersBtnPanel extends JPanel implements DiscoveryListInterface {
     public UsersBtnPanel(){
         this.setPreferredSize(new Dimension(MainFrame.PAGE_WIDTH, MainFrame.PAGE_HEIGHT / 10 * 9));
         this.setLayout(new FlowLayout(FlowLayout.CENTER));

@@ -1,4 +1,5 @@
 package use_case.discovery;
+
 import database.csvInterface;
 import database.csvManager;
 import java.util.HashMap;
@@ -14,7 +15,6 @@ import java.util.Map;
  * String put at the end is the aspect that current user cares the least.
  */
 public class PreferenceListHelper {
-    //TODO: fetch with users
     csvInterface manager = new csvManager();
     List<String> cInterestRank = manager.readCurrentUser().getInterestRank();
     List<String> afterGenderInteractor = new GenderInteractor().getList();

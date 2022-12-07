@@ -1,7 +1,8 @@
 package use_case.discovery;
+
 import java.util.List;
-/*
-The response model stores the information of the (15) users that is used to display
+/**
+ * DiscoveryResponseModel stores the information of the (15) users that is used to display
  */
 public class DiscoveryResponseModel {
     private final List<String> userNames;

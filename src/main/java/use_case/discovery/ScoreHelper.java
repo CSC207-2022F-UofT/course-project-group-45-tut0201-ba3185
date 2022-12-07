@@ -1,4 +1,5 @@
 package use_case.discovery;
+
 import java.util.*;
 
 /**
@@ -8,7 +9,7 @@ import java.util.*;
  */
 public class ScoreHelper {
     Map<String, Integer> scoreStorage;
-    List<Integer> totalScoreList;//to get the all the possible value of score
+    List<Integer> totalScoreList;
     List<String> totalUsername;
 
     /**

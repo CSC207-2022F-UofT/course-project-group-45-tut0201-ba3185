@@ -17,13 +17,6 @@ public class Button {
         button.setActionCommand("userInfo");
     }
 
-//    public Button(String btnName, ImageIcon imageIcon){
-//        button = new JButton(btnName);
-//        button.setOpaque(false);
-//        button.setContentAreaFilled(false);
-//        button.setFocusPainted(false);
-//        button.setActionCommand("userInfo");
-//    }
     public JButton getButton() {
         return button;
     }

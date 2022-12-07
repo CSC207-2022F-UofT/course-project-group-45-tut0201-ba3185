@@ -1,4 +1,5 @@
 package use_case.discovery;
+
 import database.csvInterface;
 import database.csvManager;
 import java.util.ArrayList;
@@ -13,7 +14,7 @@ import java.util.Map;
  * bisexual: return all users
  */
 
-public class GenderInteractor extends ParentClass{
+public class GenderInteractor extends csvInteractor {
     csvInterface manager = new csvManager();
     String cSexualOrientation = (String)manager.readCurrentUser().getUserSetting().get("sexualOrientation");
 
