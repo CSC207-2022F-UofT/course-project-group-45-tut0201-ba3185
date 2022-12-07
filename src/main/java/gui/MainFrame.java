@@ -1,9 +1,8 @@
 package gui;
 import javax.swing.*;
 import controller.userController;
+import database.MessageDataManager;
 import use_case_message.MessageManagers;
-
-import java.io.*;
 
 public class MainFrame extends JFrame implements MainFrameInterface {
     public static final int PAGE_WIDTH = 414;
@@ -12,19 +11,10 @@ public class MainFrame extends JFrame implements MainFrameInterface {
 
     public MainFrame() {
         messageManagers = new MessageManagers();
-        try {
-            ObjectInputStream input = new ObjectInputStream(
-                    new FileInputStream("src/main/java/database/MessageManagers.ser"));
-            messageManagers = (MessageManagers) input.readObject();
-            input.close();
-        }
-        catch (IOException ioe){
-            // This will run at the first time of running the program since there's no such file before running.
-            System.err.println("Error opening file.");
-        }
-        catch (ClassNotFoundException cnfe){
-            System.err.println("Object read is not a MessageManagers");
-        }
+        MessageDataManager messageDataManager = new MessageDataManager();
+        messageManagers = messageDataManager.readMM();
+        // This will throw an error at the very first time running the program since there is no such
+        // file at first.
 
         this.setSize(PAGE_WIDTH, PAGE_HEIGHT);
         this.setResizable(false);
@@ -35,7 +25,7 @@ public class MainFrame extends JFrame implements MainFrameInterface {
         // if user is logged in
         if(isLoggedIn) {
             this.getContentPane().removeAll();
-            this.add(new MainPanel(this));
+            this.add(new MainPanel());
         }
         // If user is not logged in
         else {
@@ -63,7 +53,7 @@ public class MainFrame extends JFrame implements MainFrameInterface {
 
     public void switchToMain() {
         this.getContentPane().removeAll();
-        this.add(new MainPanel(this));
+        this.add(new MainPanel());
         this.revalidate();
     }
     public void switchToInitSetup(String username, String name, String password) {

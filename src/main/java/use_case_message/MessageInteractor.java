@@ -1,10 +1,8 @@
 package use_case_message;
 
+import database.MessageDataManager;
 import database.csvManager;
-
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
+import use_case_signin_signup.UserRequestModel;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 
@@ -28,7 +26,9 @@ public class MessageInteractor implements MessageInputBoundary {
     @Override
     public void create(MessageRequestModel requestModel) {
         try{
-            String user1 = csvManager.readCurrentUser().toString();
+            csvManager manager = new csvManager();
+            UserRequestModel model = manager.readCurrentUser();
+            String user1 = model.getUsername();
             String user2 = requestModel.getTarget();
             MessageManager mm;
 
@@ -54,15 +54,8 @@ public class MessageInteractor implements MessageInputBoundary {
                 MessageResponseModel messageResponseModel = new MessageResponseModel(mm.getChatHistory());
                 messageOutputBoundary.create(messageResponseModel);
             }
-            try {
-                ObjectOutputStream output = new ObjectOutputStream(
-                        new FileOutputStream("src/main/java/database/MessageManagers.ser"));
-                output.writeObject(messageManagers);
-                output.close();
-            }
-            catch (IOException ioe){
-                System.err.println("Error saving to file.");
-            }
+            MessageDataManager messageDataManager = new MessageDataManager();
+            messageDataManager.writeMM(messageManagers);
         }
         catch (NullPointerException exception){
             throw new RuntimeException("Current user not found. Please log in.");

@@ -22,8 +22,7 @@ public class FrontPagePanel extends JPanel implements ActionListener {
 
     public JScrollPane createFrontPageScreen() {
         //initialize our FrontPageScreen
-        controller.create("Sunny");
-        controller.create("Alyssa");
+        controller.create();
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.setSize(PAGE_W, (int) (PAGE_H*0.9)); //(w = 414, h = 736*0.9)

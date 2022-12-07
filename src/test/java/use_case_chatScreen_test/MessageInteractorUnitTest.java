@@ -2,7 +2,7 @@ package use_case_chatScreen_test;
 
 import database.csvManager;
 import entity.ChatHistory;
-import entity.MessageManagers;
+import use_case_message.MessageManagers;
 import gui.MainFrame;
 import org.junit.Before;
 import org.junit.Test;
