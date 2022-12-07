@@ -89,6 +89,8 @@ public class ChatScreen extends JFrame implements ActionListener,ChatScreenInter
 
     public void loadChat(String msg){
         JLabel msgValue = new JLabel(msg, SwingConstants.LEFT);
+        msgValue.setFont(new java.awt.Font("Times New Roman", 1, 5));
+        //msgValue.setSize(400, 20);
         messageDisplayBox.add(msgValue);
         this.setVisible(true);
     }
