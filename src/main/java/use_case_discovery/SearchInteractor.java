@@ -6,6 +6,8 @@ public class SearchInteractor implements SearchInputBoundary {
 
     private final DiscoveryListInterface pPanel;
 
+    public DiscoveryResponseModel dResponseModel;
+
     public SearchInteractor(DiscoveryListInterface pPanel){
         this.pPanel = pPanel;
     }
@@ -19,15 +21,11 @@ public class SearchInteractor implements SearchInputBoundary {
 
         // call the list helper
         SearchListHelper listHelper = new SearchListHelper(model);
-        List recommendList = listHelper.getList();
+        List<String> recommendList = listHelper.getList();
 
         //create a response model for the user
-        DiscoveryResponseModel dResponseModel = new DiscoveryResponseModel(recommendList);
+        dResponseModel = new DiscoveryResponseModel(recommendList);
         pPanel.update(dResponseModel); // update the panel by calling the update method and pass the request model
-
-    }
-
-    public void updateP(){
 
     }
 

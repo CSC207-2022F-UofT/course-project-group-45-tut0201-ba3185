@@ -40,6 +40,7 @@ public class SearchController {
      *
      */
     public void generateRecommendation(){
+
         this.interactor.recommendListGenerator(requestModel);
     }
 }
