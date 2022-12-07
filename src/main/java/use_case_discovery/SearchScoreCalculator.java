@@ -13,11 +13,12 @@ import java.util.Map;
 
 /**
  * This function help calculate the score of the user based on the answer user entered
+ * when
  *
  */
 public class SearchScoreCalculator extends ParentClass implements ScoreCalculator{
     private int score;
-    private Map<String,String>  searchAnswers;
+    private final Map<String,String>  searchAnswers;
     Map<String, UserRequestModel> otherUsers;
     csvInterface manager = new csvManager();
 
@@ -65,6 +66,7 @@ public class SearchScoreCalculator extends ParentClass implements ScoreCalculato
     }
     @Override
     public int getScore() {
+
         return score;
     }
 }
