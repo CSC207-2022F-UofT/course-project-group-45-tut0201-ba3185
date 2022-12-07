@@ -1,7 +1,5 @@
 package use_case_discovery;
 
-import database.csvManager;
-import entity.User;
 
 import java.util.HashMap;
 import java.util.List;
