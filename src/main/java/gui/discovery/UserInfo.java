@@ -1,7 +1,7 @@
 package gui.discovery;
 
 import gui.MainFrame;
-import screens.ChatScreen;
+import gui.chat.ChatScreen;
 
 import javax.swing.*;
 import java.awt.*;

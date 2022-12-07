@@ -1,4 +1,6 @@
 package gui;
+import gui.chat.FrontPagePanel;
+
 import javax.swing.*;
 import java.awt.*;
 

@@ -1,7 +1,7 @@
-package gui;
+package gui.chat;
 import controller.FrontPageController;
+import gui.MainFrame;
 import presenter.FrontPagePresenter;
-import screens.ChatScreen;
 import use_case_frontpage.FrontPageInteractor;
 
 import javax.swing.*;
@@ -31,9 +31,8 @@ public class FrontPagePanel extends JPanel implements ActionListener {
 
         JScrollPane scrollPane = new JScrollPane(this, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
                 JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-        //scrollPane.setSize(page_w, screen_h);
-
-
+        // It's fine here for the variable to be redundant since it would too long if this is
+        // combined in a sentence
         return scrollPane;
     }
 
@@ -46,7 +45,8 @@ public class FrontPagePanel extends JPanel implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {   //when user clicked the userbutton they want to chat with, a chatScreen is generated
+    public void actionPerformed(ActionEvent e) {
+        //when user clicked the User Button they want to chat with, a chatScreen is generated
         String targetUserId = ((JButton) e.getSource()).getText();
         ChatScreen c = new ChatScreen(targetUserId);
         c.create();

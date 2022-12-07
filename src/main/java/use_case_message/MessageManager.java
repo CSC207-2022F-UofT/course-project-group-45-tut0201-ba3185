@@ -1,5 +1,4 @@
 package use_case_message;
-//use case layer
 
 import entity.ChatHistory;
 
