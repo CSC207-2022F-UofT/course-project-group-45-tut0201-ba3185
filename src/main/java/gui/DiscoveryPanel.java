@@ -4,7 +4,6 @@ import controller.DiscoveryController;
 import use_case_discovery.NearbyInteractor;
 import use_case_discovery.PreferenceInteractor;
 
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -36,11 +35,11 @@ public class DiscoveryPanel extends JPanel {
 //                    //the controller of search
                     break;
                 case "nearBy":
-                    UsersBtnPanel presenter0 = new UsersBtnPanel();
-                    DiscoveryInputBoundary interactor0 = new NearbyInteractor(presenter0);
-                    DiscoveryController controller0 = new DiscoveryController(1,interactor0);
-                    controller0.optionControl();
-                    this.add(presenter0);
+                    UsersBtnPanel presenter1 = new UsersBtnPanel();
+                    DiscoveryInputBoundary interactor1 = new NearbyInteractor(presenter1);
+                    DiscoveryController controller1 = new DiscoveryController(1,interactor1);
+                    controller1.optionControl();
+                    this.add(presenter1);
                     break;
             }
             this.revalidate();

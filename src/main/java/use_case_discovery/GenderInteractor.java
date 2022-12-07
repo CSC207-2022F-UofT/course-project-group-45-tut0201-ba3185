@@ -1,51 +1,39 @@
 package use_case_discovery;
+
+import database.csvInterface;
 import database.csvManager;
-import use_case_signin_signup.UserRequestModel;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 /**
- * GenderFinder takes user's sexual orientation and filter other users based
- * Documentary of possible sexual orientation:
- *(possible sexual orientation): (return from GenderFinder)
+ * GenderInteractor takes current user's sexual orientation and filter out other users that do not satisfy the condition
+ * Documentary of sexual orientation:
  * male: return only users identified themselves as male
  * female: return only users identified themselves as female
- * bisexual: return only users identified themselves as both male and female
+ * bisexual: return all users
  */
 
-public class GenderInteractor {
-    // fetched with User(1205)
-    public static final int USER_SETTING = 4;
-    UserAccess manager = new csvManager();
-    Map<String, Object> userSettings = manager.readCurrentUser().getUserSetting();
-    String mainSexualOrientation = (String)userSettings.get("sexualOrientation");
-    Map<String, UserRequestModel> otherUsers;
+public class GenderInteractor extends csvInteractor {
+    csvInterface manager = new csvManager();
+    String cSexualOrientation = (String)manager.readCurrentUser().getUserSetting().get("sexualOrientation");
 
-    public GenderInteractor(){
-        try{
-            this.otherUsers = manager.readUser();
-        }
-        catch (IOException exception){
-            throw new RuntimeException(exception);
-        };
-    }
+    public GenderInteractor(){}
     public List<String> getList(){
         List<String> resUserNames = new ArrayList<>();
-        //the case of Male or Female
-        if (mainSexualOrientation.equals("Male")||
-                mainSexualOrientation.equals("Female")){
-            for (String key:this.otherUsers.keySet()){
-                Map<String, Object> user = this.otherUsers.get(key).getUserSetting();
-                if ((user.get("gender")).equals(mainSexualOrientation)){
+        //the case of male or female
+        if (cSexualOrientation.equals("male")||
+                cSexualOrientation.equals("female")){
+            for (String key:super.otherUsersInfo.keySet()){
+                Map<String, Object> user = super.otherUsersInfo.get(key).getUserSetting();
+                if ((user.get("gender")).equals(cSexualOrientation)){
                     resUserNames.add(key);
                 }
             }
         }
         //the case of Bisexual
-        if (mainSexualOrientation.equals("Bisexual")){
-            resUserNames.addAll(this.otherUsers.keySet());
+        if (cSexualOrientation.equals("bisexual")){
+            resUserNames.addAll(super.otherUsersInfo.keySet());
         }
         return resUserNames;
     }

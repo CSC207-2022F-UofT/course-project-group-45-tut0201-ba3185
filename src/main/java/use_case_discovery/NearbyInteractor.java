@@ -4,14 +4,14 @@ package use_case_discovery;
 public class NearbyInteractor implements DiscoveryInputBoundary{
 
     //public DiscoveryListOutputBoundary presenter;
-    private final Presenter pPanel;
+    private final DiscoveryListInterface pPanel;
 
     /**
      *
      * @param pPanel used to display the result of Nearby discovery (15 nearest users)
      */
 
-    public NearbyInteractor(Presenter pPanel){
+    public NearbyInteractor(DiscoveryListInterface pPanel){
         this.pPanel = pPanel;
     }
 

@@ -1,15 +1,13 @@
 package gui;
 
-import gui.MainFrame;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-/*
-To generate user info panel with given username by using nested class
-to generate the panel to add on
+/**
+ * Generates user info panel with given username by using nested class to generate the panel to add on
+ * A Chat button is added to link with the chat feature
  */
 public class UserInfo implements ActionListener {
     JPanel panelToAddOn;
@@ -47,9 +45,7 @@ public class UserInfo implements ActionListener {
             this.setLayout(new FlowLayout(FlowLayout.TRAILING));
             this.setBackground(this.color);
             JButton chat = new JButton("Chat");
-            JButton block = new JButton("Block");
             this.add(chat);
-            this.add(block);
             this.revalidate();
         }
     }

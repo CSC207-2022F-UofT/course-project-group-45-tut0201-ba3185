@@ -8,13 +8,13 @@ import java.util.List;
 
 
 public class OptionPanel extends JPanel {
-    private List<ActionListener> actionListeners;//users click three bottons
+    private final List<ActionListener> actionListeners;//users click three bottons
     public OptionPanel(){
         this.actionListeners = new ArrayList<>();
         this.setLayout(new GridBagLayout());
         this.setBackground(Color.white);
         //set buttons
-        gui.Button preferenceBtn = new Button("By Preference");
+        Button preferenceBtn = new Button("By Preference");
         preferenceBtn.getButton().setActionCommand("preference");
         preferenceBtn.getButton().addActionListener(e -> {
             for(ActionListener listener: actionListeners){
@@ -22,7 +22,7 @@ public class OptionPanel extends JPanel {
             }
         });
         //TODO: need to fetch with other two buttons
-        gui.Button nearByBtn = new Button("By Near By");
+        Button nearByBtn = new Button("By Near By");
         nearByBtn.getButton().setActionCommand("nearBy");
         nearByBtn.getButton().addActionListener(e -> {
             for(ActionListener listener: actionListeners){
@@ -30,7 +30,7 @@ public class OptionPanel extends JPanel {
             }
         });
 
-        gui.Button searchBtn = new Button("By Search");
+        Button searchBtn = new Button("By Search");
         searchBtn.getButton().setActionCommand("//");
         searchBtn.getButton().addActionListener(e -> {
             for(ActionListener listener: actionListeners){
