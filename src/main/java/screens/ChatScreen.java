@@ -33,7 +33,7 @@ public class ChatScreen extends JFrame implements ActionListener,ChatScreenInter
         MessageManagerFactory messageManagerFactory = new MessageManagerFactory();
         MessagePresenter messagePresenter = new MessagePresenter(this);
         MessageInteractor messageInteractor = new MessageInteractor(messagePresenter,
-                messageManagerFactory, MainFrame.messageManagers);
+                messageManagerFactory);
         this.controller= new MessageController(messageInteractor);
     }
 

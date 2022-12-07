@@ -5,7 +5,7 @@ import use_case_frontpage.FrontPageRequestModel;
 
 public class FrontPageController {
     /**
-     * The controller of frontpage that converts the request of adding a new target
+     * The controller of frontpage that converts the request of refreshing the front page
      * to a request model and passes it to the interactor
      *
      */

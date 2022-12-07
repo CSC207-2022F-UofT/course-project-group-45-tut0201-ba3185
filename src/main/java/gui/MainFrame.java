@@ -1,21 +1,12 @@
 package gui;
 import javax.swing.*;
 import controller.userController;
-import database.MessageDataManager;
-import use_case_message.MessageManagers;
 
 public class MainFrame extends JFrame implements MainFrameInterface {
     public static final int PAGE_WIDTH = 414;
     public static final int PAGE_HEIGHT = 736;
-    public static MessageManagers messageManagers;
 
     public MainFrame() {
-        messageManagers = new MessageManagers();
-        MessageDataManager messageDataManager = new MessageDataManager();
-        messageManagers = messageDataManager.readMM();
-        // This will throw an error at the very first time running the program since there is no such
-        // file at first.
-
         this.setSize(PAGE_WIDTH, PAGE_HEIGHT);
         this.setResizable(false);
 

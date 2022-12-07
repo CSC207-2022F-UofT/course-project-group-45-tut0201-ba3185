@@ -14,13 +14,18 @@ public class MessageInteractor implements MessageInputBoundary {
      */
     final MessageOutputBoundary messageOutputBoundary;
     final MessageManagerFactory chatFactory;
-    MessageManagers messageManagers;
+    MessageManagers messageManagers = new MessageManagers();
+    MessageDataManager messageDataManager = new MessageDataManager();
 
     public MessageInteractor(MessageOutputBoundary messageOutputBoundary,
-                             MessageManagerFactory chatFactory, MessageManagers messageManagers) {
+                             MessageManagerFactory chatFactory) {
+        if (messageDataManager.readMM() != null){
+            messageManagers = messageDataManager.readMM();
+        }
+        // This will throw an error at the very first time running the program since there is no such
+        // file at first.
         this.messageOutputBoundary = messageOutputBoundary;
         this.chatFactory = chatFactory;
-        this.messageManagers = messageManagers;
     }
 
     @Override
@@ -54,7 +59,6 @@ public class MessageInteractor implements MessageInputBoundary {
                 MessageResponseModel messageResponseModel = new MessageResponseModel(mm.getChatHistory());
                 messageOutputBoundary.create(messageResponseModel);
             }
-            MessageDataManager messageDataManager = new MessageDataManager();
             messageDataManager.writeMM(messageManagers);
         }
         catch (NullPointerException exception){
