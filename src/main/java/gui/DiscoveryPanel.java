@@ -1,9 +1,11 @@
 package gui;
 import gui.discovery.OptionPanel;
+import gui.discovery.SearchQuestionPanel;
 import gui.discovery.UsersBtnPanel;
 import use_case_discovery.DiscoveryInputBoundary;
 import controller.DiscoveryController;
 import use_case_discovery.PreferenceInteractor;
+import use_case_discovery.SearchAskerInteractor;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,10 +18,6 @@ public class DiscoveryPanel extends JPanel {
         this.setLayout(null);
         this.setLayout(new FlowLayout(FlowLayout.CENTER));
         this.setBackground(Color.pink);
-        this.add(new JLabel("This is the discovery page."));
-        //        this.add(new JLabel("To use the 'By preference', " +
-        //                "click the scope image and click the button again to see another" +
-        //                "user's info"));
 
 
         OptionPanel optionPanel = new OptionPanel();
@@ -28,13 +26,18 @@ public class DiscoveryPanel extends JPanel {
                 case "preference":
                     UsersBtnPanel presenter = new UsersBtnPanel();
                     DiscoveryInputBoundary interactor = new PreferenceInteractor(presenter);
-                    DiscoveryController controller = new DiscoveryController(1,interactor);
-                    controller.optionControl();
+                    DiscoveryController controller = new DiscoveryController(interactor);
+                    controller.trigger();
                     this.add(presenter);
                     break;
                 case "search":
-//                    //the controller of search
+                    SearchQuestionPanel panelS = new SearchQuestionPanel();
+                    DiscoveryInputBoundary interactorS = new SearchAskerInteractor(panelS);
+                    DiscoveryController controllerS = new DiscoveryController(interactorS);
+                    controllerS.trigger();
+                    this.add(panelS);
                     break;
+
                 case "nearBy":
 //                    UsersBtnPanel presenter = new UsersBtnPanel();
 //                    DiscoveryInputBoundary interactor = new NearByInteractor(presenter);
