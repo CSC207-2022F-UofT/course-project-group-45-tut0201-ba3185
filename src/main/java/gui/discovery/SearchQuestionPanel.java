@@ -1,4 +1,4 @@
-package gui;
+package gui.discovery;
 
 import controller.SearchController;
 import use_case_discovery.SearchQuestionInterface;

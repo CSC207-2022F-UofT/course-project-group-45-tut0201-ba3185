@@ -1,4 +1,4 @@
-package gui;
+package gui.discovery;
 
 import javax.swing.*;
 

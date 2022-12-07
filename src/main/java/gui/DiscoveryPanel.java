@@ -1,6 +1,8 @@
 package gui;
 
 import controller.DiscoveryController;
+import gui.discovery.OptionPanel;
+import gui.discovery.SearchQuestionPanel;
 import use_case_discovery.*;
 
 import javax.swing.*;

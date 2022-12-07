@@ -23,8 +23,11 @@ public class SearchInteractor implements SearchInputBoundary {
 
         //create a response model for the user
         DiscoveryResponseModel dResponseModel = new DiscoveryResponseModel(recommendList);
-
         pPanel.update(dResponseModel); // update the panel by calling the update method and pass the request model
+
+    }
+
+    public void updateP(){
 
     }
 

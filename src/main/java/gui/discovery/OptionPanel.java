@@ -1,4 +1,6 @@
-package gui;
+package gui.discovery;
+
+import gui.discovery.Button;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,7 +19,7 @@ public class OptionPanel extends JPanel {
         this.setLayout(new GridBagLayout());
         this.setBackground(Color.white);
         //set buttons
-        Button preferenceBtn = new Button("By Preference");
+        gui.discovery.Button preferenceBtn = new gui.discovery.Button("By Preference");
         preferenceBtn.getButton().setActionCommand("preference");
         preferenceBtn.getButton().addActionListener(e -> {
             for(ActionListener listener: actionListeners){
@@ -25,7 +27,7 @@ public class OptionPanel extends JPanel {
             }
         });
 
-        Button nearByBtn = new Button("By Near");
+        gui.discovery.Button nearByBtn = new gui.discovery.Button("By Near");
         nearByBtn.getButton().setActionCommand("nearby");
         nearByBtn.getButton().addActionListener(e -> {
             for(ActionListener listener: actionListeners){
@@ -33,7 +35,7 @@ public class OptionPanel extends JPanel {
             }
         });
 
-        Button searchBtn = new Button("By Search");
+        gui.discovery.Button searchBtn = new Button("By Search");
         searchBtn.getButton().setActionCommand("search");
         searchBtn.getButton().addActionListener(e -> {
             for(ActionListener listener: actionListeners){
