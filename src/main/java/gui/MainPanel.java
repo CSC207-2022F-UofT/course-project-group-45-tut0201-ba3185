@@ -25,8 +25,8 @@ public class MainPanel extends JPanel {
                 case "gameButton":
                     contentPanel.add(new GamePanel());
                     break;
-                case "frontPageButton":
-                    contentPanel.add(new FrontPagePanel().createFrontPageScreen());
+                case "settingsButton":
+                    contentPanel.add(new SettingsPanel());
                     break;
             }
             contentPanel.revalidate();

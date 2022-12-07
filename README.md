@@ -1,16 +1,45 @@
-# Project Template
+# Group 45 - Dating App
 
-This is a template repository for CSC 207 projects. 
-This repository contains starter code for a gradle project.
-It also contains workflow documents that give instructions on how to manage your Github repository and how to use Github Projects for efficient collaboration.
+The dating app allows the user to discover their potential dating target through
+our three discovery methods(preference, search, and location), 
+chat functions, and an ice-breaking game.
+The dating app also allows browsing other users' profile page,
+and it provides the block function if the user hates someone as well.
 
-## Checklist For Your Project
-- [ ] Verify the correct settings for your project repository
-- [ ] Set up Github Projects
-- [ ] Create the implementation plan using issues and Github Projects
-- [ ] Create deveopment branches for your features
-- [ ] Use pull requests to merge finished features into main branch
-- [ ] Conduct code reviews
+## Summary of features in the project
+* User can create an account, log in, and log out
+* User can fill in a simple questionnaire to provides their personal information that they feel comfortable to share with
+* Use can use discovery to explore other users
+  * _By preference_ is to look for others that share a similar perspective on the importance of characteristics
+  * _By search_ asks user to fill the specific range/option of characteristics that he/she is looking for
+  * _By location_ is to look for others that are close to the user's location
+* User can use chat function to communicate with other users, and the chat history is displayed in the chat window
+* User can play the two lies and a truth game with other users
+* User can block other users from their profile page
+
+## Instruction on how to use the dating app for each feature
+1. By running the Main file, a window will pop up that asks to fill in account information(if new user)
+2. New user will also be asked to fill in personal information, after filling in, click the _submit_ button
+3. User with existed account can just log in 
+4. To use discovery feature:
+   * click the discovery button(the magnifier icon) on the navigation panel at the bottom,
+   and it will bring you to the page of discovery with three buttons indicating different discovery methods
+   * For search option, a list will be generated and needed to be answer.
+   * after clicking one of the method button or submit the answer, a yellow panel will pop up 15 buttons with other users' name on it
+   * click the button with username allows you to browse the user's info
+   * the user info page also comes with chat button and block button
+5. To use chat feature
+   * Click the chat button (the rightmost icon) on the  navigation panel at the bottom, and it will bring you to the page of chatted
+   users, where a list of users that you have chatted with is shown.
+   * Click on one of the user names on the screen who you want to chat with, and it will bring you to the page of your chat box with the person.
+   * You can also click the chat button on the user info page to start a conversation with the user.
+   * Type messages in the box at the bottom of the screen.
+   * Click the "send" button. The message you sent will be shown on both your screen and the screen of the person you want to chat with.
+6. To use two truths and a lie feature
+7. To use block feature
+
+
+////////////////////////////Template below//////////////////////////
 
 **If your team has trouble with any of these steps, please ask on Piazza. For example, with how GitHub Classroom works, your team *may* not have permissions to do some of the first few steps, in which case we'll post alternative instructions as needed.**
 
