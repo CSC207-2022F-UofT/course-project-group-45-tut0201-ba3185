@@ -2,6 +2,7 @@ package use_case.discovery;
 
 import org.junit.Before;
 import org.junit.Test;
+import use_case_discovery.ScoreHelper;
 
 import java.util.Arrays;
 import java.util.HashMap;

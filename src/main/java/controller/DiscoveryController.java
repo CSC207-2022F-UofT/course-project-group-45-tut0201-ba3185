@@ -1,6 +1,6 @@
 package controller;
 
-import use_case.discovery.DiscoveryInputBoundary;
+import use_case_discovery.DiscoveryInputBoundary;
 
 public class DiscoveryController {
     private final int userOption;

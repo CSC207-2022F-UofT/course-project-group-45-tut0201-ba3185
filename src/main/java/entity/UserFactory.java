@@ -1,9 +1,9 @@
 package entity;
-import use_case.signin_signup.UserRequestModel;
+import use_case_signin_signup.UserRequestModel;
 
 public class UserFactory {
 
-    /*
+    /**
      * The UserFactory enttiy is to create new users from information from the requestModel
      */
 

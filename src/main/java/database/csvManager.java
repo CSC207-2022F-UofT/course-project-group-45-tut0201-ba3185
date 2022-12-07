@@ -1,7 +1,7 @@
 package database;
 
-import use_case.signin_signup.UserRequestModel;
-import use_case.signin_signup.UserResponseModel;
+import use_case_signin_signup.UserRequestModel;
+import use_case_signin_signup.UserResponseModel;
 
 import java.io.*;
 import java.util.*;

@@ -4,6 +4,8 @@ import database.csvInterface;
 import database.csvManager;
 import org.junit.Before;
 import org.junit.Test;
+import use_case_discovery.PreferenceScoreCalculator;
+
 import java.util.List;
 import static org.junit.Assert.assertEquals;
 

@@ -1,9 +1,9 @@
 package gui;
 import gui.discovery.OptionPanel;
 import gui.discovery.UsersBtnPanel;
-import use_case.discovery.DiscoveryInputBoundary;
+import use_case_discovery.DiscoveryInputBoundary;
 import controller.DiscoveryController;
-import use_case.discovery.PreferenceInteractor;
+import use_case_discovery.PreferenceInteractor;
 
 import javax.swing.*;
 import java.awt.*;

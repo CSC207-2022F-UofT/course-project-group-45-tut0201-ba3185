@@ -2,6 +2,8 @@ package use_case.discovery;
 
 import org.junit.Before;
 import org.junit.Test;
+import use_case_discovery.GenderInteractor;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
