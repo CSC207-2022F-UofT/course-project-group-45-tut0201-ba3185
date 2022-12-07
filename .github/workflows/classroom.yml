@@ -9,12 +9,13 @@ permissions:
 
 jobs:
   build:
-    name: Autograding
+    name: Testing Unit Tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: education/autograding@v1
       - name: JUnit Report Action
       - uses: mikepenz/action-junit-report@v3.6.1
+        if: always()
 
 
