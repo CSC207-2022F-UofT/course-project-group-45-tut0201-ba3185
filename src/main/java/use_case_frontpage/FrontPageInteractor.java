@@ -1,8 +1,11 @@
 package use_case_frontpage;
 
+import database.MessageDataManager;
 import database.csvManager;
-import entity.User;
-import java.util.ArrayList;
+import use_case_message.MessageManagers;
+import use_case_signin_signup.UserRequestModel;
+
+import java.util.List;
 
 public class FrontPageInteractor implements FrontPageInputBoundary{
     /**
@@ -11,6 +14,8 @@ public class FrontPageInteractor implements FrontPageInputBoundary{
      * which is passed to the presenter to update UI.
      */
     final FrontPageOutputBoundary frontPageOutputBoundary;
+    MessageDataManager messageDataManager = new MessageDataManager();
+    MessageManagers messageManagers =  messageDataManager.readMM();
 
     public FrontPageInteractor(FrontPageOutputBoundary frontPageOutputBoundary) {
         this.frontPageOutputBoundary = frontPageOutputBoundary;
@@ -18,18 +23,15 @@ public class FrontPageInteractor implements FrontPageInputBoundary{
 
     @Override
     public void create(FrontPageRequestModel requestModel) {
-        User user = csvManager.readCurrentUser();
-        String target = requestModel.getTarget();
-
         try {
-            ArrayList<String> userTargetList = user.getUserChatted();
+            csvManager manager = new csvManager();
+            UserRequestModel model = manager.readCurrentUser();
+            String user = model.getUsername();
+            System.out.println(user);
+            List<String> userTargetList = messageManagers.getUserChatted(user);
+            System.out.println(userTargetList);
 
-            // add the target in user if there is a new target
-            if (target != null && !userTargetList.contains(target)) {
-                user.addUserChatted(target);
-            }
-
-            FrontPageResponseModel responseModel = new FrontPageResponseModel(user.getUserChatted());
+            FrontPageResponseModel responseModel = new FrontPageResponseModel(userTargetList);
 
             frontPageOutputBoundary.create(responseModel);
         }
