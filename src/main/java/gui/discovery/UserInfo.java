@@ -47,9 +47,7 @@ public class UserInfo implements ActionListener {
             this.setLayout(new FlowLayout(FlowLayout.TRAILING));
             this.setBackground(this.color);
             JButton chat = new JButton("Chat");
-            JButton block = new JButton("Block");
             this.add(chat);
-            this.add(block);
             this.revalidate();
         }
     }

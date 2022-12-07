@@ -3,6 +3,7 @@ import java.util.*;
 
 /**
  * ScoreHelper is to help PreferenceListHelper by arranging users in descending order based on their scores.
+ * If multiple users have the same score, their names are arranged in alphabet order.
  * A list of usernames is returned.
  */
 public class ScoreHelper {
@@ -26,9 +27,12 @@ public class ScoreHelper {
 
         List<String> resTotalUsername = new ArrayList<>();
         for (int score: this.totalScoreList){
-            for (String key:this.scoreStorage.keySet()){
-                if (this.scoreStorage.get(key).equals(score)){resTotalUsername.add(key);}
+            List<String> subRes = new ArrayList<>();
+            for (String userName:this.scoreStorage.keySet()){
+                if (this.scoreStorage.get(userName).equals(score)){subRes.add(userName);}
             }
+            Collections.sort(subRes);
+            resTotalUsername.addAll(subRes);
         }
         this.totalUsername = resTotalUsername;
     }
