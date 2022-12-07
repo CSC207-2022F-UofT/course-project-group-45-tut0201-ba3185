@@ -1,9 +1,6 @@
 package entity;
 import use_case_signin_signup.UserRequestModel;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
 public class UserFactory {
 
     /**
@@ -17,6 +14,7 @@ public class UserFactory {
      */
     public User create(UserRequestModel requestModel) {
         return new User(requestModel.getUsername(), requestModel.getName(), requestModel.getPassword(),
-                requestModel.getLocation(), requestModel.getUserSetting());
+                requestModel.getLocation(), requestModel.getUserSetting(), requestModel.getInterestRank(),
+                requestModel.getAreaOfInterest());
     }
 }

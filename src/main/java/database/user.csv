@@ -1,11 +1,2 @@
-id,username,name,password,gender,age,income,pet,martialStatus,relationshipType,sexualOrientation,locationX,locationY
-2,lll,lll,lll,male,17,12,yes,single,friend,female,14.5,14.5
-1,sunny,sunny,sunny,male,21,40,yes,single,long-term,male,14.5,14.5
-0,eric,eric,eric,male,16,15,200,no,single,friend,female,14.5,14.5
-0,christina,christina,christina,female,16,15,70,yes,single,friend,male,14.5,14.5
-0,aa,aa,aa,male,16,15,200,yes,single,friend,male,14.5,14.5
-0,cami,cami,cami,female,27,30,yes,married,long-term,male,14.5,14.5
-0,eric,eric,eric,male,16,15,200,yes,single,friend,female,14.5,14.5
-0,eric,eric,eric,male,16,15,200,yes,single,friend,female,14.5,14.5
-
-
+id,username,name,password,gender,age,income,pet,martialStatus,relationshipType,sexualOrientation,interestRank,areaOfInterest,locationX,locationY
+0,sunny,sunny,sunny,male,124124,124124,yes,single,friend,male,sport/age/marital status/interests/relationship type/pet,sport,1.0,1.0
