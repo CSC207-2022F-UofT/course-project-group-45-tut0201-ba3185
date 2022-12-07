@@ -4,6 +4,7 @@ import controller.SignupPageController;
 import use_case_signin_signup.UserRequestModel;
 
 import javax.swing.*;
+import java.util.List;
 import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,8 +18,6 @@ public class InitialSettingPageUI extends JPanel {
 
     public InitialSettingPageUI(MainFrameInterface frame, String username, String name, String password) {
         this.setSize(PAGE_WIDTH, PAGE_HEIGHT);
-        //this.setResizable(false);
-        //this.getContentPane().setLayout(new BoxLayout(this.getContentPane(), BoxLayout.PAGE_AXIS));
         JPanel parentPanel = new JPanel(new SpringLayout());
         parentPanel.setPreferredSize(new Dimension(PAGE_WIDTH,PAGE_HEIGHT));
         SpringLayout parentLayout = (SpringLayout) parentPanel.getLayout();
@@ -31,26 +30,37 @@ public class InitialSettingPageUI extends JPanel {
         JLabel pet = new JLabel("Pet:");
         JLabel maritalStatus = new JLabel("Marital Status:");
         JLabel relationshipType = new JLabel("Relationship Type:");
+        JLabel sexualOrientationType = new JLabel("Sexual Orentation:");
+        JLabel interestAreaLabel = new JLabel("What are you interested in:");
+        JLabel interestRank = new JLabel("Which of these are the most important to you:");
         ArrayList<Object> labels = new ArrayList<>(Arrays.asList(age,income,location,gender,pet,maritalStatus,
-                relationshipType));
+                relationshipType, sexualOrientationType, interestAreaLabel, interestRank));
 
         // create selectors
-        String[] genders = {"Male", "Female", "Others"};
-        String[] martialStatus = {"Single", "Married", "Widowed", "Divorced"};
-        String[] relationshipTypes = {"Straight", "Not Straight"};
+        String[] genders = {"male", "female", "others"};
+        String[] martialStatus = {"single", "married", "divorced"};
+        String[] relationshipTypes = {"friend", "one-night", "long-term","short-term"};
+        String[] sexualOrientations = {"male", "female", "bisexual"};
+        String[] booleanTypes = {"yes", "no"};
+        String[] interestRanks = {"income", "age", "marital status", "interests", "relationship type", "pet"};
+        String[] interestArea = {"sport", "art", "music", "game", "movie", "cooking", "reading"};
         JTextField ageTextField = new JTextField(10);
         JTextField incomeTextField = new JTextField(10);
         JTextField locationLocator = new JTextField(10);
         JComboBox genderChooser = new JComboBox(genders);
-        JTextField petTextField = new JTextField(10);
+        JComboBox petTextField = new JComboBox(booleanTypes);
         JComboBox martialStatusChooser = new JComboBox(martialStatus);
         JComboBox relationshipChooser = new JComboBox(relationshipTypes);
+        JComboBox sexualOrientationChooser = new JComboBox(sexualOrientations);
+        JComboBox interestRankChooser = new JComboBox(interestRanks);
+        JComboBox interestAreaChooser = new JComboBox(interestArea);
         ArrayList<Object> selectors = new ArrayList<>(Arrays.asList(ageTextField,incomeTextField,locationLocator,
-                genderChooser, petTextField,martialStatusChooser,relationshipChooser));
+                genderChooser, petTextField,martialStatusChooser,relationshipChooser, sexualOrientationChooser,
+                interestAreaChooser, interestRankChooser));
 
         // create and populate selector panel
         JPanel selectorPanel = new JPanel(new SpringLayout());
-        selectorPanel.setPreferredSize(new Dimension((int) (PAGE_WIDTH/1.4), PAGE_HEIGHT/2));
+        selectorPanel.setPreferredSize(new Dimension((int) (PAGE_WIDTH/1.4), (int) (PAGE_HEIGHT/1.7)));
         SpringLayout selectorPanelLayout = (SpringLayout) selectorPanel.getLayout();
 
         for(Object obj : selectors) {
@@ -62,7 +72,7 @@ public class InitialSettingPageUI extends JPanel {
 
         // Initially add the first component of field and label
         selectorPanelLayout.putConstraint(NORTH,age, 7, NORTH, selectorPanel);
-        selectorPanelLayout.putConstraint(NORTH, ageTextField, 10, NORTH, selectorPanel);
+        selectorPanelLayout.putConstraint(NORTH, ageTextField, 7, NORTH, selectorPanel);
         selectorPanelLayout.putConstraint(WEST, age , 0 , WEST, selectorPanel);
         selectorPanelLayout.putConstraint(EAST, ageTextField, 0 ,EAST, selectorPanel);
         for(int i = 1; i < labels.size(); i++) {
@@ -74,20 +84,22 @@ public class InitialSettingPageUI extends JPanel {
                     (Component) selectors.get(i-1));
         }
 
+        selectorPanelLayout.putConstraint(NORTH, interestRankChooser, 40, SOUTH, interestAreaChooser);
+
         // Create button and populate panel
         JPanel buttonPanel = new JPanel(new SpringLayout());
         SpringLayout buttonPanelLayout = (SpringLayout) buttonPanel.getLayout();
         buttonPanel.setPreferredSize(new Dimension(PAGE_WIDTH, 100));
 
         JButton submitButton = new JButton("Submit");
-        submitButton.setPreferredSize(new Dimension(PAGE_WIDTH/2, 40));
+        submitButton.setPreferredSize(new Dimension(PAGE_WIDTH/2, 45));
         buttonPanel.add(submitButton);
 
         // format buttonPanel
         buttonPanelLayout.putConstraint(HORIZONTAL_CENTER, submitButton, 0, HORIZONTAL_CENTER, buttonPanel);
 
         parentLayout.putConstraint(HORIZONTAL_CENTER, selectorPanel, 0, HORIZONTAL_CENTER, this);
-        parentLayout.putConstraint(NORTH, selectorPanel, PAGE_HEIGHT/4, NORTH, this);
+        parentLayout.putConstraint(NORTH, selectorPanel, PAGE_HEIGHT/6, NORTH, this);
         parentLayout.putConstraint(SOUTH, buttonPanel, 0, SOUTH, this);
         parentPanel.add(selectorPanel);
         parentPanel.add(buttonPanel);
@@ -98,8 +110,11 @@ public class InitialSettingPageUI extends JPanel {
             String currentLocation = locationLocator.getText();
             String currentMaritalStatus = String.valueOf(martialStatusChooser.getSelectedItem());
             String currentGender = String.valueOf(genderChooser.getSelectedItem());
-            String currentPet = petTextField.getText();
+            String currentPet = String.valueOf(petTextField.getSelectedItem());
             String currentRelationshipType = String.valueOf(relationshipChooser.getSelectedItem());
+            String sexualOrientation = String.valueOf(sexualOrientationChooser.getSelectedItem());
+            String interestRankChosen = String.valueOf(interestRankChooser.getSelectedItem());
+            String interestAreaChosen = String.valueOf(interestAreaChooser.getSelectedItem());
 
             if(!currentAge.equals("") && !currentIncome.equals("") && !currentLocation.equals("") &&
                     !currentPet.equals("")) {
@@ -112,8 +127,18 @@ public class InitialSettingPageUI extends JPanel {
                     currentLocationSplit.add(Double.valueOf(tmp[0]));
                     currentLocationSplit.add(Double.valueOf(tmp[1]));
                     UserRequestModel requestModel = new UserRequestModel();
+
+                    List<String> interest = new ArrayList<>(Arrays.asList("income", "age", "marital status",
+                            "interests", "relationship type", "pet"));
+                    interest.remove(interestRankChosen);
+
+                    List<String> interestR = new ArrayList<>();
+                    interestR.add(interestAreaChosen);
+                    interestR.addAll(interest);
+
                     requestModel.setInfo(username, name, password, convertedAge, convertedIncome, currentGender,
-                            currentRelationshipType,currentMaritalStatus,currentPet, currentLocationSplit);
+                            currentRelationshipType,currentMaritalStatus,currentPet, currentLocationSplit,
+                            sexualOrientation, interestR, interestAreaChosen);
                     Boolean isUserRegistered = new SignupPageController().create(requestModel);
 
                     if (isUserRegistered) {
@@ -135,6 +160,5 @@ public class InitialSettingPageUI extends JPanel {
         });
 
         this.add(parentPanel);
-        //this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }
