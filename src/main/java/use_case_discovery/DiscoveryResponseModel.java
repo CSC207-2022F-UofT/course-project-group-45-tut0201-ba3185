@@ -1,11 +1,14 @@
 package use_case_discovery;
-import java.util.List;
 
+import java.util.List;
+/**
+ * DiscoveryResponseModel stores the information of the (15) users that is used to display
+ */
 public class DiscoveryResponseModel {
     private final List<String> userNames;
     /**
      *
-     * @param userNames the discovered list of users to display
+     * @param userNames is a list of usernames that the discovered list of users to display
      */
     public DiscoveryResponseModel(List<String> userNames){
         this.userNames = userNames;
@@ -27,3 +30,4 @@ public class DiscoveryResponseModel {
     public String getUserName14(){return this.userNames.get(13);}
     public String getUserName15(){return this.userNames.get(14);}
 }
+
