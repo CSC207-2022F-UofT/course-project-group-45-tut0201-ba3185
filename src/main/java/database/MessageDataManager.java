@@ -4,7 +4,7 @@ import use_case_message.MessageManagers;
 
 import java.io.*;
 
-public class MessageDataManager {
+public class MessageDataManager implements serInterface {
     /**
      * csvManager is the database interactor that reads and writes to MessageManagers.ser
      */

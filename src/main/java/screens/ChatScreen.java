@@ -79,9 +79,6 @@ public class ChatScreen extends JFrame implements ActionListener,ChatScreenInter
 
         this.add(chatScreen);
         this.setVisible(true);
-
-
-        //return this;
     }
     @Override
     public void actionPerformed(ActionEvent e) {
