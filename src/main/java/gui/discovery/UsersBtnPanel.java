@@ -11,6 +11,7 @@ import java.awt.*;
  * Displays the 15 users found after discovery, each button links to user's personal info page
  */
 public class UsersBtnPanel extends JPanel implements DiscoveryListInterface {
+
     public UsersBtnPanel(){
         this.setPreferredSize(new Dimension(MainFrame.PAGE_WIDTH, MainFrame.PAGE_HEIGHT / 10 * 9));
         this.setLayout(new FlowLayout(FlowLayout.CENTER));
@@ -20,63 +21,63 @@ public class UsersBtnPanel extends JPanel implements DiscoveryListInterface {
     @Override
     public void update(DiscoveryResponseModel dResponseModel) {
         Button btn1 = new Button(dResponseModel.getUserName1());
-        btn1.getButton().addActionListener(new UserInfo(this, dResponseModel.getUserName1(), Color.CYAN));
+        btn1.getButton().addActionListener(new UserInfo(this, dResponseModel.getUserName1()));
         add(btn1.getButton());
 
         Button btn2 = new Button(dResponseModel.getUserName2());
-        btn2.getButton().addActionListener(new UserInfo(this, dResponseModel.getUserName2(), Color.CYAN));
+        btn2.getButton().addActionListener(new UserInfo(this, dResponseModel.getUserName2()));
         add(btn2.getButton());
 
         Button btn3 = new Button(dResponseModel.getUserName3());
-        btn3.getButton().addActionListener(new UserInfo(this, dResponseModel.getUserName3(), Color.CYAN));
+        btn3.getButton().addActionListener(new UserInfo(this, dResponseModel.getUserName3()));
         add(btn3.getButton());
 
         Button btn4 = new Button(dResponseModel.getUserName4());
-        btn4.getButton().addActionListener(new UserInfo(this, dResponseModel.getUserName4(), Color.CYAN));
+        btn4.getButton().addActionListener(new UserInfo(this, dResponseModel.getUserName4()));
         add(btn4.getButton());
 
         Button btn5 = new Button(dResponseModel.getUserName5());
-        btn5.getButton().addActionListener(new UserInfo(this, dResponseModel.getUserName5(), Color.CYAN));
+        btn5.getButton().addActionListener(new UserInfo(this, dResponseModel.getUserName5()));
         add(btn5.getButton());
 
         Button btn6 = new Button(dResponseModel.getUserName6());
-        btn6.getButton().addActionListener(new UserInfo(this, dResponseModel.getUserName6(), Color.CYAN));
+        btn6.getButton().addActionListener(new UserInfo(this, dResponseModel.getUserName6()));
         add(btn6.getButton());
 
         Button btn7 = new Button(dResponseModel.getUserName7());
-        btn7.getButton().addActionListener(new UserInfo(this, dResponseModel.getUserName7(), Color.CYAN));
+        btn7.getButton().addActionListener(new UserInfo(this, dResponseModel.getUserName7()));
         add(btn7.getButton());
 
         Button btn8 = new Button(dResponseModel.getUserName8());
-        btn8.getButton().addActionListener(new UserInfo(this, dResponseModel.getUserName8(), Color.CYAN));
+        btn8.getButton().addActionListener(new UserInfo(this, dResponseModel.getUserName8()));
         add(btn8.getButton());
 
         Button btn9 = new Button(dResponseModel.getUserName9());
-        btn9.getButton().addActionListener(new UserInfo(this, dResponseModel.getUserName9(), Color.CYAN));
+        btn9.getButton().addActionListener(new UserInfo(this, dResponseModel.getUserName9()));
         add(btn9.getButton());
 
         Button btn10 = new Button(dResponseModel.getUserName10());
-        btn10.getButton().addActionListener(new UserInfo(this, dResponseModel.getUserName10(), Color.CYAN));
+        btn10.getButton().addActionListener(new UserInfo(this, dResponseModel.getUserName10()));
         add(btn10.getButton());
 
         Button btn11 = new Button(dResponseModel.getUserName11());
-        btn11.getButton().addActionListener(new UserInfo(this, dResponseModel.getUserName11(), Color.CYAN));
+        btn11.getButton().addActionListener(new UserInfo(this, dResponseModel.getUserName11()));
         add(btn11.getButton());
 
         Button btn12 = new Button(dResponseModel.getUserName12());
-        btn12.getButton().addActionListener(new UserInfo(this, dResponseModel.getUserName12(), Color.CYAN));
+        btn12.getButton().addActionListener(new UserInfo(this, dResponseModel.getUserName12()));
         add(btn12.getButton());
 
         Button btn13 = new Button(dResponseModel.getUserName13());
-        btn13.getButton().addActionListener(new UserInfo(this, dResponseModel.getUserName13(), Color.CYAN));
+        btn13.getButton().addActionListener(new UserInfo(this, dResponseModel.getUserName13()));
         add(btn13.getButton());
 
         Button btn14 = new Button(dResponseModel.getUserName14());
-        btn14.getButton().addActionListener(new UserInfo(this, dResponseModel.getUserName14(), Color.CYAN));
+        btn14.getButton().addActionListener(new UserInfo(this, dResponseModel.getUserName14()));
         add(btn14.getButton());
 
         Button btn15 = new Button(dResponseModel.getUserName15());
-        btn15.getButton().addActionListener(new UserInfo(this, dResponseModel.getUserName15(), Color.CYAN));
+        btn15.getButton().addActionListener(new UserInfo(this, dResponseModel.getUserName15()));
         add(btn15.getButton());
     }
 }

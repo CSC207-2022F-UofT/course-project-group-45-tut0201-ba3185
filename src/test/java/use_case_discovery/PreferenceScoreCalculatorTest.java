@@ -1,11 +1,10 @@
-package use_case.discovery;
+package use_case_discovery;
 
 import database.csvInterface;
 import database.csvManager;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
-import use_case_discovery.PreferenceScoreCalculator;
 import java.util.List;
 
 

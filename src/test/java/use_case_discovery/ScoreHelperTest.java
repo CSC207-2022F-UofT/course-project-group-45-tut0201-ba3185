@@ -1,9 +1,8 @@
-package use_case.discovery;
+package use_case_discovery;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import use_case_discovery.ScoreHelper;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
