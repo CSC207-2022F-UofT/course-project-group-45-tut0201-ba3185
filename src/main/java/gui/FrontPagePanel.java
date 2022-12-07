@@ -30,12 +30,12 @@ public class FrontPagePanel extends JPanel implements ActionListener {
         Color color = new Color(246, 186, 227);
         this.setBackground(color);
 
-        JScrollPane scrollPane = new JScrollPane(this, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+        //JScrollPane scrollPane = new JScrollPane(this, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+                //JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+
+
+        return new JScrollPane(this, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
                 JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-        //scrollPane.setSize(page_w, screen_h);
-
-
-        return scrollPane;
     }
 
     public void loadUser(String username){
@@ -47,7 +47,7 @@ public class FrontPagePanel extends JPanel implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {   //when user clicked the userbutton they want to chat with, a chatScreen is generated
+    public void actionPerformed(ActionEvent e) {   //when user clicked the username button they want to chat with, a chatScreen is generated
         String targetUserId = ((JButton) e.getSource()).getText();
         ChatScreen c = new ChatScreen(targetUserId);
         c.create();

@@ -9,7 +9,7 @@ public class MessageManagers implements Serializable {
     /**
      * The use case that stores all the MessageManagers in the program
      */
-    List<MessageManager> MessageManagers; //MessageManager is use case??
+    List<MessageManager> MessageManagers;
     public MessageManagers(){
         MessageManagers = new ArrayList<>();
     }

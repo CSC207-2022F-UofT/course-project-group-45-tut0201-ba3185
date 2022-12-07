@@ -14,8 +14,8 @@ public class MessageInteractor implements MessageInputBoundary {
      * chat history and creates a response model which is passed to the presenter to
      * update the view (load the message).
      */
-    final MessageOutputBoundary messageOutputBoundary;
-    final MessageManagerFactory chatFactory;
+    MessageOutputBoundary messageOutputBoundary; //builder design pattern is used
+    MessageManagerFactory chatFactory;
     MessageManagers messageManagers;
 
     public MessageInteractor(MessageOutputBoundary messageOutputBoundary,
@@ -24,6 +24,7 @@ public class MessageInteractor implements MessageInputBoundary {
         this.chatFactory = chatFactory;
         this.messageManagers = messageManagers;
     }
+
 
     @Override
     public void create(MessageRequestModel requestModel) {

@@ -1,52 +1,42 @@
 package use_case_chatScreen_test;
-
-import org.junit.After;
-import org.junit.Before;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import use_case_message.MessageManager;
 import use_case_message.MessageManagerFactory;
 import use_case_message.MessageManagers;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertSame;
 
 public class MessageManagersUnitTest {
-    MessageManagerFactory mmf;
-    MessageManagers mms;
-    MessageManager a;
-    MessageManager b;
 
-    @Before
-    public void setup(){
-        mms = new MessageManagers();
-        mmf = new MessageManagerFactory();
-        a = mmf.create("alyssa", "jennifer");
-        b = mmf.create("alyssa","Elon_Musk");
-    }
     @Test
     void addMessageManagerTest() {
-        mms.addMM(a);
-        mms.addMM(b);
-        List<MessageManager> messageManagers = mms.getMMs();
-        assertSame(messageManagers.size(), 2);
-        assertSame(messageManagers.contains(a), true);
-        assertSame(messageManagers.contains(b), true);
+        MessageManagers mms = new MessageManagers();
+        MessageManagerFactory factory = new MessageManagerFactory();
+        MessageManager mm_a = factory.create("Alyssa", "csc207_TA");
+        MessageManager mm_b = factory.create("Alyssa", "cat");
+        mms.addMM(mm_a);
+        mms.addMM(mm_b);
+        Assertions.assertEquals(2, mms.getMMs().size());
+        Assertions.assertTrue(mms.getMMs().contains(mm_a));
+        Assertions.assertTrue(mms.getMMs().contains(mm_b));
     }
-    @Test
-    void getMMsTest(){
-        ArrayList<MessageManager> mmslist = new ArrayList<MessageManager>();
-        mmslist.add(a);
-        mmslist.add(b);
-        assertSame(mms.getMMs(), mmslist);
-    }
-    @Test
-    void find_returnMMTest(){
 
+    @Test
+    void find_user_return_Test(){
+        MessageManagers mms_1 = new MessageManagers();
+        MessageManagerFactory factory = new MessageManagerFactory();
+        MessageManager mm_a = factory.create("user_01", "gradle_321c");
+        mms_1.addMM(mm_a);
+        assertSame(mms_1.find("user_01", "gradle_321c"), mm_a);
     }
     @Test
-    void find_returnNullTest(){}
-    @After
-    public void tearDown(){}
+    void find_user_null_Test(){
+        MessageManagers mms_2 = new MessageManagers();
+        assertSame(mms_2.find("user_01", "gradle_321c"), null);
+    }
+
+
 }
+
+
