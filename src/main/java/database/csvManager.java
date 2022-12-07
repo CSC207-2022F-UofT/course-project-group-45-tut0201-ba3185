@@ -121,9 +121,9 @@ public class csvManager implements csvInterface {
      * @throws IOException if the reader fails to read
      */
     public void writeCurrentUser(String username, String name, String password, List<Double> location,
-            Map<String, Object> userSetting, List<String> interestRank, String areaOfInterest) {
+                                 Map<String, Object> userSetting, List<String> interestRank, String areaOfInterest) {
         ArrayList<String> Headers = new ArrayList<String>(Arrays.asList("username",
-                "name", "password", "gender", "age", "income", "pet", "martialStatus", "relationshipType",
+                "name", "password", "gender", "age", "income", "pet", "maritalStatus", "relationshipType",
                 "sexualOrientation","interestRank","areaOfInterest","locationX", "locationY"));
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(CURRENT_USER_PATH));
@@ -135,9 +135,9 @@ public class csvManager implements csvInterface {
             interestRanks = interestRanks.substring(1, interestRanks.length()-1);
 
             String write = (username+","+name+","+password+","+
-                        userSetting.get("gender")+","+userSetting.get("age")+","+userSetting.get("income")+"," +
-                        userSetting.get("pet")+","+userSetting.get("maritalStatus")+","+
-                        userSetting.get("relationshipType")+","+userSetting.get("sexualOrientation")+","+interestRanks+
+                    userSetting.get("gender")+","+userSetting.get("age")+","+userSetting.get("income")+"," +
+                    userSetting.get("pet")+","+userSetting.get("maritalStatus")+","+
+                    userSetting.get("relationshipType")+","+userSetting.get("sexualOrientation")+","+interestRanks+
                     ","+areaOfInterest+","+location.get(0)+","+ location.get(1));
 
             writer.write(write);
@@ -190,7 +190,7 @@ public class csvManager implements csvInterface {
 
     public void logoutUser() {
         ArrayList<String> Headers = new ArrayList<String>(Arrays.asList("id", "username",
-                "name", "password", "gender", "age", "income", "pet", "martialStatus", "relationshipType",
+                "name", "password", "gender", "age", "income", "pet", "maritalStatus", "relationshipType",
                 "sexualOrientation","interestRank", "areaOfInterest","locationX", "locationY"));
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(CURRENT_USER_PATH));
