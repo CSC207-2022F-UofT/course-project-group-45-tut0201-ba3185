@@ -39,6 +39,7 @@ public class ScoreHelper {
     }
 
     public List<String> getList(){
+
         return this.totalUsername;
     }
 }

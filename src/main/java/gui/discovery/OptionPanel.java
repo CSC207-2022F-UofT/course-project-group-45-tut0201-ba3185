@@ -21,9 +21,9 @@ public class OptionPanel extends JPanel {
                 listener.actionPerformed(e);
             }
         });
-        //TODO: need to fetch with other two buttons
+
         gui.discovery.Button nearByBtn = new Button("By Near By");
-        nearByBtn.getButton().setActionCommand("//");
+        nearByBtn.getButton().setActionCommand("nearby");
         nearByBtn.getButton().addActionListener(e -> {
             for(ActionListener listener: actionListeners){
                 listener.actionPerformed(e);
@@ -31,7 +31,7 @@ public class OptionPanel extends JPanel {
         });
 
         gui.discovery.Button searchBtn = new Button("By Search");
-        searchBtn.getButton().setActionCommand("//");
+        searchBtn.getButton().setActionCommand("search");
         searchBtn.getButton().addActionListener(e -> {
             for(ActionListener listener: actionListeners){
                 listener.actionPerformed(e);
