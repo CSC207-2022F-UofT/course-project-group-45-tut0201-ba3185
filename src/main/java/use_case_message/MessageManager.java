@@ -11,7 +11,7 @@ public class MessageManager implements Serializable {
      */
     private final String user1;
     private final String user2;
-    private ChatHistory history; // I don't want this to be final since it will be modified
+    private ChatHistory history; // I don't want this to be final since it will be modified later
 
     MessageManager(String user1, String user2){
         this.user1 = user1;

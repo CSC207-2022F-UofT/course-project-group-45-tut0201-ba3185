@@ -2,7 +2,7 @@ package use_case_frontpage;
 
 import database.csvManager;
 import entity.User;
-import java.util.ArrayList;
+import java.util.List;
 
 public class FrontPageInteractor implements FrontPageInputBoundary{
     /**
@@ -22,7 +22,7 @@ public class FrontPageInteractor implements FrontPageInputBoundary{
         String target = requestModel.getTarget();
 
         try {
-            ArrayList<String> userTargetList = user.getUserChatted();
+            List<String> userTargetList = user.getUserChatted();
 
             // add the target in user if there is a new target
             if (target != null && !userTargetList.contains(target)) {

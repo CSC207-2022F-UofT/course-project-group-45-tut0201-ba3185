@@ -1,6 +1,6 @@
 package use_case_frontpage;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class FrontPageResponseModel {
     /**
@@ -8,13 +8,13 @@ public class FrontPageResponseModel {
      * be passed to the presenter to update UI by adding or removing
      * prior target users.
      */
-    ArrayList<String> TargetUsers;
+    List<String> TargetUsers;
 
-    public FrontPageResponseModel(ArrayList<String> targetUsers){
+    public FrontPageResponseModel(List<String> targetUsers){
         this.TargetUsers = targetUsers;
     }
 
-    public ArrayList<String> getTargetUsers(){
+    public List<String> getTargetUsers(){
         return TargetUsers;
     }
 }
