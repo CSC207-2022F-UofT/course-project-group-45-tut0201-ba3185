@@ -2,12 +2,12 @@ package use_case.discovery;
 
 import database.csvInterface;
 import database.csvManager;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
 import use_case_discovery.PreferenceScoreCalculator;
-
 import java.util.List;
-import static org.junit.Assert.assertEquals;
+
 
 
 public class PreferenceScoreCalculatorTest {
@@ -19,7 +19,7 @@ public class PreferenceScoreCalculatorTest {
 
     csvInterface manager = new csvManager();
     List<String> cInterestRank = manager.readCurrentUser().getInterestRank();
-    @Before
+    @BeforeEach
     public void setUp() {
         psc1 = new PreferenceScoreCalculator("author",cInterestRank);
         psc2 = new PreferenceScoreCalculator("finch",cInterestRank);
@@ -29,23 +29,23 @@ public class PreferenceScoreCalculatorTest {
     }
     @Test
     public void testPsc1(){
-        assertEquals(22, psc1.getScore());
+        Assertions.assertEquals(22, psc1.getScore());
     }
     @Test
     public void testPsc2(){
-        assertEquals(0, psc2.getScore());
+        Assertions.assertEquals(0, psc2.getScore());
     }
     @Test
     public void testPsc3(){
-        assertEquals(19, psc3.getScore());
+        Assertions.assertEquals(19, psc3.getScore());
     }
     @Test
     public void testPsc4(){
-        assertEquals(11, psc4.getScore());
+        Assertions.assertEquals(11, psc4.getScore());
     }
     @Test
     public void testPsc5(){
-        assertEquals(5, psc5.getScore());
+        Assertions.assertEquals(5, psc5.getScore());
     }
 
 }

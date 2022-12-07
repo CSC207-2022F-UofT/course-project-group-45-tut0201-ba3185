@@ -1,19 +1,19 @@
 package use_case.discovery;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import use_case_discovery.PreferenceListHelper;
-
 import java.util.Arrays;
 import java.util.List;
-import static org.junit.Assert.assertEquals;
+
 
 
 public class PreferenceListHelperTest {
 
     PreferenceListHelper plh;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         plh = new PreferenceListHelper();
     }
@@ -25,7 +25,7 @@ public class PreferenceListHelperTest {
                 "eric", "heyy", "jack", "leo", "ming", "nick", "gavin", "henry",
                 "ian", "ben", "daniel", "finch");
         List<String> generatedList = plh.getList();
-        assertEquals(correctList, generatedList);
+        Assertions.assertEquals(correctList, generatedList);
 
     }
 

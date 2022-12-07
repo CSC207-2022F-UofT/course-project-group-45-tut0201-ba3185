@@ -1,15 +1,13 @@
 package use_case.discovery;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import use_case_discovery.ScoreHelper;
-
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import static org.junit.Assert.assertEquals;
 
 public class ScoreHelperTest {
     ScoreHelper sh1;//no same score
@@ -34,7 +32,7 @@ public class ScoreHelperTest {
         put("harry",1);
         put("jose",1);
     }};
-    @Before
+    @BeforeEach
     public void setUp(){
         sh1 = new ScoreHelper(initialMap1);
         sh2 = new ScoreHelper(initialMap2);
@@ -42,12 +40,12 @@ public class ScoreHelperTest {
     @Test
     public void testSh1(){
         List<String> correct = Arrays.asList("momo", "ian", "amy", "kitty", "ben", "chris", "harry");
-        assertEquals(correct, sh1.getList());
+        Assertions.assertEquals(correct, sh1.getList());
     }
     @Test
     public void testSh2(){
         List<String> correct = Arrays.asList("mikey", "momo", "ian", "amy", "kitty", "ben", "chris", "harry", "jose");
-        assertEquals(correct, sh2.getList());
+        Assertions.assertEquals(correct, sh2.getList());
     }
 
 }
