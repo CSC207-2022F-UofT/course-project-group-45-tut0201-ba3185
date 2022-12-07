@@ -93,7 +93,7 @@ public class SearchAnswerConverter {
                 relationship = "friend";
                 break;
             case 1:
-                relationship = "one-Night";
+                relationship = "one-night";
                 break;
             case 2:
                 relationship = "long-term";
