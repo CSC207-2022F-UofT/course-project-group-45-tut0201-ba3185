@@ -1,5 +1,12 @@
 package gui;
 
+import javax.swing.*;
+import java.io.IOException;
+
 public interface TwoTruthsAndALiePagePanelInterface {
-    public void update(TwoTruthsAndALiePagePanelViewModel viewModel);
+    public void update() throws IOException;
+
+    void addGame(String username) throws IOException;
+
+    void addUserButton(String username, JPanel createGamePanel);
 }

@@ -3,5 +3,4 @@ import entity.TwoTruthsAndALieGame;
 import java.util.List;
 
 public interface TwoTruthsAndALiePageOutputBoundary {
-    public void showGames(TwoTruthsAndALiePageResponseModel responseModel);
 }

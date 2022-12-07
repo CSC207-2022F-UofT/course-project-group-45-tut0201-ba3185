@@ -5,3 +5,4 @@ id,username,name,password,gender,age,income,pet,martialStatus,relationshipType,l
 2,eric,eric,eric,Male,22,11,NOthing,Single,Straight,14.5,14.5
 1,jason,Jason,jason,Male,14,122,Sam,Single,Straight,14.5,14.5
 0,Kevin,kevin,kevin,Male,25,10,Nothing,Single,Straight,0.5,2.5
+6,Ev,Ev,Ev,Male,25,10,Nothing,Single,Straight,0.5,2.5

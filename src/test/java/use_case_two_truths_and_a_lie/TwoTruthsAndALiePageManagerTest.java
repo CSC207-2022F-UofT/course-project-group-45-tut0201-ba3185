@@ -12,7 +12,7 @@ public class TwoTruthsAndALiePageManagerTest {
 
     @BeforeEach
     public void createManager() {
-        TwoTruthsAndALiePageOutputBoundary presenter = new TwoTruthsAndALiePagePresenter();
+        // TwoTruthsAndALiePageOutputBoundary presenter = new TwoTruthsAndALiePagePresenter();
         this.manager = new TwoTruthsAndALiePageManager();
     }
 

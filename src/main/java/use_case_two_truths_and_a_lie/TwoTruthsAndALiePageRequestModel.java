@@ -10,8 +10,8 @@ import javax.swing.*;
  *  @author  Eric Xue
  */
 public class TwoTruthsAndALiePageRequestModel {
-    private User currentUser;
-    private User otherUser;
+    private String currentUser;
+    private String otherUser;
 
     private TwoTruthsAndALiePagePanelInterface panel;
 
@@ -23,19 +23,19 @@ public class TwoTruthsAndALiePageRequestModel {
         this.panel = panel;
     }
 
-    public User getCurrentUser() {
+    public String getCurrentUser() {
         return currentUser;
     }
 
-    public void setCurrentUser(User currentUser) {
+    public void setCurrentUser(String currentUser) {
         this.currentUser = currentUser;
     }
 
-    public User getOtherUser() {
+    public String getOtherUser() {
         return otherUser;
     }
 
-    public void setOtherUser(User otherUser) {
+    public void setOtherUser(String otherUser) {
         this.otherUser = otherUser;
     }
 }

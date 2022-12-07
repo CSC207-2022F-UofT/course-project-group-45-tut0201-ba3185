@@ -14,18 +14,8 @@ import java.util.List;
  */
 
 public class TwoTruthsAndALiePageResponseModel {
-    public TwoTruthsAndALiePagePanelInterface getPanel() {
-        return panel;
-    }
-
-    public void setPanel(TwoTruthsAndALiePagePanelInterface panel) {
-        this.panel = panel;
-    }
-
     List<TwoTruthsAndALieGame> games;
     TwoTruthsAndALiePagePanelInterface panel;
-
-
 
     public List<TwoTruthsAndALieGame> getGames() {
         return games;

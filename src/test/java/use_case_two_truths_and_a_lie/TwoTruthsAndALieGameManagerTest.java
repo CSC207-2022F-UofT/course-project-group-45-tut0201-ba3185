@@ -18,7 +18,7 @@ public class TwoTruthsAndALieGameManagerTest {
 
     @BeforeEach
     public void createManagerAndGame() {
-        this.gameManager = new TwoTruthsAndALieGameManager();
+        // this.gameManager = new TwoTruthsAndALieGameManager();
         this.pageManager = new TwoTruthsAndALiePageManager();
         // this.pageManager.createGame();
     }
@@ -33,7 +33,7 @@ public class TwoTruthsAndALieGameManagerTest {
         requestModel.setGame(game);
         requestModel.setCurrentUser(this.currentUser);
 
-        TwoTruthsAndALiePlayer player = this.gameManager.findPlayer(requestModel);
+        TwoTruthsAndALiePlayer player = this.gameManager.findCurrentPlayer();
 
         Assertions.assertTrue(game.getPlayers()[0] == player || game.getPlayers()[1] == player);
     }

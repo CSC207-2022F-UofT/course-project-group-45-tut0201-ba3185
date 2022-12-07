@@ -1,5 +1,7 @@
 package entity;
 
+import java.util.Objects;
+
 /**
  *  A Two Truths And A Lie Statements Entity
  *  Belongs to a player entity; keeps track of that player's statements
@@ -26,5 +28,9 @@ public class TwoTruthsAndALieStatements {
 
     public String getLie() {
         return lie;
+    }
+
+    public Boolean isEmpty() {
+        return Objects.equals(truth1, "null");
     }
 }

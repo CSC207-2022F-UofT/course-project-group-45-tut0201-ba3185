@@ -1,19 +1,22 @@
 package database;
 
+import entity.TwoTruthsAndALieGame;
+import entity.TwoTruthsAndALiePlayer;
+import entity.TwoTruthsAndALieStatements;
 import entity.User;
+import presenter.TwoTruthsAndALiePagePresenter;
 import use_case_signin_signup.UserRequestModel;
 import use_case_signin_signup.UserResponseModel;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class csvManager {
 
     private final String userPath = "src/main/java/database/user.csv";
     private final String currentUserPath = "src/main/java/database/currentUser.csv";
+
+    private final String gamePath = "src/main/java/database/game.csv";
 
     public HashMap<String, UserRequestModel> readUser() throws IOException {
         /**
@@ -146,4 +149,141 @@ public class csvManager {
             throw new RuntimeException(exception);
         }
     }
+
+    public List<TwoTruthsAndALieGame> readGames() throws IOException {
+        /**
+         * This method reads the game csv file to get all games
+         *
+         * @return a list of games
+         * @throws IOException when the reader fails to read.
+         */
+
+        HashMap<String, UserRequestModel> userMap = this.readUser();
+
+        String row;
+        File csv = new File(gamePath);
+        List<TwoTruthsAndALieGame> gameList = new ArrayList<>();
+        BufferedReader reader = new BufferedReader(new FileReader(csv));
+        reader.readLine();
+        row = reader.readLine();
+        while(row != null) {
+            String[] col = row.split(",");
+            String player1_username = String.valueOf(col[0]);
+            ArrayList<Object> user1Info = userMap.get(player1_username).getInfo();
+            User user1 = new User((String) user1Info.get(0),
+                    (String) user1Info.get(1),
+                    (String) user1Info.get(2),
+                    (ArrayList<Double>) user1Info.get(3),
+                    (HashMap<String, Object>) user1Info.get(4));
+            TwoTruthsAndALiePlayer player1 = new TwoTruthsAndALiePlayer(user1);
+            player1.setStatements(new TwoTruthsAndALieStatements(String.valueOf(col[1]),   // truth 1
+                                                                 String.valueOf(col[2]),   // truth 2
+                                                                 String.valueOf(col[3]))); // lie
+
+            String player2_username = String.valueOf(col[4]);
+            ArrayList<Object> user2Info = userMap.get(player2_username).getInfo();
+            User user2 = new User((String) user2Info.get(0),
+                    (String) user2Info.get(1),
+                    (String) user2Info.get(2),
+                    (ArrayList<Double>) user2Info.get(3),
+                    (HashMap<String, Object>) user2Info.get(4));
+            TwoTruthsAndALiePlayer player2 = new TwoTruthsAndALiePlayer(user2);
+            player2.setStatements(new TwoTruthsAndALieStatements(String.valueOf(col[5]),   // truth 1
+                    String.valueOf(col[6]),   // truth 2
+                    String.valueOf(col[7]))); // lie
+
+            TwoTruthsAndALieGame game = new TwoTruthsAndALieGame(player1, player2);
+            gameList.add(game);
+            row = reader.readLine();
+        }
+        reader.close();
+        return gameList;
+    }
+
+    public void writeGame(TwoTruthsAndALieGame game) {
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(gamePath, true));
+
+            TwoTruthsAndALiePlayer player1 = game.getPlayers()[0];
+            TwoTruthsAndALiePlayer player2 = game.getPlayers()[1];
+
+            String write =  player1.getUser().getUsername()+","+
+                            player1.getStatements().getTruth1()+","+
+                            player1.getStatements().getTruth2()+","+
+                            player1.getStatements().getLie()+","+
+                            player2.getUser().getUsername()+","+
+                            player2.getStatements().getTruth1()+","+
+                            player2.getStatements().getTruth2()+","+
+                            player2.getStatements().getLie();
+            writer.write(write);
+            writer.newLine();
+            writer.close();
+        }
+        catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
+    }
+
+    public void writeGameStatements(TwoTruthsAndALieStatements statements, String user1, String user2) throws IOException {
+        List<TwoTruthsAndALieGame> gameList = this.readGames();
+        for (TwoTruthsAndALieGame game: gameList) {
+
+            // If this game is the target game, it is updated
+            if (game.getPlayers()[0].getUser().getUsername().equals(user1) && game.getPlayers()[1].getUser().getUsername().equals(user2) ||
+                    game.getPlayers()[0].getUser().getUsername().equals(user2) && game.getPlayers()[1].getUser().getUsername().equals(user1)) {
+
+                TwoTruthsAndALiePlayer player1 = game.getPlayers()[0];
+                TwoTruthsAndALiePlayer player2 = game.getPlayers()[1];
+
+                // If player1 is current user, add statements to player1
+                if (player1.getUser().equals(this.readCurrentUser())) {
+                    player1.setStatements(statements);
+                }
+                else{
+                    player2.setStatements(statements);
+                }
+            }
+        }
+
+        writeGames(gameList);
+    }
+
+    public void deleteGame(String otherUser) throws IOException {
+        String currentUser = this.readCurrentUser().getUsername();
+        List<TwoTruthsAndALieGame> gameList = this.readGames();
+        TwoTruthsAndALieGame targetGame = null;
+        for (TwoTruthsAndALieGame game: gameList) {
+
+            // If this game is the target game, it is deleted
+            if (game.getPlayers()[0].getUser().getUsername().equals(currentUser) && game.getPlayers()[1].getUser().getUsername().equals(otherUser) ||
+                    game.getPlayers()[0].getUser().getUsername().equals(otherUser) && game.getPlayers()[1].getUser().getUsername().equals(currentUser)) {
+                targetGame = game;
+                break;
+            }
+        }
+        gameList.remove(targetGame);
+        writeGames(gameList);
+    }
+
+    private void writeGames(List<TwoTruthsAndALieGame> gameList) {
+        ArrayList<String> headers = new ArrayList<>(Arrays.asList(
+                "user1_username", "user1_truth1", "user1_truth2", "user1_lie",
+                "user2_username", "user2_truth1", "user2_truth2", "user2_lie"));
+        try {
+            // Write headers
+            BufferedWriter writer = new BufferedWriter(new FileWriter(gamePath));
+            writer.write(String.join(",", headers));
+            writer.newLine();
+            writer.close();
+
+            // Write all games back
+            for (TwoTruthsAndALieGame game : gameList) {
+                this.writeGame(game);
+            }
+        }
+        catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
+    }
 }
+

@@ -13,6 +13,7 @@ public class TwoTruthsAndALiePlayer {
 
     public TwoTruthsAndALiePlayer(User user) {
         this.user = user;
+        this.setStatements(new TwoTruthsAndALieStatements("null", "null", "null"));
     }
 
     public User getUser() {
