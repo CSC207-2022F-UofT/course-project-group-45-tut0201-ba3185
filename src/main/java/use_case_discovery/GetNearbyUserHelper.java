@@ -12,13 +12,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * This class is used to get the current user's location and list of usernames that filtered by genderInteractor
+ * And then sort the list based on score calculated by LocationScoreCalculator
+ */
 public class GetNearbyUserHelper {
 
     // List of usernames after the gender finder
     List<String> userList = new GenderInteractor().getList();
     // List of sorted usernames that needs to be returned
     List<String> usernames;
-    // sort the list of usernames
+    // A map consists of all Users
     Map<String, UserRequestModel> allUser;
     public GetNearbyUserHelper() {
         csvInterface manager = new csvManager();

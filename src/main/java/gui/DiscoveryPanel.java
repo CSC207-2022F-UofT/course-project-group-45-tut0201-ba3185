@@ -4,6 +4,7 @@ import gui.discovery.SearchQuestionPanel;
 import gui.discovery.UsersBtnPanel;
 import use_case_discovery.DiscoveryInputBoundary;
 import controller.DiscoveryController;
+import use_case_discovery.NearbyInteractor;
 import use_case_discovery.PreferenceInteractor;
 import use_case_discovery.SearchAskerInteractor;
 
@@ -39,11 +40,11 @@ public class DiscoveryPanel extends JPanel {
                     break;
 
                 case "nearBy":
-//                    UsersBtnPanel presenter = new UsersBtnPanel();
-//                    DiscoveryInputBoundary interactor = new NearByInteractor(presenter);
-//                    DiscoveryController controller = new DiscoveryController(1,interactor);
-//                    controller.optionControl();
-//                    this.add(presenter);
+                    UsersBtnPanel presenter1 = new UsersBtnPanel();
+                    DiscoveryInputBoundary interactor1 = new NearbyInteractor(presenter1);
+                    DiscoveryController controller1 = new DiscoveryController(interactor1);
+                    controller1.trigger();
+                    this.add(presenter1);
                     break;
             }
             this.revalidate();
