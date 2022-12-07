@@ -123,7 +123,7 @@ public class csvManager implements csvInterface {
     public void writeCurrentUser(String username, String name, String password, List<Double> location,
             Map<String, Object> userSetting, List<String> interestRank, String areaOfInterest) {
         ArrayList<String> Headers = new ArrayList<String>(Arrays.asList("username",
-                "name", "password", "gender", "age", "income", "pet", "martialStatus", "relationshipType",
+                "name", "password", "gender", "age", "income", "pet", "maritalStatus", "relationshipType",
                 "sexualOrientation","interestRank","areaOfInterest","locationX", "locationY"));
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(CURRENT_USER_PATH));
@@ -154,7 +154,7 @@ public class csvManager implements csvInterface {
      */
     public void writeUser(Map<String, UserResponseModel> userMap) {
         ArrayList<String> Headers = new ArrayList<String>(Arrays.asList("id", "username",
-                "name", "password", "gender", "age", "income", "pet", "martialStatus", "relationshipType",
+                "name", "password", "gender", "age", "income", "pet", "maritalStatus", "relationshipType",
                 "sexualOrientation","interestRank","areaOfInterest","locationX", "locationY"));
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(USER_PATH));
@@ -190,7 +190,7 @@ public class csvManager implements csvInterface {
 
     public void logoutUser() {
         ArrayList<String> Headers = new ArrayList<String>(Arrays.asList("id", "username",
-                "name", "password", "gender", "age", "income", "pet", "martialStatus", "relationshipType",
+                "name", "password", "gender", "age", "income", "pet", "maritalStatus", "relationshipType",
                 "sexualOrientation","interestRank", "areaOfInterest","locationX", "locationY"));
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(CURRENT_USER_PATH));
