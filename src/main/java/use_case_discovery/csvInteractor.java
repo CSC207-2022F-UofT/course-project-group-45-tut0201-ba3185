@@ -7,7 +7,8 @@ import java.io.IOException;
 import java.util.Map;
 /**
  * csvInteractor access database through the csvInterface.
- * It is the parent class of GenderInteractor and PreferenceScoreCalculator
+ * It is the parent class of GenderInteractor, PreferenceScoreCalculator and
+ * SearchScoreCalculator
  */
 
 public class csvInteractor {
