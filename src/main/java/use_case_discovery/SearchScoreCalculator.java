@@ -20,7 +20,6 @@ public class SearchScoreCalculator extends ParentClass implements ScoreCalculato
     private int score;
     private final Map<String,String>  searchAnswers;
     Map<String, UserRequestModel> otherUsers;
-    csvInterface manager = new csvManager();
 
     public SearchScoreCalculator(Map<String,String> searchAnswers){
         this.searchAnswers = searchAnswers;
@@ -29,7 +28,7 @@ public class SearchScoreCalculator extends ParentClass implements ScoreCalculato
     }
 
 
-    public void calculateScore(String user){ // need to change to the actual user
+    public void calculateScore(String user){
 
         score = 0;
         Map<String, Object> userInfo = otherUsers.get(user).getUserSetting();
@@ -47,7 +46,11 @@ public class SearchScoreCalculator extends ParentClass implements ScoreCalculato
         if(ageLow <= userAge &&  userAge <= ageUp){
             this.score = this.score + 1;
         }
-        if(searchAnswers.get("marriageState").equals(userInfo.get("martialStatus"))){
+
+        String marriageState = searchAnswers.get("marriageState");
+
+        if(marriageState.equals(userInfo.get("maritalStatus"))){
+
             this.score = this.score + 1;
         }
 

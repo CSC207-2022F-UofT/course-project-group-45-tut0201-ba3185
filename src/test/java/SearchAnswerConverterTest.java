@@ -1,7 +1,6 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import use_case_discovery.ScoreHelper;
 import use_case_discovery.SearchAnswerConverter;
 import use_case_discovery.SearchAnswerRequestModel;
 
