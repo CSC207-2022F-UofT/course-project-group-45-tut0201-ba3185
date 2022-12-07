@@ -10,7 +10,7 @@ import java.util.Map;
  * PreferenceListHelper is to return a list of usernames.
  * The users in the list are those who share the most similarity with the current user in terms of "interestRank"
  * "interestRank" is a variable of a list that contains six strings: "income", "pet",
- * "marital status", "relationship type", "areaOfInterest", "age".
+ * "marital status", "relationship type", "interests", "age".
  * String put at the front of rank is the aspect that current user cares the most;
  * String put at the end is the aspect that current user cares the least.
  */
