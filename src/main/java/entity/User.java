@@ -54,9 +54,9 @@ public class User implements Comparable<User> {
     // Getter functions
 
     /*
-     *  Getter for the username of user
-     *  @return the username of the user
-     */
+    *  Getter for the username of user
+    *  @return the username of the user
+    */
     public String getUsername() {
         return this.username;
     }

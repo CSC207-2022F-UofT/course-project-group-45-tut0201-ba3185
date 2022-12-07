@@ -1,6 +1,5 @@
 package database;
 
-
 import use_case_signin_signup.UserRequestModel;
 import use_case_signin_signup.UserResponseModel;
 
@@ -14,7 +13,7 @@ public interface csvInterface {
     public UserRequestModel readCurrentUser();
 
     public void writeCurrentUser(String username, String name, String password, List<Double> location,
-                                 Map<String, Object> userSetting, List<String> interestRank, String areaOfInterest);
+            Map<String, Object> userSetting, List<String> interestRank, String areaOfInterest);
 
     public void writeUser(Map<String, UserResponseModel> userMap);
 
