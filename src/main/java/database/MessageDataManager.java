@@ -40,7 +40,7 @@ public class MessageDataManager implements serInterface {
             return messageManagers;
         }
         catch (IOException ioe){
-            // This will run at the first time of running the program since there's no such file before running.
+            // This will run when no chat happened before since there will be no such file before running.
             System.err.println("Error opening file.");
         }
         catch (ClassNotFoundException cnfe){

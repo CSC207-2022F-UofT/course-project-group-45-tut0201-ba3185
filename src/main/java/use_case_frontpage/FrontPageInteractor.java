@@ -15,9 +15,12 @@ public class FrontPageInteractor implements FrontPageInputBoundary{
      */
     final FrontPageOutputBoundary frontPageOutputBoundary;
     MessageDataManager messageDataManager = new MessageDataManager();
-    MessageManagers messageManagers =  messageDataManager.readMM();
+    MessageManagers messageManagers =  new MessageManagers();
 
     public FrontPageInteractor(FrontPageOutputBoundary frontPageOutputBoundary) {
+        if (messageDataManager.readMM() != null){
+            messageManagers =  messageDataManager.readMM();
+        }
         this.frontPageOutputBoundary = frontPageOutputBoundary;
     }
 
@@ -27,9 +30,7 @@ public class FrontPageInteractor implements FrontPageInputBoundary{
             csvManager manager = new csvManager();
             UserRequestModel model = manager.readCurrentUser();
             String user = model.getUsername();
-            System.out.println(user);
             List<String> userTargetList = messageManagers.getUserChatted(user);
-            System.out.println(userTargetList);
 
             FrontPageResponseModel responseModel = new FrontPageResponseModel(userTargetList);
 

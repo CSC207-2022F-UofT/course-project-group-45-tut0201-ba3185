@@ -14,7 +14,7 @@ public class MainFrame extends JFrame implements MainFrameInterface {
         boolean isLoggedIn = controller.isUserLoggedin();
         System.out.println(isLoggedIn);
         // if user is logged in
-        if(isLoggedIn) {
+        if (isLoggedIn) {
             this.getContentPane().removeAll();
             this.add(new MainPanel());
         }
