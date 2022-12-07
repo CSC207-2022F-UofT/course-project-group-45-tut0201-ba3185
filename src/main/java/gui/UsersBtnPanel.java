@@ -1,8 +1,7 @@
 package gui;
 
-import gui.MainFrame;
-import usecase.DiscoveryResponseModel;
-import usecase.Presenter;
+import use_case_discovery.DiscoveryResponseModel;
+import use_case_discovery.Presenter;
 
 import javax.swing.*;
 import java.awt.*;

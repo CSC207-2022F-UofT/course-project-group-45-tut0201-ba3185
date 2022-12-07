@@ -1,15 +1,12 @@
 package gui;
-import gui.OptionPanel;
-import gui.UsersBtnPanel;
-import usecase.DiscoveryInputBoundary;
+import use_case_discovery.DiscoveryInputBoundary;
 import controller.DiscoveryController;
-import usecase.NearbyInteractor;
-import usecase.PreferenceInteractor;
+import use_case_discovery.NearbyInteractor;
+import use_case_discovery.PreferenceInteractor;
 
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.IOException;
 
 /*
 To display the panel for discovery

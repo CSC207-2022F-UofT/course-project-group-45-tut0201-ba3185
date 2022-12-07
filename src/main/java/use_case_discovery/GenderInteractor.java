@@ -1,4 +1,4 @@
-package usecase;
+package use_case_discovery;
 import database.csvManager;
 import use_case_signin_signup.UserRequestModel;
 import java.io.IOException;

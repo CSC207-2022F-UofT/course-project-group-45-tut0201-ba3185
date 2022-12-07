@@ -1,4 +1,4 @@
-package usecase;
+package use_case_discovery;
 
 public class LocationScoreCalculator implements ScoreCalculator{
     // return the score of each user based on distance

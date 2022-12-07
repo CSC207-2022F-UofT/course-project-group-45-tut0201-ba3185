@@ -1,4 +1,4 @@
-package usecase;
+package use_case_discovery;
 
 /**
  * PreferenceFinder help find other users that also rank the interest

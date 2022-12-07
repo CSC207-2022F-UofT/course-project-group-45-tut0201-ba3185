@@ -1,4 +1,4 @@
-package usecase;
+package use_case_discovery;
 
 
 public class NearbyInteractor implements DiscoveryInputBoundary{

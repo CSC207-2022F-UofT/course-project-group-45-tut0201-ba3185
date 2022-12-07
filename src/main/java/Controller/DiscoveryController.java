@@ -1,8 +1,6 @@
 package controller;
 
-import usecase.DiscoveryInputBoundary;
-
-import java.io.IOException;
+import use_case_discovery.DiscoveryInputBoundary;
 
 
 public class DiscoveryController {
