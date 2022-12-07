@@ -1,25 +1,20 @@
 package gui.discovery;
 
-import gui.discovery.Button;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * This panel contains the option that user can choose from the three button and it will dispaly
- * the list based on the option chosen.
- */
+
 public class OptionPanel extends JPanel {
-    private List<ActionListener> actionListeners;//users click three bottons
+    private final List<ActionListener> actionListeners;//users click three bottons
     public OptionPanel(){
         this.actionListeners = new ArrayList<>();
         this.setLayout(new GridBagLayout());
         this.setBackground(Color.white);
         //set buttons
-        gui.discovery.Button preferenceBtn = new gui.discovery.Button("By Preference");
+        gui.discovery.Button preferenceBtn = new Button("By Preference");
         preferenceBtn.getButton().setActionCommand("preference");
         preferenceBtn.getButton().addActionListener(e -> {
             for(ActionListener listener: actionListeners){
@@ -27,7 +22,7 @@ public class OptionPanel extends JPanel {
             }
         });
 
-        gui.discovery.Button nearByBtn = new gui.discovery.Button("By Near");
+        gui.discovery.Button nearByBtn = new Button("By Near By");
         nearByBtn.getButton().setActionCommand("nearby");
         nearByBtn.getButton().addActionListener(e -> {
             for(ActionListener listener: actionListeners){
@@ -61,4 +56,10 @@ public class OptionPanel extends JPanel {
         if(!actionListeners.contains(a))
             actionListeners.add(a);
     }
+
+
+
+
+
+
 }

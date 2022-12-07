@@ -1,4 +1,5 @@
 package use_case_discovery;
+
 import database.csvInterface;
 import database.csvManager;
 import java.util.ArrayList;
@@ -6,15 +7,14 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * GenderFinder takes user's sexual orientation and filter other users based
- * Documentary of possible sexual orientation:
- *(possible sexual orientation): (return from GenderFinder)
+ * GenderInteractor takes current user's sexual orientation and filter out other users that do not satisfy the condition
+ * Documentary of sexual orientation:
  * male: return only users identified themselves as male
  * female: return only users identified themselves as female
- * bisexual: return only users identified themselves as both male and female
+ * bisexual: return all users
  */
 
-public class GenderInteractor extends ParentClass{
+public class GenderInteractor extends csvInteractor {
     csvInterface manager = new csvManager();
     String cSexualOrientation = (String)manager.readCurrentUser().getUserSetting().get("sexualOrientation");
 
@@ -38,3 +38,6 @@ public class GenderInteractor extends ParentClass{
         return resUserNames;
     }
 }
+
+
+

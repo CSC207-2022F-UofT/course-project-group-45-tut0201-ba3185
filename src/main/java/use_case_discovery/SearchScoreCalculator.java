@@ -10,7 +10,7 @@ import java.util.Map;
  * when
  *
  */
-public class SearchScoreCalculator extends ParentClass implements ScoreCalculator{
+public class SearchScoreCalculator extends csvInteractor implements ScoreCalculator{
     private int score;
     private final Map<String,String>  searchAnswers;
     Map<String, UserRequestModel> otherUsers;

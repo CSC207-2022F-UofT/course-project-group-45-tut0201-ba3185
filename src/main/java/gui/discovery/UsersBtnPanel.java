@@ -1,11 +1,8 @@
 package gui.discovery;
 
 import gui.MainFrame;
-import gui.discovery.Button;
-import gui.discovery.UserInfo;
-import use_case_discovery.DiscoveryListInterface;
 import use_case_discovery.DiscoveryResponseModel;
-
+import use_case_discovery.DiscoveryListInterface;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,63 +20,63 @@ public class UsersBtnPanel extends JPanel implements DiscoveryListInterface {
 
     @Override
     public void update(DiscoveryResponseModel dResponseModel) {
-        gui.discovery.Button btn1 = new gui.discovery.Button(dResponseModel.getUserName1());
+        Button btn1 = new Button(dResponseModel.getUserName1());
         btn1.getButton().addActionListener(new UserInfo(this, dResponseModel.getUserName1()));
         add(btn1.getButton());
 
-        gui.discovery.Button btn2 = new gui.discovery.Button(dResponseModel.getUserName2());
+        Button btn2 = new Button(dResponseModel.getUserName2());
         btn2.getButton().addActionListener(new UserInfo(this, dResponseModel.getUserName2()));
         add(btn2.getButton());
 
-        gui.discovery.Button btn3 = new gui.discovery.Button(dResponseModel.getUserName3());
+        Button btn3 = new Button(dResponseModel.getUserName3());
         btn3.getButton().addActionListener(new UserInfo(this, dResponseModel.getUserName3()));
         add(btn3.getButton());
 
-        gui.discovery.Button btn4 = new gui.discovery.Button(dResponseModel.getUserName4());
+        Button btn4 = new Button(dResponseModel.getUserName4());
         btn4.getButton().addActionListener(new UserInfo(this, dResponseModel.getUserName4()));
         add(btn4.getButton());
 
-        gui.discovery.Button btn5 = new gui.discovery.Button(dResponseModel.getUserName5());
+        Button btn5 = new Button(dResponseModel.getUserName5());
         btn5.getButton().addActionListener(new UserInfo(this, dResponseModel.getUserName5()));
         add(btn5.getButton());
 
-        gui.discovery.Button btn6 = new gui.discovery.Button(dResponseModel.getUserName6());
+        Button btn6 = new Button(dResponseModel.getUserName6());
         btn6.getButton().addActionListener(new UserInfo(this, dResponseModel.getUserName6()));
         add(btn6.getButton());
 
-        gui.discovery.Button btn7 = new gui.discovery.Button(dResponseModel.getUserName7());
+        Button btn7 = new Button(dResponseModel.getUserName7());
         btn7.getButton().addActionListener(new UserInfo(this, dResponseModel.getUserName7()));
         add(btn7.getButton());
 
-        gui.discovery.Button btn8 = new gui.discovery.Button(dResponseModel.getUserName8());
+        Button btn8 = new Button(dResponseModel.getUserName8());
         btn8.getButton().addActionListener(new UserInfo(this, dResponseModel.getUserName8()));
         add(btn8.getButton());
 
-        gui.discovery.Button btn9 = new gui.discovery.Button(dResponseModel.getUserName9());
+        Button btn9 = new Button(dResponseModel.getUserName9());
         btn9.getButton().addActionListener(new UserInfo(this, dResponseModel.getUserName9()));
         add(btn9.getButton());
 
-        gui.discovery.Button btn10 = new gui.discovery.Button(dResponseModel.getUserName10());
+        Button btn10 = new Button(dResponseModel.getUserName10());
         btn10.getButton().addActionListener(new UserInfo(this, dResponseModel.getUserName10()));
         add(btn10.getButton());
 
-        gui.discovery.Button btn11 = new gui.discovery.Button(dResponseModel.getUserName11());
+        Button btn11 = new Button(dResponseModel.getUserName11());
         btn11.getButton().addActionListener(new UserInfo(this, dResponseModel.getUserName11()));
         add(btn11.getButton());
 
-        gui.discovery.Button btn12 = new gui.discovery.Button(dResponseModel.getUserName12());
+        Button btn12 = new Button(dResponseModel.getUserName12());
         btn12.getButton().addActionListener(new UserInfo(this, dResponseModel.getUserName12()));
         add(btn12.getButton());
 
-        gui.discovery.Button btn13 = new gui.discovery.Button(dResponseModel.getUserName13());
+        Button btn13 = new Button(dResponseModel.getUserName13());
         btn13.getButton().addActionListener(new UserInfo(this, dResponseModel.getUserName13()));
         add(btn13.getButton());
 
-        gui.discovery.Button btn14 = new gui.discovery.Button(dResponseModel.getUserName14());
+        Button btn14 = new Button(dResponseModel.getUserName14());
         btn14.getButton().addActionListener(new UserInfo(this, dResponseModel.getUserName14()));
         add(btn14.getButton());
 
-        gui.discovery.Button btn15 = new Button(dResponseModel.getUserName15());
+        Button btn15 = new Button(dResponseModel.getUserName15());
         btn15.getButton().addActionListener(new UserInfo(this, dResponseModel.getUserName15()));
         add(btn15.getButton());
     }

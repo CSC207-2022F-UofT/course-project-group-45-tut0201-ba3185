@@ -22,8 +22,6 @@ public class SearchQuestionPanel extends JPanel implements SearchQuestionInterfa
     }
 
 
-
-
     public void update(SearchAskResponseModel sResponseModel) {
 
         this.setBackground(Color.PINK);

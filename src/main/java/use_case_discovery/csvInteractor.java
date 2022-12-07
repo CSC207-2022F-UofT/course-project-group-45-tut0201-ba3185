@@ -1,17 +1,20 @@
 package use_case_discovery;
 
-
 import database.csvInterface;
 import database.csvManager;
 import use_case_signin_signup.UserRequestModel;
-
 import java.io.IOException;
 import java.util.Map;
+/**
+ * csvInteractor access database through the csvInterface.
+ * It is the parent class of GenderInteractor, PreferenceScoreCalculator and
+ * SearchScoreCalculator
+ */
 
-public class ParentClass {
+public class csvInteractor {
     csvInterface manager = new csvManager();
     Map<String, UserRequestModel> otherUsersInfo;
-    public ParentClass(){
+    public csvInteractor(){
         try{
             this.otherUsersInfo = manager.readUser();
         }

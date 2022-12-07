@@ -17,10 +17,11 @@ public class Button {
         button.setActionCommand("userInfo");
     }
 
-
     public JButton getButton() {
+
         return button;
     }
+
+
+
 }
-
-

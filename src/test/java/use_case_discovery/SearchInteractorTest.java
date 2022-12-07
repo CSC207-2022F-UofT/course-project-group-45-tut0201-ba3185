@@ -1,3 +1,5 @@
+package use_case_discovery;
+
 import gui.DiscoveryPanel;
 import gui.discovery.UsersBtnPanel;
 import org.junit.jupiter.api.Assertions;
