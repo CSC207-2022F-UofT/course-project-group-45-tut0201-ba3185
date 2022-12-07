@@ -24,7 +24,7 @@ public class OptionPanel extends JPanel {
                 listener.actionPerformed(e);
             }
         });
-        //TODO: need to fetch with other two buttons
+
         Button nearByBtn = new Button("By Near");
         nearByBtn.getButton().setActionCommand("nearby");
         nearByBtn.getButton().addActionListener(e -> {

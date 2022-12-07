@@ -16,10 +16,6 @@ public class DiscoveryPanel extends JPanel {
         this.setLayout(new FlowLayout(FlowLayout.CENTER));
         this.setBackground(Color.pink);
 
-        this.add(new JLabel("To use the 'By preference', " +
-                        "click the scope image and click the button again to see another" +
-                        "user's info"));
-
 
 
         OptionPanel optionPanel = new OptionPanel();

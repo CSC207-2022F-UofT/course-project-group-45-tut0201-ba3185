@@ -1,19 +1,10 @@
 package use_case_discovery;
-import entity.User;
-
 import java.util.*;
 
 /**
- * This class is intended to help discoveryInteractors
- * To get the highest score from the HashMap,
- * arranged them in descending order,
- * and return a list of username(String)
- */
-/**
- * This class is intended to help PreferenceFinder
- * To get the highest score from the HashMap,
- * arranged them in descending order,
- * and return a list of username(String)
+ * ScoreHelper is to help PreferenceListHelper by arranging users in descending order based on their scores.
+ * If multiple users have the same score, their names are arranged in alphabet order.
+ * A list of usernames is returned.
  */
 public class ScoreHelper {
     Map<String, Integer> scoreStorage;
@@ -21,7 +12,6 @@ public class ScoreHelper {
     List<String> totalUsername;
 
     /**
-     *
      * @param scoreStorage stores the information of user with his/hers score
      */
 
@@ -37,9 +27,12 @@ public class ScoreHelper {
 
         List<String> resTotalUsername = new ArrayList<>();
         for (int score: this.totalScoreList){
-            for (String key:this.scoreStorage.keySet()){
-                if (this.scoreStorage.get(key).equals(score)){resTotalUsername.add(key);}
+            List<String> subRes = new ArrayList<>();
+            for (String userName:this.scoreStorage.keySet()){
+                if (this.scoreStorage.get(userName).equals(score)){subRes.add(userName);}
             }
+            Collections.sort(subRes);
+            resTotalUsername.addAll(subRes);
         }
         this.totalUsername = resTotalUsername;
     }

@@ -1,7 +1,7 @@
 package gui;
 
 import controller.SearchController;
-import presenter.SearchQuestionInterface;
+import use_case_discovery.SearchQuestionInterface;
 import use_case_discovery.*;
 
 import javax.swing.*;

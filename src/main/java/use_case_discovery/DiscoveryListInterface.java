@@ -1,4 +1,4 @@
-package presenter;
+package use_case_discovery;
 
 import use_case_discovery.DiscoveryResponseModel;
 

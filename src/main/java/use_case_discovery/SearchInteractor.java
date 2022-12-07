@@ -1,7 +1,5 @@
 package use_case_discovery;
 
-import presenter.DiscoveryListInterface;
-
 import java.util.List;
 
 public class SearchInteractor implements SearchInputBoundary {

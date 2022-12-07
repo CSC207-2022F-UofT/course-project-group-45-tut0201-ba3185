@@ -1,7 +1,5 @@
 package use_case_discovery;
 
-import presenter.SearchQuestionInterface;
-
 public class SearchAskerInteractor implements DiscoveryInputBoundary {
     private final SearchAskResponseModel responseModel;
 

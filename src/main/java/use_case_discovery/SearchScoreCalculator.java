@@ -15,7 +15,7 @@ import java.util.Map;
  * This function help calculate the score of the user based on the answer user entered
  *
  */
-public class SearchScoreCalculator implements ScoreCalculator{
+public class SearchScoreCalculator extends ParentClass implements ScoreCalculator{
     private int score;
     private Map<String,String>  searchAnswers;
     Map<String, UserRequestModel> otherUsers;
@@ -24,16 +24,12 @@ public class SearchScoreCalculator implements ScoreCalculator{
     public SearchScoreCalculator(Map<String,String> searchAnswers){
         this.searchAnswers = searchAnswers;
 
-        try{
-            this.otherUsers = manager.readUser();
-        }
-        catch (IOException exception){
-            throw new RuntimeException(exception);
-        };
+       this.otherUsers = super.otherUsersInfo;
     }
 
 
     public void calculateScore(String user){ // need to change to the actual user
+
         score = 0;
         Map<String, Object> userInfo = otherUsers.get(user).getUserSetting();
 

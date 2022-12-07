@@ -17,37 +17,26 @@ import java.util.Map;
  * bisexual: return only users identified themselves as both male and female
  */
 
-public class GenderInteractor {
-    // fetched with User(1205)
-    public static final int USER_SETTING = 4;
+public class GenderInteractor extends ParentClass{
     csvInterface manager = new csvManager();
-    Map<String, Object> userSettings = manager.readCurrentUser().getUserSetting();
-    String mainSexualOrientation = (String)userSettings.get("sexualOrientation");
-    Map<String, UserRequestModel> otherUsers;
+    String cSexualOrientation = (String)manager.readCurrentUser().getUserSetting().get("sexualOrientation");
 
-    public GenderInteractor(){
-        try{
-            this.otherUsers = manager.readUser();
-        }
-        catch (IOException exception){
-            throw new RuntimeException(exception);
-        };
-    }
+    public GenderInteractor(){}
     public List<String> getList(){
         List<String> resUserNames = new ArrayList<>();
-        //the case of Male or Female
-        if (mainSexualOrientation.equals("male")||
-                mainSexualOrientation.equals("female")){
-            for (String key:this.otherUsers.keySet()){
-                Map<String, Object> user = this.otherUsers.get(key).getUserSetting();
-                if ((user.get("gender")).equals(mainSexualOrientation)){
+        //the case of male or female
+        if (cSexualOrientation.equals("male")||
+                cSexualOrientation.equals("female")){
+            for (String key:super.otherUsersInfo.keySet()){
+                Map<String, Object> user = super.otherUsersInfo.get(key).getUserSetting();
+                if ((user.get("gender")).equals(cSexualOrientation)){
                     resUserNames.add(key);
                 }
             }
         }
         //the case of Bisexual
-        if (mainSexualOrientation.equals("bisexual")){
-            resUserNames.addAll(this.otherUsers.keySet());
+        if (cSexualOrientation.equals("bisexual")){
+            resUserNames.addAll(super.otherUsersInfo.keySet());
         }
         return resUserNames;
     }

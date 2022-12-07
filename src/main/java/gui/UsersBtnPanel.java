@@ -1,6 +1,6 @@
 package gui;
 
-import presenter.DiscoveryListInterface;
+import use_case_discovery.DiscoveryListInterface;
 import use_case_discovery.DiscoveryResponseModel;
 
 
