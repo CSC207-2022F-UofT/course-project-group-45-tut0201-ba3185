@@ -43,7 +43,7 @@ public class UserUseCase {
      * @return true if there are no existing users with the same username already in the userMap, false otherwise.
      */
     public boolean addUser(String name, String username, String password, List<Double> location,
-                           Map<String, Object> userSetting, String interestRank, String areaOfInterest) {
+                           Map<String, Object> userSetting, List<String> interestRank, String areaOfInterest) {
 
         User currentUser = new User(name,username,password, location, userSetting, interestRank, areaOfInterest);
         System.out.println(username);
@@ -100,7 +100,7 @@ public class UserUseCase {
      */
     public boolean isUserLoggedIn() {
         csvManager manager = new csvManager();
-        UserResponseModel current = manager.readCurrentUser();
+        UserRequestModel current = manager.readCurrentUser();
         return current!=null;
     }
 

@@ -1,9 +1,6 @@
 package entity;
 import use_case_signin_signup.UserRequestModel;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
 public class UserFactory {
 
     /**

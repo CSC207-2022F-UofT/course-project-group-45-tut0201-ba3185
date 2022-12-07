@@ -1,14 +1,12 @@
 package use_case_signin_signup;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class UserResponseModel implements UserOutputBoundary {
     private String username;
     private String name;
     private String password;
-    private String interestRank;
+    private List<String> interestRank;
     private Map<String, Object> userSettings;
     private List<Double> location;
     private String areaOfInterest;
@@ -19,7 +17,7 @@ public class UserResponseModel implements UserOutputBoundary {
 
     public void setInfo(String username, String name, String password, int age, int income,
                         String gender, String relationshipType, String maritalStatus, String pet,
-                        List<Double> location, String sexualOrientation, String interestRank,
+                        List<Double> location, String sexualOrientation, List<String> interestRank,
                         String areaOfInterest) {
         this.username = username;
         this.name = name;
@@ -62,7 +60,7 @@ public class UserResponseModel implements UserOutputBoundary {
     }
 
     @Override
-    public String getInterestRank() {
+    public List<String> getInterestRank() {
         return this.interestRank;
     }
 
