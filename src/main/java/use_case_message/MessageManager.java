@@ -11,16 +11,13 @@ public class MessageManager implements Serializable {
      */
     private final String user1;
     private final String user2;
-    private ChatHistory history;
+    private ChatHistory history; // I don't want this to be final since it will be modified
 
     MessageManager(String user1, String user2){
         this.user1 = user1;
         this.user2 = user2;
         this.history = new ChatHistory(user1, user2);
     }
-//    public void TriggerBlocklistManager(){
-//
-//    }
 
     public String getUser1() {
         return user1;

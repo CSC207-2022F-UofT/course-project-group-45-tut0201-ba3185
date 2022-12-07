@@ -17,7 +17,7 @@ public class ChatScreen extends JFrame implements ActionListener,ChatScreenInter
     String targetUserId; // get this from messageDisplayBox
     JTextField textField;
     MessageController controller;
-    JPanel messageDisplaybox;
+    JPanel messageDisplayBox;
     final int PAGE_W = 414;
     final int PAGE_H = 736;
 
@@ -28,7 +28,7 @@ public class ChatScreen extends JFrame implements ActionListener,ChatScreenInter
         this.targetUserId = targetUserId;
         this.sendButton = new JButton();
         this.textField = new JTextField();
-        this.messageDisplaybox = new JPanel();
+        this.messageDisplayBox = new JPanel();
 
         MessageManagerFactory messageManagerFactory = new MessageManagerFactory();
         MessagePresenter messagePresenter = new MessagePresenter(this);
@@ -51,13 +51,13 @@ public class ChatScreen extends JFrame implements ActionListener,ChatScreenInter
         this.add(new JLabel("Chat with "+targetUserId));
 
              //the place it shows chatHistory
-        messageDisplaybox.setBackground(new Color(246, 167, 232));
-        messageDisplaybox.setPreferredSize(new Dimension(400, 300));
-        messageDisplaybox.setLayout(new GridLayout(0, 1));
+        messageDisplayBox.setBackground(new Color(246, 167, 232));
+        messageDisplayBox.setPreferredSize(new Dimension(400, 300));
+        messageDisplayBox.setLayout(new GridLayout(0, 1));
 
         controller.create(targetUserId);
 
-        JScrollPane pane = new JScrollPane(messageDisplaybox, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+        JScrollPane pane = new JScrollPane(messageDisplayBox, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
                 JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         pane.setPreferredSize(new Dimension(400,300));
         chatScreen.add(pane, BorderLayout.NORTH);
@@ -92,7 +92,7 @@ public class ChatScreen extends JFrame implements ActionListener,ChatScreenInter
 
     public void loadChat(String msg){
         JLabel msgValue = new JLabel(msg, SwingConstants.LEFT);
-        messageDisplaybox.add(msgValue);
+        messageDisplayBox.add(msgValue);
         this.setVisible(true);
     }
 }

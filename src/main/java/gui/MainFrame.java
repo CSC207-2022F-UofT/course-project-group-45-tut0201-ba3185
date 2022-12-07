@@ -19,6 +19,7 @@ public class MainFrame extends JFrame implements MainFrameInterface {
             input.close();
         }
         catch (IOException ioe){
+            // This will run at the first time of running the program since there's no such file before running.
             System.err.println("Error opening file.");
         }
         catch (ClassNotFoundException cnfe){
