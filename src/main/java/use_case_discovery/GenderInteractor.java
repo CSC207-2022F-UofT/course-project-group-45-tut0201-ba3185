@@ -1,4 +1,5 @@
 package use_case_discovery;
+import database.csvInterface;
 import database.csvManager;
 import use_case_signin_signup.UserRequestModel;
 
@@ -19,7 +20,7 @@ import java.util.Map;
 public class GenderInteractor {
     // fetched with User(1205)
     public static final int USER_SETTING = 4;
-    UserAccess manager = new csvManager();
+    csvInterface manager = new csvManager();
     Map<String, Object> userSettings = manager.readCurrentUser().getUserSetting();
     String mainSexualOrientation = (String)userSettings.get("sexualOrientation");
     Map<String, UserRequestModel> otherUsers;

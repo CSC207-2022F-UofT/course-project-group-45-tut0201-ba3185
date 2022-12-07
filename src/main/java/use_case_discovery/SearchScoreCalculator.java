@@ -1,5 +1,6 @@
 package use_case_discovery;
 
+import database.csvInterface;
 import database.csvManager;
 import entity.User;
 import use_case_signin_signup.UserRequestModel;
@@ -18,7 +19,7 @@ public class SearchScoreCalculator implements ScoreCalculator{
     private int score;
     private Map<String,String>  searchAnswers;
     Map<String, UserRequestModel> otherUsers;
-    UserAccess manager = new csvManager();
+    csvInterface manager = new csvManager();
 
     public SearchScoreCalculator(Map<String,String> searchAnswers){
         this.searchAnswers = searchAnswers;
