@@ -2,6 +2,8 @@ package controller;
 
 import usecase.DiscoveryInputBoundary;
 
+import java.io.IOException;
+
 
 public class DiscoveryController {
     private final int userOption;

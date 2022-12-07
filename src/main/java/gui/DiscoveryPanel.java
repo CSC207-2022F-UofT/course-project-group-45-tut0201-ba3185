@@ -9,6 +9,7 @@ import usecase.PreferenceInteractor;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 
 /*
 To display the panel for discovery

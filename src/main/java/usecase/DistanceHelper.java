@@ -1,6 +1,6 @@
 package usecase;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This class is intended to help to calculate the distance
@@ -11,7 +11,7 @@ public class DistanceHelper {
 
     public final Double distance;
     //v1 and v2 are two locations
-    public DistanceHelper(ArrayList<Double> v1, ArrayList<Double> v2){
+    public DistanceHelper(List<Double> v1, List<Double> v2){
         //lon represents longitude, lat represents latitude
         double lon1 = v1.get(0);
         double lat1 = v1.get(1);
