@@ -9,7 +9,6 @@ import use_case_message.MessageManagerFactory;
 import javax.swing.*;
 
 public class BlockedNotifScreen extends JFrame{
-    JButton confirmButton;
 
     final int page_w = 400;
     final int page_h = 300;
@@ -23,5 +22,7 @@ public class BlockedNotifScreen extends JFrame{
         label.setFont(new java.awt.Font("Times New Roman", 1, 18));
         label.setText("You are blocked by the current user, message can't be sent!");
         panel.add(label);
+        this.add(panel);
+        this.setVisible(true);
     }
 }
