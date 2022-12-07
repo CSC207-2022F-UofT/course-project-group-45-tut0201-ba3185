@@ -1,31 +1,12 @@
 package gui;
 import javax.swing.*;
 import controller.userController;
-import use_case_message.MessageManagers;
-
-import java.io.*;
 
 public class MainFrame extends JFrame implements MainFrameInterface {
     public static final int PAGE_WIDTH = 414;
     public static final int PAGE_HEIGHT = 736;
-    public static MessageManagers messageManagers;
 
     public MainFrame() {
-        messageManagers = new MessageManagers();
-        try {
-            ObjectInputStream input = new ObjectInputStream(
-                    new FileInputStream("src/main/java/database/MessageManagers.ser"));
-            messageManagers = (MessageManagers) input.readObject();
-            input.close();
-        }
-        catch (IOException ioe){
-            // This will run at the first time of running the program since there's no such file before running.
-            System.err.println("Error opening file.");
-        }
-        catch (ClassNotFoundException cnfe){
-            System.err.println("Object read is not a MessageManagers");
-        }
-
         this.setSize(PAGE_WIDTH, PAGE_HEIGHT);
         this.setResizable(false);
 

@@ -10,8 +10,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class FrontPagePanel extends JPanel implements ActionListener {
-    final int PAGE_W = 414;
-    final int PAGE_H = 736;
+    final int page_w = MainFrame.PAGE_WIDTH;
+    final int page_h = MainFrame.PAGE_HEIGHT;
     FrontPageController controller;
 
     public FrontPagePanel() {
@@ -22,11 +22,10 @@ public class FrontPagePanel extends JPanel implements ActionListener {
 
     public JScrollPane createFrontPageScreen() {
         //initialize our FrontPageScreen
-        controller.create("Sunny");
-        controller.create("Alyssa");
+        controller.create();
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        this.setSize(PAGE_W, (int) (PAGE_H*0.9)); //(w = 414, h = 736*0.9)
+        this.setSize(page_w, (int) (page_h *0.9)); //(w = 414, h = 736*0.9)
         Color color = new Color(246, 186, 227);
         this.setBackground(color);
 

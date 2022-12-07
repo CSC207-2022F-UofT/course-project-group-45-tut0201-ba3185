@@ -4,7 +4,7 @@ import gui.FrontPagePanel;
 import use_case_frontpage.FrontPageOutputBoundary;
 import use_case_frontpage.FrontPageResponseModel;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class FrontPagePresenter implements FrontPageOutputBoundary {
     /**
@@ -17,7 +17,7 @@ public class FrontPagePresenter implements FrontPageOutputBoundary {
         this.frontPage = frontPagePanel;
     }
     public void create(FrontPageResponseModel responseModel){
-        ArrayList<String> targetIdList = responseModel.getTargetUsers();
+        List<String> targetIdList = responseModel.getTargetUsers();
 
         for (String i : targetIdList) {
             frontPage.loadUser(i);

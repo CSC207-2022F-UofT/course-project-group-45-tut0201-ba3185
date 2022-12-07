@@ -18,8 +18,8 @@ public class ChatScreen extends JFrame implements ActionListener,ChatScreenInter
     JTextField textField;
     MessageController controller;
     JPanel messageDisplayBox;
-    final int PAGE_W = 414;
-    final int PAGE_H = 736;
+    final int page_w = MainFrame.PAGE_WIDTH;
+    final int page_h = MainFrame.PAGE_HEIGHT;
 
     /**
      * Creates all UI components of ChatScreen UI
@@ -33,19 +33,19 @@ public class ChatScreen extends JFrame implements ActionListener,ChatScreenInter
         MessageManagerFactory messageManagerFactory = new MessageManagerFactory();
         MessagePresenter messagePresenter = new MessagePresenter(this);
         MessageInteractor messageInteractor = new MessageInteractor(messagePresenter,
-                messageManagerFactory, MainFrame.messageManagers);
+                messageManagerFactory);
         this.controller= new MessageController(messageInteractor);
     }
 
     public void create() {
-        this.setSize(PAGE_W, PAGE_H);
+        this.setSize(page_w, page_h);
         this.setResizable(false);
         this.getContentPane().setLayout(new BoxLayout(this.getContentPane(), BoxLayout.PAGE_AXIS));
         this.setLocationRelativeTo(null);
 
         JPanel chatScreen = new JPanel();             //initialize our chatScreen
         chatScreen.setLayout(new BorderLayout());
-        chatScreen.setPreferredSize(new Dimension(PAGE_W, PAGE_H * 9 / 10));
+        chatScreen.setPreferredSize(new Dimension(page_w, page_h * 9 / 10));
         Color c = new Color(255, 255, 255);
         chatScreen.setBackground(c);
         this.add(new JLabel("Chat with "+targetUserId));
@@ -79,9 +79,6 @@ public class ChatScreen extends JFrame implements ActionListener,ChatScreenInter
 
         this.add(chatScreen);
         this.setVisible(true);
-
-
-        //return this;
     }
     @Override
     public void actionPerformed(ActionEvent e) {

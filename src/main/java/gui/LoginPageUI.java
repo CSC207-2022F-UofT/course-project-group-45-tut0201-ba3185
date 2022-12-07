@@ -8,6 +8,9 @@ import java.io.IOException;
 
 import static javax.swing.SpringLayout.*;
 
+/**
+ * UI class for the loginPage
+ */
 public class LoginPageUI extends JPanel {
     public static final int PAGE_HEIGHT = 736;
     public static final int PAGE_WIDTH = 414;
