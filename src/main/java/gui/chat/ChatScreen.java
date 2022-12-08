@@ -119,10 +119,10 @@ public class ChatScreen extends JFrame implements ActionListener,ChatScreenInter
                 controller.create(targetUserId, messageValue);
                 break;
             case 1:
-                new screens.BlockDialog("This user is in your block list");
+                new BlockDialog("This user is in your block list");
                 break;
             case 2:
-                new screens.BlockDialog("You are in their block list");
+                new BlockDialog("You are in their block list");
                 break;
         }
     }
