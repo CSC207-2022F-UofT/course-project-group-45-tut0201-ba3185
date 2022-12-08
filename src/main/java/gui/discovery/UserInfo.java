@@ -47,8 +47,6 @@ public class UserInfo implements ActionListener {
         public UserInfoPanel(String pName){
             this.pName = pName;
             this.setPreferredSize(new Dimension(MainFrame.PAGE_WIDTH, MainFrame.PAGE_HEIGHT / 10 * 8));
-            //this.setLayout(null);
-            //this.setLayout(new FlowLayout(FlowLayout.CENTER));
             this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
             this.setBackground(Color.CYAN);
             this.revalidate();
@@ -64,12 +62,9 @@ public class UserInfo implements ActionListener {
                 c.create();
             });
             this.add(chat);
-            //this.setLayout(new FlowLayout(FlowLayout.CENTER));
             this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-
             JLabel name =new JLabel("Name: " + dModel.getName());
             name.setAlignmentX(Component.CENTER_ALIGNMENT);
-
             this.add(name);
             this.add(new JLabel("Age: " + dModel.getAge()));
             this.add(new JLabel("Hobby:" + dModel.getHobby()));

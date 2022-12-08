@@ -23,7 +23,7 @@ public class OptionPanel extends JPanel {
         });
 
         gui.discovery.Button nearByBtn = new Button("By Near By");
-        nearByBtn.getButton().setActionCommand("nearby");
+        nearByBtn.getButton().setActionCommand("nearBy");
         nearByBtn.getButton().addActionListener(e -> {
             for(ActionListener listener: actionListeners){
                 listener.actionPerformed(e);
