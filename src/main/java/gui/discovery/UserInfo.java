@@ -64,10 +64,14 @@ public class UserInfo implements ActionListener {
                 ChatScreen c = new ChatScreen(this.pName);
                 c.create();
             });
-            this.setLayout(new FlowLayout(FlowLayout.CENTER));
-            this.add(new JLabel("My name is " + dModel.getName()));
-            this.add(new JLabel("My age is " + dModel.getAge()));
-            this.add(new JLabel("My hobby is " + dModel.getHobby()));
+            this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+
+            JLabel name =new JLabel("Name: " + dModel.getName());
+            name.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+            this.add(name);
+            this.add(new JLabel("Age: " + dModel.getAge()));
+            this.add(new JLabel("Hobby:" + dModel.getHobby()));
             this.add(new JLabel("I want the relationship be like " + dModel.getRelationshipType()));
         }
     }
