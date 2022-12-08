@@ -1,6 +1,6 @@
 package controller;
 
-import use_case_discovery.SearchAnswerRequestModel;
+
 import use_case_discovery.UserInfoInputBoundary;
 import use_case_discovery.UserInfoRequestModel;
 
