@@ -1,15 +1,15 @@
 package presenter;
 
-import gui.FrontPagePanel;
+import gui.chat.FrontPagePanel;
 import use_case_frontpage.FrontPageOutputBoundary;
 import use_case_frontpage.FrontPageResponseModel;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class FrontPagePresenter implements FrontPageOutputBoundary {
     /**
-     * The presenter that implements the OutputBoundary to return the view model
-     * to UI to show the user the updates of their prior chat targets on the front page.
+     * The presenter that implements the OutputBoundary to display all prior chat targets
+     * of the user on the front page.
      *
      */
     FrontPagePanel frontPage;
@@ -17,7 +17,7 @@ public class FrontPagePresenter implements FrontPageOutputBoundary {
         this.frontPage = frontPagePanel;
     }
     public void create(FrontPageResponseModel responseModel){
-        ArrayList<String> targetIdList = responseModel.getTargetUsers();
+        List<String> targetIdList = responseModel.getTargetUsers();
 
         for (String i : targetIdList) {
             frontPage.loadUser(i);

@@ -3,6 +3,7 @@ import database.csvManager;
 import entity.Block;
 import entity.BlockFactory;
 import entity.User;
+import use_case_signin_signup.UserRequestModel;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ import java.util.Arrays;
 public class BlockListManager implements BlockListInputBoundary {
 
     private String path = "src/main/java/database/blockList.csv";
-    private User current;
+    private UserRequestModel current;
 
     public BlockListManager() {
         csvManager manager = new csvManager();

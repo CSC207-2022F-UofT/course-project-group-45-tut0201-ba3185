@@ -3,7 +3,6 @@ package entity;
 import java.io.Serializable;
 import java.util.LinkedHashMap;
 
-//entity layer
 public class ChatHistory implements Serializable {
     /**
      * The entity that stores the chat history of two users
@@ -15,7 +14,7 @@ public class ChatHistory implements Serializable {
     public ChatHistory(String user1, String user2){
         this.user1 = user1;
         this.user2 = user2;
-        this.content = new LinkedHashMap<String, String>();
+        this.content = new LinkedHashMap<>();
     }
 
     public String getUser1() {
