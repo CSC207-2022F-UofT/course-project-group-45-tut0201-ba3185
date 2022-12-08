@@ -2,10 +2,12 @@ package gui;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 
 public class GamePanel extends JPanel {
-    public GamePanel() {
+    public GamePanel() throws IOException {
         this.setLayout(new FlowLayout());
+        this.setPreferredSize(new Dimension(MainFrame.PAGE_WIDTH,MainFrame.PAGE_HEIGHT / 10 * 9));
         this.add(new TwoTruthsAndALiePageScrollPane(new TwoTruthsAndALiePagePanel()));
     }
 }
