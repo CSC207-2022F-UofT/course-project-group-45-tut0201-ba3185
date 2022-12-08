@@ -1,6 +1,6 @@
 package presenter;
 import database.csvManager;
-import gui.TwoTruthsAndALieGamePanelInterface;
+import gui.game.TwoTruthsAndALieGamePanelInterface;
 import use_case_two_truths_and_a_lie.TwoTruthsAndALieGameManager;
 import use_case_two_truths_and_a_lie.TwoTruthsAndALieGameOutputBoundary;
 import use_case_two_truths_and_a_lie.TwoTruthsAndALieGameRequestModel;

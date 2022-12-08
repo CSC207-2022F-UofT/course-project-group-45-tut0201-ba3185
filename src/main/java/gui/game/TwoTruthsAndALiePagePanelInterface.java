@@ -1,4 +1,4 @@
-package gui;
+package gui.game;
 
 import javax.swing.*;
 import java.io.IOException;

@@ -1,5 +1,5 @@
 package use_case_two_truths_and_a_lie;
-import gui.TwoTruthsAndALiePagePanelInterface;
+import gui.game.TwoTruthsAndALiePagePanelInterface;
 
 /**
  *  Request Model for Two Truths And A Lie Page

@@ -1,5 +1,8 @@
 package gui;
 
+import gui.game.TwoTruthsAndALiePagePanel;
+import gui.game.TwoTruthsAndALiePageScrollPane;
+
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;

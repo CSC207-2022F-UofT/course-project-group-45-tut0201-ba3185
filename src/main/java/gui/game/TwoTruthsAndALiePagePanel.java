@@ -1,4 +1,5 @@
-package gui;
+package gui.game;
+import gui.MainFrame;
 import presenter.TwoTruthsAndALiePagePresenter;
 
 import javax.swing.*;

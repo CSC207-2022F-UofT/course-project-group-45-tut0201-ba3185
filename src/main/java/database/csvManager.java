@@ -222,8 +222,8 @@ public class csvManager implements csvInterface {
                     requestModel.getAreaOfInterest());
             TwoTruthsAndALiePlayer player1 = new TwoTruthsAndALiePlayer(user1);
             player1.setStatements(new TwoTruthsAndALieStatements(String.valueOf(col[1]),   // truth 1
-                                                                 String.valueOf(col[2]),   // truth 2
-                                                                 String.valueOf(col[3]))); // lie
+                    String.valueOf(col[2]),   // truth 2
+                    String.valueOf(col[3]))); // lie
 
             String player2_username = String.valueOf(col[4]);
             requestModel = userMap.get(player2_username);
@@ -255,13 +255,13 @@ public class csvManager implements csvInterface {
             TwoTruthsAndALiePlayer player2 = game.getPlayers()[1];
 
             String write =  player1.getUser().getUsername()+","+
-                            player1.getStatements().getTruth1()+","+
-                            player1.getStatements().getTruth2()+","+
-                            player1.getStatements().getLie()+","+
-                            player2.getUser().getUsername()+","+
-                            player2.getStatements().getTruth1()+","+
-                            player2.getStatements().getTruth2()+","+
-                            player2.getStatements().getLie();
+                    player1.getStatements().getTruth1()+","+
+                    player1.getStatements().getTruth2()+","+
+                    player1.getStatements().getLie()+","+
+                    player2.getUser().getUsername()+","+
+                    player2.getStatements().getTruth1()+","+
+                    player2.getStatements().getTruth2()+","+
+                    player2.getStatements().getLie();
             writer.write(write);
             writer.newLine();
             writer.close();
