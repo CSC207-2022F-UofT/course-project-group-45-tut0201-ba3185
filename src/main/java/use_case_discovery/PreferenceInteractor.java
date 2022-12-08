@@ -16,7 +16,6 @@ public class PreferenceInteractor implements DiscoveryInputBoundary {
     }
     @Override
     public void create() {
-        //Set up response model to store info of userNames
         presenter.update(this.dResponseModel);
     }
 
