@@ -1,6 +1,11 @@
 package gui.discovery;
 
+import controller.UserInfoController;
 import gui.MainFrame;
+import use_case_discovery.UserInfoInputBoundary;
+import use_case_discovery.UserInfoInteractor;
+import use_case_discovery.UserInfoInterface;
+import use_case_discovery.UserInfoResponseModel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -32,7 +37,7 @@ public class UserInfo implements ActionListener {
         this.panelToAddOn.add(infoP);
         this.panelToAddOn.revalidate();
     }
-    private static class UserInfoPanel extends JPanel{
+    private static class UserInfoPanel extends JPanel {
         String pName;
         public UserInfoPanel(String pName){
             this.pName = pName;
@@ -42,7 +47,16 @@ public class UserInfo implements ActionListener {
             this.setLayout(new FlowLayout(FlowLayout.TRAILING));
             this.setBackground(Color.CYAN);
             JButton chat = new JButton("Chat");
+
+
+            UserInfoInterface personalInfo = new PersonalInfoPanel();
+            UserInfoInputBoundary interactor = new UserInfoInteractor(personalInfo);
+            UserInfoController controller = new UserInfoController(this.pName,interactor);
+            controller.findInfo();
+
+
             this.add(chat);
+            this.add((Component) personalInfo);
             this.revalidate();
         }
     }
