@@ -25,6 +25,7 @@ public class FrontPagePanel extends JPanel implements ActionListener {
         JLabel label = new JLabel("Bump Bump");
         label.setFont(new Font("Apple Chancery", Font.BOLD, 30));
         label.setAlignmentX(Component.CENTER_ALIGNMENT);
+        label.setForeground(new Color(149, 74, 240));
         this.add(label);
 
         controller.create();
