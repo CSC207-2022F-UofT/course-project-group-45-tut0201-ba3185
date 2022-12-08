@@ -8,7 +8,11 @@ import use_case_discovery.SearchAnswerRequestModel;
 
 import java.util.HashMap;
 import java.util.Map;
-
+/**
+ * Unit tests for the SearchAnswerConverter class, which test three different request model as
+ * input to the class.
+ * Tests are implemented by examining if the map generated matches the desired answer.
+ * */
 public class SearchAnswerConverterTest {
 
     SearchAnswerRequestModel requestModel;

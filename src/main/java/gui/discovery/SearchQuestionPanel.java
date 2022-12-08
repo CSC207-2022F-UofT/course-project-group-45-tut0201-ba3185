@@ -3,10 +3,13 @@ package gui.discovery;
 import controller.SearchController;
 import use_case_discovery.SearchQuestionInterface;
 import use_case_discovery.*;
+import java.io.IOException;
+
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -112,40 +115,48 @@ public class SearchQuestionPanel extends JPanel implements SearchQuestionInterfa
         submitButton.addActionListener(e -> {
             answerList = new ArrayList<>();
 
+            if(! incomeLowTextField.getText().equals("") && ! incomeHighTextField.getText().equals("") &&
+                    ! ageLowTextField.getText().equals("") && ! ageHighTextField.getText().equals("")) {
+                int incomeLow = Integer.parseInt(incomeLowTextField.getText());
+                int incomeHigh = Integer.parseInt((incomeHighTextField.getText()));
+                int ageLow = Integer.parseInt(ageLowTextField.getText());
+                int ageHigh = Integer.parseInt((ageHighTextField.getText()));
+                answerList.add(incomeLow);
 
-            int incomeLow = Integer.parseInt(incomeLowTextField.getText());
+                answerList.add(incomeHigh);
 
-            answerList.add(incomeLow);
-            int incomeHigh = Integer.parseInt((incomeHighTextField.getText()));
-            answerList.add(incomeHigh);
-            int ageLow = Integer.parseInt(ageLowTextField.getText());
-            answerList.add(ageLow);
-            int ageHigh = Integer.parseInt((ageHighTextField.getText()));
-            answerList.add(ageHigh);
-            int marriageOp = marriageComboBox.getSelectedIndex();
-            answerList.add(marriageOp);
-            int hobbyOp = hobbyComboBox.getSelectedIndex();
-            answerList.add(hobbyOp);
-            int relationshipOp = relationshipComboBox.getSelectedIndex();
-            answerList.add(relationshipOp);
-            int petOp = petOptionComboBox.getSelectedIndex();
-            answerList.add(petOp);
+                answerList.add(ageLow);
 
-            this.setVisible(false);
-            this.removeAll();
+                answerList.add(ageHigh);
+                int marriageOp = marriageComboBox.getSelectedIndex();
+                answerList.add(marriageOp);
+                int hobbyOp = hobbyComboBox.getSelectedIndex();
+                answerList.add(hobbyOp);
+                int relationshipOp = relationshipComboBox.getSelectedIndex();
+                answerList.add(relationshipOp);
+                int petOp = petOptionComboBox.getSelectedIndex();
+                answerList.add(petOp);
 
-            UsersBtnPanel usersBtnPanel = new UsersBtnPanel();
-            SearchInputBoundary searchInteractor = new SearchInteractor(usersBtnPanel);
-            SearchController controller = new SearchController(answerList, searchInteractor);
-            controller.generateRecommendation();
-            this.add(usersBtnPanel);
-            this.revalidate();
-            this.setVisible(true);
+                this.removeAll();
+
+                UsersBtnPanel usersBtnPanel = new UsersBtnPanel();
+                SearchInputBoundary searchInteractor = new SearchInteractor(usersBtnPanel);
+                SearchController controller = new SearchController(answerList, searchInteractor);
+                controller.generateRecommendation();
+                this.add(usersBtnPanel);
+                this.revalidate();
+                this.setVisible(true);
+            }
+            else {
+            JOptionPane.showMessageDialog(null, "Please fill in all fields before submitting");
+        }
+            this.add(this);
+
+
 
         });
         this.add(submitButton);
 
     }
-
 
 }

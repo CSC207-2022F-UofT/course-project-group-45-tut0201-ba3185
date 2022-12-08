@@ -1,6 +1,11 @@
 package gui.discovery;
 
+import controller.UserInfoController;
 import gui.MainFrame;
+import use_case_discovery.UserInfoInputBoundary;
+import use_case_discovery.UserInfoInteractor;
+import use_case_discovery.UserInfoInterface;
+import use_case_discovery.UserInfoResponseModel;
 import gui.chat.ChatScreen;
 
 import javax.swing.*;
@@ -29,26 +34,41 @@ public class UserInfo implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        JPanel infoP = new UserInfoPanel(this.pName);
-        this.panelToAddOn.add(infoP);
+        UserInfoInterface personalInfo = new UserInfoPanel(this.pName);
+        UserInfoInputBoundary interactor = new UserInfoInteractor(personalInfo);
+        UserInfoController controller = new UserInfoController(this.pName,interactor);
+        controller.findInfo();
+
+        this.panelToAddOn.add((JPanel)personalInfo);
         this.panelToAddOn.revalidate();
     }
-    private static class UserInfoPanel extends JPanel{
+    private static class UserInfoPanel extends JPanel implements UserInfoInterface {
         String pName;
         public UserInfoPanel(String pName){
             this.pName = pName;
-            this.add(new JLabel("This is the info page of " + this.pName));
             this.setPreferredSize(new Dimension(MainFrame.PAGE_WIDTH, MainFrame.PAGE_HEIGHT / 10 * 8));
-            this.setLayout(null);
-            this.setLayout(new FlowLayout(FlowLayout.TRAILING));
+            this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
             this.setBackground(Color.CYAN);
+            this.revalidate();
+        }
+
+        @Override
+        public void update(UserInfoResponseModel dModel) {
+
+            this.add(new JLabel("This is the info page of " + this.pName));
             JButton chat = new JButton("Chat");
             chat.addActionListener(e -> {
                 ChatScreen c = new ChatScreen(this.pName);
                 c.create();
             });
             this.add(chat);
-            this.revalidate();
+            this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+            JLabel name =new JLabel("Name: " + dModel.getName());
+            name.setAlignmentX(Component.CENTER_ALIGNMENT);
+            this.add(name);
+            this.add(new JLabel("Age: " + dModel.getAge()));
+            this.add(new JLabel("Hobby:" + dModel.getHobby()));
+            this.add(new JLabel("I want the relationship be like " + dModel.getRelationshipType()));
         }
     }
 }
