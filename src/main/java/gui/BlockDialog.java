@@ -1,4 +1,4 @@
-package use_case_blocklist;
+package gui;
 
 import javax.swing.*;
 import java.awt.*;
