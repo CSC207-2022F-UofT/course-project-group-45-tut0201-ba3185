@@ -1,11 +1,15 @@
 package use_case_frontPage_test;
 
+import database.MessageDataManager;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import use_case_frontpage.FrontPageInteractor;
 import use_case_frontpage.FrontPageOutputBoundary;
 import use_case_frontpage.FrontPageRequestModel;
 import use_case_frontpage.FrontPageResponseModel;
+import use_case_message.MessageManagers;
 
 /**
  * Unit tests for the FrontPageInteractor class, which tests the case when creating a front page with username button on it.
@@ -18,6 +22,13 @@ import use_case_frontpage.FrontPageResponseModel;
  *
  */
 public class FrontPageUnitTest {
+    MessageManagers mms;
+    MessageDataManager mdm = new MessageDataManager();
+    @BeforeEach
+    void save_database(){ //save the value of database before test, to avoid modification.
+        this.mms = mdm.readMM();
+    }
+
     @Test
     void create(){
         FrontPageOutputBoundary frontPageOutputBoundary = new FrontPageOutputBoundary() {
@@ -31,6 +42,10 @@ public class FrontPageUnitTest {
         interactor.create(requestModel);
     }
 
+    @AfterEach
+    void teardown(){
+        mdm.writeMM(mms);
+    }
 
 
 
