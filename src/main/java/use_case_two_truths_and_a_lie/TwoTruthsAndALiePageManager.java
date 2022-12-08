@@ -30,7 +30,7 @@ public class TwoTruthsAndALiePageManager implements TwoTruthsAndALiePageInputBou
 
     /**
      * Creates a single Two Truths And A Lie game, adding it to the list of games and the csv file
-     * @throws IOException
+     * @throws IOException throws IOException when necessary
      */
     public void createGame(TwoTruthsAndALiePageRequestModel requestModel) throws IOException {
 
