@@ -4,7 +4,7 @@ import java.sql.Statement;
 
 /**
  *  Two Truths And A Lie Game Entity
- *  Keeps track of the details of Two Truths And A Lie game, such as players. （Further detail is tracked within each player)
+ *  Keeps track of the details of Two Truths And A Lie game, such as players. Further detail is tracked within each player
  *  @author  Eric Xue
  */
 public class TwoTruthsAndALieGame {
