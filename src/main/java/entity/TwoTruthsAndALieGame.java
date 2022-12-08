@@ -3,7 +3,7 @@ package entity;
 import java.sql.Statement;
 
 /**
- *  A Two Truths And A Lie Game Entity
+ *  Two Truths And A Lie Game Entity
  *  Keeps track of the details of a Two Truths And A Lie game, such as players. （Further detail is tracked within each player)
  *  @author  Eric Xue
  */
