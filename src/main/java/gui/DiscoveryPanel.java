@@ -49,6 +49,7 @@ public class DiscoveryPanel extends JPanel {
                     DiscoveryInputBoundary interactor1 = new NearbyInteractor(presenter1);
                     DiscoveryController controller1 = new DiscoveryController(interactor1);
                     controller1.trigger();
+                    this.removeAll();
                     this.add(presenter1);
                     break;
             }
