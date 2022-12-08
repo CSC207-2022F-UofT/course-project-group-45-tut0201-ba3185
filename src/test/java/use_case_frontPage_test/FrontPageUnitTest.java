@@ -18,13 +18,15 @@ public class FrontPageUnitTest {
         FrontPageOutputBoundary frontPageOutputBoundary = new FrontPageOutputBoundary() {
             @Override
             public void create(FrontPageResponseModel responseModel) {
-                Assertions.assertTrue(responseModel.getTargetUsers().contains("sunny"));
+                Assertions.assertTrue(responseModel.getTargetUsers().contains("Jenny"));
             }
         };
         FrontPageInteractor interactor = new FrontPageInteractor(frontPageOutputBoundary);
         FrontPageRequestModel requestModel = new FrontPageRequestModel();
         interactor.create(requestModel);
     }
+
+
 
 
 
