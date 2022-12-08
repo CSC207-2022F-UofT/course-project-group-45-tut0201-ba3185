@@ -5,7 +5,11 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import use_case_message.MessageManager;
 import use_case_message.MessageManagerFactory;
-
+/**
+ * Unit tests for the MessageManager class, which tests the get_user1 and get_user2, save_chat_history_test methods for most cases.
+ *in save_chat_history test, the method getChatHistory isn't explicitly tested since save_chat_history_test has already used it
+ * and it would be redundant if we use a similar approach to test it. getcontent method is also used here!
+ */
 
 public class MessageManagerUnitTest {
     MessageManagerFactory factory;
@@ -30,8 +34,4 @@ public class MessageManagerUnitTest {
         Assertions.assertSame("Hello, how are you", mm.getChatHistory().getContent().get("2022-12-06 23:20:11 Alyssa"));
     }
 
-    //@Test
-    //void get_chat_history_test(){
-        //Assertions.assertSame(mm.getChatHistory());
-    //}
 }

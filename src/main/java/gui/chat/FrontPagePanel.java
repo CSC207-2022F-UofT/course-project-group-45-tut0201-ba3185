@@ -1,7 +1,7 @@
-package gui;
+package gui.chat;
 import controller.FrontPageController;
+import gui.MainFrame;
 import presenter.FrontPagePresenter;
-import screens.ChatScreen;
 import use_case_frontpage.FrontPageInteractor;
 
 import javax.swing.*;
@@ -22,6 +22,12 @@ public class FrontPagePanel extends JPanel implements ActionListener {
 
     public JScrollPane createFrontPageScreen() {
         //initialize our FrontPageScreen
+        JLabel label = new JLabel("Bump Bump");
+        label.setFont(new Font("Apple Chancery", Font.BOLD, 30));
+        label.setAlignmentX(Component.CENTER_ALIGNMENT);
+        label.setForeground(new Color(149, 74, 240));
+        this.add(label);
+
         controller.create();
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -29,12 +35,11 @@ public class FrontPagePanel extends JPanel implements ActionListener {
         Color color = new Color(246, 186, 227);
         this.setBackground(color);
 
-        //JScrollPane scrollPane = new JScrollPane(this, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
-                //JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-
-
-        return new JScrollPane(this, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+        JScrollPane scrollPane = new JScrollPane(this, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
                 JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        // It's fine here for the variable to be redundant since it would too long if this is
+        // combined in a sentence
+        return scrollPane;
     }
 
     public void loadUser(String username){
@@ -46,7 +51,8 @@ public class FrontPagePanel extends JPanel implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {   //when user clicked the username button they want to chat with, a chatScreen is generated
+    public void actionPerformed(ActionEvent e) {
+        //when user clicked the User Button they want to chat with, a chatScreen is generated
         String targetUserId = ((JButton) e.getSource()).getText();
         ChatScreen c = new ChatScreen(targetUserId);
         c.create();
