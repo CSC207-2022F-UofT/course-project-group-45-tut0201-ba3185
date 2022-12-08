@@ -1,4 +1,5 @@
-package GateWay;
+package use_case_blocklist;
+
 
 import entity.Block;
 import entity.BlockFactory;
@@ -6,7 +7,9 @@ import entity.BlockFactory;
 import java.io.*;
 
 public class BlockGateWay {
-
+    /**
+     BlockGateWay is used to read blockList.csv file
+     */
     public static BlockFactory readCsvByBufferedReader() {
         String filePath = "src/main/java/database/blockList.csv";
         File csv = new File(filePath);
@@ -35,7 +38,7 @@ public class BlockGateWay {
                 block.setBlockName(line.split(",")[1]);
                 records.add(block);
             }
-            System.out.println("read row in excel:" + records.size());
+            System.out.println("read row from csv file:" + records.size());
         } catch (IOException e) {
             e.printStackTrace();
         }

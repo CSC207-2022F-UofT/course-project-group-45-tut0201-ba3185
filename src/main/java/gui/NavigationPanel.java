@@ -52,11 +52,11 @@ public class NavigationPanel extends JPanel {
         });
         this.add(gameButton);
 
-        JButton settingsButton = new JButton(new ImageIcon("images/navbar_settings.png"));
+        JButton settingsButton = new JButton(new ImageIcon("images/navbar_chat.jpg"));
         settingsButton.setOpaque(false);
         settingsButton.setContentAreaFilled(false);
         settingsButton.setFocusPainted(false);
-        settingsButton.setActionCommand("settingsButton");
+        settingsButton.setActionCommand("frontPageButton");
         settingsButton.addActionListener(e -> {
             for(ActionListener listener: actionListeners){
                 listener.actionPerformed(e);

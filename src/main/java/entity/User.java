@@ -27,7 +27,6 @@ public class User implements Comparable<User> {
     private ArrayList<String> interestRank;
     private ArrayList<String> userChatted;
 
-    // case when user does not give location data
     public User(String user, String name, String password) {
         this.username = user;
         this.name = name;
@@ -48,12 +47,14 @@ public class User implements Comparable<User> {
         this.password = password;
         this.location = location;
         this.userInfo = userInfo;
+        this.userChatted = new ArrayList<>();
     }
 
     // Getter functions
     public String getUsername() {
         return this.username;
     }
+    
     public String getName() {
         return this.name;
     }
@@ -81,6 +82,10 @@ public class User implements Comparable<User> {
         return this.password;
     }
 
+    public ArrayList<String> getUserChatted() {
+        return userChatted;
+    }
+
     // Setter functions
 
     public boolean setPassword(String pass) {
@@ -101,9 +106,16 @@ public class User implements Comparable<User> {
     public void setUserInfo(String key, Object obj) {
         this.userInfo.put(key, obj);
     }
+
     public void setInterestRank(ArrayList<String> lst) {
         this.interestRank = lst;
     }
+
+
+    public void addUserChatted(String target){
+        this.userChatted.add(target);
+    }
+
 
     @Override
     public int compareTo(User o) {

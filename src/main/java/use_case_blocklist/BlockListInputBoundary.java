@@ -7,5 +7,5 @@ public interface BlockListInputBoundary {
 
     void removeBlockList(User user);
 
-    boolean checkBlockList(User user);
+    int checkBlockList(User user);
 }

@@ -1,7 +1,7 @@
 package use_case_signin_signup;
 
-        import java.util.ArrayList;
-        import java.util.HashMap;
+    import java.util.ArrayList;
+    import java.util.HashMap;
 
 public class UserResponseModel implements UserOutputBoundary {
     private String username;

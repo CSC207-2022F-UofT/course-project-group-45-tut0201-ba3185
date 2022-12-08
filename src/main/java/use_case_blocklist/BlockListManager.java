@@ -1,5 +1,4 @@
 package use_case_blocklist;
-import GateWay.BlockGateWay;
 import database.csvManager;
 import entity.Block;
 import entity.BlockFactory;
@@ -8,7 +7,12 @@ import entity.User;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
-
+/**
+ * BlockListManager is responsible for removing user
+ * from current user's block list,
+ * adding user to current user's block list,
+ * or checking whether user is in current user's block list.
+ */
 
 public class BlockListManager implements BlockListInputBoundary {
 
@@ -17,9 +21,12 @@ public class BlockListManager implements BlockListInputBoundary {
 
     public BlockListManager() {
         csvManager manager = new csvManager();
-        this.current = manager.readCurrentUser("src/main/java/database/currentUser.csv");;
+        this.current = manager.readCurrentUser();
     }
 
+    /**
+     * adding user to current user's block list,
+     */
     @Override
     public void addBlockList(User user) {
         ArrayList<String> headers = new ArrayList<String>(Arrays.asList(
@@ -43,6 +50,9 @@ public class BlockListManager implements BlockListInputBoundary {
         writeStringToCsv(header, stringBuffer.toString(), path, false);
     }
 
+    /**
+     * removing user from current user's block list,
+     */
     @Override
     public void removeBlockList(User user) {
         ArrayList<String> headers = new ArrayList<String>(Arrays.asList(
@@ -65,20 +75,25 @@ public class BlockListManager implements BlockListInputBoundary {
         writeStringToCsv(header, stringBuffer.toString(), path, false);
     }
 
+    /**
+     * checking whether user is in current user's block list.
+     */
     @Override
-    public boolean checkBlockList(User user) {
+    public int checkBlockList(User user) {
         BlockFactory arrayList = BlockGateWay.readCsvByBufferedReader();
         if (arrayList.size() == 0){
-            return false;
+            return 0;
         }
         for (Object block: arrayList) {
             if (((Block)block).getCurrName().equals(current.getName()) && ((Block)block).getBlockName().equals(user.getName())) {
-                return true;
+                return 1;
+            }
+            if (((Block)block).getCurrName().equals(user.getName()) && ((Block)block).getBlockName().equals(current.getName())) {
+                return 2;
             }
         }
-        return false;
+        return 0;
     }
-
 
     public void writeStringToCsv(String head, String dataStr, String csvFilePath, boolean append) {
         try (FileOutputStream fileOutputStream = new FileOutputStream(csvFilePath, append);
