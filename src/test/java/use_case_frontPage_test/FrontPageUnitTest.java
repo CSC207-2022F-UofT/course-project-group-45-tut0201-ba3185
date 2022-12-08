@@ -19,7 +19,7 @@ import use_case_message.MessageManagers;
  * The ideal test design should also include the case that targetuser and current user have already chatted, an issue will be addressed
  * in repo and summary of testing method will be included.
  * The connection of each component of clean architecture is well tested, however, presenter, controller and view is not included.
- *
+ * it will also be addressed in repo
  */
 public class FrontPageUnitTest {
     MessageManagers mms;
