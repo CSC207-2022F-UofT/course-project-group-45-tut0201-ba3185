@@ -2,11 +2,11 @@ package gui.discovery;
 
 import controller.UserInfoController;
 import gui.MainFrame;
-import gui.chat.ChatScreen;
 import use_case_discovery.UserInfoInputBoundary;
 import use_case_discovery.UserInfoInteractor;
 import use_case_discovery.UserInfoInterface;
 import use_case_discovery.UserInfoResponseModel;
+import gui.chat.ChatScreen;
 
 import javax.swing.*;
 import java.awt.*;
@@ -34,7 +34,6 @@ public class UserInfo implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-//        JPanel infoP = new UserInfoPanel(this.pName);
         UserInfoInterface personalInfo = new UserInfoPanel(this.pName);
         UserInfoInputBoundary interactor = new UserInfoInteractor(personalInfo);
         UserInfoController controller = new UserInfoController(this.pName,interactor);
@@ -48,8 +47,9 @@ public class UserInfo implements ActionListener {
         public UserInfoPanel(String pName){
             this.pName = pName;
             this.setPreferredSize(new Dimension(MainFrame.PAGE_WIDTH, MainFrame.PAGE_HEIGHT / 10 * 8));
-//            this.setLayout(null);
-            this.setLayout(new FlowLayout(FlowLayout.CENTER));
+            //this.setLayout(null);
+            //this.setLayout(new FlowLayout(FlowLayout.CENTER));
+            this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
             this.setBackground(Color.CYAN);
             this.revalidate();
         }
@@ -59,11 +59,12 @@ public class UserInfo implements ActionListener {
 
             this.add(new JLabel("This is the info page of " + this.pName));
             JButton chat = new JButton("Chat");
-            this.add(chat);
             chat.addActionListener(e -> {
                 ChatScreen c = new ChatScreen(this.pName);
                 c.create();
             });
+            this.add(chat);
+            //this.setLayout(new FlowLayout(FlowLayout.CENTER));
             this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
             JLabel name =new JLabel("Name: " + dModel.getName());

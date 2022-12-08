@@ -29,14 +29,19 @@ public class DiscoveryPanel extends JPanel {
                     DiscoveryInputBoundary interactor = new PreferenceInteractor(presenter);
                     DiscoveryController controller = new DiscoveryController(interactor);
                     controller.trigger();
+                    this.removeAll();
+                    //this.add(this);
                     this.add(presenter);
+
                     break;
                 case "search":
                     SearchQuestionPanel panelS = new SearchQuestionPanel();
                     DiscoveryInputBoundary interactorS = new SearchAskerInteractor(panelS);
                     DiscoveryController controllerS = new DiscoveryController(interactorS);
                     controllerS.trigger();
+                    this.removeAll();
                     this.add(panelS);
+
                     break;
 
                 case "nearBy":
@@ -49,6 +54,7 @@ public class DiscoveryPanel extends JPanel {
             }
             this.revalidate();
         });
+
         this.add(optionPanel);
     }
 }
