@@ -66,6 +66,7 @@ public class BlockListManager implements BlockListInputBoundary {
             Block block = (Block) arrayList.get(i);
             if (block.getCurrName().equals(current.getName()) && block.getBlockName().equals(user.getName())) {
                 arrayList.remove(i);
+                break;
             }else {
                 stringBuffer.append(block.getCurrName()+"," + block.getBlockName());
                 if (i < size -1) {
