@@ -11,7 +11,6 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class SearchQuestionPanel extends JPanel implements SearchQuestionInterface {
