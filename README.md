@@ -22,16 +22,16 @@ and it provides the block function if the user hates someone as well.
 2. New user will also be asked to fill in personal information, after filling in, click the _submit_ button
 3. User with existed account can just log in
 4. To use discovery feature:
-    * click the discovery button(the magnifier icon) on the navigation panel at the bottom,
+    * Click the discovery button(the magnifier icon) on the navigation panel at the bottom,
       and it will bring you to the page of discovery with three buttons indicating different discovery methods
-    * For search option, a list will be generated and needed to be answer.
-    * after clicking one of the method button or submit the answer, a yellow panel will pop up 15 buttons with other users' name on it
-    * click the button with username allows you to browse the user's info
-    * the user info page also comes with chat button and block button
+    * After clicking one of the method button (and submit the answer), a yellow panel will pop up 15 buttons with the discovered users' name
+      * For option _by Search_, a list of questions will be generated and needed to be answered.
+    * Click the button with username will pop up the user info page, which comes with a chat button that allows the user to start conversation
+    * To browse other users, you will need to repeat the previous three steps 
 5. To use chat feature
     * Click the chat button (the rightmost icon) on the  navigation panel at the bottom, and it will bring you to the page of chatted
       users, where a list of users that you have chatted with is shown.
-    * Click on one of the user names on the screen who you want to chat with, and it will bring you to the page of your chat box with the person.
+    * Click on one of the usernames on the screen who you want to chat with, and it will bring you to the page of your chat box with the person.
     * You can also click the chat button on the user info page to start a conversation with the user.
     * Type messages in the box at the bottom of the screen.
     * Click the "send" button. The message you sent will be shown on both your screen and the screen of the person you want to chat with.
