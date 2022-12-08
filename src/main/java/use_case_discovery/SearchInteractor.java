@@ -9,6 +9,7 @@ public class SearchInteractor implements SearchInputBoundary {
     public DiscoveryResponseModel dResponseModel;
 
     public SearchInteractor(DiscoveryListInterface pPanel){
+
         this.pPanel = pPanel;
     }
 
