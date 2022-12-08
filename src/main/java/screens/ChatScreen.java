@@ -5,7 +5,6 @@ import controller.MessageController;
 import entity.User;
 import gui.MainFrame;
 import presenter.MessagePresenter;
-import gui.BlockDialog;
 import use_case_blocklist.BlockListManager;
 import use_case_message.MessageInteractor;
 import use_case_message.MessageManagerFactory;
