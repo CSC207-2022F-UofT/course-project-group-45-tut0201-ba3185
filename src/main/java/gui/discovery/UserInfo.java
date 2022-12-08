@@ -6,6 +6,7 @@ import use_case_discovery.UserInfoInputBoundary;
 import use_case_discovery.UserInfoInteractor;
 import use_case_discovery.UserInfoInterface;
 import use_case_discovery.UserInfoResponseModel;
+import gui.chat.ChatScreen;
 
 import javax.swing.*;
 import java.awt.*;
@@ -58,6 +59,10 @@ public class UserInfo implements ActionListener {
 
             this.add(new JLabel("This is the info page of " + this.pName));
             JButton chat = new JButton("Chat");
+            chat.addActionListener(e -> {
+                ChatScreen c = new ChatScreen(this.pName);
+                c.create();
+            });
             this.add(chat);
             //this.setLayout(new FlowLayout(FlowLayout.CENTER));
             this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));

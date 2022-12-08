@@ -1,6 +1,5 @@
 package gui.game;
 import gui.MainFrame;
-import gui.game.TwoTruthsAndALiePagePanel;
 
 import javax.swing.*;
 import java.awt.*;

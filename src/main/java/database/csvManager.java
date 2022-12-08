@@ -94,8 +94,6 @@ public class csvManager implements csvInterface {
                 String interestRank = String.valueOf(col[10]);
                 List<String> interestRanked = List.of(interestRank.split("/"));
 
-                System.out.println(interestRanked);
-
                 String areaOfInterest = String.valueOf(col[11]);
                 ArrayList<Double> location = new ArrayList<>();
                 location.add(Double.parseDouble(col[12]));

@@ -117,3 +117,6 @@ hs_err_pid*
 replay_pid*
 
 .DS_Store
+/.idea/vcs.xml
+/.idea/misc.xml
+/src/main/java/database/MessageManagers.ser
