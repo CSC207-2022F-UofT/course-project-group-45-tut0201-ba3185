@@ -1,6 +1,7 @@
 package gui.discovery;
 
 import gui.MainFrame;
+import gui.chat.ChatScreen;
 
 import javax.swing.*;
 import java.awt.*;
@@ -42,6 +43,10 @@ public class UserInfo implements ActionListener {
             this.setLayout(new FlowLayout(FlowLayout.TRAILING));
             this.setBackground(Color.CYAN);
             JButton chat = new JButton("Chat");
+            chat.addActionListener(e -> {
+                ChatScreen c = new ChatScreen(this.pName);
+                c.create();
+            });
             this.add(chat);
             this.revalidate();
         }

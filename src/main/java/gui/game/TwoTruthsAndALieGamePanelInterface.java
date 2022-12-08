@@ -1,4 +1,4 @@
-package gui;
+package gui.game;
 
 import java.util.List;
 

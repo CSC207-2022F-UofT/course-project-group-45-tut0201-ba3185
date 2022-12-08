@@ -1,6 +1,6 @@
 package use_case_two_truths_and_a_lie;
 import entity.TwoTruthsAndALieGame;
-import gui.TwoTruthsAndALiePagePanelInterface;
+
 import java.util.List;
 
 /**
