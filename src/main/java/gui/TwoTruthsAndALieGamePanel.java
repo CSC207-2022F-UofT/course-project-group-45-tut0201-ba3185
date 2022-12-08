@@ -57,6 +57,7 @@ public class TwoTruthsAndALieGamePanel extends JPanel implements TwoTruthsAndALi
     }
 
     public void showChoices(String otherUser, List<String> statements) {
+        this.removeAll();
         this.add(new JLabel(filler + "Game with " + otherUser + filler));
         Collections.shuffle(statements);
         JButton statement1 = new JButton(statements.get(0));

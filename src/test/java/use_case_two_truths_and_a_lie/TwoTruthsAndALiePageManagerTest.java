@@ -24,9 +24,9 @@ public class TwoTruthsAndALiePageManagerTest {
         TwoTruthsAndALiePageRequestModel requestModel = new TwoTruthsAndALiePageRequestModel();
 
         User currentUser = new User();
-        requestModel.setCurrentUser(currentUser);
+        //requestModel.setCurrentUser(currentUser);
         User otherUser = new User();
-        requestModel.setOtherUser(otherUser);
+        // requestModel.setOtherUser(otherUser);
 
         // this.manager.createGame();
 

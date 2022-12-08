@@ -4,13 +4,22 @@ import database.csvManager;
 import entity.User;
 import entity.UserFactory;
 
-import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.List;
 
 public class UserUseCase {
-    private HashMap<String, User> userMap;
+    /**
+     * use case of the user
+     *
+     * @param userMap: all the users in the database currently
+     */
+    private Map<String, User> userMap;
 
-    public UserUseCase(HashMap<String, UserRequestModel> userMap) {
+    public UserUseCase(Map<String, UserRequestModel> userMap) {
+        /**
+         * constructor of UserUseCase, creates and sets up the userMap
+         */
         this.userMap = new HashMap<>();
         UserFactory factory = new UserFactory();
         for(UserRequestModel requestModel : userMap.values()) {
@@ -19,11 +28,24 @@ public class UserUseCase {
         }
     }
 
+    /**
+     * default constructor of UserUseCase
+     */
     public UserUseCase() {}
 
-    public boolean addUser(String name, String username, String password, ArrayList<Double> location,
-                           HashMap<String, Object> userSetting) {
-        User currentUser = new User(name,username,password, location, userSetting);
+    /**
+     * adds a new user to the userMap
+     * @param name: name of the user
+     * @param username: username of the user
+     * @param password: password of the user
+     * @param location: location of the user
+     * @param userSetting: userSettings of the user
+     * @return true if there are no existing users with the same username already in the userMap, false otherwise.
+     */
+    public boolean addUser(String name, String username, String password, List<Double> location,
+                           Map<String, Object> userSetting, List<String> interestRank, String areaOfInterest) {
+
+        User currentUser = new User(name,username,password, location, userSetting, interestRank, areaOfInterest);
         System.out.println(username);
         if(!userExists(username)) {
             userMap.put(currentUser.getUsername(), currentUser);
@@ -32,10 +54,20 @@ public class UserUseCase {
         return false;
     }
 
+    /**
+     * checks if a user is already in userMap by checking username
+     * @param username: username of the user
+     * @return true if there exists a user with the username, false otherwise.
+     */
     public boolean userExists(String username) {
         return userMap.containsKey(username);
     }
 
+    /**
+     * gets password of the user with the username
+     * @param username: username of the user
+     * @return password of user with username, null otherwise.
+     */
     public String getUserPassword(String username) {
         if(userMap.get(username) != null) {
             return userMap.get(username).getPassword();
@@ -43,23 +75,38 @@ public class UserUseCase {
         return null;
     }
 
-    public HashMap<String, UserResponseModel> getUserMap() {
-        HashMap<String, UserResponseModel> responseMap = new HashMap<>();
+    /**
+     * returns the userMap
+     * @return returns the userMap
+     */
+    public Map<String, UserResponseModel> getUserMap() {
+        Map<String, UserResponseModel> responseMap = new HashMap<>();
         for(User user : userMap.values()) {
             UserResponseModel currentUser = new UserResponseModel();
             currentUser.setInfo(user.getUsername(),user.getName(), user.getPassword(), (Integer) user.getUserInfo("age"),
                     (Integer) user.getUserInfo("income"),
                     (String) user.getUserInfo("gender"), (String) user.getUserInfo("relationshipType"),
                     (String) user.getUserInfo("maritalStatus"), (String) user.getUserInfo("pet"),
-                    user.getLocation());
+                    user.getLocation(), (String) user.getUserInfo("sexualOrientation"), user.getInterestRank(),
+                    user.getAreaOfInterest());
             responseMap.put(user.getUsername(),currentUser);
         }
         return responseMap;
     }
 
+    /**
+     * checks if the user is logged in
+     * @return true if there is a user logged in, false otherwise.
+     */
     public boolean isUserLoggedIn() {
         csvManager manager = new csvManager();
-        User current = manager.readCurrentUser();
+        UserRequestModel current = manager.readCurrentUser();
         return current!=null;
+    }
+
+    public void logoutUser() {
+        csvManager manager = new csvManager();
+        manager.logoutUser();
+
     }
 }

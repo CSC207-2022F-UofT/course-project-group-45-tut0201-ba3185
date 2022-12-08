@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.List;
 
 public interface TwoTruthsAndALiePageInputBoundary {
-    public void createGame(TwoTruthsAndALiePageRequestModel requestModel) throws IOException;
-    public TwoTruthsAndALiePageResponseModel loadUserGames() throws IOException;
-
+    void createGame(TwoTruthsAndALiePageRequestModel requestModel) throws IOException;
+    TwoTruthsAndALiePageResponseModel loadUserGames() throws IOException;
+    List<TwoTruthsAndALieGame> getGames();
 }

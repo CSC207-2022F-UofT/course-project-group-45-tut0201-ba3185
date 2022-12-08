@@ -4,27 +4,30 @@ import java.util.*;
 
 import database.csvManager;
 import entity.*;
-import presenter.TwoTruthsAndALieGamePresenter;
 import use_case_signin_signup.UserRequestModel;
 
 /**
- *  Use Case for Two Truths And A Lie Game
- *  Interacts with a single Two Truths and A Lie Game entity at a time
- *  @author  Eric Xue
+ * The `TwoTruthsAndALieGameManager` class is a concrete implementation of the `TwoTruthsAndALieGameInputBoundary`
+ * interface. It is the use case responsible for managing the game logic of a game of Two Truths and a Lie, including
+ * determining the game state and calculating if a user's chosen statement is correct.
+ *
+ * @author Eric Xue
+ * @see TwoTruthsAndALieGameInputBoundary
  */
 public class TwoTruthsAndALieGameManager implements TwoTruthsAndALieGameInputBoundary {
 
     private TwoTruthsAndALieGame game;
 
     public TwoTruthsAndALieGameManager(String otherUserUsername) throws IOException {
-        User currentUser = new csvManager().readCurrentUser();
-        HashMap<String, UserRequestModel> userMap = new csvManager().readUser();
-        ArrayList<Object> otherUserInfo = userMap.get(otherUserUsername).getInfo();
-        User otherUser = new User((String) otherUserInfo.get(0),
-                (String) otherUserInfo.get(1),
-                (String) otherUserInfo.get(2),
-                (ArrayList<Double>) otherUserInfo.get(3),
-                (HashMap<String, Object>) otherUserInfo.get(4));
+        UserRequestModel currentUserRequestModel = new csvManager().readCurrentUser();
+        User currentUser = new User(currentUserRequestModel.getUsername(), currentUserRequestModel.getName(), currentUserRequestModel.getPassword(),
+                currentUserRequestModel.getLocation(), currentUserRequestModel.getUserSetting(), currentUserRequestModel.getInterestRank(),
+                currentUserRequestModel.getAreaOfInterest());
+        Map<String, UserRequestModel> userMap = new csvManager().readUser();
+        UserRequestModel requestModel = userMap.get(otherUserUsername);
+        User otherUser = new User(requestModel.getUsername(), requestModel.getName(), requestModel.getPassword(),
+                requestModel.getLocation(), requestModel.getUserSetting(), requestModel.getInterestRank(),
+                requestModel.getAreaOfInterest());
         List<TwoTruthsAndALieGame> gameList = new csvManager().readGames();
         for (TwoTruthsAndALieGame game : gameList) {
             if (game.getPlayers()[0].getUser().compareTo(currentUser) == 0 && game.getPlayers()[1].getUser().compareTo(otherUser) == 0
@@ -35,6 +38,9 @@ public class TwoTruthsAndALieGameManager implements TwoTruthsAndALieGameInputBou
         }
     }
 
+    /**
+     * @return the string representation of the game state
+     */
     public String getGameState() {
         if (findCurrentPlayer().getStatements().isEmpty()) {
             return "entering";
@@ -48,7 +54,7 @@ public class TwoTruthsAndALieGameManager implements TwoTruthsAndALieGameInputBou
     }
 
     /**
-     * Saves the statements that a user has inputted
+     * Saves the statements that a user has inputted into the game entity and the csv file
      */
     public void saveStatements(TwoTruthsAndALieGameRequestModel requestModel) throws IOException {
         TwoTruthsAndALieStatements statements = new TwoTruthsAndALieStatements(
@@ -65,21 +71,6 @@ public class TwoTruthsAndALieGameManager implements TwoTruthsAndALieGameInputBou
                                              this.findOtherPlayer().getUser().getUsername());
     }
 
-    /**
-     * Loads the statements that the other user has inputted
-     * If the other player has no statements, make the presenter display loading status
-     * Otherwise, display the statements to the current player
-     */
-    public TwoTruthsAndALieGameResponseModel loadStatements(TwoTruthsAndALieGameRequestModel requestModel) {
-        TwoTruthsAndALiePlayer player = this.findCurrentPlayer();
-        TwoTruthsAndALieStatements statements = player.getStatements();
-        TwoTruthsAndALieGameResponseModel responseModel = new TwoTruthsAndALieGameResponseModel();
-        responseModel.setTruth1(statements.getTruth1());
-        responseModel.setTruth1(statements.getTruth2());
-        responseModel.setTruth1(statements.getLie());
-        return responseModel;
-    }
-
     public TwoTruthsAndALieGameResponseModel isCorrect(TwoTruthsAndALieGameRequestModel requestModel) {
         TwoTruthsAndALiePlayer otherPlayer = this.findOtherPlayer();
         TwoTruthsAndALieGameResponseModel responseModel = new TwoTruthsAndALieGameResponseModel();
@@ -88,12 +79,16 @@ public class TwoTruthsAndALieGameManager implements TwoTruthsAndALieGameInputBou
     }
 
     /**
-     * A helper method for finding the player entity given the current user and a game
+     * A helper method for generating and returning a player entity representing the current user in the game
      * @return TwoTruthsAndALiePlayer
      */
     public TwoTruthsAndALiePlayer findCurrentPlayer() {
         TwoTruthsAndALiePlayer[] players = this.game.getPlayers();
-        if (players[0].getUser().compareTo(new csvManager().readCurrentUser()) == 0) {
+        UserRequestModel currentUserRequestModel = new csvManager().readCurrentUser();
+        User currentUser = new User(currentUserRequestModel.getUsername(), currentUserRequestModel.getName(), currentUserRequestModel.getPassword(),
+                currentUserRequestModel.getLocation(), currentUserRequestModel.getUserSetting(), currentUserRequestModel.getInterestRank(),
+                currentUserRequestModel.getAreaOfInterest());
+        if (players[0].getUser().compareTo(currentUser) == 0) {
             return players[0];
         }
         else {
@@ -101,9 +96,17 @@ public class TwoTruthsAndALieGameManager implements TwoTruthsAndALieGameInputBou
         }
     }
 
+    /**
+     * A helper method for generating and returning a player entity representing the other user in the game
+     * @return TwoTruthsAndALiePlayer
+     */
     public TwoTruthsAndALiePlayer findOtherPlayer() {
         TwoTruthsAndALiePlayer[] players = this.game.getPlayers();
-        if (players[0].getUser().compareTo(new csvManager().readCurrentUser()) == 0) {
+        UserRequestModel currentUserRequestModel = new csvManager().readCurrentUser();
+        User currentUser = new User(currentUserRequestModel.getUsername(), currentUserRequestModel.getName(), currentUserRequestModel.getPassword(),
+                currentUserRequestModel.getLocation(), currentUserRequestModel.getUserSetting(), currentUserRequestModel.getInterestRank(),
+                currentUserRequestModel.getAreaOfInterest());
+        if (players[0].getUser().compareTo(currentUser) == 0) {
             return players[1];
         }
         else {
@@ -111,6 +114,9 @@ public class TwoTruthsAndALieGameManager implements TwoTruthsAndALieGameInputBou
         }
     }
 
+    /**
+     * Returns the statements that the other player has entered
+     */
     public List<String> getOtherPlayerStatementStrings() {
         TwoTruthsAndALieStatements statements = this.findOtherPlayer().getStatements();
         List<String> statementStrings = new ArrayList<>();

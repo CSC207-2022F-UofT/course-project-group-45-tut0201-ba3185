@@ -1,5 +1,4 @@
 package presenter;
-
 import database.csvManager;
 import gui.TwoTruthsAndALieGamePanelInterface;
 import use_case_two_truths_and_a_lie.TwoTruthsAndALieGameManager;
@@ -11,6 +10,14 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
 
+
+/**
+ * The `TwoTruthsAndALieGamePresenter` class is a concrete implementation of the `TwoTruthsAndALieGameOutputBoundary`
+ * interface. It is a presenter responsible for presenting a game of Two Truths and a Lie to the user.
+ *
+ * @author Eric Xue
+ * @see TwoTruthsAndALieGameOutputBoundary
+ */
 public class TwoTruthsAndALieGamePresenter implements TwoTruthsAndALieGameOutputBoundary {
 
     private TwoTruthsAndALieGamePanelInterface view;

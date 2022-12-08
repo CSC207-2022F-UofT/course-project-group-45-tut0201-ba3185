@@ -4,19 +4,21 @@ import database.csvManager;
 import entity.TwoTruthsAndALieGame;
 import entity.TwoTruthsAndALiePlayer;
 import entity.User;
-import presenter.TwoTruthsAndALiePagePresenter;
 import use_case_signin_signup.UserRequestModel;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 /**
- *  Use Case for Two Truths And A Lie Game Page
- *  Responsible for managing the page of Two Truths and A Lie games, without managing the details of each game
- *  @author  Eric Xue
+ * The `TwoTruthsAndALiePageManager` class is a concrete implementation of the `TwoTruthsAndALiePageInputBoundary`
+ * interface. It is the use case responsible for managing the overall game section of the app, including
+ * creating games and loading all the games for a user.
+ *
+ * @author Eric Xue
+ * @see TwoTruthsAndALieGameInputBoundary
  */
 public class TwoTruthsAndALiePageManager implements TwoTruthsAndALiePageInputBoundary{
 
@@ -26,16 +28,22 @@ public class TwoTruthsAndALiePageManager implements TwoTruthsAndALiePageInputBou
         this.games = new ArrayList<>();
     }
 
+    /**
+     * Creates a single Two Truths And A Lie game, adding it to the list of games and the csv file
+     * @throws IOException
+     */
     public void createGame(TwoTruthsAndALiePageRequestModel requestModel) throws IOException {
 
-        User currentUser = new csvManager().readCurrentUser();
-        HashMap<String, UserRequestModel> userMap = new csvManager().readUser();
-        ArrayList<Object> otherUserInfo = userMap.get(requestModel.getOtherUser()).getInfo();
-        User otherUser = new User((String) otherUserInfo.get(0),
-                                  (String) otherUserInfo.get(1),
-                                  (String) otherUserInfo.get(2),
-                                  (ArrayList<Double>) otherUserInfo.get(3),
-                                  (HashMap<String, Object>) otherUserInfo.get(4));
+        UserRequestModel currentUserRequestModel = new csvManager().readCurrentUser();
+        User currentUser = new User(currentUserRequestModel.getUsername(), currentUserRequestModel.getName(), currentUserRequestModel.getPassword(),
+                currentUserRequestModel.getLocation(), currentUserRequestModel.getUserSetting(), currentUserRequestModel.getInterestRank(),
+                currentUserRequestModel.getAreaOfInterest());
+
+        Map<String, UserRequestModel> userMap = new csvManager().readUser();
+        UserRequestModel otherUserRequestModel = userMap.get(requestModel.getOtherUser());
+        User otherUser = new User(otherUserRequestModel.getUsername(), otherUserRequestModel.getName(), otherUserRequestModel.getPassword(),
+                otherUserRequestModel.getLocation(), otherUserRequestModel.getUserSetting(), otherUserRequestModel.getInterestRank(),
+                otherUserRequestModel.getAreaOfInterest());
 
         // If the other user is already a part of a game that the current user is in, do nothing and return
         for (TwoTruthsAndALieGame game : this.games) {
@@ -53,8 +61,7 @@ public class TwoTruthsAndALiePageManager implements TwoTruthsAndALiePageInputBou
     }
 
     /**
-     * Loads all the games that the current user is a part of
-     * Makes the presenter to show all current games
+     * Loads all the games that the current user is a part of and return them to the presenter
      */
     public TwoTruthsAndALiePageResponseModel loadUserGames() throws IOException {
         List<TwoTruthsAndALieGame> userGames = new ArrayList<>();
@@ -64,7 +71,10 @@ public class TwoTruthsAndALiePageManager implements TwoTruthsAndALiePageInputBou
         for (TwoTruthsAndALieGame game : this.games) {
             TwoTruthsAndALiePlayer[] players = game.getPlayers();
 
-            User currentUser = new csvManager().readCurrentUser();
+            UserRequestModel currentUserRequestModel = new csvManager().readCurrentUser();
+            User currentUser = new User(currentUserRequestModel.getUsername(), currentUserRequestModel.getName(), currentUserRequestModel.getPassword(),
+                    currentUserRequestModel.getLocation(), currentUserRequestModel.getUserSetting(), currentUserRequestModel.getInterestRank(),
+                    currentUserRequestModel.getAreaOfInterest());
             if (players[0].getUser().compareTo(currentUser) == 0 || players[1].getUser().compareTo(currentUser) == 0) {
                 userGames.add(game);
             }
