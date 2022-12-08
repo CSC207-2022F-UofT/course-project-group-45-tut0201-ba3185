@@ -4,7 +4,9 @@ import javax.swing.*;
 import java.awt.*;
 
 public class BlockDialog extends JDialog {
-
+    /**
+     * Creates the pop-up window for block button
+     */
     public BlockDialog(String msg) {
         setVisible(true);
         setBounds(500, 100, 200, 50);
