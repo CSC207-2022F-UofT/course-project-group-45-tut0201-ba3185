@@ -1,8 +1,10 @@
 package gui;
+
 import gui.chat.FrontPagePanel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 
 public class MainPanel extends JPanel {
 
@@ -25,7 +27,11 @@ public class MainPanel extends JPanel {
                     contentPanel.add(new DiscoveryPanel());
                     break;
                 case "gameButton":
-                    contentPanel.add(new GamePanel());
+                    try {
+                        contentPanel.add(new GamePanel());
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
                     break;
                 case "settingsButton":
                     contentPanel.add(new SettingsPanel(frame));

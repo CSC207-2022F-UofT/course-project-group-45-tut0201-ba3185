@@ -3,6 +3,7 @@ import javax.swing.*;
 import controller.userController;
 
 public class MainFrame extends JFrame implements MainFrameInterface {
+
     public static final int PAGE_WIDTH = 414;
     public static final int PAGE_HEIGHT = 736;
 
@@ -14,7 +15,7 @@ public class MainFrame extends JFrame implements MainFrameInterface {
         boolean isLoggedIn = controller.isUserLoggedin();
         System.out.println(isLoggedIn);
         // if user is logged in
-        if (isLoggedIn) {
+        if(isLoggedIn) {
             this.getContentPane().removeAll();
             this.add(new MainPanel(this));
         }
