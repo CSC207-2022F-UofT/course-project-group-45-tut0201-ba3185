@@ -16,7 +16,7 @@ public class MainFrame extends JFrame implements MainFrameInterface {
         // if user is logged in
         if (isLoggedIn) {
             this.getContentPane().removeAll();
-            this.add(new MainPanel());
+            this.add(new MainPanel(this));
         }
         // If user is not logged in
         else {
@@ -44,7 +44,7 @@ public class MainFrame extends JFrame implements MainFrameInterface {
 
     public void switchToMain() {
         this.getContentPane().removeAll();
-        this.add(new MainPanel());
+        this.add(new MainPanel(this));
         this.revalidate();
     }
     public void switchToInitSetup(String username, String name, String password) {

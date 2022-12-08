@@ -6,7 +6,7 @@ import java.awt.*;
 
 public class MainPanel extends JPanel {
 
-    public MainPanel() {
+    public MainPanel(MainFrameInterface frame) {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.setPreferredSize(new Dimension(MainFrame.PAGE_WIDTH, MainFrame.PAGE_HEIGHT / 10 * 9));
         this.setMaximumSize( this.getPreferredSize() );
@@ -18,8 +18,8 @@ public class MainPanel extends JPanel {
         navigationPanel.addActionListener(e -> {
             contentPanel.removeAll();
             switch (e.getActionCommand()) {
-                case "homeButton":
-                    contentPanel.add(new HomePanel());
+                case "frontPageButton":
+                    contentPanel.add(new FrontPagePanel().createFrontPageScreen());
                     break;
                 case "discoveryButton":
                     contentPanel.add(new DiscoveryPanel());
@@ -27,8 +27,8 @@ public class MainPanel extends JPanel {
                 case "gameButton":
                     contentPanel.add(new GamePanel());
                     break;
-                case "frontPageButton":
-                    contentPanel.add(new FrontPagePanel().createFrontPageScreen());
+                case "settingsButton":
+                    contentPanel.add(new SettingsPanel(frame));
                     break;
             }
             contentPanel.revalidate();

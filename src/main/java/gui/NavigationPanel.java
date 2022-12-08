@@ -16,11 +16,11 @@ public class NavigationPanel extends JPanel {
 
         this.actionListeners = new ArrayList<>();
 
-        JButton homeButton = new JButton(new ImageIcon("images/navbar_home.png"));
+        JButton homeButton = new JButton(new ImageIcon("images/navbar_chat.jpg"));
         homeButton.setOpaque(false);
         homeButton.setContentAreaFilled(false);
         homeButton.setFocusPainted(false);
-        homeButton.setActionCommand("homeButton");
+        homeButton.setActionCommand("frontPageButton");
         homeButton.addActionListener(e -> {
             for(ActionListener listener: actionListeners){
                 listener.actionPerformed(e);
@@ -52,11 +52,11 @@ public class NavigationPanel extends JPanel {
         });
         this.add(gameButton);
 
-        JButton settingsButton = new JButton(new ImageIcon("images/navbar_chat.jpg"));
+        JButton settingsButton = new JButton(new ImageIcon("images/navbar_settings.png"));
         settingsButton.setOpaque(false);
         settingsButton.setContentAreaFilled(false);
         settingsButton.setFocusPainted(false);
-        settingsButton.setActionCommand("frontPageButton");
+        settingsButton.setActionCommand("settingsButton");
         settingsButton.addActionListener(e -> {
             for(ActionListener listener: actionListeners){
                 listener.actionPerformed(e);
