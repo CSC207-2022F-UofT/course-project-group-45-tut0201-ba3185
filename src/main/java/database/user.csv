@@ -1,5 +1,5 @@
 id,username,name,password,gender,age,income,pet,maritalStatus,relationshipType,sexualOrientation,interestRank,areaOfInterest,locationX,locationY
-0,heyy,heyy,heyy,male,14,20,yes,single,friend,male,income/age/marital status/interests/pet/relationship type,sport,1.0,1.0
+0,sunny,sunny,sunny,male,124124,124124,yes,single,friend,male,income/age/marital status/interests/relationship type/pet,sport,1.0,1.0
 1,author,author,author,male,18,17,yes,single,friend,male,income/age/marital status/interests/relationship type/pet,movie,1.0,1.0
 2,ben,ben,ben,male,21,30,no,married,one-night,male,pet/relationship type/interests/marital status/age/income,read,1.0,1.0
 3,chen,chen,chen,male,23,80,yes,single,long-term,male,income/age/marital status/interests/relationship type/pet,cook,1.0,1.0
@@ -29,3 +29,5 @@ id,username,name,password,gender,age,income,pet,maritalStatus,relationshipType,s
 27,yoyo,yoyo,yoyo,female,23,30,no,single,long-term,male,pet/age/income/marital status/interests/relationship type,music,1.0,1.0
 28,jessie,jessie,jessie,female,18,9,no,single,one-night,male,pet/age/income/marital status/interests/relationship type,art,1.0,1.0
 29,jenny,jenny,jenny,female,22,23,no,married,long-term,female,pet/age/income/marital status/interests/relationship type,music,1.0,1.0
+30,heyy,heyy,heyy,male,14,20,yes,single,friend,male,income/age/marital status/interests/pet/relationship type,sport,1.0,1.0
+31,hicks,hicks,hicks,female,14,20,yes,single,friend,male,income/age/marital status/interests/pet/relationship type,sport,1.0,1.0

@@ -17,6 +17,7 @@ import java.util.Map;
 public class GenderInteractor extends csvInteractor {
     csvInterface manager = new csvManager();
     String cSexualOrientation = (String)manager.readCurrentUser().getUserSetting().get("sexualOrientation");
+    String cUsername = manager.readCurrentUser().getUsername();
 
     public GenderInteractor(){}
     public List<String> getList(){
@@ -35,9 +36,9 @@ public class GenderInteractor extends csvInteractor {
         if (cSexualOrientation.equals("bisexual")){
             resUserNames.addAll(super.otherUsersInfo.keySet());
         }
+        resUserNames.remove(cUsername);
         return resUserNames;
     }
 }
-
 
 
