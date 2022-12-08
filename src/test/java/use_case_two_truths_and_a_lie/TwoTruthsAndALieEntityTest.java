@@ -1,4 +1,5 @@
 package use_case_two_truths_and_a_lie;
+import database.csvManager;
 import entity.TwoTruthsAndALieGame;
 import entity.TwoTruthsAndALiePlayer;
 import entity.TwoTruthsAndALieStatements;
@@ -7,6 +8,7 @@ import entity.User;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
+import use_case_signin_signup.UserRequestModel;
 
 public class TwoTruthsAndALieEntityTest {
 
@@ -17,8 +19,14 @@ public class TwoTruthsAndALieEntityTest {
 
     @BeforeEach
     void constructor() {
-        this.player1 = new TwoTruthsAndALiePlayer(new User());
-        this.player2 = new TwoTruthsAndALiePlayer(new User());
+
+        UserRequestModel userInfo = new csvManager().readCurrentUser();
+        this.player1 = new TwoTruthsAndALiePlayer(new User(userInfo.getUsername(), userInfo.getName(), userInfo.getPassword(),
+                                                            userInfo.getLocation(), userInfo.getUserSetting(), userInfo.getInterestRank(),
+                                                            userInfo.getAreaOfInterest()));
+        this.player1 = new TwoTruthsAndALiePlayer(new User("bob", "bob", "bob",
+                userInfo.getLocation(), userInfo.getUserSetting(), userInfo.getInterestRank(),
+                userInfo.getAreaOfInterest()));
         this.game = new TwoTruthsAndALieGame(player1, player2);
     }
     

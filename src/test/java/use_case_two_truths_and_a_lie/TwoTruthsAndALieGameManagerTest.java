@@ -1,40 +1,21 @@
 package use_case_two_truths_and_a_lie;
-import entity.TwoTruthsAndALieGame;
-import entity.TwoTruthsAndALiePlayer;
-import entity.User;
-import presenter.TwoTruthsAndALieGamePresenter;
-
-import org.junit.jupiter.api.Assertions;
+import database.csvManager;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.BeforeEach;
-import presenter.TwoTruthsAndALiePagePresenter;
+import use_case_signin_signup.UserRequestModel;
 
+import java.io.IOException;
 
 public class TwoTruthsAndALieGameManagerTest {
-
     private TwoTruthsAndALieGameManager gameManager;
     private TwoTruthsAndALiePageManager pageManager;
-    private User currentUser;
-
-    @BeforeEach
-    public void createManagerAndGame() {
-        // this.gameManager = new TwoTruthsAndALieGameManager();
-        this.pageManager = new TwoTruthsAndALiePageManager();
-        // this.pageManager.createGame();
-    }
 
     @Test
-    void findPlayerTest() {
-
-        TwoTruthsAndALieGameRequestModel requestModel = new TwoTruthsAndALieGameRequestModel();
-
-        TwoTruthsAndALieGame game = this.pageManager.getGames().get(0);
-
-        requestModel.setGame(game);
-        requestModel.setCurrentUser(this.currentUser);
-
-        TwoTruthsAndALiePlayer player = this.gameManager.findCurrentPlayer();
-
-        Assertions.assertTrue(game.getPlayers()[0] == player || game.getPlayers()[1] == player);
+    public void createManagerAndGame() throws IOException {
+        this.gameManager = new TwoTruthsAndALieGameManager("sunny");
+        this.pageManager = new TwoTruthsAndALiePageManager();
+        TwoTruthsAndALiePageRequestModel requestModel = new TwoTruthsAndALiePageRequestModel();
+        UserRequestModel userInfo = new csvManager().readCurrentUser();
+        requestModel.setOtherUser(userInfo.getUsername());
+        this.pageManager.createGame(requestModel);
     }
 }
