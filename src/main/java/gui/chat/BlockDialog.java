@@ -1,4 +1,4 @@
-package screens;
+package gui.chat;
 
 import javax.swing.*;
 import java.awt.*;
