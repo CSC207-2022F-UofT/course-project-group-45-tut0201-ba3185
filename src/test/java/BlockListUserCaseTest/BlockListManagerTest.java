@@ -27,6 +27,7 @@ public class BlockListManagerTest {
     @Test
     public void testcheck(){
         BlockListManager blockListManager = new BlockListManager();
+        User buser = new User("cam2", "cam2", "123");
         blockListManager.checkBlockList(buser);
     }
 }
