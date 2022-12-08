@@ -2,6 +2,7 @@ package gui.discovery;
 
 import controller.UserInfoController;
 import gui.MainFrame;
+import gui.chat.ChatScreen;
 import use_case_discovery.UserInfoInputBoundary;
 import use_case_discovery.UserInfoInteractor;
 import use_case_discovery.UserInfoInterface;
@@ -59,6 +60,10 @@ public class UserInfo implements ActionListener {
             this.add(new JLabel("This is the info page of " + this.pName));
             JButton chat = new JButton("Chat");
             this.add(chat);
+            chat.addActionListener(e -> {
+                ChatScreen c = new ChatScreen(this.pName);
+                c.create();
+            });
             this.setLayout(new FlowLayout(FlowLayout.CENTER));
             this.add(new JLabel("My name is " + dModel.getName()));
             this.add(new JLabel("My age is " + dModel.getAge()));
