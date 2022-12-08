@@ -1,4 +1,4 @@
-package screens;
+package gui.chat;
 
 import controller.MessageController;
 import gui.MainFrame;

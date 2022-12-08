@@ -46,7 +46,6 @@ public class UserUseCase {
                            Map<String, Object> userSetting, List<String> interestRank, String areaOfInterest) {
 
         User currentUser = new User(name,username,password, location, userSetting, interestRank, areaOfInterest);
-        System.out.println(username);
         if(!userExists(username)) {
             userMap.put(currentUser.getUsername(), currentUser);
             return true;

@@ -7,7 +7,6 @@ public class FrontPageController {
     /**
      * The controller of frontpage that converts the request of refreshing the front page
      * to a request model and passes it to the interactor
-     *
      */
     final FrontPageInputBoundary frontPageInputBoundary;
 

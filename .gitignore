@@ -115,3 +115,8 @@ gradle-app.setting
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
+/.idea/.gitignore
+/.idea/misc.xml
+/.idea/vcs.xml
+/src/main/java/database/MessageManagers.ser
+/.idea/codeStyles/codeStyleConfig.xml

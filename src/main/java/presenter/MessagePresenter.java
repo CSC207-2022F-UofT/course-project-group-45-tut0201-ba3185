@@ -1,6 +1,6 @@
 package presenter;
 
-import screens.ChatScreenInterface;
+import gui.chat.ChatScreenInterface;
 import use_case_message.MessageOutputBoundary;
 import use_case_message.MessageResponseModel;
 
@@ -18,12 +18,12 @@ public class MessagePresenter implements MessageOutputBoundary {
         this.cs = cs;
     }
 
+    /**
+     * Show all the past chat history on the screen from the response model provided
+     * by the interactor.
+     */
     @Override
     public void create(MessageResponseModel responseModel) {
-        /*
-         * Show all the past chat history on the screen from the response model provided
-         * by the interactor.
-         */
         LinkedHashMap<String, String> content = responseModel.getChatHistory().getContent();
 
         ArrayList<String> messages = new ArrayList<>();
@@ -37,11 +37,11 @@ public class MessagePresenter implements MessageOutputBoundary {
         } //load all chatHistory into UI
     }
 
+    /**
+     * Show the new message sent by one user on the screen from the response model provided
+     * by the interactor.
+     */
     public void update(MessageResponseModel responseModel) {
-        /*
-         * Show the new message sent by one user on the screen from the response model provided
-         * by the interactor.
-         */
         LinkedHashMap<String, String> content = responseModel.getChatHistory().getContent();
 
         ArrayList<String> lKeys = new ArrayList<>(content.keySet());
