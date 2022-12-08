@@ -32,6 +32,10 @@ public class MessageDataManager implements serInterface {
      * @return the MessageManagers stored in the file
      */
     public MessageManagers readMM(){
+        File f = new File(messagePath);
+        if (!f.exists()){
+            return new MessageManagers();
+        }
         try {
             ObjectInputStream input = new ObjectInputStream(
                     new FileInputStream(messagePath));

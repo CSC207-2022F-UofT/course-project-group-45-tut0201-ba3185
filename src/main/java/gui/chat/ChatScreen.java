@@ -57,7 +57,7 @@ public class ChatScreen extends JFrame implements ActionListener,ChatScreenInter
 
              //the place it shows chatHistory
         messageDisplayBox.setBackground(new Color(246, 167, 232));
-        messageDisplayBox.setPreferredSize(new Dimension(400, 300));
+        //messageDisplayBox.setPreferredSize(new Dimension(400, 300));
         messageDisplayBox.setLayout(new GridLayout(0, 1));
 
         controller.create(targetUserId);
@@ -129,6 +129,8 @@ public class ChatScreen extends JFrame implements ActionListener,ChatScreenInter
 
     public void loadChat(String msg){
         JLabel msgValue = new JLabel(msg, SwingConstants.LEFT);
+        msgValue.setFont(new java.awt.Font("Times New Roman", 1, 13));
+        msgValue.setSize(400, 20);
         messageDisplayBox.add(msgValue);
         this.setVisible(true);
     }

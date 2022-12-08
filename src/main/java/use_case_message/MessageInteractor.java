@@ -22,8 +22,6 @@ public class MessageInteractor implements MessageInputBoundary {
         if (messageDataManager.readMM() != null){
             messageManagers = messageDataManager.readMM();
         }
-        // This will throw an error at the very first time running the program since there is no such
-        // file at first.
         this.messageOutputBoundary = messageOutputBoundary;
         this.chatFactory = chatFactory;
     }
