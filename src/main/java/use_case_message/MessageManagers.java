@@ -27,7 +27,7 @@ public class MessageManagers implements Serializable {
                 userChatted.add(mm.getUser2());
             }
             else if(user.equals(mm.getUser2())){
-                userChatted.add(mm.getUser2());
+                userChatted.add(mm.getUser1());
             }
         }
         return userChatted;
