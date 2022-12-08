@@ -10,7 +10,6 @@ public class Block {
      * currName: A String of the name of current user. ,
      * blockName: A String of the name of the user that current user want to block.
      */
-
     private String currName;
     private String blockName;
 
