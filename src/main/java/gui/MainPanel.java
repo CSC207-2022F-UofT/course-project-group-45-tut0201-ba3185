@@ -1,6 +1,4 @@
 package gui;
-import gui.chat.FrontPagePanel;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -18,8 +16,8 @@ public class MainPanel extends JPanel {
         navigationPanel.addActionListener(e -> {
             contentPanel.removeAll();
             switch (e.getActionCommand()) {
-                case "frontPageButton":
-                    contentPanel.add(new FrontPagePanel().createFrontPageScreen());
+                case "homeButton":
+                    contentPanel.add(new HomePanel());
                     break;
                 case "discoveryButton":
                     contentPanel.add(new DiscoveryPanel());
