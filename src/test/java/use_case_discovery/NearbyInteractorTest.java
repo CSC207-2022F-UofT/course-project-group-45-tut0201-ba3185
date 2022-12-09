@@ -1,9 +1,13 @@
 package use_case_discovery;
 
+import database.csvManager;
 import gui.discovery.UsersBtnPanel;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.*;
 
 public class NearbyInteractorTest {
     // To test the use case:
@@ -19,6 +23,20 @@ public class NearbyInteractorTest {
     DiscoveryListInterface presenter = new UsersBtnPanel();
     @BeforeEach
     public void setUp(){
+        csvManager manager = new csvManager();
+        List<Double> location = new ArrayList<>(Arrays.asList(-79.39653244306562,43.66082236600782));
+        List<String> interestRank = new ArrayList<>(Arrays.asList("income", "age", "marital status",
+                "interests", "relationship type", "pet"));
+        Map<String, Object> userInfo = new HashMap<>();
+        userInfo.put("gender", "male");
+        userInfo.put("income", 124124);
+        userInfo.put("age", 124124);
+        userInfo.put("maritalStatus", "single");
+        userInfo.put("relationshipType", "friend");
+        userInfo.put("pet", "yes");
+        userInfo.put("sexualOrientation", "male");
+        manager.writeCurrentUser("sunny", "sunny", "sunny", location, userInfo, interestRank,
+                "sport");
         ni = new NearbyInteractor(presenter);
     }
     @Test
@@ -41,6 +59,12 @@ public class NearbyInteractorTest {
         Assertions.assertEquals("henry", drm.getUserName13());
         Assertions.assertEquals("oliver", drm.getUserName14());
         Assertions.assertEquals("finch", drm.getUserName15());
+    }
+
+    @AfterAll
+    public static void cleanup() {
+        csvManager manager = new csvManager();
+        manager.logoutUser();
     }
 }
 
