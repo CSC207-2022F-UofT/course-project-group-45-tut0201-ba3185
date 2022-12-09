@@ -9,7 +9,6 @@ import entity.TwoTruthsAndALieGame;
  */
 public class TwoTruthsAndALieGameRequestModel {
     private TwoTruthsAndALieGame game;
-    private User currentUser;
     private User otherUser;
     private String truth1;
     private String truth2;
@@ -23,10 +22,6 @@ public class TwoTruthsAndALieGameRequestModel {
 
     public void setGame(TwoTruthsAndALieGame game) {
         this.game = game;
-    }
-
-    public void setCurrentUser(User currentUser) {
-        this.currentUser = currentUser;
     }
 
     public User getOtherUser() {

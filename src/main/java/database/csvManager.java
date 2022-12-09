@@ -321,7 +321,7 @@ public class csvManager implements csvInterface {
      * Writes a list of Two Truths And A Lie game entity to the end of the csv
      * Extracted from writeGameStatements and deleteGames
      */
-    private void writeGames(List<TwoTruthsAndALieGame> gameList) {
+    public void writeGames(List<TwoTruthsAndALieGame> gameList) {
         ArrayList<String> headers = new ArrayList<>(Arrays.asList(
                 "user1_username", "user1_truth1", "user1_truth2", "user1_lie",
                 "user2_username", "user2_truth1", "user2_truth2", "user2_lie"));

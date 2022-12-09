@@ -20,8 +20,8 @@ import java.util.Objects;
  */
 public class TwoTruthsAndALieGamePresenter implements TwoTruthsAndALieGameOutputBoundary {
 
-    private TwoTruthsAndALieGamePanelInterface view;
-    private TwoTruthsAndALieGameManager manager;
+    private final TwoTruthsAndALieGamePanelInterface view;
+    private final TwoTruthsAndALieGameManager manager;
 
     public TwoTruthsAndALieGamePresenter(TwoTruthsAndALieGamePanelInterface view, String otherUser) throws IOException {
         this.view = view;
