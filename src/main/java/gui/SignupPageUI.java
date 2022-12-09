@@ -11,41 +11,38 @@ import static javax.swing.SpringLayout.*;
 
 public class SignupPageUI extends JPanel {
 
-    private static final int PAGE_WIDTH = MainFrame.PAGE_WIDTH;
-    private static final int PAGE_HEIGHT = MainFrame.PAGE_HEIGHT;
-
     public SignupPageUI(MainFrameInterface frame) {
 
         // Setup basic Frame structure
-        this.setSize(PAGE_WIDTH, PAGE_HEIGHT);
+        this.setSize(MainFrame.PAGE_WIDTH, MainFrame.PAGE_HEIGHT);
         JPanel parentPanel = new JPanel(new SpringLayout());
-        parentPanel.setPreferredSize(new Dimension(PAGE_WIDTH,PAGE_HEIGHT));
+        parentPanel.setPreferredSize(new Dimension(MainFrame.PAGE_WIDTH,MainFrame.PAGE_HEIGHT));
         SpringLayout parentLayout = (SpringLayout) parentPanel.getLayout();
 
         // add textFields
         JLabel username = new JLabel("Username:", JLabel.TRAILING);
         JTextField usernameTextField = new JTextField(10);
-        usernameTextField.setMaximumSize(new Dimension(PAGE_WIDTH-20, 20));
+        usernameTextField.setMaximumSize(new Dimension(MainFrame.PAGE_WIDTH-20, 20));
         username.setLabelFor(usernameTextField);
 
         JLabel name = new JLabel("Name:", JLabel.TRAILING);
         JTextField nameTextField = new JTextField(10);
-        nameTextField.setMaximumSize(new Dimension(PAGE_WIDTH-20, 20));
+        nameTextField.setMaximumSize(new Dimension(MainFrame.PAGE_WIDTH-20, 20));
         name.setLabelFor(nameTextField);
 
         JLabel password = new JLabel("Password:", JLabel.TRAILING);
         JPasswordField passwordField = new JPasswordField(10);
-        passwordField.setMaximumSize(new Dimension(PAGE_WIDTH-20, 20));
+        passwordField.setMaximumSize(new Dimension(MainFrame.PAGE_WIDTH-20, 20));
         password.setLabelFor(passwordField);
 
         JLabel passwordConfirm = new JLabel("Confirm Password:", JLabel.TRAILING);
         JPasswordField confirmPasswordField = new JPasswordField(10);
-        confirmPasswordField.setMaximumSize(new Dimension(PAGE_WIDTH-20, 20));
+        confirmPasswordField.setMaximumSize(new Dimension(MainFrame.PAGE_WIDTH-20, 20));
         passwordConfirm.setLabelFor(confirmPasswordField);
 
         // Populate the fieldPanel
         JPanel fieldPanel = new JPanel(new SpringLayout());
-        fieldPanel.setPreferredSize(new Dimension((int) (PAGE_WIDTH/1.6),PAGE_HEIGHT/3));
+        fieldPanel.setPreferredSize(new Dimension((int) (MainFrame.PAGE_WIDTH/1.6),MainFrame.PAGE_HEIGHT/3));
 
         fieldPanel.add(usernameTextField);
         fieldPanel.add(nameTextField);
@@ -84,7 +81,7 @@ public class SignupPageUI extends JPanel {
 
         // Creating TextPanel
         JPanel textPanel = new JPanel(new SpringLayout());
-        textPanel.setPreferredSize(new Dimension(PAGE_WIDTH,100));
+        textPanel.setPreferredSize(new Dimension(MainFrame.PAGE_WIDTH,100));
         SpringLayout textLayout = (SpringLayout) textPanel.getLayout();
 
         // Creating text and populating textPanel
@@ -98,14 +95,14 @@ public class SignupPageUI extends JPanel {
         // Creat buttonPanel
         JPanel buttonPanel = new JPanel(new SpringLayout());
         SpringLayout buttonLayout = (SpringLayout) buttonPanel.getLayout();
-        buttonPanel.setPreferredSize(new Dimension(PAGE_WIDTH, 200));
+        buttonPanel.setPreferredSize(new Dimension(MainFrame.PAGE_WIDTH, 200));
 
         // Creating the Buttons
         JButton SignupButton = new JButton("Signup");
         JButton switchView = new JButton("Login");
-        SignupButton.setPreferredSize(new Dimension(PAGE_WIDTH/2,40));
+        SignupButton.setPreferredSize(new Dimension(MainFrame.PAGE_WIDTH/2,40));
         SignupButton.setForeground(new Color(144, 238, 144));
-        switchView.setPreferredSize(new Dimension(PAGE_WIDTH/2, 40));
+        switchView.setPreferredSize(new Dimension(MainFrame.PAGE_WIDTH/2, 40));
         buttonPanel.add(SignupButton);
         buttonPanel.add(switchView);
 
@@ -117,7 +114,7 @@ public class SignupPageUI extends JPanel {
         // Parent Panel Layout
         parentLayout.putConstraint(SOUTH, buttonPanel, 0, SOUTH, this);
         parentLayout.putConstraint(HORIZONTAL_CENTER, fieldPanel, 0, HORIZONTAL_CENTER, this);
-        parentLayout.putConstraint(NORTH, fieldPanel, PAGE_HEIGHT/3, NORTH, this);
+        parentLayout.putConstraint(NORTH, fieldPanel, MainFrame.PAGE_HEIGHT/3, NORTH, this);
         parentLayout.putConstraint(NORTH, textPanel, 80, NORTH, this);
 
         parentPanel.add(fieldPanel);
