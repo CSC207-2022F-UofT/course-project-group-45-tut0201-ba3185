@@ -29,7 +29,10 @@ public class FrontPageUnitTest {
 
     @Test
     void create(){
-        FrontPageOutputBoundary frontPageOutputBoundary = responseModel -> Assertions.assertFalse(responseModel.getTargetUsers().contains("Jenny"));
+
+        FrontPageOutputBoundary frontPageOutputBoundary = responseModel ->
+                Assertions.assertFalse(responseModel.getTargetUsers().contains("Jenny"));
+
         FrontPageInteractor interactor = new FrontPageInteractor(frontPageOutputBoundary);
         FrontPageRequestModel requestModel = new FrontPageRequestModel();
         interactor.create(requestModel);
