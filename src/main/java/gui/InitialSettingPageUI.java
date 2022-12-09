@@ -121,6 +121,10 @@ public class InitialSettingPageUI extends JPanel {
 
                 try {
                     String[] tmp = currentLocation.split(",");
+                    if(tmp.length != 2) {
+                        JOptionPane.showMessageDialog(null, "Please enter the location as: " +
+                            "Longitude, Latitude");
+                    }
                     ArrayList<Double> currentLocationSplit = new ArrayList<>();
                     currentLocationSplit.add(Double.valueOf(tmp[0]));
                     currentLocationSplit.add(Double.valueOf(tmp[1]));
