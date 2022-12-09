@@ -1,5 +1,4 @@
 package use_case_two_truths_and_a_lie;
-import gui.game.TwoTruthsAndALiePagePanelInterface;
 
 /**
  *  Request Model for Two Truths And A Lie Page
@@ -8,8 +7,6 @@ import gui.game.TwoTruthsAndALiePagePanelInterface;
  */
 public class TwoTruthsAndALiePageRequestModel {
     private String otherUser;
-
-    private TwoTruthsAndALiePagePanelInterface panel;
 
     public String getOtherUser() {
         return otherUser;

@@ -1,9 +1,7 @@
 package use_case_two_truths_and_a_lie;
 import database.csvManager;
 import entity.TwoTruthsAndALieGame;
-import entity.TwoTruthsAndALiePlayer;
-import entity.User;
-import presenter.TwoTruthsAndALiePagePresenter;
+import org.junit.jupiter.api.AfterEach;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -16,10 +14,12 @@ import java.util.List;
 
 public class TwoTruthsAndALiePageManagerTest {
     private TwoTruthsAndALiePageManager manager;
+    private List<TwoTruthsAndALieGame> gameList;
 
     @BeforeEach
-    public void createManager() {
+    public void initializeTest() throws IOException {
         this.manager = new TwoTruthsAndALiePageManager();
+        this.gameList = new csvManager().readGames();
     }
 
     @Test
@@ -34,5 +34,8 @@ public class TwoTruthsAndALiePageManagerTest {
         Assertions.assertEquals(previousSize + 1, this.manager.getGames().size());
     }
 
-
+    @AfterEach
+    void restoreDatabase() {
+        new csvManager().writeGames(this.gameList);
+    }
 }
