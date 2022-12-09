@@ -1,7 +1,12 @@
-package use_case.discovery;
+package use_case.discovery.peference;
 
 import database.csvInterface;
 import database.csvManager;
+import use_case.discovery.GenderInteractor;
+import use_case.discovery.PreferenceScoreCalculator;
+import use_case.discovery.ScoreCalculator;
+import use_case.discovery.ScoreHelper;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

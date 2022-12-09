@@ -1,4 +1,4 @@
-package use_case.discovery;
+package use_case.discovery.search;
 
 /**
  * This is the response model that store the questions generated from the searchAnswerInteractor

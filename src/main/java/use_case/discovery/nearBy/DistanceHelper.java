@@ -1,4 +1,4 @@
-package use_case.discovery;
+package use_case.discovery.nearBy;
 
 import java.util.List;
 

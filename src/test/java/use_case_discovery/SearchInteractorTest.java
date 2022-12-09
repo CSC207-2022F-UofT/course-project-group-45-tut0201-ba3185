@@ -8,8 +8,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import use_case.discovery.DiscoveryListInterface;
 import use_case.discovery.DiscoveryResponseModel;
-import use_case.discovery.SearchAnswerRequestModel;
-import use_case.discovery.SearchInteractor;
+import use_case.discovery.search.SearchAnswerRequestModel;
+import use_case.discovery.search.SearchInteractor;
 
 import java.util.*;
 

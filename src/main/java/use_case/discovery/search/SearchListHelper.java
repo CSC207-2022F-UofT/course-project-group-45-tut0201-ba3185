@@ -1,5 +1,11 @@
-package use_case.discovery;
+package use_case.discovery.search;
 
+
+import use_case.discovery.GenderInteractor;
+import use_case.discovery.ScoreHelper;
+import use_case.discovery.SearchScoreCalculator;
+import use_case.discovery.search.SearchAnswerConverter;
+import use_case.discovery.search.SearchAnswerRequestModel;
 
 import java.util.HashMap;
 import java.util.List;

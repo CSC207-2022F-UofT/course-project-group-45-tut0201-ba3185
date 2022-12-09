@@ -1,5 +1,7 @@
-package use_case.discovery;
+package use_case.discovery.search;
 
+
+import use_case.discovery.search.SearchAskResponseModel;
 
 /**
  * Interface for the search question UI

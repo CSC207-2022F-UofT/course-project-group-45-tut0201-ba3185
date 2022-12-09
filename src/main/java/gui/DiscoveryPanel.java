@@ -4,9 +4,9 @@ import gui.discovery.SearchQuestionPanel;
 import gui.discovery.UsersBtnPanel;
 import use_case.discovery.DiscoveryInputBoundary;
 import controller.DiscoveryController;
-import use_case.discovery.NearbyInteractor;
-import use_case.discovery.PreferenceInteractor;
-import use_case.discovery.SearchAskerInteractor;
+import use_case.discovery.nearBy.NearbyInteractor;
+import use_case.discovery.peference.PreferenceInteractor;
+import use_case.discovery.search.SearchAskerInteractor;
 
 import javax.swing.*;
 import java.awt.*;

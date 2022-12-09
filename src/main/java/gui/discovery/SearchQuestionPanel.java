@@ -1,10 +1,10 @@
 package gui.discovery;
 
 import controller.SearchController;
-import use_case.discovery.SearchAskResponseModel;
-import use_case.discovery.SearchInputBoundary;
-import use_case.discovery.SearchInteractor;
-import use_case.discovery.SearchQuestionInterface;
+import use_case.discovery.search.SearchAskResponseModel;
+import use_case.discovery.search.SearchInputBoundary;
+import use_case.discovery.search.SearchInteractor;
+import use_case.discovery.search.SearchQuestionInterface;
 
 import javax.swing.*;
 import java.awt.*;

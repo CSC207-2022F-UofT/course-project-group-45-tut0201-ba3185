@@ -1,8 +1,10 @@
-package use_case.discovery;
+package use_case.discovery.nearBy;
 
 
 import database.csvInterface;
 import database.csvManager;
+import use_case.discovery.GenderInteractor;
+import use_case.discovery.LocationScoreCalculator;
 import use_case.signin_signup.UserRequestModel;
 
 import java.io.IOException;

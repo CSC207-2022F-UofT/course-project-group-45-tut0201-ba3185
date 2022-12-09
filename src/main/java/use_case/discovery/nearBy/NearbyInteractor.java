@@ -1,5 +1,10 @@
-package use_case.discovery;
+package use_case.discovery.nearBy;
 
+
+import use_case.discovery.DiscoveryInputBoundary;
+import use_case.discovery.DiscoveryListInterface;
+import use_case.discovery.DiscoveryResponseModel;
+import use_case.discovery.nearBy.GetNearbyUserHelper;
 
 public class NearbyInteractor implements DiscoveryInputBoundary {
     private final DiscoveryListInterface presenter;

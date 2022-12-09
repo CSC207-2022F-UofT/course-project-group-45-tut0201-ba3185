@@ -1,4 +1,4 @@
-package use_case.discovery;
+package use_case.discovery.search;
 
 /**
  * This is the requestModel that stores user's answer to each question.

@@ -1,4 +1,7 @@
-package use_case.discovery;
+package use_case.discovery.search;
+
+import use_case.discovery.DiscoveryListInterface;
+import use_case.discovery.DiscoveryResponseModel;
 
 import java.util.List;
 

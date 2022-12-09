@@ -1,4 +1,8 @@
-package use_case.discovery;
+package use_case.discovery.peference;
+
+import use_case.discovery.DiscoveryInputBoundary;
+import use_case.discovery.DiscoveryListInterface;
+import use_case.discovery.DiscoveryResponseModel;
 
 /**
  * PreferenceFinder help find other users that also rank the interest

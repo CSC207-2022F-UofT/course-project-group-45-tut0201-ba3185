@@ -1,4 +1,4 @@
-package use_case.discovery;
+package use_case.discovery.search;
 
 import java.util.HashMap;
 import java.util.Map;

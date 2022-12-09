@@ -5,8 +5,8 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import use_case.discovery.SearchAnswerRequestModel;
-import use_case.discovery.SearchListHelper;
+import use_case.discovery.search.SearchAnswerRequestModel;
+import use_case.discovery.search.SearchListHelper;
 
 import java.util.*;
 

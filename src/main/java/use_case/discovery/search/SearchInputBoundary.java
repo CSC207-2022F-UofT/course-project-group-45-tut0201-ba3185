@@ -1,4 +1,6 @@
-package use_case.discovery;
+package use_case.discovery.search;
+
+import use_case.discovery.search.SearchAnswerRequestModel;
 
 public interface SearchInputBoundary {
 
