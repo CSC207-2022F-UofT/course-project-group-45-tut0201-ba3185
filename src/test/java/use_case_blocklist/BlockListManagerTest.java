@@ -2,7 +2,7 @@ package use_case_blocklist;
 
 import controller.BlockListController;
 import entity.User;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class BlockListManagerTest {
 
@@ -15,7 +15,7 @@ public class BlockListManagerTest {
     }
 
 
-    @Test
+    @org.junit.jupiter.api.Test
     public void testremove(){
         BlockListManager blockListManager = new BlockListManager();
         User buser = new User("cam2", "cam2", "123");
@@ -23,7 +23,7 @@ public class BlockListManagerTest {
         controller.removeBlockList(buser);
     }
 
-    @Test
+    @org.junit.jupiter.api.Test
     public void testcheck(){
         BlockListManager blockListManager = new BlockListManager();
         User buser = new User("cam2", "cam2", "123");
