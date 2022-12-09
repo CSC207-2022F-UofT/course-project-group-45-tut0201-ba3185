@@ -12,29 +12,28 @@ import static javax.swing.SpringLayout.*;
  * UI class for the loginPage
  */
 public class LoginPageUI extends JPanel {
-    public static final int PAGE_HEIGHT = 736;
-    public static final int PAGE_WIDTH = 414;
+
     public LoginPageUI(MainFrameInterface frame) {
-        this.setSize(PAGE_WIDTH, PAGE_HEIGHT);
+        this.setSize(MainFrame.PAGE_WIDTH, MainFrame.PAGE_HEIGHT);
 
         JPanel parentPanel = new JPanel(new SpringLayout());
-        parentPanel.setPreferredSize(new Dimension(PAGE_WIDTH,PAGE_HEIGHT));
+        parentPanel.setPreferredSize(new Dimension(MainFrame.PAGE_WIDTH,MainFrame.PAGE_HEIGHT));
         SpringLayout parentLayout = (SpringLayout) parentPanel.getLayout();
 
         // add textFields
         JLabel username = new JLabel("Username:", JLabel.TRAILING);
         JTextField usernameTextField = new JTextField(10);
-        usernameTextField.setMaximumSize(new Dimension(PAGE_WIDTH-20, 20));
+        usernameTextField.setMaximumSize(new Dimension(MainFrame.PAGE_WIDTH-20, 20));
         username.setLabelFor(usernameTextField);
 
         JLabel password = new JLabel("Password:", JLabel.TRAILING);
         JPasswordField passwordField = new JPasswordField(10);
-        passwordField.setMaximumSize(new Dimension(PAGE_WIDTH-20, 20));
+        passwordField.setMaximumSize(new Dimension(MainFrame.PAGE_WIDTH-20, 20));
         password.setLabelFor(passwordField);
 
         // Populate the fieldPanel
         JPanel fieldPanel = new JPanel(new SpringLayout());
-        fieldPanel.setPreferredSize(new Dimension(PAGE_WIDTH/2,PAGE_HEIGHT/5));
+        fieldPanel.setPreferredSize(new Dimension(MainFrame.PAGE_WIDTH/2,MainFrame.PAGE_HEIGHT/5));
 
         fieldPanel.add(usernameTextField);
         fieldPanel.add(passwordField);
@@ -61,7 +60,7 @@ public class LoginPageUI extends JPanel {
 
         // Creating TextPanel
         JPanel textPanel = new JPanel(new SpringLayout());
-        textPanel.setPreferredSize(new Dimension(PAGE_WIDTH,100));
+        textPanel.setPreferredSize(new Dimension(MainFrame.PAGE_WIDTH,100));
         SpringLayout textLayout = (SpringLayout) textPanel.getLayout();
 
         // Creating text and populating textPanel
@@ -75,14 +74,14 @@ public class LoginPageUI extends JPanel {
         // Creat buttonPanel
         JPanel buttonPanel = new JPanel(new SpringLayout());
         SpringLayout buttonLayout = (SpringLayout) buttonPanel.getLayout();
-        buttonPanel.setPreferredSize(new Dimension(PAGE_WIDTH, 200));
+        buttonPanel.setPreferredSize(new Dimension(MainFrame.PAGE_WIDTH, 200));
 
         // Creating the Buttons
         JButton LoginButton = new JButton("Login");
         JButton switchView = new JButton("Signup");
-        LoginButton.setPreferredSize(new Dimension(PAGE_WIDTH/2,40));
+        LoginButton.setPreferredSize(new Dimension(MainFrame.PAGE_WIDTH/2,40));
         LoginButton.setForeground(new Color(144, 238, 144));
-        switchView.setPreferredSize(new Dimension(PAGE_WIDTH/2, 40));
+        switchView.setPreferredSize(new Dimension(MainFrame.PAGE_WIDTH/2, 40));
         buttonPanel.add(LoginButton);
         buttonPanel.add(switchView);
 
@@ -94,7 +93,7 @@ public class LoginPageUI extends JPanel {
         // Parent Panel Layout
         parentLayout.putConstraint(SOUTH, buttonPanel, 0, SOUTH, this);
         parentLayout.putConstraint(HORIZONTAL_CENTER, fieldPanel, 0, HORIZONTAL_CENTER, this);
-        parentLayout.putConstraint(NORTH, (Component) fieldPanel, (int) (PAGE_HEIGHT/2.5), NORTH, this);
+        parentLayout.putConstraint(NORTH, (Component) fieldPanel, (int) (MainFrame.PAGE_HEIGHT/2.5), NORTH, this);
         parentLayout.putConstraint(NORTH, textPanel, 80, NORTH, this);
 
         parentPanel.add(fieldPanel);

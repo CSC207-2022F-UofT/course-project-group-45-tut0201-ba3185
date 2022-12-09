@@ -13,13 +13,11 @@ import java.util.Arrays;
 import static javax.swing.SpringLayout.*;
 
 public class InitialSettingPageUI extends JPanel {
-    public static final int PAGE_HEIGHT = 736;
-    public static final int PAGE_WIDTH = 414;
 
     public InitialSettingPageUI(MainFrameInterface frame, String username, String name, String password) {
-        this.setSize(PAGE_WIDTH, PAGE_HEIGHT);
+        this.setSize(MainFrame.PAGE_WIDTH, MainFrame.PAGE_HEIGHT);
         JPanel parentPanel = new JPanel(new SpringLayout());
-        parentPanel.setPreferredSize(new Dimension(PAGE_WIDTH,PAGE_HEIGHT));
+        parentPanel.setPreferredSize(new Dimension(MainFrame.PAGE_WIDTH,MainFrame.PAGE_HEIGHT));
         SpringLayout parentLayout = (SpringLayout) parentPanel.getLayout();
 
         // create Labels
@@ -47,20 +45,20 @@ public class InitialSettingPageUI extends JPanel {
         JTextField ageTextField = new JTextField(10);
         JTextField incomeTextField = new JTextField(10);
         JTextField locationLocator = new JTextField(10);
-        JComboBox genderChooser = new JComboBox(genders);
-        JComboBox petTextField = new JComboBox(booleanTypes);
-        JComboBox martialStatusChooser = new JComboBox(martialStatus);
-        JComboBox relationshipChooser = new JComboBox(relationshipTypes);
-        JComboBox sexualOrientationChooser = new JComboBox(sexualOrientations);
-        JComboBox interestRankChooser = new JComboBox(interestRanks);
-        JComboBox interestAreaChooser = new JComboBox(interestArea);
+        JComboBox<String> genderChooser = new JComboBox<>(genders);
+        JComboBox<String> petTextField = new JComboBox<>(booleanTypes);
+        JComboBox<String> martialStatusChooser = new JComboBox<>(martialStatus);
+        JComboBox<String> relationshipChooser = new JComboBox<>(relationshipTypes);
+        JComboBox<String> sexualOrientationChooser = new JComboBox<>(sexualOrientations);
+        JComboBox<String> interestRankChooser = new JComboBox<>(interestRanks);
+        JComboBox<String> interestAreaChooser = new JComboBox<>(interestArea);
         ArrayList<Object> selectors = new ArrayList<>(Arrays.asList(ageTextField,incomeTextField,locationLocator,
                 genderChooser, petTextField,martialStatusChooser,relationshipChooser, sexualOrientationChooser,
                 interestAreaChooser, interestRankChooser));
 
         // create and populate selector panel
         JPanel selectorPanel = new JPanel(new SpringLayout());
-        selectorPanel.setPreferredSize(new Dimension((int) (PAGE_WIDTH/1.4), (int) (PAGE_HEIGHT/1.7)));
+        selectorPanel.setPreferredSize(new Dimension((int) (MainFrame.PAGE_WIDTH/1.4), (int) (MainFrame.PAGE_HEIGHT/1.7)));
         SpringLayout selectorPanelLayout = (SpringLayout) selectorPanel.getLayout();
 
         for(Object obj : selectors) {
@@ -89,17 +87,17 @@ public class InitialSettingPageUI extends JPanel {
         // Create button and populate panel
         JPanel buttonPanel = new JPanel(new SpringLayout());
         SpringLayout buttonPanelLayout = (SpringLayout) buttonPanel.getLayout();
-        buttonPanel.setPreferredSize(new Dimension(PAGE_WIDTH, 100));
+        buttonPanel.setPreferredSize(new Dimension(MainFrame.PAGE_WIDTH, 100));
 
         JButton submitButton = new JButton("Submit");
-        submitButton.setPreferredSize(new Dimension(PAGE_WIDTH/2, 45));
+        submitButton.setPreferredSize(new Dimension(MainFrame.PAGE_WIDTH/2, 45));
         buttonPanel.add(submitButton);
 
         // format buttonPanel
         buttonPanelLayout.putConstraint(HORIZONTAL_CENTER, submitButton, 0, HORIZONTAL_CENTER, buttonPanel);
 
         parentLayout.putConstraint(HORIZONTAL_CENTER, selectorPanel, 0, HORIZONTAL_CENTER, this);
-        parentLayout.putConstraint(NORTH, selectorPanel, PAGE_HEIGHT/6, NORTH, this);
+        parentLayout.putConstraint(NORTH, selectorPanel, MainFrame.PAGE_HEIGHT/6, NORTH, this);
         parentLayout.putConstraint(SOUTH, buttonPanel, 0, SOUTH, this);
         parentPanel.add(selectorPanel);
         parentPanel.add(buttonPanel);
@@ -123,6 +121,10 @@ public class InitialSettingPageUI extends JPanel {
 
                 try {
                     String[] tmp = currentLocation.split(",");
+                    if(tmp.length != 2) {
+                        JOptionPane.showMessageDialog(null, "Please enter the location as: " +
+                            "Longitude, Latitude");
+                    }
                     ArrayList<Double> currentLocationSplit = new ArrayList<>();
                     currentLocationSplit.add(Double.valueOf(tmp[0]));
                     currentLocationSplit.add(Double.valueOf(tmp[1]));

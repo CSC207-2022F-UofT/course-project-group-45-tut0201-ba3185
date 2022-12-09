@@ -1,11 +1,12 @@
 package use_case_chatScreen_test;
 
 import database.MessageDataManager;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import database.csvManager;
+import org.junit.jupiter.api.*;
 import use_case_message.*;
+
+import java.io.File;
+import java.util.*;
 
 
 
@@ -15,9 +16,9 @@ public class MessageInteractorUnitTest {
      * one for initializing the screen for two user who never chat with each other,
      * one for updating the newest message when hit send button.*
      * -Test approach summary:
-     * Tests are implemented by examining the if the desired outputdata is generated
+     * Tests are implemented by examining the if the desired output-data is generated
      * by checking the responseModel that put into presenter.
-     * In order to avoid doing modificaiton on database, data is stored in mms variable before each test, and is reloaded
+     * In order to avoid doing modification on database, data is stored in mms variable before each test, and is reloaded
      * after each test to be consistent.
      * The connection of each component of clean architecture is well tested, however, view is not included.
      */
@@ -27,6 +28,20 @@ public class MessageInteractorUnitTest {
     @BeforeEach
     void save_database(){ //save the value of database before test, to avoid modification.
         this.mms = mdm.readMM();
+        csvManager manager = new csvManager();
+        List<Double> location = new ArrayList<>(Arrays.asList(14.5,14.5));
+        List<String> interestRank = new ArrayList<>(Arrays.asList("income", "age", "marital status",
+                "interests", "relationship type", "pet"));
+        Map<String, Object> userInfo = new HashMap<>();
+        userInfo.put("gender", "male");
+        userInfo.put("income", 141);
+        userInfo.put("age", 142);
+        userInfo.put("maritalStatus", "single");
+        userInfo.put("relationshipType", "friend");
+        userInfo.put("pet", true);
+        userInfo.put("sexualOrientation", "female");
+        manager.writeCurrentUser("sunny", "sunny", "sunny", location, userInfo, interestRank,
+                "sport");
     }
 
 
@@ -72,5 +87,13 @@ public class MessageInteractorUnitTest {
     @AfterEach
     void teardown(){
         mdm.writeMM(mms);
+    }
+
+    @AfterAll
+    public static void cleanup() {
+        csvManager manager = new csvManager();
+        manager.logoutUser();
+        File file = new File("src/main/java/database/MessageManagers.ser");
+        file.delete();
     }
 }

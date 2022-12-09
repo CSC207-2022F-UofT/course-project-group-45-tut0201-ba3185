@@ -2,11 +2,11 @@ package use_case_discovery;
 
 import database.csvInterface;
 import database.csvManager;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
-import java.util.List;
-
+import java.util.*;
 
 
 public class PreferenceScoreCalculatorTest {
@@ -17,9 +17,25 @@ public class PreferenceScoreCalculatorTest {
     PreferenceScoreCalculator psc5;//case of exactly one matches(without bonus mark)
 
     csvInterface manager = new csvManager();
-    List<String> cInterestRank = manager.readCurrentUser().getInterestRank();
+    List<String> cInterestRank;
     @BeforeEach
     public void setUp() {
+        csvManager manager = new csvManager();
+        List<Double> location = new ArrayList<>(Arrays.asList(14.5,14.5));
+        List<String> interestRank = new ArrayList<>(Arrays.asList("income", "age", "marital status",
+                "interests", "relationship type", "pet"));
+        Map<String, Object> userInfo = new HashMap<>();
+        userInfo.put("gender", "male");
+        userInfo.put("income", 124124);
+        userInfo.put("age", 124124);
+        userInfo.put("maritalStatus", "single");
+        userInfo.put("relationshipType", "friend");
+        userInfo.put("pet", "yes");
+        userInfo.put("sexualOrientation", "male");
+        manager.writeCurrentUser("sunny", "sunny", "sunny", location, userInfo, interestRank,
+                "sport");
+
+        cInterestRank = manager.readCurrentUser().getInterestRank();
         psc1 = new PreferenceScoreCalculator("author",cInterestRank);
         psc2 = new PreferenceScoreCalculator("finch",cInterestRank);
         psc3 = new PreferenceScoreCalculator("eric",cInterestRank);
@@ -47,4 +63,9 @@ public class PreferenceScoreCalculatorTest {
         Assertions.assertEquals(5, psc5.getScore());
     }
 
+    @AfterAll
+    public static void cleanup() {
+        csvManager manager = new csvManager();
+        manager.logoutUser();
+    }
 }
