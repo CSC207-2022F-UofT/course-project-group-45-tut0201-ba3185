@@ -18,9 +18,5 @@ public class BlockListController {
         blockListInoutBoundary.removeBlockList(user);
     }
 
-    public void checkBlockList(User user){  // trigger by UI
-        blockListInoutBoundary.checkBlockList(user);
-    }
-
 
 }

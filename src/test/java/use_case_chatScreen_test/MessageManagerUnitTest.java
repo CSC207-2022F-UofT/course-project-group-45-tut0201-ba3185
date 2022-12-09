@@ -7,8 +7,8 @@ import use_case_message.MessageManager;
 import use_case_message.MessageManagerFactory;
 /**
  * Unit tests for the MessageManager class, which tests the get_user1 and get_user2, save_chat_history_test methods for most cases.
- *in save_chat_history test, the method getChatHistory isn't explicitly tested since save_chat_history_test has already used it
- * and it would be redundant if we use a similar approach to test it. getcontent method is also used here!
+ *in save_chat_history test, the method getChatHistory isn't explicitly tested since save_chat_history_test has already used it,
+ * and it would be redundant if we use a similar approach to test it. getContent method is also used here!
  */
 
 public class MessageManagerUnitTest {
@@ -17,7 +17,7 @@ public class MessageManagerUnitTest {
     @BeforeEach
     void init(){
         this.factory = new MessageManagerFactory();
-        this.mm = factory.create("Alyssa","Wario_badr");
+        this.mm = factory.create("Alyssa","Mario_badr");
     }
     @Test
     void get_user1_test(){
@@ -26,7 +26,7 @@ public class MessageManagerUnitTest {
 
     @Test
     void get_user2_test(){
-        Assertions.assertSame("Wario_badr",mm.getUser2());
+        Assertions.assertSame("Mario_badr",mm.getUser2());
     }
     @Test
     void save_chat_history_test(){
