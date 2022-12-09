@@ -1,6 +1,5 @@
 package use_case_blocklist;
 
-
 import entity.Block;
 import entity.BlockFactory;
 

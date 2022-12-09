@@ -1,6 +1,5 @@
 package gui;
 
-import com.sun.tools.javac.Main;
 import controller.SignupPageController;
 
 import javax.swing.*;
