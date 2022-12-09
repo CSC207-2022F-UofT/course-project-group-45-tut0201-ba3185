@@ -17,8 +17,8 @@ import java.util.Arrays;
 
 public class BlockListManager implements BlockListInputBoundary {
 
-    private String path = "src/main/java/database/blockList.csv";
-    private UserRequestModel current;
+    private final String path = "src/main/java/database/blockList.csv";
+    private final UserRequestModel current;
 
     public BlockListManager() {
         csvManager manager = new csvManager();
@@ -30,20 +30,20 @@ public class BlockListManager implements BlockListInputBoundary {
      */
     @Override
     public void addBlockList(User user) {
-        ArrayList<String> headers = new ArrayList<String>(Arrays.asList(
+        ArrayList<String> headers = new ArrayList<>(Arrays.asList(
                 "currName", "blockName"));
         String header = String.join(",", headers);
-        BlockFactory arrayList = BlockGateWay.readCsvByBufferedReader();
+        BlockFactory<Block> arrayList = BlockGateWay.readCsvByBufferedReader();
         Block block1 = new Block();
         block1.setCurrName(current.getName());
         block1.setBlockName(user.getName());
         arrayList.add(block1);
 
-        StringBuffer stringBuffer =new StringBuffer();
+        StringBuilder stringBuffer =new StringBuilder();
         int size = arrayList.size();
         for (int i = 0; i < size; i++) {
-            Block block = (Block) arrayList.get(i);
-            stringBuffer.append(block.getCurrName()+"," + block.getBlockName());
+            Block block = arrayList.get(i);
+            stringBuffer.append(block.getCurrName()).append(",").append(block.getBlockName());
             if (i < size -1) {
                 stringBuffer.append("\n");
             }
@@ -56,19 +56,19 @@ public class BlockListManager implements BlockListInputBoundary {
      */
     @Override
     public void removeBlockList(User user) {
-        ArrayList<String> headers = new ArrayList<String>(Arrays.asList(
+        ArrayList<String> headers = new ArrayList<>(Arrays.asList(
                 "currName", "blockName"));
         String header = String.join(",", headers);
-        BlockFactory arrayList = BlockGateWay.readCsvByBufferedReader();
-        StringBuffer stringBuffer =new StringBuffer();
+        BlockFactory<Block> arrayList = BlockGateWay.readCsvByBufferedReader();
+        StringBuilder stringBuffer =new StringBuilder();
         int size = arrayList.size();
         for (int i = 0; i < size; i++) {
-            Block block = (Block) arrayList.get(i);
+            Block block = arrayList.get(i);
             if (block.getCurrName().equals(current.getName()) && block.getBlockName().equals(user.getName())) {
                 arrayList.remove(i);
                 break;
             }else {
-                stringBuffer.append(block.getCurrName()+"," + block.getBlockName());
+                stringBuffer.append(block.getCurrName()).append(",").append(block.getBlockName());
                 if (i < size -1) {
                     stringBuffer.append("\n");
                 }
@@ -82,15 +82,15 @@ public class BlockListManager implements BlockListInputBoundary {
      */
     @Override
     public int checkBlockList(User user) {
-        BlockFactory arrayList = BlockGateWay.readCsvByBufferedReader();
+        BlockFactory<Block> arrayList = BlockGateWay.readCsvByBufferedReader();
         if (arrayList.size() == 0){
             return 0;
         }
-        for (Object block: arrayList) {
-            if (((Block)block).getCurrName().equals(current.getName()) && ((Block)block).getBlockName().equals(user.getName())) {
+        for (Block block: arrayList) {
+            if (block.getCurrName().equals(current.getName()) && block.getBlockName().equals(user.getName())) {
                 return 1;
             }
-            if (((Block)block).getCurrName().equals(user.getName()) && ((Block)block).getBlockName().equals(current.getName())) {
+            if (block.getCurrName().equals(user.getName()) && block.getBlockName().equals(current.getName())) {
                 return 2;
             }
         }
