@@ -1,9 +1,8 @@
-package BlockListUserCaseTest;
+package use_case_blocklist;
 
 import controller.BlockListController;
 import entity.User;
 import org.junit.Test;
-import use_case_blocklist.BlockListManager;
 
 public class BlockListManagerTest {
 
