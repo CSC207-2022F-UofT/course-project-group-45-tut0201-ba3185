@@ -51,6 +51,26 @@ public class User implements Comparable<User> {
         this.interestRank = interestRank;
     }
 
+    /*
+     * Constructor for the User object and omit some attribute to make constructor more clear
+     *
+     * @param user: username of the user
+     * @param name: name of user
+     * @param password: password of the user
+     */
+
+    public User(String user, String name, String password) {
+        this.username = user;
+        this.name = name;
+        this.password = password;
+        // implement default preference later
+        this.location = null;
+        this.blockList = new ArrayList<String>();
+        this.userInfo = new HashMap<String, Object>();
+        this.interestRank = new ArrayList<String>(Arrays.asList("age", "areaOfInterest", "income", "maritalStatus",
+                "pet", "relationshipType"));
+    }
+
     // Getter functions
 
     /*
