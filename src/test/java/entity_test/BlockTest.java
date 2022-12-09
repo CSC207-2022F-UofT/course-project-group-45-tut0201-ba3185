@@ -1,5 +1,6 @@
-package entity;
+package entity_test;
 
+import entity.Block;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

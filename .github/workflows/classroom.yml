@@ -9,8 +9,10 @@ permissions:
 
 jobs:
   build:
-    name: Autograding
+    name: Testing Unit Tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: education/autograding@v1
+
+
