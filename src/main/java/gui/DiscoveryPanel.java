@@ -30,7 +30,6 @@ public class DiscoveryPanel extends JPanel {
                     DiscoveryController controller = new DiscoveryController(interactor);
                     controller.trigger();
                     this.removeAll();
-                    //this.add(this);
                     this.add(presenter);
 
                     break;
