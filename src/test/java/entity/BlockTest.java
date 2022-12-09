@@ -1,16 +1,26 @@
 package entity;
 
-import entity.Block;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class BlockTest {
 
+    private Block block;
+
+    @BeforeEach
+    public void initBlock(){
+        block = new Block();
+    }
+
     @Test
     public void testBlock(){
-        Block block = new Block();
+        block = new Block();
         block.setBlockName("jack");
-        block.setCurrName("rouse");
-        block.getBlockName();
-        block.getCurrName();
+        block.setCurrName("rose");
+        String name = block.getBlockName();
+        String currName = block.getCurrName();
+        Assertions.assertEquals(name, "jack");
+        Assertions.assertEquals(currName, "rose");
     }
 }
