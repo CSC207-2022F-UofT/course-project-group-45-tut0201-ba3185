@@ -1,5 +1,6 @@
 package gui;
 
+import com.sun.tools.javac.Main;
 import controller.SignupPageController;
 
 import javax.swing.*;
@@ -9,10 +10,12 @@ import java.io.IOException;
 import static javax.swing.SpringLayout.*;
 
 public class SignupPageUI extends JPanel {
-    public static final int PAGE_HEIGHT = 736;
-    public static final int PAGE_WIDTH = 414;
+
+    private static final int PAGE_WIDTH = MainFrame.PAGE_WIDTH;
+    private static final int PAGE_HEIGHT = MainFrame.PAGE_HEIGHT;
 
     public SignupPageUI(MainFrameInterface frame) {
+
         // Setup basic Frame structure
         this.setSize(PAGE_WIDTH, PAGE_HEIGHT);
         JPanel parentPanel = new JPanel(new SpringLayout());

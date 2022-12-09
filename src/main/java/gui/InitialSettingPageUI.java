@@ -13,8 +13,8 @@ import java.util.Arrays;
 import static javax.swing.SpringLayout.*;
 
 public class InitialSettingPageUI extends JPanel {
-    public static final int PAGE_HEIGHT = 736;
-    public static final int PAGE_WIDTH = 414;
+    public static final int PAGE_HEIGHT = MainFrame.PAGE_HEIGHT;
+    public static final int PAGE_WIDTH = MainFrame.PAGE_WIDTH;
 
     public InitialSettingPageUI(MainFrameInterface frame, String username, String name, String password) {
         this.setSize(PAGE_WIDTH, PAGE_HEIGHT);
@@ -47,13 +47,13 @@ public class InitialSettingPageUI extends JPanel {
         JTextField ageTextField = new JTextField(10);
         JTextField incomeTextField = new JTextField(10);
         JTextField locationLocator = new JTextField(10);
-        JComboBox genderChooser = new JComboBox(genders);
-        JComboBox petTextField = new JComboBox(booleanTypes);
-        JComboBox martialStatusChooser = new JComboBox(martialStatus);
-        JComboBox relationshipChooser = new JComboBox(relationshipTypes);
-        JComboBox sexualOrientationChooser = new JComboBox(sexualOrientations);
-        JComboBox interestRankChooser = new JComboBox(interestRanks);
-        JComboBox interestAreaChooser = new JComboBox(interestArea);
+        JComboBox<String> genderChooser = new JComboBox<>(genders);
+        JComboBox<String> petTextField = new JComboBox<>(booleanTypes);
+        JComboBox<String> martialStatusChooser = new JComboBox<>(martialStatus);
+        JComboBox<String> relationshipChooser = new JComboBox<>(relationshipTypes);
+        JComboBox<String> sexualOrientationChooser = new JComboBox<>(sexualOrientations);
+        JComboBox<String> interestRankChooser = new JComboBox<>(interestRanks);
+        JComboBox<String> interestAreaChooser = new JComboBox<>(interestArea);
         ArrayList<Object> selectors = new ArrayList<>(Arrays.asList(ageTextField,incomeTextField,locationLocator,
                 genderChooser, petTextField,martialStatusChooser,relationshipChooser, sexualOrientationChooser,
                 interestAreaChooser, interestRankChooser));

@@ -12,8 +12,10 @@ import static javax.swing.SpringLayout.*;
  * UI class for the loginPage
  */
 public class LoginPageUI extends JPanel {
-    public static final int PAGE_HEIGHT = 736;
-    public static final int PAGE_WIDTH = 414;
+
+    private static final int PAGE_WIDTH = MainFrame.PAGE_WIDTH;
+    private static final int PAGE_HEIGHT = MainFrame.PAGE_HEIGHT;
+
     public LoginPageUI(MainFrameInterface frame) {
         this.setSize(PAGE_WIDTH, PAGE_HEIGHT);
 
