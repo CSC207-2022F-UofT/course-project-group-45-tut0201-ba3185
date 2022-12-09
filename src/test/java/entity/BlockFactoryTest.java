@@ -1,7 +1,5 @@
 package entity;
 
-import entity.Block;
-import entity.BlockFactory;
 import org.junit.Test;
 
 public class BlockFactoryTest {
@@ -10,7 +8,7 @@ public class BlockFactoryTest {
     public void testBlockFactory(){
         Block block = new Block();
         block.setBlockName("jack");
-        block.setCurrName("rouse");
+        block.setCurrName("rose");
 
         BlockFactory<Block> blockFactory = new BlockFactory<>();
         blockFactory.add(block);
