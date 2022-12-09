@@ -4,7 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * This class convert users answer from integer to the corresponding string
+ * This class takes in a request model and convert users answer
+ * from integer to the corresponding string and store it in a Map with
+ * string key and value.
  *
  */
 public class SearchAnswerConverter {
@@ -122,6 +124,7 @@ public class SearchAnswerConverter {
     }
 
     public Map<String, String> getAnswer(){
+
         return this.answerList;
     }
 }

@@ -5,16 +5,10 @@ import use_case_signin_signup.UserRequestModel;
 import java.util.Map;
 
 public class UserInfoInteractor extends csvInteractor implements UserInfoInputBoundary {
-    private UserInfoInterface uPanel;
-    private UserInfoResponseModel responseModel;
+    private final UserInfoInterface uPanel;
+    private final UserInfoResponseModel responseModel;
 
-    private Map<String, UserRequestModel> otherUsersInfo;
-
-    private UserInfoRequestModel model;
-
-    private UserRequestModel wantedInfo;
-
-    private Map<String, Object> userSetting;
+    private final Map<String, UserRequestModel> otherUsersInfo;
 
     public UserInfoInteractor(UserInfoInterface uPanel){
         this.uPanel = uPanel;
@@ -25,10 +19,9 @@ public class UserInfoInteractor extends csvInteractor implements UserInfoInputBo
     }
 
     public void create(UserInfoRequestModel model){
-        this.model = model;
         String userName = model.getUsername();
-        wantedInfo = otherUsersInfo.get(userName);
-        userSetting = wantedInfo.getUserSetting();
+        UserRequestModel wantedInfo = otherUsersInfo.get(userName);
+        Map<String, Object> userSetting = wantedInfo.getUserSetting();
 
         responseModel.setAge((Integer) userSetting.get("age"));
         responseModel.setName(wantedInfo.getName());

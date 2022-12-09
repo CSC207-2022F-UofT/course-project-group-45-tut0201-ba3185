@@ -2,12 +2,21 @@ package use_case_discovery;
 
 import java.util.List;
 
+/**
+ * The search interactor takes user's answer and pass it to the list helper to
+ * generate the recommended list. It then stores the list into response model and pass
+ * it to view to update the UI.
+ */
 public class SearchInteractor implements SearchInputBoundary {
 
     private final DiscoveryListInterface pPanel;
 
     public DiscoveryResponseModel dResponseModel;
 
+    /**
+     * Search Interactor takes a panel in and update the panel after recommend list are generated
+     * @param pPanel the panel we need to update.
+     */
     public SearchInteractor(DiscoveryListInterface pPanel){
 
         this.pPanel = pPanel;
