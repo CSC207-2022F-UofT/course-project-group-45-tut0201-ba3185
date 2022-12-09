@@ -10,12 +10,8 @@ import java.util.Map;
  * and generate the score then sort to find the first 15 matching user.
  */
 public class SearchListHelper {
-    private SearchAnswerRequestModel model;
+    private final SearchAnswerRequestModel model;
     private List<String> recommendedList;
-    // private List<User> userList;
-    private List<String> userList;
-    private Map<String, String> answerList;
-
 
 
     public SearchListHelper(SearchAnswerRequestModel model){
@@ -31,16 +27,16 @@ public class SearchListHelper {
 
 
         GenderInteractor genderInteractor = new GenderInteractor();
-        this.userList = genderInteractor.getList();
+        List<String> userList = genderInteractor.getList();
 
 
         SearchAnswerConverter converter = new SearchAnswerConverter(model);
-        answerList = converter.getAnswer();
+        Map<String, String> answerList = converter.getAnswer();
         Map<String, Integer> userListWithScore = new HashMap<>();
         SearchScoreCalculator scoreCalculator = new SearchScoreCalculator(answerList);
 
 
-        for(String user:userList){ // need to change to User
+        for(String user: userList){ // need to change to User
             scoreCalculator.calculateScore(user);
             userListWithScore.put(user,scoreCalculator.getScore());
 

@@ -7,7 +7,7 @@ import java.util.Map;
 
 /**
  * This function help calculate the score of the user based on the answer user entered
- * when
+ * It adds one to the score with each matching field.
  *
  */
 public class SearchScoreCalculator extends csvInteractor implements ScoreCalculator{
@@ -15,12 +15,21 @@ public class SearchScoreCalculator extends csvInteractor implements ScoreCalcula
     private final Map<String,String>  searchAnswers;
     Map<String, UserRequestModel> otherUsers;
 
+    /**
+     * The constructor takes search Answer as input and initialize the other user list
+     * @param searchAnswers current user's answer to the search discovery question.
+     */
     public SearchScoreCalculator(Map<String,String> searchAnswers){
         this.searchAnswers = searchAnswers;
 
        this.otherUsers = super.otherUsersInfo;
     }
 
+    /**
+     * This funciton takes username of the user and find the personal info of that user
+     * then compare the info with the answer to generate a score.
+     * @param user username of the user.
+     */
 
     public void calculateScore(String user){
 
@@ -61,9 +70,13 @@ public class SearchScoreCalculator extends csvInteractor implements ScoreCalcula
             this.score = this.score + 1;
         }
     }
+
+    /**
+     * this return the score of the user.
+     * @return the integer score of the user.
+     */
     @Override
     public int getScore() {
-
         return score;
     }
 }
