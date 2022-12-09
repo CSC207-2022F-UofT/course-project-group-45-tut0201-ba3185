@@ -1,7 +1,7 @@
 package controller;
 
-import use_case_discovery.SearchAnswerRequestModel;
-import use_case_discovery.SearchInputBoundary;
+import use_case.discovery.SearchAnswerRequestModel;
+import use_case.discovery.SearchInputBoundary;
 
 import java.util.List;
 

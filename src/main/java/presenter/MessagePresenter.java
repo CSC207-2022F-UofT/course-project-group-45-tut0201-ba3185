@@ -1,8 +1,8 @@
 package presenter;
 
 import gui.chat.ChatScreenInterface;
-import use_case_message.MessageOutputBoundary;
-import use_case_message.MessageResponseModel;
+import use_case.message.MessageOutputBoundary;
+import use_case.message.MessageResponseModel;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;

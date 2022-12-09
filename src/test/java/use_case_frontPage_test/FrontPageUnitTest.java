@@ -3,10 +3,10 @@ package use_case_frontPage_test;
 import database.MessageDataManager;
 import database.csvManager;
 import org.junit.jupiter.api.*;
-import use_case_frontpage.FrontPageInteractor;
-import use_case_frontpage.FrontPageOutputBoundary;
-import use_case_frontpage.FrontPageRequestModel;
-import use_case_message.MessageManagers;
+import use_case.frontpage.FrontPageInteractor;
+import use_case.frontpage.FrontPageOutputBoundary;
+import use_case.frontpage.FrontPageRequestModel;
+import use_case.message.MessageManagers;
 
 import java.io.File;
 import java.util.*;

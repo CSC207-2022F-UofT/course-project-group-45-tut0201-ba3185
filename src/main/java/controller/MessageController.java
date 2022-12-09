@@ -1,7 +1,7 @@
 package controller;
 
-import use_case_message.MessageInputBoundary;
-import use_case_message.MessageRequestModel;
+import use_case.message.MessageInputBoundary;
+import use_case.message.MessageRequestModel;
 
 public class MessageController {
     /**

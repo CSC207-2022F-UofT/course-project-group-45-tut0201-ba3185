@@ -1,6 +1,6 @@
 package controller;
 
-import use_case_signin_signup.UserUseCase;
+import use_case.signin_signup.UserUseCase;
 
 /**
  * userController is the controller class that checks the state of current user

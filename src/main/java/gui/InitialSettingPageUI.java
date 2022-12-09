@@ -1,7 +1,7 @@
 package gui;
 
 import controller.SignupPageController;
-import use_case_signin_signup.UserRequestModel;
+import use_case.signin_signup.UserRequestModel;
 
 import javax.swing.*;
 import java.util.List;

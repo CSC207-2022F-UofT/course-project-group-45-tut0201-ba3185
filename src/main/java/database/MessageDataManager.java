@@ -1,6 +1,6 @@
 package database;
 
-import use_case_message.MessageManagers;
+import use_case.message.MessageManagers;
 
 import java.io.*;
 
@@ -39,7 +39,7 @@ public class MessageDataManager implements serInterface {
         try {
             ObjectInputStream input = new ObjectInputStream(
                     new FileInputStream(messagePath));
-            MessageManagers messageManagers = (use_case_message.MessageManagers) input.readObject();
+            MessageManagers messageManagers = (MessageManagers) input.readObject();
             input.close();
             return messageManagers;
         }

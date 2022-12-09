@@ -1,8 +1,8 @@
 package gui.discovery;
 
 import gui.MainFrame;
-import use_case_discovery.DiscoveryResponseModel;
-import use_case_discovery.DiscoveryListInterface;
+import use_case.discovery.DiscoveryResponseModel;
+import use_case.discovery.DiscoveryListInterface;
 
 import javax.swing.*;
 import java.awt.*;

@@ -3,7 +3,7 @@ package use_case_chatScreen_test;
 import database.MessageDataManager;
 import database.csvManager;
 import org.junit.jupiter.api.*;
-import use_case_message.*;
+import use_case.message.*;
 
 import java.io.File;
 import java.util.*;

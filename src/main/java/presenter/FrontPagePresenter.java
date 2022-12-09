@@ -1,8 +1,8 @@
 package presenter;
 
 import gui.chat.FrontPagePanel;
-import use_case_frontpage.FrontPageOutputBoundary;
-import use_case_frontpage.FrontPageResponseModel;
+import use_case.frontpage.FrontPageOutputBoundary;
+import use_case.frontpage.FrontPageResponseModel;
 
 import java.util.List;
 

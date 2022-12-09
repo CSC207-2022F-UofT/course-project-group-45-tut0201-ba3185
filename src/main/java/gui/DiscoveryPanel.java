@@ -2,11 +2,11 @@ package gui;
 import gui.discovery.OptionPanel;
 import gui.discovery.SearchQuestionPanel;
 import gui.discovery.UsersBtnPanel;
-import use_case_discovery.DiscoveryInputBoundary;
+import use_case.discovery.DiscoveryInputBoundary;
 import controller.DiscoveryController;
-import use_case_discovery.NearbyInteractor;
-import use_case_discovery.PreferenceInteractor;
-import use_case_discovery.SearchAskerInteractor;
+import use_case.discovery.NearbyInteractor;
+import use_case.discovery.PreferenceInteractor;
+import use_case.discovery.SearchAskerInteractor;
 
 import javax.swing.*;
 import java.awt.*;

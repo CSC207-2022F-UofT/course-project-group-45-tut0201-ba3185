@@ -4,8 +4,8 @@ import database.csvManager;
 import entity.TwoTruthsAndALieGame;
 import entity.User;
 import gui.game.TwoTruthsAndALiePagePanelInterface;
-import use_case_signin_signup.UserRequestModel;
-import use_case_two_truths_and_a_lie.*;
+import use_case.signin_signup.UserRequestModel;
+import use_case.two_truths_and_a_lie.*;
 
 import javax.swing.*;
 import java.io.IOException;

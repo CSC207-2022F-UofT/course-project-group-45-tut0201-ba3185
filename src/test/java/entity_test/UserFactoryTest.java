@@ -5,7 +5,7 @@ import entity.UserFactory;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
-import use_case_signin_signup.UserRequestModel;
+import use_case.signin_signup.UserRequestModel;
 
 import java.util.ArrayList;
 import java.util.Arrays;

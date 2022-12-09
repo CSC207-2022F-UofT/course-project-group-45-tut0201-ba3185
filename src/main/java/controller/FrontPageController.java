@@ -1,7 +1,7 @@
 package controller;
 
-import use_case_frontpage.FrontPageInputBoundary;
-import use_case_frontpage.FrontPageRequestModel;
+import use_case.frontpage.FrontPageInputBoundary;
+import use_case.frontpage.FrontPageRequestModel;
 
 public class FrontPageController {
     /**

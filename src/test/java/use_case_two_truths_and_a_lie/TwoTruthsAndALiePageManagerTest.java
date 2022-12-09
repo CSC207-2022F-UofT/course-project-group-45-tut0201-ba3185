@@ -3,7 +3,9 @@ import database.csvManager;
 import entity.TwoTruthsAndALieGame;
 import org.junit.jupiter.api.*;
 
-import use_case_signin_signup.UserRequestModel;
+import use_case.two_truths_and_a_lie.TwoTruthsAndALiePageManager;
+import use_case.two_truths_and_a_lie.TwoTruthsAndALiePageRequestModel;
+import use_case.signin_signup.UserRequestModel;
 
 import java.io.IOException;
 import java.util.*;

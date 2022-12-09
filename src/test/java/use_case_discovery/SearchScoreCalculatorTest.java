@@ -3,7 +3,7 @@ package use_case_discovery;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import use_case_discovery.SearchScoreCalculator;
+import use_case.discovery.SearchScoreCalculator;
 import java.util.HashMap;
 
 

@@ -6,7 +6,7 @@ import entity.TwoTruthsAndALieStatements;
 import entity.User;
 
 import org.junit.jupiter.api.*;
-import use_case_signin_signup.UserRequestModel;
+import use_case.signin_signup.UserRequestModel;
 
 import java.io.IOException;
 import java.util.*;

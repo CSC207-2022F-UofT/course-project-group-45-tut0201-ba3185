@@ -1,8 +1,8 @@
 package controller;
 
 
-import use_case_discovery.UserInfoInputBoundary;
-import use_case_discovery.UserInfoRequestModel;
+import use_case.discovery.UserInfoInputBoundary;
+import use_case.discovery.UserInfoRequestModel;
 
 public class UserInfoController {
 
