@@ -4,15 +4,12 @@ import entity.TwoTruthsAndALieGame;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.Assertions;
 import use_case_signin_signup.UserRequestModel;
 
 import java.io.IOException;
 import java.util.List;
 
 public class TwoTruthsAndALieGameManagerTest {
-    private TwoTruthsAndALieGameManager gameManager;
-    private TwoTruthsAndALiePageManager pageManager;
     private List<TwoTruthsAndALieGame> gameList;
 
     @BeforeEach
@@ -22,12 +19,11 @@ public class TwoTruthsAndALieGameManagerTest {
 
     @Test
     public void createManagerAndGame() throws IOException {
-        this.gameManager = new TwoTruthsAndALieGameManager("author");
-        this.pageManager = new TwoTruthsAndALiePageManager();
+        TwoTruthsAndALiePageManager pageManager = new TwoTruthsAndALiePageManager();
         TwoTruthsAndALiePageRequestModel requestModel = new TwoTruthsAndALiePageRequestModel();
         UserRequestModel userInfo = new csvManager().readCurrentUser();
         requestModel.setOtherUser(userInfo.getUsername());
-        this.pageManager.createGame(requestModel);
+        pageManager.createGame(requestModel);
     }
 
     @AfterEach

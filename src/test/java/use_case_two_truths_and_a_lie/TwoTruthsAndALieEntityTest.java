@@ -17,7 +17,6 @@ import java.util.List;
 public class TwoTruthsAndALieEntityTest {
 
     private TwoTruthsAndALiePlayer player1;
-    private TwoTruthsAndALiePlayer player2;
 
     private TwoTruthsAndALieGame game;
 
@@ -32,7 +31,7 @@ public class TwoTruthsAndALieEntityTest {
         this.player1 = new TwoTruthsAndALiePlayer(new User(userInfo.getUsername(), userInfo.getName(), userInfo.getPassword(),
                                                             userInfo.getLocation(), userInfo.getUserSetting(), userInfo.getInterestRank(),
                                                             userInfo.getAreaOfInterest()));
-        this.player2 = new TwoTruthsAndALiePlayer(new User("bob", "bob", "bob",
+        TwoTruthsAndALiePlayer player2 = new TwoTruthsAndALiePlayer(new User("bob", "bob", "bob",
                 userInfo.getLocation(), userInfo.getUserSetting(), userInfo.getInterestRank(),
                 userInfo.getAreaOfInterest()));
         this.game = new TwoTruthsAndALieGame(player1, player2);

@@ -1,10 +1,7 @@
 package use_case_two_truths_and_a_lie;
 import database.csvManager;
 import entity.TwoTruthsAndALieGame;
-import entity.TwoTruthsAndALiePlayer;
-import entity.User;
 import org.junit.jupiter.api.AfterEach;
-import presenter.TwoTruthsAndALiePagePresenter;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
