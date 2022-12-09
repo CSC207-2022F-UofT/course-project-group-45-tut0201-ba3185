@@ -37,8 +37,8 @@ public class FrontPagePanel extends JPanel implements ActionListener {
 
         JScrollPane scrollPane = new JScrollPane(this, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
                 JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-        // It's fine here for the variable to be redundant since it would too long if this is
-        // combined in a sentence
+        // It's fine here for the variable to be redundant since it would too long and unclear
+        // if this is combined in a sentence
         return scrollPane;
     }
 

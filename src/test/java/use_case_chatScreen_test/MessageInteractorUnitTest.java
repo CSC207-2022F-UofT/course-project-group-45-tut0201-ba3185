@@ -15,9 +15,9 @@ public class MessageInteractorUnitTest {
      * one for initializing the screen for two user who never chat with each other,
      * one for updating the newest message when hit send button.*
      * -Test approach summary:
-     * Tests are implemented by examining the if the desired outputdata is generated
+     * Tests are implemented by examining the if the desired output-data is generated
      * by checking the responseModel that put into presenter.
-     * In order to avoid doing modificaiton on database, data is stored in mms variable before each test, and is reloaded
+     * In order to avoid doing modification on database, data is stored in mms variable before each test, and is reloaded
      * after each test to be consistent.
      * The connection of each component of clean architecture is well tested, however, view is not included.
      */
