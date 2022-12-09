@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 import use_case_frontpage.FrontPageInteractor;
 import use_case_frontpage.FrontPageOutputBoundary;
 import use_case_frontpage.FrontPageRequestModel;
-import use_case_frontpage.FrontPageResponseModel;
 import use_case_message.MessageManagers;
 
 /**
@@ -30,12 +29,7 @@ public class FrontPageUnitTest {
 
     @Test
     void create(){
-        FrontPageOutputBoundary frontPageOutputBoundary = new FrontPageOutputBoundary() {
-            @Override
-            public void create(FrontPageResponseModel responseModel) {
-                Assertions.assertFalse(responseModel.getTargetUsers().contains("Jenny"));
-            }
-        };
+        FrontPageOutputBoundary frontPageOutputBoundary = responseModel -> Assertions.assertFalse(responseModel.getTargetUsers().contains("Jenny"));
         FrontPageInteractor interactor = new FrontPageInteractor(frontPageOutputBoundary);
         FrontPageRequestModel requestModel = new FrontPageRequestModel();
         interactor.create(requestModel);
