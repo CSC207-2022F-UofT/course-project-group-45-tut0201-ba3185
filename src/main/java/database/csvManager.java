@@ -4,8 +4,8 @@ import entity.TwoTruthsAndALieGame;
 import entity.TwoTruthsAndALiePlayer;
 import entity.TwoTruthsAndALieStatements;
 import entity.User;
-import use_case_signin_signup.UserRequestModel;
-import use_case_signin_signup.UserResponseModel;
+import use_case.signin_signup.UserRequestModel;
+import use_case.signin_signup.UserResponseModel;
 
 import java.io.*;
 import java.util.*;
@@ -124,7 +124,7 @@ public class csvManager implements csvInterface {
      */
     public void writeCurrentUser(String username, String name, String password, List<Double> location,
                                  Map<String, Object> userSetting, List<String> interestRank, String areaOfInterest) {
-        ArrayList<String> Headers = new ArrayList<String>(Arrays.asList("username",
+        ArrayList<String> Headers = new ArrayList<>(Arrays.asList("username",
                 "name", "password", "gender", "age", "income", "pet", "maritalStatus", "relationshipType",
                 "sexualOrientation","interestRank","areaOfInterest","locationX", "locationY"));
         try {

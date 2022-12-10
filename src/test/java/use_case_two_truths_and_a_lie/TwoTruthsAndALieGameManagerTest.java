@@ -5,7 +5,9 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import use_case_signin_signup.UserRequestModel;
+import use_case.two_truths_and_a_lie.TwoTruthsAndALiePageManager;
+import use_case.two_truths_and_a_lie.TwoTruthsAndALiePageRequestModel;
+import use_case.signin_signup.UserRequestModel;
 
 import java.io.IOException;
 import java.util.*;

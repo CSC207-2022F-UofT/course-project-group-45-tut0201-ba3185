@@ -3,8 +3,8 @@ package use_case_discovery;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import use_case_discovery.SearchAnswerConverter;
-import use_case_discovery.SearchAnswerRequestModel;
+import use_case.discovery.search.SearchAnswerConverter;
+import use_case.discovery.search.SearchAnswerRequestModel;
 
 import java.util.HashMap;
 import java.util.Map;

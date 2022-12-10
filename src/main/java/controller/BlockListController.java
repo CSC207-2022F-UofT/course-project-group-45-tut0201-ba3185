@@ -1,7 +1,7 @@
 package controller;
 import entity.User;
 
-import use_case_blocklist.BlockListInputBoundary;
+import use_case.blocklist.BlockListInputBoundary;
 
 public class BlockListController {
     private final BlockListInputBoundary blockListInoutBoundary;

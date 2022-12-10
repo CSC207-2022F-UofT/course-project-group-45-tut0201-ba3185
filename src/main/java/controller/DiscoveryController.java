@@ -1,6 +1,6 @@
 package controller;
 
-import use_case_discovery.DiscoveryInputBoundary;
+import use_case.discovery.DiscoveryInputBoundary;
 
 /**
  * This controller call's the create method to generate the list

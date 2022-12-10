@@ -2,6 +2,8 @@ package use_case_discovery;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import use_case.discovery.nearBy.DistanceHelper;
+import use_case.discovery.LocationScoreCalculator;
 
 import java.util.ArrayList;
 import java.util.List;

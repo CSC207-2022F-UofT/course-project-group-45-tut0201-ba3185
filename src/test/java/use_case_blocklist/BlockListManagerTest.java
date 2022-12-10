@@ -1,5 +1,6 @@
 package use_case_blocklist;
 
+import use_case.blocklist.BlockListManager;
 import controller.BlockListController;
 import database.csvManager;
 import entity.User;

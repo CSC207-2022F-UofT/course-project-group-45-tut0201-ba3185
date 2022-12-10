@@ -6,6 +6,11 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import use_case.discovery.DiscoveryListInterface;
+import use_case.discovery.DiscoveryResponseModel;
+import use_case.discovery.search.SearchAnswerRequestModel;
+import use_case.discovery.search.SearchInteractor;
+
 import java.util.*;
 
 
@@ -17,7 +22,7 @@ import java.util.*;
  * */
 public class SearchInteractorTest {
 
-    static  DiscoveryListInterface pPanel;
+    static DiscoveryListInterface pPanel;
     static SearchInteractor interactor;
     static SearchAnswerRequestModel requestModel;
 

@@ -1,7 +1,7 @@
 package controller;
 import database.csvManager;
-import use_case_signin_signup.UserRequestModel;
-import use_case_signin_signup.UserUseCase;
+import use_case.signin_signup.UserRequestModel;
+import use_case.signin_signup.UserUseCase;
 
 import java.io.IOException;
 import java.util.List;
@@ -41,8 +41,8 @@ public class SignupPageController {
     /**
      * checks if there exists a user with the username already
      * @param username: username to check
-     * @return: true if there exists a user with that username, false if there is not a user.
-     * @throws IOException
+     * @return true if there exists a user with that username, false if there is not a user.
+     * @throws IOException are thrown
      */
     public boolean userExist(String username) throws IOException {
         csvManager csvManager = new csvManager();

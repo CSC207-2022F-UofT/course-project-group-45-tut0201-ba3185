@@ -5,9 +5,9 @@ import controller.MessageController;
 import entity.User;
 import gui.MainFrame;
 import presenter.MessagePresenter;
-import use_case_blocklist.BlockListManager;
-import use_case_message.MessageInteractor;
-import use_case_message.MessageManagerFactory;
+import use_case.blocklist.BlockListManager;
+import use_case.message.MessageInteractor;
+import use_case.message.MessageManagerFactory;
 
 import javax.swing.*;
 import java.awt.*;

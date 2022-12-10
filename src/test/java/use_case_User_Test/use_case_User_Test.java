@@ -1,12 +1,11 @@
 package use_case_User_Test;
 
-import com.sun.source.tree.AssertTree;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 
-import use_case_signin_signup.UserRequestModel;
-import use_case_signin_signup.UserUseCase;
+import use_case.signin_signup.UserRequestModel;
+import use_case.signin_signup.UserUseCase;
 
 import java.util.*;
 

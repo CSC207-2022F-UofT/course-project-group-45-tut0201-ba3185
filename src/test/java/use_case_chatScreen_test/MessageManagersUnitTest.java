@@ -1,9 +1,9 @@
 package use_case_chatScreen_test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import use_case_message.MessageManager;
-import use_case_message.MessageManagerFactory;
-import use_case_message.MessageManagers;
+import use_case.message.MessageManager;
+import use_case.message.MessageManagerFactory;
+import use_case.message.MessageManagers;
 
 import static org.junit.jupiter.api.Assertions.assertSame;
 /**

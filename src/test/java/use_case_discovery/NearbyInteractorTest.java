@@ -6,6 +6,9 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import use_case.discovery.DiscoveryListInterface;
+import use_case.discovery.DiscoveryResponseModel;
+import use_case.discovery.nearBy.NearbyInteractor;
 
 import java.util.*;
 

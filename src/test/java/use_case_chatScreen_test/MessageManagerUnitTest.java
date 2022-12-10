@@ -3,8 +3,8 @@ package use_case_chatScreen_test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
-import use_case_message.MessageManager;
-import use_case_message.MessageManagerFactory;
+import use_case.message.MessageManager;
+import use_case.message.MessageManagerFactory;
 /**
  * Unit tests for the MessageManager class, which tests the get_user1 and get_user2, save_chat_history_test methods for most cases.
  *in save_chat_history test, the method getChatHistory isn't explicitly tested since save_chat_history_test has already used it,

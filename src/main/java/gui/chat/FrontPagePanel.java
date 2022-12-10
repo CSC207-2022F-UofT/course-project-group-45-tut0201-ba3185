@@ -2,7 +2,7 @@ package gui.chat;
 import controller.FrontPageController;
 import gui.MainFrame;
 import presenter.FrontPagePresenter;
-import use_case_frontpage.FrontPageInteractor;
+import use_case.frontpage.FrontPageInteractor;
 
 import javax.swing.*;
 import java.awt.*;

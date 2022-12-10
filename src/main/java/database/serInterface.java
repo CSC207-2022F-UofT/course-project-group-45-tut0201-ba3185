@@ -1,6 +1,6 @@
 package database;
 
-import use_case_message.MessageManagers;
+import use_case.message.MessageManagers;
 
 public interface serInterface {
     MessageManagers readMM();

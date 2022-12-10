@@ -2,10 +2,10 @@ package gui.discovery;
 
 import controller.UserInfoController;
 import gui.MainFrame;
-import use_case_discovery.UserInfoInputBoundary;
-import use_case_discovery.UserInfoInteractor;
-import use_case_discovery.UserInfoInterface;
-import use_case_discovery.UserInfoResponseModel;
+import use_case.discovery.UserInfoInputBoundary;
+import use_case.discovery.UserInfoInteractor;
+import use_case.discovery.UserInfoInterface;
+import use_case.discovery.UserInfoResponseModel;
 import gui.chat.ChatScreen;
 
 import javax.swing.*;
